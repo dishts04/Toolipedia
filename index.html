@@ -6,219 +6,609 @@
 <title>Toolipedia — Find the Right AI Tool for Anything</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ── THEME TOKENS ─────────────────────────────────────────────────── */
 :root{
-  --bg:#07070f;--bg2:#0f0f1c;--card-s:#141426;--card-h:#1a1a32;
-  --border:rgba(255,255,255,0.07);--p1:#7C6AF7;--p2:#06D6A0;--p3:#FF6B6B;--p4:#F5A623;
-  --text:#E8E8F5;--text2:#8888BB;--text3:#555577;
-  --ff-head:'Syne',sans-serif;--ff-body:'Plus Jakarta Sans',sans-serif;
+  /* dark mode (default) */
+  --bg:#08080f;--bg2:#0f0f1c;--bg3:#141426;--bg4:#1a1a32;
+  --border:rgba(255,255,255,0.07);--border-h:rgba(124,106,247,0.4);
+  --p1:#7C6AF7;--p2:#06D6A0;--p3:#FF6B6B;--p4:#F5A623;
+  --text:#E8E8F5;--text2:#8888BB;--text3:#50507A;--text4:#333360;
+  --surface-glow:rgba(124,106,247,0.06);
+  --shadow-card:0 2px 12px rgba(0,0,0,0.4);
+  --shadow-hover:0 8px 32px rgba(0,0,0,0.55);
+  --shadow-card-dark:0 0 0 1px rgba(255,255,255,0.04);
+  --ff-head:'Syne',sans-serif;
+  --ff-body:'Manrope',sans-serif;
+  --radius-sm:8px;--radius-md:12px;--radius-lg:16px;--radius-xl:22px;
+  --transition:0.2s cubic-bezier(0.4,0,0.2,1);
+  --header-bg:rgba(8,8,15,0.9);
+  --hero-bg:transparent;
+  --input-bg:#0f0f1c;
+  --kbd-bg:rgba(255,255,255,0.06);
+  --tag-bg:rgba(255,255,255,0.05);
+  --score-track:rgba(255,255,255,0.07);
+  --detail-bg:rgba(255,255,255,0.025);
+  --noise-opacity:0.025;
 }
+
+/* light mode */
+html.light{
+  --bg:#F7F7FB;--bg2:#FFFFFF;--bg3:#F0F0F8;--bg4:#E8E8F4;
+  --border:rgba(0,0,0,0.08);--border-h:rgba(124,106,247,0.5);
+  --text:#111128;--text2:#4A4A7A;--text3:#8888AA;--text4:#BBBBCC;
+  --surface-glow:rgba(124,106,247,0.04);
+  --shadow-card:0 2px 8px rgba(0,0,0,0.07),0 0 0 1px rgba(0,0,0,0.04);
+  --shadow-hover:0 8px 28px rgba(0,0,0,0.14);
+  --shadow-card-dark:none;
+  --header-bg:rgba(247,247,251,0.92);
+  --hero-bg:transparent;
+  --input-bg:#FFFFFF;
+  --kbd-bg:rgba(0,0,0,0.05);
+  --tag-bg:rgba(0,0,0,0.04);
+  --score-track:rgba(0,0,0,0.06);
+  --detail-bg:rgba(0,0,0,0.02);
+  --noise-opacity:0;
+}
+
 html{scroll-behavior:smooth}
-body{background:var(--bg);color:var(--text);font-family:var(--ff-body);font-size:15px;line-height:1.6;min-height:100vh;overflow-x:hidden}
-body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:0.025;pointer-events:none;z-index:0}
-body::after{content:'';position:fixed;top:-30%;left:-20%;width:70%;height:70%;background:radial-gradient(ellipse at center,rgba(124,106,247,0.12) 0%,transparent 70%);pointer-events:none;z-index:0;animation:aurora 20s ease-in-out infinite alternate}
-@keyframes aurora{0%{transform:translate(0,0) scale(1)}100%{transform:translate(15%,10%) scale(1.1)}}
-.aurora2{position:fixed;top:40%;right:-20%;width:60%;height:60%;background:radial-gradient(ellipse at center,rgba(6,214,160,0.08) 0%,transparent 70%);pointer-events:none;z-index:0;animation:aurora 25s ease-in-out infinite alternate-reverse}
+body{background:var(--bg);color:var(--text);font-family:var(--ff-body);font-size:15px;line-height:1.6;min-height:100vh;overflow-x:hidden;transition:background var(--transition),color var(--transition)}
+
+/* noise grain */
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");opacity:var(--noise-opacity);pointer-events:none;z-index:0}
+/* aurora blobs — disabled on reduced-motion */
+body::after{content:'';position:fixed;top:-30%;left:-20%;width:70%;height:70%;background:radial-gradient(ellipse at center,rgba(124,106,247,0.1) 0%,transparent 70%);pointer-events:none;z-index:0}
+.aurora2{position:fixed;top:40%;right:-20%;width:60%;height:60%;background:radial-gradient(ellipse at center,rgba(6,214,160,0.07) 0%,transparent 70%);pointer-events:none;z-index:0}
+@media(prefers-reduced-motion:no-preference){
+  body::after{animation:aurora 22s ease-in-out infinite alternate}
+  .aurora2{animation:aurora2 28s ease-in-out infinite alternate-reverse}
+}
+@keyframes aurora{0%{transform:translate(0,0) scale(1)}100%{transform:translate(14%,10%) scale(1.08)}}
+@keyframes aurora2{0%{transform:translate(0,0)}100%{transform:translate(-10%,8%)}}
 main{position:relative;z-index:1}
 
-/* HEADER */
-header{padding:14px 28px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);backdrop-filter:blur(12px);position:sticky;top:0;z-index:100;background:rgba(7,7,15,0.9)}
-.logo{display:flex;align-items:center;gap:10px;text-decoration:none}
-.logo-text{font-family:var(--ff-head);font-size:20px;font-weight:800;color:var(--text);letter-spacing:-0.5px}
+/* ── HEADER ────────────────────────────────────────────────────────── */
+header{
+  padding:0 24px;height:58px;display:flex;align-items:center;justify-content:space-between;
+  border-bottom:1px solid var(--border);backdrop-filter:blur(16px) saturate(180%);
+  position:sticky;top:0;z-index:100;background:var(--header-bg);
+  transition:background var(--transition),border-color var(--transition);
+}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;flex-shrink:0}
+.logo-text{font-family:var(--ff-head);font-size:18px;font-weight:800;color:var(--text);letter-spacing:-0.5px;transition:color var(--transition)}
 .logo-text span{color:var(--p1)}
-.header-right{display:flex;align-items:center;gap:10px}
-.header-badge{font-size:11px;background:rgba(124,106,247,0.15);color:var(--p1);border:1px solid rgba(124,106,247,0.3);padding:4px 10px;border-radius:20px;font-weight:600;letter-spacing:0.5px}
-#random-btn{display:flex;align-items:center;gap:7px;padding:8px 16px;border-radius:22px;background:rgba(245,166,35,0.1);border:1px solid rgba(245,166,35,0.3);color:var(--p4);font-size:13px;font-weight:600;cursor:pointer;font-family:var(--ff-body);transition:all 0.2s;white-space:nowrap}
-#random-btn:hover{background:rgba(245,166,35,0.2);border-color:rgba(245,166,35,0.5);transform:scale(1.03)}
-#random-btn .dice{font-size:16px;transition:transform 0.3s}
+.curator-badge{
+  font-size:9px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;
+  background:linear-gradient(135deg,rgba(124,106,247,0.15),rgba(6,214,160,0.12));
+  border:1px solid rgba(124,106,247,0.3);color:var(--p1);padding:2px 8px;
+  border-radius:10px;margin-left:6px;white-space:nowrap;
+  display:none; /* hidden on mobile */
+}
+@media(min-width:640px){.curator-badge{display:inline}}
+
+.header-right{display:flex;align-items:center;gap:8px}
+
+/* Theme toggle */
+#theme-toggle{
+  width:36px;height:36px;border-radius:50%;background:var(--bg3);border:1px solid var(--border);
+  cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;
+  transition:all var(--transition);flex-shrink:0;color:var(--text2);
+}
+#theme-toggle:hover{background:var(--bg4);border-color:var(--border-h);transform:rotate(20deg)}
+#theme-toggle .icon-sun{display:none}
+#theme-toggle .icon-moon{display:block}
+html.light #theme-toggle .icon-sun{display:block}
+html.light #theme-toggle .icon-moon{display:none}
+
+.header-badge{
+  font-size:10px;background:rgba(124,106,247,0.12);color:var(--p1);
+  border:1px solid rgba(124,106,247,0.25);padding:3px 9px;border-radius:16px;
+  font-weight:700;letter-spacing:0.4px;white-space:nowrap;display:none;
+}
+@media(min-width:768px){.header-badge{display:inline}}
+
+#wiki-btn{
+  display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:18px;
+  background:rgba(6,214,160,0.08);border:1px solid rgba(6,214,160,0.22);
+  color:var(--p2);font-size:12px;font-weight:600;cursor:pointer;
+  font-family:var(--ff-body);transition:all var(--transition);white-space:nowrap;
+}
+#wiki-btn:hover{background:rgba(6,214,160,0.16);border-color:rgba(6,214,160,0.45);transform:scale(1.03)}
+#wiki-btn .wiki-icon{font-size:14px;transition:transform 0.3s}
+#wiki-btn:hover .wiki-icon{transform:rotate(15deg)}
+#wiki-btn .label{display:none}
+@media(min-width:600px){#wiki-btn .label{display:inline}}
+/* wiki-mode: button shows ✦ Back to Curated */
+body.wiki-mode #wiki-btn{background:rgba(124,106,247,0.12);border-color:rgba(124,106,247,0.35);color:var(--p1)}
+body.wiki-mode #wiki-btn:hover{background:rgba(124,106,247,0.22)}
+/* hide the main page scrollbar while wiki panel is open */
+body.wiki-mode main, body.wiki-mode footer{visibility:hidden}
+
+#random-btn{
+  display:flex;align-items:center;gap:6px;padding:7px 13px;border-radius:18px;
+  background:rgba(245,166,35,0.08);border:1px solid rgba(245,166,35,0.25);
+  color:var(--p4);font-size:12px;font-weight:600;cursor:pointer;
+  font-family:var(--ff-body);transition:all var(--transition);white-space:nowrap;
+}
+#random-btn:hover{background:rgba(245,166,35,0.18);border-color:rgba(245,166,35,0.5);transform:scale(1.03)}
+#random-btn .dice{font-size:14px;transition:transform 0.35s}
 #random-btn:hover .dice{transform:rotate(180deg)}
+#random-btn .label{display:none}
+@media(min-width:600px){#random-btn .label{display:inline}}
 
-/* HERO */
-.hero{padding:60px 28px 40px;text-align:center;max-width:820px;margin:0 auto}
-.hero-label{display:inline-flex;align-items:center;gap:6px;background:rgba(6,214,160,0.1);border:1px solid rgba(6,214,160,0.25);color:var(--p2);padding:6px 14px;border-radius:20px;font-size:12px;font-weight:600;letter-spacing:0.8px;text-transform:uppercase;margin-bottom:20px}
-.hero-label::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--p2);animation:pulse 2s ease-in-out infinite}
-@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.5;transform:scale(0.8)}}
-.hero h1{font-family:var(--ff-head);font-size:clamp(32px,5vw,58px);font-weight:800;line-height:1.1;letter-spacing:-2px;margin-bottom:16px}
+/* ── HERO ───────────────────────────────────────────────────────────── */
+.hero{padding:52px 20px 36px;text-align:center;max-width:800px;margin:0 auto}
+.hero-label{
+  display:inline-flex;align-items:center;gap:7px;
+  background:rgba(6,214,160,0.08);border:1px solid rgba(6,214,160,0.2);
+  color:var(--p2);padding:5px 14px;border-radius:20px;
+  font-size:11px;font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:18px;
+}
+.hero-label::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--p2);flex-shrink:0}
+@media(prefers-reduced-motion:no-preference){.hero-label::before{animation:pulse 2.5s ease-in-out infinite}}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:0.4;transform:scale(0.75)}}
+.hero h1{
+  font-family:var(--ff-head);font-size:clamp(28px,5vw,54px);
+  font-weight:800;line-height:1.1;letter-spacing:-1.5px;margin-bottom:14px;color:var(--text);
+}
 .hero h1 .grad{background:linear-gradient(135deg,var(--p1) 0%,var(--p2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
-.hero p{color:var(--text2);font-size:16px;max-width:560px;margin:0 auto 28px}
+.hero p{color:var(--text2);font-size:16px;max-width:520px;margin:0 auto 26px;line-height:1.65;font-weight:400}
 
-/* ADVISOR CTA (hero) */
-.advisor-cta{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap;margin-bottom:32px}
-.advisor-main-btn{display:flex;align-items:center;gap:10px;padding:14px 26px;border-radius:14px;background:linear-gradient(135deg,var(--p1),rgba(6,214,160,0.8));border:none;cursor:pointer;font-family:var(--ff-head);font-size:15px;font-weight:700;color:#fff;letter-spacing:0.2px;transition:all 0.25s;box-shadow:0 6px 28px rgba(124,106,247,0.35)}
-.advisor-main-btn:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(124,106,247,0.5)}
-.advisor-main-btn .btn-icon{font-size:20px}
-.advisor-or{font-size:13px;color:var(--text3)}
-.advisor-browse-btn{padding:12px 22px;border-radius:12px;background:transparent;border:1px solid var(--border);color:var(--text2);font-size:14px;font-weight:500;cursor:pointer;font-family:var(--ff-body);transition:all 0.2s}
-.advisor-browse-btn:hover{border-color:rgba(124,106,247,0.4);color:var(--text)}
+/* ADVISOR CTA */
+.advisor-cta{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:28px}
+.advisor-main-btn{
+  display:flex;align-items:center;gap:9px;padding:13px 24px;border-radius:14px;
+  background:linear-gradient(135deg,var(--p1),rgba(6,214,160,0.85));
+  border:none;cursor:pointer;font-family:var(--ff-head);font-size:14px;font-weight:700;
+  color:#fff;letter-spacing:0.2px;transition:all 0.25s;
+  box-shadow:0 4px 20px rgba(124,106,247,0.3);
+}
+.advisor-main-btn:hover{transform:translateY(-2px);box-shadow:0 8px 30px rgba(124,106,247,0.45)}
+.advisor-main-btn .btn-icon{font-size:18px}
+.advisor-or{font-size:12px;color:var(--text3)}
+.advisor-browse-btn{
+  padding:11px 20px;border-radius:12px;background:transparent;
+  border:1px solid var(--border);color:var(--text2);font-size:13px;font-weight:500;
+  cursor:pointer;font-family:var(--ff-body);transition:all var(--transition);
+}
+.advisor-browse-btn:hover{border-color:var(--border-h);color:var(--text)}
 
-/* SEARCH */
-.search-wrap{position:relative;max-width:640px;margin:0 auto}
-.search-glow{position:absolute;inset:-1px;border-radius:17px;background:linear-gradient(135deg,rgba(124,106,247,0.5),rgba(6,214,160,0.5));opacity:0;transition:opacity 0.3s;pointer-events:none;filter:blur(8px)}
+/* ── SEARCH ─────────────────────────────────────────────────────────── */
+.search-wrap{position:relative;max-width:600px;margin:0 auto}
+.search-glow{position:absolute;inset:-2px;border-radius:18px;background:linear-gradient(135deg,rgba(124,106,247,0.45),rgba(6,214,160,0.45));opacity:0;transition:opacity 0.3s;pointer-events:none;filter:blur(10px);border-radius:18px}
 .search-wrap:focus-within .search-glow{opacity:1}
-.search-inner{position:relative;background:var(--bg2);border:1px solid var(--border);border-radius:16px;display:flex;align-items:center;gap:12px;padding:14px 16px;transition:border-color 0.3s}
-.search-wrap:focus-within .search-inner{border-color:rgba(124,106,247,0.6)}
-.search-icon{color:var(--text3);flex-shrink:0;font-size:18px}
-#search-input{flex:1;background:none;border:none;outline:none;color:var(--text);font-family:var(--ff-body);font-size:16px}
+.search-inner{
+  position:relative;background:var(--input-bg);border:1px solid var(--border);
+  border-radius:16px;display:flex;align-items:center;gap:10px;padding:12px 16px;
+  transition:border-color var(--transition),box-shadow var(--transition);
+  box-shadow:var(--shadow-card);
+}
+.search-wrap:focus-within .search-inner{border-color:rgba(124,106,247,0.55);box-shadow:0 0 0 3px rgba(124,106,247,0.1)}
+.search-icon{color:var(--text3);flex-shrink:0;font-size:17px}
+#search-input{flex:1;background:none;border:none;outline:none;color:var(--text);font-family:var(--ff-body);font-size:15px;font-weight:400;min-width:0}
 #search-input::placeholder{color:var(--text3)}
-.kbd-wrap{display:flex;gap:4px;flex-shrink:0}
-.kbd{background:rgba(255,255,255,0.06);border:1px solid var(--border);border-radius:5px;padding:2px 6px;font-size:11px;color:var(--text3);font-family:monospace}
-.search-count{font-size:12px;color:var(--text3);text-align:center;margin-top:10px;min-height:20px}
+.kbd-wrap{display:flex;gap:3px;flex-shrink:0}
+.kbd{background:var(--kbd-bg);border:1px solid var(--border);border-radius:4px;padding:2px 5px;font-size:10px;color:var(--text3);font-family:monospace}
+.search-count{font-size:12px;color:var(--text3);text-align:center;margin-top:8px;min-height:18px;font-weight:500;transition:color var(--transition)}
 
-/* CATEGORY PILLS */
-.cats{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;padding:24px 28px 0;max-width:1000px;margin:0 auto}
-.cat-pill{padding:6px 15px;border-radius:20px;border:1px solid var(--border);background:transparent;color:var(--text2);font-family:var(--ff-body);font-size:13px;font-weight:500;cursor:pointer;transition:all 0.2s;white-space:nowrap}
-.cat-pill:hover{border-color:rgba(124,106,247,0.4);color:var(--text)}
-.cat-pill.active{background:var(--p1);border-color:var(--p1);color:#fff;font-weight:600}
+/* ── STICKY SEARCH (appears when user scrolls past hero) ─────────── */
+.sticky-search{
+  display:none;position:sticky;top:58px;z-index:90;
+  background:var(--header-bg);backdrop-filter:blur(16px);
+  padding:10px 20px;border-bottom:1px solid var(--border);
+  transition:all var(--transition);
+}
+.sticky-search.visible{display:block}
+.sticky-search .search-inner{border-radius:10px;padding:9px 14px;max-width:560px;margin:0 auto}
 
-/* TABS */
-.tabs-wrap{padding:18px 28px 0;max-width:1200px;margin:0 auto}
-.tabs{display:inline-flex;background:var(--bg2);border:1px solid var(--border);border-radius:12px;padding:4px;gap:2px}
-.tab-btn{padding:9px 20px;border-radius:9px;border:none;background:transparent;color:var(--text2);font-family:var(--ff-body);font-size:14px;font-weight:500;cursor:pointer;transition:all 0.2s;display:flex;align-items:center;gap:7px}
+/* ── CATEGORY PILLS ─────────────────────────────────────────────────── */
+/* Mobile: horizontal scroll. Desktop: wrap */
+.cats-outer{padding:20px 0 0;position:relative}
+.cats-outer::after{
+  content:'';position:absolute;right:0;top:20px;bottom:0;width:32px;
+  background:linear-gradient(to right,transparent,var(--bg));
+  pointer-events:none;display:none;
+}
+@media(max-width:767px){.cats-outer::after{display:block}}
+.cats{
+  display:flex;gap:6px;padding:0 20px 4px;
+  overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;
+}
+.cats::-webkit-scrollbar{display:none}
+@media(min-width:768px){
+  .cats{flex-wrap:wrap;justify-content:center;max-width:1000px;margin:0 auto;padding:0 28px 4px;overflow-x:visible}
+}
+.cat-pill{
+  padding:6px 14px;border-radius:20px;border:1px solid var(--border);
+  background:var(--bg3);color:var(--text2);font-family:var(--ff-body);
+  font-size:12px;font-weight:600;cursor:pointer;
+  transition:all var(--transition);white-space:nowrap;flex-shrink:0;
+}
+.cat-pill:hover{border-color:var(--border-h);color:var(--text);background:var(--bg4)}
+.cat-pill.active{background:var(--p1);border-color:var(--p1);color:#fff}
+
+/* ── VIEW TOGGLE + TABS ─────────────────────────────────────────────── */
+.toolbar{
+  padding:16px 20px 0;max-width:1200px;margin:0 auto;
+  display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;
+}
+@media(min-width:768px){.toolbar{padding:16px 28px 0}}
+.tabs{display:inline-flex;background:var(--bg3);border:1px solid var(--border);border-radius:12px;padding:3px;gap:2px}
+.tab-btn{
+  padding:8px 18px;border-radius:9px;border:none;background:transparent;
+  color:var(--text2);font-family:var(--ff-body);font-size:13px;font-weight:500;
+  cursor:pointer;transition:all var(--transition);display:flex;align-items:center;gap:6px;white-space:nowrap;
+}
 .tab-btn:hover{color:var(--text)}
-.tab-btn.active{background:rgba(124,106,247,0.2);color:var(--p1);font-weight:600}
-.tab-btn .badge{background:rgba(124,106,247,0.2);color:var(--p1);font-size:11px;padding:2px 7px;border-radius:10px;font-weight:700}
+.tab-btn.active{background:var(--p1);color:#fff;font-weight:700;box-shadow:0 2px 8px rgba(124,106,247,0.35)}
+.tab-btn .badge{background:rgba(255,255,255,0.25);color:#fff;font-size:10px;padding:1px 6px;border-radius:8px;font-weight:700}
+.tab-btn:not(.active) .badge{background:rgba(124,106,247,0.15);color:var(--p1)}
 
-/* PANELS */
-.panel{display:none;padding:24px 28px;max-width:1200px;margin:0 auto}
-.panel.active{display:block}
-@keyframes fadeIn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+/* ── PANELS ─────────────────────────────────────────────────────────── */
+.panel{display:none;padding:20px 20px 60px;max-width:1200px;margin:0 auto}
+.panel.active{display:block;animation:fadeIn 0.2s ease}
+@media(min-width:768px){.panel{padding:22px 28px 60px}}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
 
-/* TOOL GRID */
-.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:16px}
+/* ── TOOL GRID (card view only) ─────────────────────────────────────── */
+.tools-grid{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:560px){.tools-grid{grid-template-columns:repeat(2,1fr)}}
+@media(min-width:900px){.tools-grid{grid-template-columns:repeat(3,1fr)}}
+@media(min-width:1200px){.tools-grid{grid-template-columns:repeat(4,1fr)}}
 
-/* TOOL CARD */
-.tool-card{background:var(--card-s);border:1px solid var(--border);border-radius:16px;overflow:hidden;transition:all 0.25s;cursor:pointer}
-.tool-card:hover{border-color:rgba(124,106,247,0.35);transform:translateY(-2px);box-shadow:0 12px 40px rgba(0,0,0,0.4)}
-.tool-card.expanded{border-color:rgba(124,106,247,0.5)}
-.card-head{padding:18px;display:flex;align-items:flex-start;gap:14px}
-.tool-icon{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;flex-shrink:0}
+/* ── TOOL CARD ──────────────────────────────────────────────────────── */
+.tool-card{
+  background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--radius-lg);overflow:hidden;
+  transition:transform var(--transition),box-shadow var(--transition),border-color var(--transition);
+  cursor:pointer;box-shadow:var(--shadow-card);
+  display:flex;flex-direction:column;
+}
+.tool-card:hover{
+  border-color:var(--border-h);transform:translateY(-3px);
+  box-shadow:var(--shadow-hover);
+}
+.tool-card:active{transform:translateY(-1px)}
+.tool-card.expanded{border-color:var(--p1);box-shadow:0 0 0 2px rgba(124,106,247,0.2),var(--shadow-hover)}
+
+.card-head{padding:16px 16px 12px;display:flex;align-items:flex-start;gap:12px}
+.tool-icon{
+  width:44px;height:44px;border-radius:var(--radius-sm);
+  display:flex;align-items:center;justify-content:center;font-size:20px;
+  flex-shrink:0;transition:transform var(--transition);
+}
+.tool-card:hover .tool-icon{transform:scale(1.08)}
 .tool-info{flex:1;min-width:0}
-.tool-name{font-family:var(--ff-head);font-size:16px;font-weight:700;color:var(--text);letter-spacing:-0.3px}
-.tool-maker{font-size:12px;color:var(--text3);margin-top:1px}
-.tool-tags{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
-.tag{padding:3px 9px;border-radius:10px;font-size:11px;font-weight:600;background:rgba(255,255,255,0.06);color:var(--text3);border:1px solid var(--border)}
-.tag.primary{background:rgba(124,106,247,0.12);color:var(--p1);border-color:rgba(124,106,247,0.25)}
-.card-body{padding:0 18px 18px}
-.tagline{font-size:13px;color:var(--text2);margin-bottom:10px;line-height:1.5}
-.bestfor{font-size:12px;color:var(--text3);padding:9px 11px;background:rgba(255,255,255,0.03);border-radius:8px;border-left:2px solid var(--p1);line-height:1.5}
-.bestfor strong{color:var(--text2);display:block;font-size:10px;text-transform:uppercase;letter-spacing:0.7px;margin-bottom:3px}
-.card-footer{padding:10px 18px;border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;gap:8px}
-.free-badge{font-size:11px;font-weight:600;padding:3px 9px;border-radius:8px}
-.free-badge.yes{background:rgba(6,214,160,0.12);color:var(--p2);border:1px solid rgba(6,214,160,0.25)}
-.free-badge.no{background:rgba(255,107,107,0.1);color:#FF8A8A;border:1px solid rgba(255,107,107,0.2)}
-.paid-from{font-size:12px;color:var(--text3)}
-.paid-from span{color:var(--text2);font-weight:600}
-.expand-arrow{color:var(--text3);transition:transform 0.25s;font-size:14px;flex-shrink:0}
-.tool-card.expanded .expand-arrow{transform:rotate(180deg)}
+.tool-name{font-family:var(--ff-head);font-size:15px;font-weight:700;color:var(--text);letter-spacing:-0.2px;line-height:1.2}
+.tool-maker{font-size:11px;color:var(--text3);margin-top:2px;font-weight:500}
+.tool-tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:7px}
+.tag{
+  padding:2px 8px;border-radius:8px;font-size:10px;font-weight:700;
+  background:var(--tag-bg);color:var(--text3);border:1px solid var(--border);
+  letter-spacing:0.2px;
+}
+.tag.primary{background:rgba(124,106,247,0.1);color:var(--p1);border-color:rgba(124,106,247,0.22)}
+
+.card-body{padding:0 16px 14px;flex:1;display:flex;flex-direction:column;gap:8px}
+.tagline{font-size:13px;color:var(--text2);line-height:1.5;font-weight:400}
+.bestfor{
+  font-size:11px;color:var(--text3);padding:8px 10px;background:var(--detail-bg);
+  border-radius:var(--radius-sm);border-left:2px solid var(--p1);line-height:1.5;
+  transition:background var(--transition);
+}
+.bestfor strong{color:var(--p2);display:block;font-size:9px;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:2px;font-weight:700}
+
+.card-footer{
+  padding:10px 16px;border-top:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;gap:6px;
+  margin-top:auto;flex-shrink:0;
+}
+.free-badge{font-size:10px;font-weight:700;padding:3px 8px;border-radius:7px;letter-spacing:0.2px}
+.free-badge.yes{background:rgba(6,214,160,0.1);color:var(--p2);border:1px solid rgba(6,214,160,0.22)}
+.free-badge.no{background:rgba(255,107,107,0.08);color:#FF8A8A;border:1px solid rgba(255,107,107,0.18)}
+.paid-from{font-size:11px;color:var(--text3);font-weight:500}
+.paid-from span{color:var(--text2);font-weight:700}
+.expand-arrow{
+  color:var(--text3);transition:transform 0.25s,color var(--transition);
+  font-size:13px;flex-shrink:0;width:20px;height:20px;
+  display:flex;align-items:center;justify-content:center;
+  border-radius:50%;background:var(--detail-bg);
+}
+.tool-card:hover .expand-arrow{color:var(--p1)}
+.tool-card.expanded .expand-arrow{transform:rotate(180deg);background:rgba(124,106,247,0.12);color:var(--p1)}
 
 /* EXPANDED DETAIL */
-.tool-detail{display:none;padding:0 18px 22px;border-top:1px solid var(--border)}
+.tool-detail{display:none;padding:0 16px 18px;border-top:1px solid var(--border)}
 .tool-card.expanded .tool-detail{display:block;animation:fadeIn 0.2s ease}
-.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
-.detail-section h4{font-size:10px;text-transform:uppercase;letter-spacing:0.8px;color:var(--text3);font-weight:600;margin-bottom:9px}
-.uc-list,.feat-list,.int-list{list-style:none;display:flex;flex-direction:column;gap:5px}
-.uc-list li,.feat-list li,.int-list li{font-size:12px;color:var(--text2);display:flex;align-items:flex-start;gap:6px;line-height:1.4}
-.uc-list li::before{content:'→';color:var(--p1);flex-shrink:0}
+.detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
+@media(max-width:480px){.detail-grid{grid-template-columns:1fr}}
+.detail-section h4{font-size:9px;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);font-weight:700;margin-bottom:8px}
+.uc-list,.feat-list,.int-list{list-style:none;display:flex;flex-direction:column;gap:4px}
+.uc-list li,.feat-list li,.int-list li{font-size:12px;color:var(--text2);display:flex;align-items:flex-start;gap:6px;line-height:1.45}
+.uc-list li::before{content:'→';color:var(--p1);flex-shrink:0;font-weight:700}
 .feat-list li::before{content:'✓';color:var(--p2);flex-shrink:0;font-weight:700}
-.int-list li::before{content:'⬡';color:var(--p4);flex-shrink:0}
-.plans-list{display:flex;flex-direction:column;gap:7px}
-.plan-item{background:rgba(255,255,255,0.03);border:1px solid var(--border);border-radius:8px;padding:9px 11px;display:flex;align-items:flex-start;gap:10px}
-.plan-price{font-family:var(--ff-head);font-size:14px;font-weight:700;color:var(--text);white-space:nowrap;min-width:80px}
-.plan-name{font-size:10px;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px}
-.plan-perks{font-size:12px;color:var(--text2)}
-.score-row{display:flex;align-items:center;gap:8px;margin-top:7px}
-.score-label{font-size:11px;color:var(--text3);width:70px;flex-shrink:0;text-transform:capitalize}
-.score-bar-wrap{flex:1;height:5px;background:rgba(255,255,255,0.07);border-radius:3px;overflow:hidden}
-.score-bar{height:100%;border-radius:3px;transition:width 0.6s ease;background:linear-gradient(90deg,var(--p1),var(--p2))}
-.score-val{font-size:11px;color:var(--text3);width:20px;text-align:right}
-.no-results{text-align:center;padding:60px 20px;color:var(--text3)}
-.no-results h3{font-size:18px;color:var(--text2);margin-bottom:8px}
+.int-list li::before{content:'·';color:var(--p4);flex-shrink:0;font-weight:900;font-size:16px;line-height:1}
+.plans-list{display:flex;flex-direction:column;gap:6px}
+.plan-item{
+  background:var(--detail-bg);border:1px solid var(--border);border-radius:var(--radius-sm);
+  padding:8px 10px;display:flex;align-items:flex-start;gap:9px;
+  transition:border-color var(--transition);
+}
+.plan-item:hover{border-color:var(--border-h)}
+.plan-price{font-family:var(--ff-head);font-size:13px;font-weight:700;color:var(--text);white-space:nowrap;min-width:76px}
+.plan-name{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:1px}
+.plan-perks{font-size:11px;color:var(--text2);line-height:1.4}
+.score-row{display:flex;align-items:center;gap:8px;margin-top:6px}
+.score-label{font-size:10px;color:var(--text3);width:68px;flex-shrink:0;text-transform:capitalize;font-weight:600}
+.score-bar-wrap{flex:1;height:4px;background:var(--score-track);border-radius:2px;overflow:hidden}
+.score-bar{height:100%;border-radius:2px;transition:width 0.7s cubic-bezier(0.4,0,0.2,1);background:linear-gradient(90deg,var(--p1),var(--p2))}
+.score-val{font-size:10px;color:var(--text2);width:18px;text-align:right;font-weight:700}
 
-/* COMPARE */
-.compare-selectors{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
-.compare-select-card{background:var(--card-s);border:1px solid var(--border);border-radius:11px;padding:12px 14px;min-width:140px;cursor:pointer;transition:all 0.2s}
-.compare-select-card:hover{border-color:rgba(124,106,247,0.35)}
-.compare-select-card.selected{border-color:var(--p1);background:rgba(124,106,247,0.1)}
-.compare-select-card .cs-name{font-size:13px;font-weight:600;color:var(--text)}
-.compare-select-card .cs-sub{font-size:11px;color:var(--text3);margin-top:2px}
-.cs-check{float:right;color:var(--p1);font-size:15px}
-.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px}
-.chart-card{background:var(--card-s);border:1px solid var(--border);border-radius:16px;padding:22px}
-.chart-card h3{font-family:var(--ff-head);font-size:15px;font-weight:700;color:var(--text);margin-bottom:18px}
-.chart-wrap{position:relative;height:300px}
-.price-table{width:100%;border-collapse:collapse;font-size:13px}
-.price-table th{text-align:left;padding:9px 11px;font-size:11px;text-transform:uppercase;letter-spacing:0.7px;color:var(--text3);font-weight:600;border-bottom:1px solid var(--border)}
-.price-table td{padding:9px 11px;border-bottom:1px solid rgba(255,255,255,0.04);color:var(--text2);vertical-align:top}
-.price-table td:first-child{color:var(--text);font-weight:500}
-.price-table tr:hover td{background:rgba(255,255,255,0.02)}
-.pill-green{background:rgba(6,214,160,0.12);color:var(--p2);padding:2px 8px;border-radius:8px;font-size:11px;font-weight:600}
-.pill-red{background:rgba(255,107,107,0.1);color:#FF8A8A;padding:2px 8px;border-radius:8px;font-size:11px;font-weight:600}
-.compare-legend{display:flex;gap:14px;flex-wrap:wrap;margin-top:10px}
-.leg-item{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--text2)}
-.leg-dot{width:10px;height:10px;border-radius:50%;flex-shrink:0}
+/* ── EMPTY STATE ────────────────────────────────────────────────────── */
+.empty-state{
+  display:flex;flex-direction:column;align-items:center;text-align:center;
+  padding:72px 20px 80px;animation:fadeIn 0.3s ease;
+}
+.empty-icon{
+  width:72px;height:72px;border-radius:20px;background:var(--bg3);
+  border:1px solid var(--border);display:flex;align-items:center;justify-content:center;
+  font-size:32px;margin-bottom:18px;
+}
+.empty-state h3{font-family:var(--ff-head);font-size:20px;color:var(--text);margin-bottom:8px;font-weight:700}
+.empty-state p{font-size:14px;color:var(--text2);max-width:340px;line-height:1.6;margin-bottom:20px}
+.empty-action-btn{
+  padding:10px 22px;border-radius:12px;background:var(--p1);border:none;
+  color:#fff;font-family:var(--ff-body);font-size:13px;font-weight:700;
+  cursor:pointer;transition:all var(--transition);
+}
+.empty-action-btn:hover{transform:translateY(-2px);box-shadow:0 6px 20px rgba(124,106,247,0.35)}
+.empty-clear-hint{font-size:12px;color:var(--text3);margin-top:10px}
 
-/* USE CASES */
-.uc-cats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;margin-bottom:26px}
-.uc-cat-card{background:var(--card-s);border:1px solid var(--border);border-radius:13px;padding:16px 14px;cursor:pointer;transition:all 0.2s;text-align:center}
-.uc-cat-card:hover{border-color:rgba(124,106,247,0.35);transform:translateY(-1px)}
-.uc-cat-card.active{border-color:var(--p1);background:rgba(124,106,247,0.1)}
-.uc-emoji{font-size:26px;display:block;margin-bottom:7px}
-.uc-label{font-size:12px;font-weight:600;color:var(--text)}
-.uc-count{font-size:11px;color:var(--text3);margin-top:2px}
-.uc-tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px}
-.uc-tool-row{background:var(--card-s);border:1px solid var(--border);border-radius:13px;padding:14px;display:flex;gap:12px;align-items:flex-start;cursor:pointer;transition:all 0.2s}
-.uc-tool-row:hover{border-color:rgba(124,106,247,0.35);transform:translateX(2px)}
-.uc-tool-name{font-size:14px;font-weight:600;color:var(--text)}
-.uc-tool-why{font-size:12px;color:var(--text2);margin-top:4px;line-height:1.5}
-.uc-section-title{font-family:var(--ff-head);font-size:17px;font-weight:700;color:var(--text);margin-bottom:14px;display:flex;align-items:center;gap:9px}
+/* ── CAT HERO BANNER ────────────────────────────────────────────────── */
+.cat-hero-card{
+  background:linear-gradient(135deg,rgba(124,106,247,0.08),rgba(6,214,160,0.04));
+  border:1px solid rgba(124,106,247,0.18);border-radius:var(--radius-lg);
+  padding:18px 20px;margin-bottom:18px;animation:fadeIn 0.3s ease;
+}
+.cat-hero-card h2{font-family:var(--ff-head);font-size:16px;font-weight:700;color:var(--text);margin-bottom:5px}
+.cat-hero-card p{font-size:13px;color:var(--text2);line-height:1.55;max-width:650px}
+.cat-hero-meta{font-size:11px;color:var(--p1);font-weight:700;margin-bottom:6px;display:flex;align-items:center;gap:6px}
 
-/* CHAT WIDGET */
-#chat-bubble{position:fixed;bottom:24px;right:24px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:12px}
-#chat-toggle{display:flex;align-items:center;gap:10px;padding:13px 20px;border-radius:28px;background:linear-gradient(135deg,var(--p1),rgba(6,214,160,0.9));border:none;cursor:pointer;font-family:var(--ff-head);font-size:14px;font-weight:700;color:#fff;box-shadow:0 6px 28px rgba(124,106,247,0.45);transition:all 0.2s;position:relative;letter-spacing:0.2px}
-#chat-toggle:hover{transform:translateY(-2px);box-shadow:0 10px 36px rgba(124,106,247,0.6)}
-#chat-toggle .notif{position:absolute;top:-3px;right:-3px;width:13px;height:13px;border-radius:50%;background:var(--p2);border:2px solid var(--bg);animation:pulse 2s ease-in-out infinite}
-#chat-window{width:380px;height:540px;background:var(--bg2);border:1px solid rgba(124,106,247,0.3);border-radius:22px;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 24px 64px rgba(0,0,0,0.7);transform-origin:bottom right;animation:chatIn 0.28s cubic-bezier(0.34,1.56,0.64,1)}
-@keyframes chatIn{from{opacity:0;transform:scale(0.82) translateY(12px)}to{opacity:1;transform:scale(1) translateY(0)}}
+/* ── COMPARE ────────────────────────────────────────────────────────── */
+.compare-selectors{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.compare-select-card{
+  background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-md);
+  padding:10px 13px;min-width:130px;cursor:pointer;transition:all var(--transition);
+}
+.compare-select-card:hover{border-color:var(--border-h);transform:translateY(-1px)}
+.compare-select-card.selected{border-color:var(--p1);background:rgba(124,106,247,0.08)}
+.compare-select-card .cs-name{font-size:12px;font-weight:700;color:var(--text)}
+.compare-select-card .cs-sub{font-size:10px;color:var(--text3);margin-top:2px}
+.cs-check{float:right;color:var(--p1);font-size:14px}
+.compare-grid{display:grid;grid-template-columns:1fr;gap:18px}
+@media(min-width:720px){.compare-grid{grid-template-columns:1fr 1fr}}
+.chart-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:20px;box-shadow:var(--shadow-card)}
+.chart-card h3{font-family:var(--ff-head);font-size:14px;font-weight:700;color:var(--text);margin-bottom:16px}
+.chart-wrap{position:relative;height:280px}
+.price-table{width:100%;border-collapse:collapse;font-size:12px}
+.price-table th{text-align:left;padding:8px 10px;font-size:10px;text-transform:uppercase;letter-spacing:0.7px;color:var(--text3);font-weight:700;border-bottom:1px solid var(--border)}
+.price-table td{padding:9px 10px;border-bottom:1px solid var(--border);color:var(--text2);vertical-align:top}
+.price-table td:first-child{color:var(--text);font-weight:600}
+.price-table tr:hover td{background:var(--detail-bg)}
+.pill-green{background:rgba(6,214,160,0.1);color:var(--p2);padding:2px 7px;border-radius:7px;font-size:10px;font-weight:700}
+.pill-red{background:rgba(255,107,107,0.08);color:#FF8A8A;padding:2px 7px;border-radius:7px;font-size:10px;font-weight:700}
+.compare-legend{display:flex;gap:12px;flex-wrap:wrap;margin-top:10px}
+.leg-item{display:flex;align-items:center;gap:5px;font-size:11px;color:var(--text2);font-weight:500}
+.leg-dot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+
+/* ── USE CASES ──────────────────────────────────────────────────────── */
+.uc-cats-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:8px;margin-bottom:22px}
+.uc-cat-card{
+  background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-md);
+  padding:14px 12px;cursor:pointer;transition:all var(--transition);text-align:center;
+  box-shadow:var(--shadow-card);
+}
+.uc-cat-card:hover{border-color:var(--border-h);transform:translateY(-2px);box-shadow:var(--shadow-hover)}
+.uc-cat-card.active{border-color:var(--p1);background:rgba(124,106,247,0.07)}
+.uc-emoji{font-size:24px;display:block;margin-bottom:6px}
+.uc-label{font-size:12px;font-weight:700;color:var(--text);line-height:1.3}
+.uc-count{font-size:10px;color:var(--text3);margin-top:3px;font-weight:500}
+.uc-tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:10px}
+.uc-tool-row{
+  background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-md);
+  padding:12px;display:flex;gap:11px;align-items:flex-start;cursor:pointer;
+  transition:all var(--transition);box-shadow:var(--shadow-card);
+}
+.uc-tool-row:hover{border-color:var(--border-h);transform:translateX(3px);box-shadow:var(--shadow-hover)}
+.uc-tool-name{font-size:13px;font-weight:700;color:var(--text)}
+.uc-tool-why{font-size:11px;color:var(--text2);margin-top:3px;line-height:1.5}
+.uc-section-title{font-family:var(--ff-head);font-size:16px;font-weight:700;color:var(--text);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+
+/* ── CHAT WIDGET ────────────────────────────────────────────────────── */
+#chat-bubble{position:fixed;bottom:20px;right:20px;z-index:9999;display:flex;flex-direction:column;align-items:flex-end;gap:10px}
+#chat-toggle{
+  display:flex;align-items:center;gap:9px;padding:12px 18px;border-radius:26px;
+  background:linear-gradient(135deg,var(--p1),rgba(6,214,160,0.88));
+  border:none;cursor:pointer;font-family:var(--ff-head);font-size:13px;font-weight:700;
+  color:#fff;box-shadow:0 4px 20px rgba(124,106,247,0.4);transition:all var(--transition);
+  position:relative;letter-spacing:0.2px;
+}
+#chat-toggle:hover{transform:translateY(-2px);box-shadow:0 8px 28px rgba(124,106,247,0.55)}
+#chat-toggle .notif{position:absolute;top:-2px;right:-2px;width:11px;height:11px;border-radius:50%;background:var(--p2);border:2px solid var(--bg)}
+@media(prefers-reduced-motion:no-preference){#chat-toggle .notif{animation:pulse 2.5s ease-in-out infinite}}
+#chat-window{
+  width:360px;height:520px;background:var(--bg2);border:1px solid rgba(124,106,247,0.28);
+  border-radius:var(--radius-xl);display:flex;flex-direction:column;overflow:hidden;
+  box-shadow:0 20px 56px rgba(0,0,0,0.6);transform-origin:bottom right;
+}
+@media(prefers-reduced-motion:no-preference){#chat-window{animation:chatIn 0.28s cubic-bezier(0.34,1.56,0.64,1)}}
+@keyframes chatIn{from{opacity:0;transform:scale(0.84) translateY(10px)}to{opacity:1;transform:scale(1) translateY(0)}}
 #chat-window.hidden{display:none}
-.chat-head{padding:15px 18px;background:linear-gradient(135deg,rgba(124,106,247,0.25),rgba(6,214,160,0.12));border-bottom:1px solid var(--border);display:flex;align-items:center;gap:12px}
-.chat-avatar{width:38px;height:38px;border-radius:50%;background:linear-gradient(135deg,var(--p1),var(--p2));display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0}
+@media(max-width:420px){#chat-window{width:calc(100vw - 24px)}}
+.chat-head{
+  padding:14px 16px;
+  background:linear-gradient(135deg,rgba(124,106,247,0.18),rgba(6,214,160,0.1));
+  border-bottom:1px solid var(--border);display:flex;align-items:center;gap:11px;
+}
+.chat-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--p1),var(--p2));display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
 .chat-head-info{flex:1}
-.chat-head-name{font-family:var(--ff-head);font-size:14px;font-weight:700;color:var(--text)}
-.chat-head-status{font-size:11px;color:var(--p2);display:flex;align-items:center;gap:5px}
-.chat-head-status::before{content:'';width:6px;height:6px;border-radius:50%;background:var(--p2)}
-.chat-close{background:none;border:none;color:var(--text3);cursor:pointer;font-size:18px;padding:4px;border-radius:6px;transition:all 0.2s}
-.chat-close:hover{color:var(--text);background:rgba(255,255,255,0.06)}
-#chat-msgs{flex:1;overflow-y:auto;padding:14px;display:flex;flex-direction:column;gap:11px;scroll-behavior:smooth}
-#chat-msgs::-webkit-scrollbar{width:4px}
-#chat-msgs::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:2px}
-.msg{display:flex;flex-direction:column;gap:3px;animation:fadeIn 0.2s ease}
+.chat-head-name{font-family:var(--ff-head);font-size:13px;font-weight:700;color:var(--text)}
+.chat-head-status{font-size:10px;color:var(--p2);display:flex;align-items:center;gap:4px}
+.chat-head-status::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--p2)}
+.chat-close{background:none;border:none;color:var(--text3);cursor:pointer;font-size:17px;padding:4px;border-radius:6px;transition:all var(--transition)}
+.chat-close:hover{color:var(--text);background:var(--detail-bg)}
+#chat-msgs{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:10px;scroll-behavior:smooth}
+#chat-msgs::-webkit-scrollbar{width:3px}
+#chat-msgs::-webkit-scrollbar-thumb{background:rgba(124,106,247,0.2);border-radius:2px}
+.msg{display:flex;flex-direction:column;gap:3px;animation:fadeIn 0.18s ease}
 .msg.user{align-items:flex-end}
 .msg.bot{align-items:flex-start}
-.msg-bubble{max-width:90%;padding:10px 13px;border-radius:14px;font-size:13px;line-height:1.55;word-break:break-word}
-.msg.user .msg-bubble{background:linear-gradient(135deg,rgba(124,106,247,0.35),rgba(6,214,160,0.2));border:1px solid rgba(124,106,247,0.3);color:var(--text)}
-.msg.bot .msg-bubble{background:rgba(255,255,255,0.05);border:1px solid var(--border);color:var(--text2)}
-.msg.bot .msg-bubble strong{color:var(--text);font-weight:600}
-.tool-chip{display:inline-flex;align-items:center;gap:5px;background:rgba(124,106,247,0.15);border:1px solid rgba(124,106,247,0.3);color:var(--p1);font-size:11px;font-weight:600;padding:3px 8px;border-radius:8px;margin:2px 2px;cursor:pointer;transition:background 0.2s}
-.tool-chip:hover{background:rgba(124,106,247,0.3)}
-.msg-time{font-size:10px;color:var(--text3)}
-.typing-indicator{display:flex;align-items:center;gap:5px;padding:10px 13px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:14px;width:fit-content}
-.typing-dot{width:6px;height:6px;border-radius:50%;background:var(--text3);animation:typingBounce 1.2s ease-in-out infinite}
-.typing-dot:nth-child(2){animation-delay:0.2s}
-.typing-dot:nth-child(3){animation-delay:0.4s}
-@keyframes typingBounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-6px)}}
-.chat-suggestions{padding:0 14px 10px;display:flex;gap:6px;flex-wrap:wrap}
-.suggestion-chip{padding:6px 12px;border-radius:20px;border:1px solid var(--border);background:rgba(255,255,255,0.03);color:var(--text2);font-size:11px;cursor:pointer;transition:all 0.2s;font-family:var(--ff-body)}
-.suggestion-chip:hover{border-color:rgba(124,106,247,0.4);color:var(--text);background:rgba(124,106,247,0.08)}
-.chat-input-row{padding:11px 14px;border-top:1px solid var(--border);display:flex;gap:8px;align-items:flex-end}
-#chat-input{flex:1;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:12px;padding:9px 13px;color:var(--text);font-family:var(--ff-body);font-size:13px;outline:none;resize:none;max-height:90px;min-height:38px;transition:border-color 0.2s;line-height:1.5}
+.msg-bubble{
+  max-width:92%;padding:9px 12px;border-radius:14px;
+  font-size:12.5px;line-height:1.55;word-break:break-word;
+}
+.msg.user .msg-bubble{background:linear-gradient(135deg,rgba(124,106,247,0.3),rgba(6,214,160,0.18));border:1px solid rgba(124,106,247,0.28);color:var(--text)}
+.msg.bot .msg-bubble{background:var(--bg3);border:1px solid var(--border);color:var(--text2)}
+.msg.bot .msg-bubble strong{color:var(--text);font-weight:700}
+.tool-chip{display:inline-flex;align-items:center;gap:4px;background:rgba(124,106,247,0.12);border:1px solid rgba(124,106,247,0.28);color:var(--p1);font-size:11px;font-weight:700;padding:2px 8px;border-radius:7px;margin:2px 2px;cursor:pointer;transition:background var(--transition)}
+.tool-chip:hover{background:rgba(124,106,247,0.25)}
+.msg-time{font-size:9px;color:var(--text3);font-weight:500}
+.typing-indicator{display:flex;align-items:center;gap:5px;padding:9px 12px;background:var(--bg3);border:1px solid var(--border);border-radius:13px;width:fit-content}
+.typing-dot{width:5px;height:5px;border-radius:50%;background:var(--text3)}
+@media(prefers-reduced-motion:no-preference){.typing-dot{animation:typingBounce 1.2s ease-in-out infinite}}
+.typing-dot:nth-child(2){animation-delay:0.22s}
+.typing-dot:nth-child(3){animation-delay:0.44s}
+@keyframes typingBounce{0%,60%,100%{transform:translateY(0)}30%{transform:translateY(-5px)}}
+.chat-suggestions{padding:0 12px 8px;display:flex;gap:5px;flex-wrap:wrap}
+.suggestion-chip{
+  padding:5px 11px;border-radius:16px;border:1px solid var(--border);
+  background:var(--bg3);color:var(--text2);font-size:10.5px;cursor:pointer;
+  transition:all var(--transition);font-family:var(--ff-body);font-weight:500;
+}
+.suggestion-chip:hover{border-color:var(--border-h);color:var(--text);background:var(--bg4)}
+.chat-input-row{padding:10px 12px;border-top:1px solid var(--border);display:flex;gap:7px;align-items:flex-end}
+#chat-input{
+  flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:10px;
+  padding:8px 12px;color:var(--text);font-family:var(--ff-body);font-size:12.5px;
+  outline:none;resize:none;max-height:80px;min-height:36px;
+  transition:border-color var(--transition);line-height:1.5;
+}
 #chat-input::placeholder{color:var(--text3)}
-#chat-input:focus{border-color:rgba(124,106,247,0.5)}
-#chat-send{width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,var(--p1),var(--p2));border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:15px;transition:all 0.2s;flex-shrink:0}
-#chat-send:hover{transform:scale(1.07)}
-#chat-send:disabled{opacity:0.4;cursor:not-allowed;transform:none}
+#chat-input:focus{border-color:rgba(124,106,247,0.5);background:var(--bg2)}
+#chat-send{
+  width:34px;height:34px;border-radius:9px;
+  background:linear-gradient(135deg,var(--p1),var(--p2));border:none;
+  cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:14px;transition:all var(--transition);flex-shrink:0;
+}
+#chat-send:hover{transform:scale(1.08)}
+#chat-send:disabled{opacity:0.35;cursor:not-allowed;transform:none}
+
+/* ── FOOTER ─────────────────────────────────────────────────────────── */
+footer{
+  margin-top:auto;padding:20px 28px;border-top:1px solid var(--border);
+  text-align:center;color:var(--text3);font-size:12px;
+  position:relative;z-index:1;font-weight:500;
+}
+footer span{color:var(--p1);font-weight:700}
+
+/* ── SCROLLBAR ──────────────────────────────────────────────────────── */
+
+
+/* WIKI PANEL — full page overlay with Wikipedia aesthetic */
+#wiki-panel{display:none;position:fixed;inset:0;z-index:200;background:#f8f9fa;overflow-y:auto;animation:wikiIn 0.3s ease}
+#wiki-panel.active{display:block}
+@keyframes wikiIn{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+
+.wiki-page{max-width:960px;margin:0 auto;padding:24px 28px 80px;font-family:Georgia,'Times New Roman',serif;color:#202122}
+.wiki-site-header{display:flex;align-items:center;gap:16px;padding:16px 0 20px;border-bottom:1px solid #a2a9b1;margin-bottom:24px}
+.wiki-logo-wrap{display:flex;align-items:center;gap:10px}
+.wiki-logo-icon{width:46px;height:46px;border-radius:50%;background:linear-gradient(135deg,#7C6AF7,#06D6A0);display:flex;align-items:center;justify-content:center;font-size:22px;color:#fff;font-family:Georgia,serif;font-weight:700}
+.wiki-logo-text{font-family:Georgia,serif;font-size:22px;font-weight:700;color:#202122;letter-spacing:-0.3px}
+.wiki-logo-text span{color:#7C6AF7}
+.wiki-logo-sub{font-size:12px;color:#54595d;font-family:sans-serif;margin-top:1px}
+.wiki-header-nav{margin-left:auto;display:flex;gap:6px}
+.wiki-nav-link{font-size:13px;color:#3366cc;background:none;border:1px solid #a2a9b1;padding:5px 12px;border-radius:4px;cursor:pointer;font-family:sans-serif;text-decoration:none;transition:background 0.15s}
+.wiki-nav-link:hover{background:#eaf3fb}
+.wiki-nav-link.active{background:#eaf3fb;border-color:#3366cc;color:#3366cc;font-weight:600}
+
+/* Wikipedia-style content headings */
+.wiki-section-title{font-family:Georgia,serif;font-size:22px;font-weight:700;color:#202122;border-bottom:1px solid #a2a9b1;padding-bottom:4px;margin:28px 0 14px}
+.wiki-intro{font-size:15px;line-height:1.75;color:#202122;margin-bottom:20px}
+.wiki-intro a{color:#3366cc;text-decoration:none}
+.wiki-intro a:hover{text-decoration:underline}
+
+/* Info box (Wikipedia sidebar style) */
+.wiki-infobox{float:right;clear:right;margin:0 0 20px 24px;background:#f8f9fa;border:1px solid #a2a9b1;padding:0;width:280px;font-size:13px;font-family:sans-serif}
+.wiki-infobox-title{background:#cee0f2;padding:8px 12px;font-weight:700;font-size:13px;text-align:center;color:#202122;border-bottom:1px solid #a2a9b1}
+.wiki-infobox table{width:100%;border-collapse:collapse}
+.wiki-infobox td{padding:5px 10px;vertical-align:top;border-top:1px solid #eaecf0;line-height:1.5}
+.wiki-infobox td:first-child{font-weight:600;color:#54595d;width:45%;white-space:nowrap}
+.wiki-infobox td:last-child{color:#202122}
+.wiki-clearfix::after{content:'';display:table;clear:both}
+
+/* Tabs inside wiki panel */
+.wiki-tabs{display:flex;border-bottom:1px solid #a2a9b1;margin-bottom:24px;gap:0}
+.wiki-tab{padding:9px 20px;font-size:14px;font-family:sans-serif;border:1px solid transparent;border-bottom:none;cursor:pointer;background:none;color:#54595d;border-radius:4px 4px 0 0;margin-bottom:-1px;transition:all 0.15s;position:relative}
+.wiki-tab:hover{background:#eaf3fb;color:#3366cc}
+.wiki-tab.active{background:#f8f9fa;border-color:#a2a9b1;color:#202122;font-weight:600;border-bottom:1px solid #f8f9fa}
+
+/* Form styles — Wikipedia form aesthetic */
+.wiki-form{max-width:680px}
+.wiki-form-group{margin-bottom:18px}
+.wiki-label{display:block;font-size:14px;font-weight:700;color:#202122;font-family:sans-serif;margin-bottom:5px}
+.wiki-label .req{color:#d33;margin-left:2px}
+.wiki-label .hint{font-weight:400;color:#54595d;font-size:12px;margin-left:6px}
+.wiki-input,.wiki-select,.wiki-textarea{width:100%;padding:8px 10px;border:1px solid #a2a9b1;border-radius:2px;font-size:14px;font-family:sans-serif;color:#202122;background:#fff;box-sizing:border-box;transition:border-color 0.15s;outline:none}
+.wiki-input:focus,.wiki-select:focus,.wiki-textarea:focus{border-color:#3366cc;box-shadow:0 0 0 2px rgba(51,102,204,0.15)}
+.wiki-textarea{resize:vertical;min-height:90px;line-height:1.5}
+.wiki-select{cursor:pointer}
+.wiki-input-group{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.wiki-submit-btn{background:#3366cc;color:#fff;border:none;padding:10px 24px;font-size:14px;font-family:sans-serif;font-weight:600;border-radius:2px;cursor:pointer;transition:background 0.15s;margin-top:8px}
+.wiki-submit-btn:hover{background:#2a55a5}
+.wiki-submit-btn:active{background:#1e3f7a;transform:translateY(1px)}
+.wiki-cancel-btn{background:none;border:1px solid #a2a9b1;color:#54595d;padding:10px 20px;font-size:14px;font-family:sans-serif;border-radius:2px;cursor:pointer;margin-left:8px;transition:all 0.15s}
+.wiki-cancel-btn:hover{background:#f8f9fa;border-color:#72777d}
+
+/* Notice boxes */
+.wiki-notice{padding:12px 16px;border-left:4px solid #3366cc;background:#eaf3fb;font-size:13px;font-family:sans-serif;color:#202122;margin-bottom:20px;line-height:1.5}
+.wiki-notice.success{border-color:#14866d;background:#d5fdf4}
+.wiki-notice.warning{border-color:#f0a500;background:#fef6e7}
+.wiki-notice strong{font-weight:700}
+
+/* Pending queue table */
+.wiki-table{width:100%;border-collapse:collapse;font-size:13px;font-family:sans-serif}
+.wiki-table th{background:#eaecf0;padding:8px 12px;text-align:left;font-weight:700;color:#202122;border:1px solid #a2a9b1}
+.wiki-table td{padding:8px 12px;border:1px solid #eaecf0;color:#202122;vertical-align:top}
+.wiki-table tr:hover td{background:#f8f9fa}
+.wiki-table .status-pending{color:#f0a500;font-weight:700}
+.wiki-table .status-approved{color:#14866d;font-weight:700}
+.wiki-table .status-rejected{color:#d33;font-weight:700}
+.wiki-table .status-changes{color:#3366cc;font-weight:700}
+.wiki-empty{text-align:center;padding:40px;color:#54595d;font-family:sans-serif;font-size:14px}
+
+/* Guidelines panel */
+.wiki-guidelines{background:#fff;border:1px solid #a2a9b1;padding:20px;font-family:sans-serif;font-size:13px;color:#202122;line-height:1.65}
+.wiki-guidelines h3{font-size:15px;font-weight:700;margin-bottom:10px;color:#202122}
+.wiki-guidelines ol,.wiki-guidelines ul{margin:8px 0 12px 20px}
+.wiki-guidelines li{margin-bottom:5px}
+.wiki-guidelines .policy-box{background:#eaf3fb;border:1px solid #a2a9b1;padding:10px 14px;border-radius:2px;margin-top:12px}
+
+/* Process flow diagram */
+.wiki-flow{display:flex;align-items:center;gap:0;margin:16px 0;flex-wrap:wrap;font-family:sans-serif}
+.wiki-flow-step{background:#eaf3fb;border:1px solid #a2a9b1;padding:8px 14px;font-size:12px;font-weight:600;color:#202122;text-align:center;min-width:100px}
+.wiki-flow-arrow{color:#a2a9b1;font-size:18px;margin:0 4px}
+
+/* Wikipedia footer */
+.wiki-footer{border-top:1px solid #a2a9b1;margin-top:40px;padding-top:12px;font-size:12px;color:#54595d;font-family:sans-serif;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px}
+.wiki-footer a{color:#3366cc;text-decoration:none}
+.wiki-footer a:hover{text-decoration:underline}
+
+@media(max-width:768px){.wiki-infobox{float:none;width:100%;margin:0 0 20px 0}.wiki-input-group{grid-template-columns:1fr}.wiki-page{padding:16px 18px 60px}}
 
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:6px;height:6px}
@@ -229,14 +619,14 @@ header{padding:14px 28px;display:flex;align-items:center;justify-content:space-b
 footer{margin-top:60px;padding:24px 28px;border-top:1px solid var(--border);text-align:center;color:var(--text3);font-size:13px;position:relative;z-index:1}
 footer span{color:var(--p1)}
 
-@media(max-width:768px){
-  header{padding:12px 18px}
-  #random-btn span.label{display:none}
-  .hero{padding:40px 18px 28px}
-  .cats,.tabs-wrap,.panel{padding-left:18px;padding-right:18px}
-  .tools-grid,.uc-tools-grid{grid-template-columns:1fr}
-  .detail-grid,.compare-grid{grid-template-columns:1fr}
-  #chat-window{width:calc(100vw - 32px)}
+/* Touch target minimum */
+button,a,.cat-pill,.tab-btn{min-height:36px}
+@media(max-width:480px){
+  .advisor-cta{flex-direction:column;align-items:center}
+  .detail-grid{grid-template-columns:1fr}
+  .compare-grid{grid-template-columns:1fr}
+  .toolbar{flex-wrap:wrap;gap:8px}
+  #chat-window{width:calc(100vw - 20px)}
 }
 </style>
 </head>
@@ -247,11 +637,20 @@ footer span{color:var(--p1)}
 <header>
   <a class="logo" href="#">
     <span class="logo-text">Tool<span>ipedia</span></span>
+    <span class="curator-badge" id="curator-badge">✦ Editor's pick</span>
   </a>
   <div class="header-right">
+    <button id="wiki-btn" title="Community — submit a tool">
+      <span class="wiki-icon" id="wiki-btn-icon">🌐</span>
+      <span class="label" id="wiki-btn-label">Community</span>
+    </button>
     <button id="random-btn" title="Discover a random tool">
       <span class="dice">🎲</span>
       <span class="label">Surprise Me</span>
+    </button>
+    <button id="theme-toggle" title="Toggle light/dark mode" aria-label="Toggle colour theme">
+      <span class="icon-moon">🌙</span>
+      <span class="icon-sun">☀️</span>
     </button>
     <div class="header-badge">30 Tools · March 2026</div>
   </div>
@@ -261,7 +660,6 @@ footer span{color:var(--p1)}
   <div class="hero-label">The complete AI tool directory</div>
   <h1>Find the right AI tool<br>for <span class="grad">anything you want to do</span></h1>
   <p>Tell the AI Advisor what you want to build, create, or automate — it'll pick the exact tools and show you how to combine them.</p>
-
   <div class="advisor-cta">
     <button class="advisor-main-btn" id="hero-advisor-btn">
       <span class="btn-icon">🧠</span>
@@ -270,7 +668,6 @@ footer span{color:var(--p1)}
     <span class="advisor-or">or</span>
     <button class="advisor-browse-btn" id="hero-browse-btn">Browse all 30 tools ↓</button>
   </div>
-
   <div class="search-wrap">
     <div class="search-glow"></div>
     <div class="search-inner">
@@ -282,40 +679,50 @@ footer span{color:var(--p1)}
   <div class="search-count" id="search-count">Showing all 30 tools across 14 categories</div>
 </section>
 
-<div class="cats" id="cats-container">
-  <button class="cat-pill active" data-cat="All">All Tools</button>
-  <button class="cat-pill" data-cat="General AI">General AI</button>
-  <button class="cat-pill" data-cat="Coding">Coding</button>
-  <button class="cat-pill" data-cat="Research">Research</button>
-  <button class="cat-pill" data-cat="Image Gen">Image Gen</button>
-  <button class="cat-pill" data-cat="Video">Video</button>
-  <button class="cat-pill" data-cat="Animation">Animation</button>
-  <button class="cat-pill" data-cat="Design">Design</button>
-  <button class="cat-pill" data-cat="Voice & Audio">Voice & Audio</button>
-  <button class="cat-pill" data-cat="Automation">Automation</button>
-  <button class="cat-pill" data-cat="Documents">Documents</button>
-  <button class="cat-pill" data-cat="Legal">Legal</button>
-  <button class="cat-pill" data-cat="Education">Education</button>
-  <button class="cat-pill" data-cat="Business">Business</button>
-  <button class="cat-pill" data-cat="Fitness">Fitness</button>
-  <button class="cat-pill" data-cat="Sales">Sales</button>
+<!-- Sticky search — visible when scrolled past hero -->
+<div class="sticky-search" id="sticky-search">
+  <div class="search-inner">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="sticky-search-input" placeholder="Search tools..." autocomplete="off">
+  </div>
 </div>
 
-<div class="tabs-wrap">
+<div class="cats-outer">
+  <div class="cats" id="cats-container">
+    <button class="cat-pill active" data-cat="All">All</button>
+    <button class="cat-pill" data-cat="General AI">General AI</button>
+    <button class="cat-pill" data-cat="Coding">Coding</button>
+    <button class="cat-pill" data-cat="Research">Research</button>
+    <button class="cat-pill" data-cat="Image Gen">Images</button>
+    <button class="cat-pill" data-cat="Video">Video</button>
+    <button class="cat-pill" data-cat="Animation">Animation</button>
+    <button class="cat-pill" data-cat="Design">Design</button>
+    <button class="cat-pill" data-cat="Voice & Audio">Voice</button>
+    <button class="cat-pill" data-cat="Automation">Automation</button>
+    <button class="cat-pill" data-cat="Documents">Documents</button>
+    <button class="cat-pill" data-cat="Legal">Legal</button>
+    <button class="cat-pill" data-cat="Education">Education</button>
+    <button class="cat-pill" data-cat="Business">Business</button>
+    <button class="cat-pill" data-cat="Fitness">Fitness</button>
+    <button class="cat-pill" data-cat="Sales">Sales</button>
+  </div>
+</div>
+
+<div class="toolbar">
   <div class="tabs">
     <button class="tab-btn active" data-tab="explore">🧭 Explore <span class="badge" id="tab-count">30</span></button>
     <button class="tab-btn" data-tab="compare">📊 Compare</button>
-    <button class="tab-btn" data-tab="usecases">🎯 By Use Case</button>
+    <button class="tab-btn" data-tab="usecases">🎯 Use Cases</button>
   </div>
 </div>
 
 <div class="panel active" id="panel-explore">
   <div class="tools-grid" id="tools-grid"></div>
-  <div class="no-results" id="no-results" style="display:none"><h3>No tools found</h3><p>Try a different search term or clear the filter.</p></div>
+  <div id="no-results" style="display:none"></div>
 </div>
 
 <div class="panel" id="panel-compare">
-  <p style="font-size:14px;color:var(--text2);margin-bottom:18px">Select up to 4 tools to compare across 6 dimensions.</p>
+  <p style="font-size:13px;color:var(--text2);margin-bottom:18px">Select up to 4 tools to compare across 6 dimensions.</p>
   <div class="compare-selectors" id="compare-selectors"></div>
   <div class="compare-grid">
     <div class="chart-card"><h3>Capability Radar</h3><div class="chart-wrap"><canvas id="radarChart"></canvas></div><div class="compare-legend" id="compare-legend"></div></div>
@@ -324,12 +731,145 @@ footer span{color:var(--p1)}
 </div>
 
 <div class="panel" id="panel-usecases">
-  <p style="font-size:14px;color:var(--text2);margin-bottom:18px">Pick what you want to do — we'll show the best tools and explain exactly why.</p>
+  <p style="font-size:13px;color:var(--text2);margin-bottom:18px">Pick what you want to do — we'll show the best tools and explain exactly why.</p>
   <div class="uc-cats-grid" id="uc-cats-grid"></div>
   <div id="uc-results"></div>
 </div>
 
 </main>
+
+<!-- ═══════════════ WIKI PANEL ═══════════════ -->
+<div id="wiki-panel">
+  <div class="wiki-page">
+    <div class="wiki-site-header">
+      <div class="wiki-logo-wrap">
+        <div>
+          <div class="wiki-logo-text">Tool<span>ipedia</span> Community</div>
+          <div class="wiki-logo-sub">Open submissions — editor reviewed before going live</div>
+        </div>
+        <span style="margin-left:12px;font-size:10px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;background:linear-gradient(135deg,rgba(124,106,247,0.18),rgba(6,214,160,0.14));border:1px solid rgba(124,106,247,0.35);color:#7C6AF7;padding:3px 10px;border-radius:10px;white-space:nowrap;font-family:sans-serif">✦ Editor's pick</span>
+      </div>
+      <div class="wiki-header-nav">
+        <button class="wiki-nav-link active" data-wikitab="submit">Submit a Tool</button>
+        <button class="wiki-nav-link" data-wikitab="queue">Submissions Queue</button>
+        <button class="wiki-nav-link" data-wikitab="guidelines">Guidelines</button>
+        <button class="wiki-nav-link" data-wikitab="policy">Content Policy</button>
+      </div>
+    </div>
+
+    <div id="wikitab-submit" class="wiki-tab-content">
+      <div class="wiki-clearfix">
+        <div class="wiki-infobox">
+          <div class="wiki-infobox-title">About this directory</div>
+          <table><tr><td>Curated tools</td><td>30</td></tr><tr><td>Categories</td><td>14</td></tr><tr><td>Community submissions</td><td id="wiki-count-display">0 pending</td></tr><tr><td>Last updated</td><td>March 2026</td></tr><tr><td>Maintained by</td><td>@dishts04</td></tr><tr><td>Model</td><td>Editor-curated + community review</td></tr></table>
+        </div>
+        <h2 class="wiki-section-title">Submit an AI Tool</h2>
+        <p class="wiki-intro">Toolipedia is a curated directory — every public listing is reviewed before it goes live. If you know an AI tool that belongs here, fill in the form below. The editor reviews all submissions and either approves, requests changes, or explains why it wasn't accepted. The process is similar to how Wikipedia handles article creation: open contributions reviewed by editors before going public.</p>
+      </div>
+      <div id="wiki-form-success" class="wiki-notice success" style="display:none"><strong>Submission received.</strong> Your tool has been added to the review queue. The editor will review it and may reach out to the contact email you provided. Thank you for contributing.</div>
+      <form class="wiki-form" id="wiki-submit-form" onsubmit="return false">
+        <div class="wiki-input-group">
+          <div class="wiki-form-group"><label class="wiki-label">Tool name <span class="req">*</span></label><input class="wiki-input" type="text" id="wf-name" placeholder="e.g. Notion AI" required></div>
+          <div class="wiki-form-group"><label class="wiki-label">Website URL <span class="req">*</span></label><input class="wiki-input" type="url" id="wf-url" placeholder="https://..." required></div>
+        </div>
+        <div class="wiki-form-group"><label class="wiki-label">One-line description <span class="req">*</span> <span class="hint">Plain English, one sentence</span></label><input class="wiki-input" type="text" id="wf-tagline" placeholder="e.g. AI writing assistant built into Notion pages and databases" required></div>
+        <div class="wiki-form-group"><label class="wiki-label">Full description <span class="req">*</span></label><textarea class="wiki-textarea" id="wf-description" placeholder="What does it do, who is it for, what makes it different..." required style="min-height:110px"></textarea></div>
+        <div class="wiki-input-group">
+          <div class="wiki-form-group"><label class="wiki-label">Category <span class="req">*</span></label><select class="wiki-select" id="wf-category" required><option value="">Select a category...</option><option>General AI</option><option>Coding & Development</option><option>Writing & Content</option><option>Image Generation</option><option>Video Creation</option><option>Animation</option><option>Design & Branding</option><option>Voice & Audio</option><option>Workflow Automation</option><option>Research & Analysis</option><option>Document Intelligence</option><option>Legal</option><option>Education & Learning</option><option>Business & Productivity</option><option>Fitness & Health</option><option>Sales & CRM</option><option>Finance & Accounting</option><option>Healthcare & Medical</option><option>HR & Recruiting</option><option>Real Estate</option><option>Other</option></select></div>
+          <div class="wiki-form-group"><label class="wiki-label">Pricing summary <span class="req">*</span></label><input class="wiki-input" type="text" id="wf-pricing" placeholder="e.g. Free tier. Paid from $8/mo" required></div>
+        </div>
+        <div class="wiki-form-group"><label class="wiki-label">Use cases <span class="req">*</span> <span class="hint">One per line, at least 3</span></label><textarea class="wiki-textarea" id="wf-usecases" placeholder="Write blog posts with AI inline&#10;Summarize meeting notes automatically&#10;Q&A across your team's knowledge base" required></textarea></div>
+        <div class="wiki-input-group">
+          <div class="wiki-form-group"><label class="wiki-label">Logo URL <span class="hint">Direct image link</span></label><input class="wiki-input" type="url" id="wf-logo" placeholder="https://example.com/logo.png"></div>
+          <div class="wiki-form-group"><label class="wiki-label">Screenshot URL <span class="hint">Optional but helpful</span></label><input class="wiki-input" type="url" id="wf-screenshot" placeholder="https://example.com/screenshot.png"></div>
+        </div>
+        <div class="wiki-form-group"><label class="wiki-label">Key integrations <span class="hint">Comma-separated</span></label><input class="wiki-input" type="text" id="wf-integrations" placeholder="e.g. Slack, Google Drive, Zapier, API"></div>
+        <div class="wiki-form-group"><label class="wiki-label">Your contact email <span class="req">*</span> <span class="hint">Only used if the editor needs clarification. Not published.</span></label><input class="wiki-input" type="email" id="wf-email" placeholder="you@example.com" required></div>
+        <div class="wiki-form-group"><label class="wiki-label">Anything else the editor should know? <span class="hint">Optional</span></label><textarea class="wiki-textarea" id="wf-notes" placeholder="Why does this tool deserve a spot?" style="min-height:70px"></textarea></div>
+        <div><button type="submit" class="wiki-submit-btn" onclick="submitWikiTool()">Submit for review</button><button type="button" class="wiki-cancel-btn" onclick="closeWiki()">Cancel</button></div>
+      </form>
+    </div>
+
+    <div id="wikitab-queue" class="wiki-tab-content" style="display:none">
+      <h2 class="wiki-section-title">Submissions queue</h2>
+      <p class="wiki-intro">All community-submitted tools appear here before going live. The editor reviews each one, approves it, requests changes, or declines it. Approved tools are added to the main directory.</p>
+      <div class="wiki-notice"><strong>Note:</strong> Submissions are stored locally in your browser right now. When the backend launches, this queue will be shared across all users and the editor will manage approvals from a private dashboard.</div>
+      <div id="wiki-queue-container"></div>
+    </div>
+
+    <div id="wikitab-guidelines" class="wiki-tab-content" style="display:none">
+      <h2 class="wiki-section-title">Contribution guidelines</h2>
+      <p class="wiki-intro">Toolipedia follows an editor-curated model inspired by Wikipedia's article review process. Community submissions are welcome but every tool goes through review before it's published.</p>
+      <div class="wiki-guidelines">
+        <h3>What gets approved</h3>
+        <ul><li>Tools that are publicly available — not internal-only software</li><li>Tools with a clear AI component, not just software that uses AI incidentally</li><li>Tools with a working website and verifiable pricing</li><li>Tools not already in the directory under a different name</li><li>Descriptions written factually, not as marketing copy</li></ul>
+        <h3>What gets rejected or sent back</h3>
+        <ul><li>Tools in private beta with no public access</li><li>Duplicate submissions for tools already listed</li><li>Descriptions that read like press releases or ads</li><li>Missing required fields or unverifiable pricing</li></ul>
+        <h3>Review process</h3>
+        <div class="wiki-flow"><div class="wiki-flow-step">You submit</div><div class="wiki-flow-arrow">→</div><div class="wiki-flow-step">Enters queue</div><div class="wiki-flow-arrow">→</div><div class="wiki-flow-step">Editor reviews</div><div class="wiki-flow-arrow">→</div><div class="wiki-flow-step" style="background:#d5fdf4;border-color:#14866d">Approved &amp; live</div></div>
+        <p style="font-size:13px;color:#54595d;margin-top:8px">If the editor requests changes, you'll receive a note at the email you provided explaining what needs to be updated.</p>
+        <div class="policy-box"><strong>Change history:</strong> Every submission is timestamped with who suggested it and what changed — similar to how Wikipedia tracks edits on every article, but lightweight and focused on AI tool submissions.</div>
+      </div>
+    </div>
+
+    <div id="wikitab-policy" class="wiki-tab-content" style="display:none">
+      <h2 class="wiki-section-title">Content Policy &amp; Ranking Policy</h2>
+      <p class="wiki-intro">Toolipedia is an independent, editorially curated directory of AI tools. This page explains what gets listed, how tools are ranked, and what vendors can and cannot do.</p>
+
+      <div class="wiki-guidelines">
+
+        <h3>Independence guarantee</h3>
+        <p style="margin-bottom:10px">Toolipedia operates with no commercial relationships with any of the tools it lists. No vendor pays to be included. No vendor pays for a higher position. No vendor pays for a better description. The directory earns nothing from listings — it exists to help users, not to generate revenue from vendors.</p>
+        <div class="policy-box" style="border-left-color:#14866d;background:#d5fdf4"><strong>No pay-to-play.</strong> Listings are ordered by relevance and usefulness, not payment. Paying for a position is not possible — there is no mechanism to do it.</div>
+
+        <h3 style="margin-top:18px">What qualifies for inclusion</h3>
+        <p style="margin-bottom:8px">A tool is considered for inclusion if it meets all of the following:</p>
+        <ul>
+          <li>It is publicly accessible — not invite-only, internal-only, or limited to one organisation</li>
+          <li>It has a genuine AI component central to its value, not a minor feature added onto non-AI software</li>
+          <li>It has a live, working product with verifiable pricing</li>
+          <li>It is not already listed under a different name or URL</li>
+          <li>Its description can be written neutrally and factually</li>
+        </ul>
+
+        <h3 style="margin-top:18px">How tools are ranked</h3>
+        <p style="margin-bottom:8px">When a category filter is active, tools are ranked by their capability score for that category — a numeric rating across six dimensions (writing, coding, research, creativity, automation, multimodal). These scores are set by the editor based on publicly available benchmarks, user research, and direct testing. They are not influenced by vendors.</p>
+        <p style="margin-bottom:8px">When no filter is active, tools appear in the order they were added. Within the AI Advisor chat, tools are recommended by matching relevance to the user's stated goal.</p>
+        <div class="policy-box"><strong>Ranking factors:</strong> category relevance score, breadth of genuine use cases, quality and reliability of the free tier (if any), strength of integrations, and community feedback. Payment is not a factor at any stage.</div>
+
+        <h3 style="margin-top:18px">What vendors can do</h3>
+        <ul>
+          <li>Submit a tool for consideration using the Submit tab — treated like any other submission</li>
+          <li>Contact the editor to correct factual inaccuracies in an existing listing (pricing change, feature update, URL change)</li>
+          <li>Provide official documentation or release notes to support a correction request</li>
+        </ul>
+
+        <h3 style="margin-top:18px">What vendors cannot do</h3>
+        <ul>
+          <li>Pay for inclusion, a higher ranking, or a featured position</li>
+          <li>Write or dictate the description of their own tool</li>
+          <li>Request removal of a competitor's listing</li>
+          <li>Request that scores be adjusted without providing verifiable evidence</li>
+        </ul>
+        <div class="policy-box" style="border-left-color:#d33;background:#fce8e8"><strong>Corrections, not marketing.</strong> If a vendor contacts the editor, the conversation is limited to factual corrections — pricing, features, URLs. Vendors cannot write or approve the editorial copy that describes their tool.</div>
+
+        <h3 style="margin-top:18px">Community submissions</h3>
+        <p style="margin-bottom:8px">Any user can submit a tool through the Submit tab. Submissions go into the review queue and are assessed against the inclusion criteria above. The editor makes the final decision. Submitting a tool does not guarantee inclusion.</p>
+        <p>If a submitted tool is approved, it joins the directory with a description written or edited by the editor — not copied directly from the submission or from the vendor's marketing materials.</p>
+
+        <h3 style="margin-top:18px">Accuracy and updates</h3>
+        <p style="margin-bottom:8px">AI tool pricing and features change frequently. Toolipedia aims to review and update listings monthly. If you notice something that is out of date, use the Submit tab to flag it — select the existing tool's name and describe the correction needed.</p>
+
+        <h3 style="margin-top:18px">Contact</h3>
+        <p>For policy questions, factual corrections, or editorial feedback: submit through the community queue or reach the editor via GitHub at <strong>dishts04</strong>.</p>
+        <p style="margin-top:8px;font-size:12px;color:#54595d">Last updated: March 2026. This policy may be updated as the directory grows.</p>
+
+      </div>
+    </div>
+
+    <div class="wiki-footer"><div>Toolipedia Community · <button onclick="closeWiki()" style="background:none;border:none;color:#3366cc;cursor:pointer;font-size:13px;font-family:sans-serif;text-decoration:underline;padding:0">← Back to main directory</button></div><div style="color:#54595d;font-size:12px">Open contribution model — editor reviewed</div></div>
+  </div>
+</div>
 
 <footer>Built from real docs, benchmarks & search data · <span>Toolipedia</span> · March 2026</footer>
 
@@ -366,6 +906,8 @@ footer span{color:var(--p1)}
 </div>
 
 <script>
+(function(){
+
 // ═══════════════ TOOL DATA ═══════════════
 const TOOLS = [
   {id:"chatgpt",name:"ChatGPT",maker:"OpenAI",tagline:"The world's most widely used AI assistant",icon:"🤖",color:"#10A37F",
@@ -749,18 +1291,18 @@ function renderCard(t,catHighlight){
   const scores=scoreKeys.map(k=>`<div class="score-row"><span class="score-label">${k}</span><div class="score-bar-wrap"><div class="score-bar" style="width:${t.scores[k]*10}%"></div></div><span class="score-val">${t.scores[k]}</span></div>`).join('');
   const detail=`<div class="tool-detail"><div class="detail-grid">
     <div class="detail-section"><h4>What you can do</h4><ul class="uc-list">${t.useCases.map(u=>`<li>${u}</li>`).join('')}</ul></div>
-    <div class="detail-section"><h4>Key features</h4><ul class="feat-list">${t.features.map(f=>`<li>${f}</li>`).join('')}</ul><h4 style="margin-top:13px">Integrates with</h4><ul class="int-list">${t.integrations.map(i=>`<li>${i}</li>`).join('')}</ul></div>
+    <div class="detail-section"><h4>Key features</h4><ul class="feat-list">${t.features.map(f=>`<li>${f}</li>`).join('')}</ul><h4 style="margin-top:12px">Integrates with</h4><ul class="int-list">${t.integrations.map(i=>`<li>${i}</li>`).join('')}</ul></div>
   </div>
-  <div style="margin-top:18px"><h4 class="detail-section" style="font-size:10px;text-transform:uppercase;letter-spacing:0.8px;color:var(--text3);font-weight:600;margin-bottom:10px">Capability scores</h4>${scores}</div>
-  <div style="margin-top:18px"><h4 class="detail-section" style="font-size:10px;text-transform:uppercase;letter-spacing:0.8px;color:var(--text3);font-weight:600;margin-bottom:10px">Paid plans</h4>
+  <div style="margin-top:16px"><h4 style="font-size:9px;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);font-weight:700;margin-bottom:8px">Capability scores</h4>${scores}</div>
+  <div style="margin-top:16px"><h4 style="font-size:9px;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);font-weight:700;margin-bottom:8px">Paid plans</h4>
   <div class="plans-list">${t.paid.map(p=>`<div class="plan-item"><div><div class="plan-name">${p.name}</div><div class="plan-price">${p.price}</div></div><div class="plan-perks">${p.perks}</div></div>`).join('')}</div></div></div>`;
   return `<div class="tool-card${exp?' expanded':''}" data-id="${t.id}">
-    <div class="card-head"><div class="tool-icon" style="background:${t.color}22;border:1px solid ${t.color}33"><span style="filter:drop-shadow(0 0 5px ${t.color}88)">${t.icon}</span></div>
+    <div class="card-head"><div class="tool-icon" style="background:${t.color}18;border:1px solid ${t.color}2a"><span style="filter:drop-shadow(0 0 4px ${t.color}66)">${t.icon}</span></div>
     <div class="tool-info"><div class="tool-name">${t.name}</div><div class="tool-maker">${t.maker}</div>
     <div class="tool-tags">${t.categories.slice(0,2).map((c,i)=>`<span class="tag${i===0?' primary':''}">${c}</span>`).join('')}</div></div></div>
     <div class="card-body"><div class="tagline">${t.tagline}</div>
-    ${catHighlight?`<div class="bestfor" style="border-left-color:var(--p2)"><strong style="color:var(--p2)">Why for this category</strong>${catHighlight}</div>`:`<div class="bestfor"><strong>Best for</strong>${t.bestFor}</div>`}</div>
-    <div class="card-footer"><span class="free-badge ${t.free.available?'yes':'no'}">${t.free.available?'✓ Free tier':'✗ No free tier'}</span><div class="paid-from">From <span>${t.paid[0].price}</span></div><span class="expand-arrow">⌄</span></div>
+    ${catHighlight?`<div class="bestfor" style="border-left-color:var(--p2)"><strong style="color:var(--p2)">Why for this</strong>${catHighlight}</div>`:`<div class="bestfor"><strong>Best for</strong>${t.bestFor}</div>`}</div>
+    <div class="card-footer"><span class="free-badge ${t.free.available?'yes':'no'}">${t.free.available?'✓ Free':'✗ Paid'}</span><div class="paid-from">From <span>${t.paid[0].price}</span></div><span class="expand-arrow">⌄</span></div>
     ${detail}</div>`;
 }
 
@@ -771,15 +1313,32 @@ function renderExplore(){
   const noRes=document.getElementById('no-results');
   const meta=state.category!=='All'&&!state.query?CAT_META[state.category]:null;
 
+  // Grid view only
+  grid.className='tools-grid';
+
+  // Cat hero banner
   let hero=document.getElementById('cat-hero');
   if(!hero){hero=document.createElement('div');hero.id='cat-hero';grid.parentNode.insertBefore(hero,grid);}
   if(meta){
     filtered.sort((a,b)=>(b.scores[meta.scoreKey]||0)-(a.scores[meta.scoreKey]||0));
-    hero.innerHTML=`<div style="background:linear-gradient(135deg,rgba(124,106,247,0.12),rgba(6,214,160,0.06));border:1px solid rgba(124,106,247,0.2);border-radius:16px;padding:20px 22px;margin-bottom:20px;animation:fadeIn 0.3s ease"><div style="display:flex;align-items:center;gap:12px;margin-bottom:8px"><span style="font-size:26px">${meta.emoji}</span><div><div style="font-family:var(--ff-head);font-size:17px;font-weight:700;color:var(--text)">${meta.headline}</div><div style="font-size:11px;color:var(--p1);font-weight:600;margin-top:2px">Ranked by ${meta.scoreKey} score · ${filtered.length} tools</div></div></div><p style="font-size:13px;color:var(--text2);line-height:1.6;max-width:680px">${meta.desc}</p></div>`;
+    hero.innerHTML=`<div class="cat-hero-card"><div class="cat-hero-meta"><span>${meta.emoji}</span><span>Ranked by ${meta.scoreKey} score</span><span style="color:var(--text3);font-weight:500">· ${filtered.length} tool${filtered.length!==1?'s':''}</span></div><h2>${meta.headline}</h2><p>${meta.desc}</p></div>`;
   } else {hero.innerHTML='';}
 
-  if(filtered.length===0){grid.innerHTML='';noRes.style.display='block';document.getElementById('search-count').textContent='No tools found';document.getElementById('tab-count').textContent='0';}
-  else{
+  if(filtered.length===0){
+    grid.innerHTML='';
+    noRes.style.display='block';
+    const isSearch=!!state.query;
+    const isCat=state.category!=='All';
+    noRes.innerHTML=`<div class="empty-state">
+      <div class="empty-icon">${isSearch?'🔍':isCat?CAT_META[state.category]?.emoji||'📂':'🗂️'}</div>
+      <h3>${isSearch?`No tools match "${state.query}"`:isCat?`No tools in "${state.category}"`:'Nothing here yet'}</h3>
+      <p>${isSearch?'Try a broader term, check the spelling, or browse a category below.':isCat?'This filter has no matching tools. Try a different category.':'Try adjusting your filters.'}</p>
+      <button class="empty-action-btn" onclick="clearFilters()">Clear filters</button>
+      <div class="empty-clear-hint">or try the AI Advisor — it can find tools by describing your goal</div>
+    </div>`;
+    document.getElementById('search-count').textContent='No tools found';
+    document.getElementById('tab-count').textContent='0';
+  } else {
     noRes.style.display='none';
     grid.innerHTML=filtered.map(t=>renderCard(t,meta&&meta.highlights?meta.highlights[t.id]:null)).join('');
     document.getElementById('search-count').textContent=state.query||state.category!=='All'?`Found ${filtered.length} tool${filtered.length!==1?'s':''}`:`Showing all ${filtered.length} tools across 14 categories`;
@@ -795,6 +1354,15 @@ function renderExplore(){
   }
 }
 
+function clearFilters(){
+  state.query=''; state.category='All';
+  document.getElementById('search-input').value='';
+  document.getElementById('sticky-search-input').value='';
+  document.querySelectorAll('.cat-pill').forEach(p=>p.classList.toggle('active',p.dataset.cat==='All'));
+  renderExplore();
+}
+
+
 // ═══════════════ RENDER COMPARE ═══════════════
 const CHART_COLORS=[{border:'#7C6AF7',bg:'rgba(124,106,247,0.15)'},{border:'#06D6A0',bg:'rgba(6,214,160,0.12)'},{border:'#FF6B6B',bg:'rgba(255,107,107,0.12)'},{border:'#F5A623',bg:'rgba(245,166,35,0.12)'}];
 
@@ -804,9 +1372,14 @@ function renderCompare(){
   sel.querySelectorAll('.compare-select-card').forEach(c=>c.addEventListener('click',()=>{const id=c.dataset.cid;if(state.compareIds.includes(id)){if(state.compareIds.length>1)state.compareIds=state.compareIds.filter(x=>x!==id);}else if(state.compareIds.length<4)state.compareIds.push(id);renderCompare();}));
   const dims=["writing","coding","research","creativity","automation","multimodal"];
   const sel2=state.compareIds.map(id=>TOOLS.find(t=>t.id===id)).filter(Boolean);
-  if(radarChart)radarChart.destroy();
-  const ctx=document.getElementById('radarChart').getContext('2d');
-  radarChart=new Chart(ctx,{type:'radar',data:{labels:dims.map(d=>d.charAt(0).toUpperCase()+d.slice(1)),datasets:sel2.map((t,i)=>({label:t.name,data:dims.map(d=>t.scores[d]),borderColor:CHART_COLORS[i%4].border,backgroundColor:CHART_COLORS[i%4].bg,borderWidth:2,pointBackgroundColor:CHART_COLORS[i%4].border,pointRadius:4}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{r:{beginAtZero:true,max:10,ticks:{stepSize:2,color:'#555577',backdropColor:'transparent',font:{size:10}},pointLabels:{color:'#8888BB',font:{size:11}},grid:{color:'rgba(255,255,255,0.06)'},angleLines:{color:'rgba(255,255,255,0.06)'}}}}});
+  if(typeof Chart!=='undefined'){
+    if(radarChart)radarChart.destroy();
+    const ctx=document.getElementById('radarChart').getContext('2d');
+    const isLight=document.documentElement.classList.contains('light');
+    const gridCol=isLight?'rgba(0,0,0,0.08)':'rgba(255,255,255,0.06)';
+    const labelCol=isLight?'#4A4A7A':'#8888BB';
+    radarChart=new Chart(ctx,{type:'radar',data:{labels:dims.map(d=>d.charAt(0).toUpperCase()+d.slice(1)),datasets:sel2.map((t,i)=>({label:t.name,data:dims.map(d=>t.scores[d]),borderColor:CHART_COLORS[i%4].border,backgroundColor:CHART_COLORS[i%4].bg,borderWidth:2,pointBackgroundColor:CHART_COLORS[i%4].border,pointRadius:4}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{r:{beginAtZero:true,max:10,ticks:{stepSize:2,color:labelCol,backdropColor:'transparent',font:{size:10}},pointLabels:{color:labelCol,font:{size:11}},grid:{color:gridCol},angleLines:{color:gridCol}}}}});
+  }
   document.getElementById('compare-legend').innerHTML=sel2.map((t,i)=>`<div class="leg-item"><div class="leg-dot" style="background:${CHART_COLORS[i%4].border}"></div><span>${t.name}</span></div>`).join('');
   document.getElementById('price-table').innerHTML=`<thead><tr><th>Tool</th><th>Free Tier</th><th>Starting Price</th><th>Best Plan</th></tr></thead><tbody>${sel2.map(t=>`<tr><td>${t.icon} ${t.name}</td><td>${t.free.available?'<span class="pill-green">✓ Free</span>':'<span class="pill-red">✗ None</span>'}</td><td style="color:var(--p2);font-weight:600">${t.paid[0].price}</td><td>${t.paid[0].name} — ${t.paid[0].perks.split(',')[0]}</td></tr>`).join('')}</tbody>`;
 }
@@ -835,20 +1408,57 @@ function switchTab(tab){
 
 // ═══════════════ EVENT LISTENERS ═══════════════
 document.getElementById('search-input').addEventListener('input',e=>{state.query=e.target.value;if(state.activeTab!=='explore')switchTab('explore');renderExplore();});
+// Sticky search mirrors main search
+document.getElementById('sticky-search-input').addEventListener('input',e=>{
+  state.query=e.target.value;
+  document.getElementById('search-input').value=e.target.value;
+  if(state.activeTab!=='explore')switchTab('explore');renderExplore();
+});
 document.getElementById('cats-container').addEventListener('click',e=>{const p=e.target.closest('.cat-pill');if(!p)return;state.category=p.dataset.cat;document.querySelectorAll('.cat-pill').forEach(x=>x.classList.toggle('active',x.dataset.cat===state.category));if(state.activeTab!=='explore')switchTab('explore');renderExplore();});
 document.querySelectorAll('.tab-btn').forEach(btn=>btn.addEventListener('click',()=>switchTab(btn.dataset.tab)));
 document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();document.getElementById('search-input').focus();}});
-document.getElementById('hero-browse-btn').addEventListener('click',()=>{document.querySelector('.tabs-wrap').scrollIntoView({behavior:'smooth'});});
+document.getElementById('hero-browse-btn').addEventListener('click',()=>{document.querySelector('.toolbar').scrollIntoView({behavior:'smooth'});});
 document.getElementById('random-btn').addEventListener('click',()=>{
   const t=TOOLS[Math.floor(Math.random()*TOOLS.length)];
   state.expandedId=t.id;state.query='';state.category='All';
   document.querySelectorAll('.cat-pill').forEach(p=>p.classList.toggle('active',p.dataset.cat==='All'));
   if(state.activeTab!=='explore')switchTab('explore');else renderExplore();
-  setTimeout(()=>{const card=document.querySelector(`[data-id="${t.id}"]`);if(card)card.scrollIntoView({behavior:'smooth',block:'center'});},80);
+  // Scroll so the top of the card is visible — user sees the tool name first
+  setTimeout(()=>{
+    const card=document.querySelector(`[data-id="${t.id}"]`);
+    if(card){
+      const headerH=document.querySelector('header').offsetHeight||58;
+      const y=card.getBoundingClientRect().top+window.scrollY-headerH-12;
+      window.scrollTo({top:y,behavior:'smooth'});
+    }
+  },80);
 });
+(function(){
+  const saved=localStorage.getItem('tp-theme');
+  if(saved==='light') document.documentElement.classList.add('light');
+  document.getElementById('theme-toggle').addEventListener('click',()=>{
+    const isLight=document.documentElement.classList.toggle('light');
+    localStorage.setItem('tp-theme', isLight?'light':'dark');
+    // Update chart colors if on compare tab
+    if(state.activeTab==='compare') renderCompare();
+  });
+})();
+
+// ── Sticky search — show after hero scrolls out ───────────────────────────
+(function(){
+  if(typeof IntersectionObserver === 'undefined') return;
+  const heroEl=document.querySelector('.hero');
+  const stickyEl=document.getElementById('sticky-search');
+  if(!heroEl||!stickyEl) return;
+  const observer=new IntersectionObserver(([entry])=>{
+    stickyEl.classList.toggle('visible',!entry.isIntersecting);
+  },{threshold:0, rootMargin:'-58px 0px 0px 0px'});
+  observer.observe(heroEl);
+})();
 
 // INIT
 renderExplore();
+
 
 // ═══════════════ CHAT ENGINE ═══════════════
 (function(){
@@ -1269,6 +1879,170 @@ renderExplore();
   inputEl.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage(inputEl.value);}});
   inputEl.addEventListener('input',()=>{inputEl.style.height='auto';inputEl.style.height=Math.min(inputEl.scrollHeight,90)+'px';});
   suggestionsEl.querySelectorAll('.suggestion-chip').forEach(c=>c.addEventListener('click',()=>sendMessage(c.textContent.trim())));
+})();
+
+// ═══════════════ WIKI ENGINE ═══════════════
+(function(){
+  const STORAGE_KEY='toolipedia_submissions';
+
+  function getSubs(){ try{return JSON.parse(localStorage.getItem(STORAGE_KEY)||'[]');}catch(e){return[];} }
+  function saveSubs(arr){ localStorage.setItem(STORAGE_KEY,JSON.stringify(arr)); }
+
+  // ── UI helpers for wiki mode ─────────────────────────────────────
+  function setWikiBtn(wikiOpen){
+    const icon = document.getElementById('wiki-btn-icon');
+    const label = document.getElementById('wiki-btn-label');
+    const badge = document.getElementById('curator-badge');
+    if(wikiOpen){
+      if(icon) icon.textContent = '✦';
+      if(label) label.textContent = 'Back to Curated';
+      if(badge) badge.style.display = 'none';
+    } else {
+      if(icon) icon.textContent = '🌐';
+      if(label) label.textContent = 'Community';
+      if(badge) badge.style.display = '';
+    }
+  }
+
+  // Toggle wiki mode
+  window.openWiki=function(){
+    document.body.classList.add('wiki-mode');
+    document.getElementById('wiki-panel').classList.add('active');
+    document.getElementById('wiki-panel').scrollTop=0;
+    setWikiBtn(true);
+    renderQueue();
+    updateCount();
+  };
+  window.closeWiki=function(){
+    document.body.classList.remove('wiki-mode');
+    document.getElementById('wiki-panel').classList.remove('active');
+    setWikiBtn(false);
+  };
+
+  document.getElementById('wiki-btn').addEventListener('click',()=>{
+    if(document.body.classList.contains('wiki-mode')) closeWiki();
+    else openWiki();
+  });
+
+  // Wiki tab switching
+  document.querySelectorAll('.wiki-nav-link').forEach(btn=>{
+    btn.addEventListener('click',()=>{
+      document.querySelectorAll('.wiki-nav-link').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.wiki-tab-content').forEach(t=>t.style.display='none');
+      btn.classList.add('active');
+      const tab=btn.dataset.wikitab;
+      document.getElementById('wikitab-'+tab).style.display='block';
+      if(tab==='queue') renderQueue();
+    });
+  });
+
+  // Submit form
+  window.submitWikiTool=function(){
+    const get=id=>document.getElementById(id).value.trim();
+    const name=get('wf-name'), url=get('wf-url'), tagline=get('wf-tagline'),
+          desc=get('wf-description'), cat=get('wf-category'), pricing=get('wf-pricing'),
+          usecases=get('wf-usecases'), email=get('wf-email');
+
+    // Validate required fields
+    if(!name||!url||!tagline||!desc||!cat||!pricing||!usecases||!email){
+      const missing=document.getElementById('wiki-form-success');
+      missing.style.display='block';
+      missing.className='wiki-notice warning';
+      missing.innerHTML='<strong>Please fill in all required fields</strong> before submitting.';
+      setTimeout(()=>{missing.style.display='none';missing.className='wiki-notice success';},3000);
+      return;
+    }
+
+    const sub={
+      id: 'sub_'+Date.now(),
+      name, url, tagline, description:desc, category:cat, pricing,
+      usecases: usecases.split('\n').filter(l=>l.trim()),
+      logo: get('wf-logo'), screenshot: get('wf-screenshot'),
+      integrations: get('wf-integrations'), email, notes: get('wf-notes'),
+      status:'pending',
+      submitted_at: new Date().toISOString(),
+      history:[{action:'submitted', at: new Date().toISOString(), by:'community'}]
+    };
+
+    const subs=getSubs();
+    subs.unshift(sub);
+    saveSubs(subs);
+
+    // Reset form and show success
+    document.getElementById('wiki-submit-form').reset();
+    const success=document.getElementById('wiki-form-success');
+    success.style.display='block';
+    success.className='wiki-notice success';
+    success.innerHTML='<strong>Submission received.</strong> Your tool "'+name+'" has been added to the review queue. The editor will review it and may reach out via '+email+'. Thank you for contributing.';
+    window.scrollTo({top:0,behavior:'smooth'});
+    updateCount();
+  };
+
+  // Render pending queue
+  function renderQueue(){
+    const subs=getSubs();
+    const container=document.getElementById('wiki-queue-container');
+    if(!subs.length){
+      container.innerHTML='<div class="wiki-empty">No submissions yet. Be the first to <button onclick="document.querySelector(\'[data-wikitab=submit]\').click()" style="background:none;border:none;color:#3366cc;cursor:pointer;font-size:14px;text-decoration:underline;font-family:sans-serif">submit a tool</button>.</div>';
+      return;
+    }
+    const statusLabel={pending:'🕐 Pending review',approved:'✓ Approved',rejected:'✗ Rejected',changes:'↩ Changes requested'};
+    const statusClass={pending:'status-pending',approved:'status-approved',rejected:'status-rejected',changes:'status-changes'};
+    container.innerHTML=`<table class="wiki-table">
+      <thead><tr><th>Tool</th><th>Category</th><th>Pricing</th><th>Status</th><th>Submitted</th><th>Actions</th></tr></thead>
+      <tbody>${subs.map(s=>`<tr>
+        <td><a href="${s.url}" target="_blank" style="color:#3366cc;text-decoration:none;font-weight:600">${s.name}</a><br><span style="font-size:11px;color:#54595d">${s.tagline.substring(0,60)}${s.tagline.length>60?'...':''}</span></td>
+        <td style="white-space:nowrap">${s.category}</td>
+        <td style="white-space:nowrap">${s.pricing}</td>
+        <td><span class="${statusClass[s.status]||'status-pending'}">${statusLabel[s.status]||'Pending'}</span></td>
+        <td style="white-space:nowrap;font-size:12px">${new Date(s.submitted_at).toLocaleDateString()}</td>
+        <td style="white-space:nowrap">
+          <button onclick="wikiApprove('${s.id}')" style="background:none;border:1px solid #14866d;color:#14866d;padding:3px 8px;border-radius:2px;cursor:pointer;font-size:11px;font-family:sans-serif;margin-right:3px">Approve</button>
+          <button onclick="wikiRequestChanges('${s.id}')" style="background:none;border:1px solid #3366cc;color:#3366cc;padding:3px 8px;border-radius:2px;cursor:pointer;font-size:11px;font-family:sans-serif;margin-right:3px">Changes</button>
+          <button onclick="wikiReject('${s.id}')" style="background:none;border:1px solid #d33;color:#d33;padding:3px 8px;border-radius:2px;cursor:pointer;font-size:11px;font-family:sans-serif">Reject</button>
+        </td>
+      </tr>`).join('')}</tbody>
+    </table><p style="font-size:12px;color:#54595d;font-family:sans-serif;margin-top:12px">${subs.length} submission${subs.length!==1?'s':''} total · Approve/Reject actions work locally. Full moderation dashboard launches with the backend.</p>`;
+  }
+
+  // Moderation actions (local, frontend-only for now)
+  window.wikiApprove=function(id){
+    updateSubStatus(id,'approved','approved by editor');
+    renderQueue(); updateCount();
+    alert('Marked as approved. When the backend is live, this will publish the tool to the main directory.');
+  };
+  window.wikiRequestChanges=function(id){
+    const note=prompt('What changes are needed? (This message would be emailed to the submitter)');
+    if(note===null) return;
+    updateSubStatus(id,'changes','editor requested changes: '+note);
+    renderQueue(); updateCount();
+  };
+  window.wikiReject=function(id){
+    const reason=prompt('Reason for rejection? (Optional — would be sent to submitter)');
+    if(reason===null) return;
+    updateSubStatus(id,'rejected','rejected'+(reason?': '+reason:''));
+    renderQueue(); updateCount();
+  };
+
+  function updateSubStatus(id,status,historyNote){
+    const subs=getSubs();
+    const sub=subs.find(s=>s.id===id);
+    if(!sub) return;
+    sub.status=status;
+    sub.history=sub.history||[];
+    sub.history.push({action:historyNote, at:new Date().toISOString(), by:'editor'});
+    saveSubs(subs);
+  }
+
+  function updateCount(){
+    const subs=getSubs();
+    const pending=subs.filter(s=>s.status==='pending').length;
+    const el=document.getElementById('wiki-count-display');
+    if(el) el.textContent=pending+' pending';
+  }
+
+  updateCount();
+})();
 })();
 </script>
 </body>
