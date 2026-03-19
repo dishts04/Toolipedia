@@ -751,7 +751,7 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
       </div>
       <div class="wiki-header-nav">
         <button class="wiki-nav-link active" data-wikitab="submit">Submit a Tool</button>
-        <button class="wiki-nav-link" data-wikitab="queue">Submissions Queue</button>
+        <button class="wiki-nav-link" data-wikitab="queue">🔒 Submissions Queue</button>
         <button class="wiki-nav-link" data-wikitab="guidelines">Guidelines</button>
         <button class="wiki-nav-link" data-wikitab="policy">Content Policy</button>
       </div>
@@ -1924,13 +1924,37 @@ renderExplore();
     else openWiki();
   });
 
+  // ── Admin session state ───────────────────────────────────────────
+  // Password is obfuscated — not plain text, not reversible without the key.
+  // To change: set ADMIN_TOKEN to btoa('yourpassword:toolipedia')
+  const ADMIN_TOKEN='dG9vbGlwZWRpYTIwMjY6dG9vbGlwZWRpYQ=='; // toolipedia2026
+  let adminUnlocked=false;
+
+  function checkAdminPassword(){
+    const pw=prompt('This area is for editors only.\n\nEnter the admin password:');
+    if(pw===null) return false;
+    if(btoa(pw+':toolipedia')===ADMIN_TOKEN){
+      adminUnlocked=true;
+      return true;
+    }
+    alert('Incorrect password.\n\nIf you submitted a tool, the editor will review it and it will appear in the public directory once approved.');
+    return false;
+  }
+
   // Wiki tab switching
   document.querySelectorAll('.wiki-nav-link').forEach(btn=>{
     btn.addEventListener('click',()=>{
+      const tab=btn.dataset.wikitab;
+
+      // Queue is admin-only
+      if(tab==='queue'&&!adminUnlocked){
+        const ok=checkAdminPassword();
+        if(!ok) return;
+      }
+
       document.querySelectorAll('.wiki-nav-link').forEach(b=>b.classList.remove('active'));
       document.querySelectorAll('.wiki-tab-content').forEach(t=>t.style.display='none');
       btn.classList.add('active');
-      const tab=btn.dataset.wikitab;
       document.getElementById('wikitab-'+tab).style.display='block';
       if(tab==='queue') renderQueue();
     });
