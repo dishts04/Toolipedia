@@ -424,7 +424,7 @@ body.wiki-mode main, body.wiki-mode footer{visibility:hidden}
   transition:all var(--transition);box-shadow:var(--shadow-card);
 }
 .uc-tool-row:hover{border-color:var(--border-h);transform:translateX(3px);box-shadow:var(--shadow-hover)}
-.uc-row-active{border-color:var(--p1) !important;transform:none !important}
+.uc-row-active{border-color:var(--p1) !important;transform:none !important;grid-column:1/-1;border-radius:var(--radius-md) var(--radius-md) 0 0 !important}
 .uc-detail-panel{
   background:var(--bg2);border:1px solid var(--p1);border-top:none;
   border-radius:0 0 var(--radius-md) var(--radius-md);
@@ -1385,18 +1385,15 @@ function renderExplore(){
       card.addEventListener('click',()=>{
         const id=card.dataset.id;
         const wasExpanded=state.expandedId===id;
-        // Record where the card's top is RIGHT NOW, before the DOM is rebuilt
-        const headerH=(document.querySelector('header')||{offsetHeight:58}).offsetHeight||58;
-        const cardTopBeforeRender=card.getBoundingClientRect().top;
+        // Capture absolute page position of card top BEFORE any DOM change
+        const absTop=card.getBoundingClientRect().top+window.scrollY;
         state.expandedId=wasExpanded?null:id;
         renderExplore();
-        // After render: scroll so the card top sits exactly where it was before the click
-        // This means the card name never moves — the detail just opens below it
-        const newCard=document.querySelector(`[data-id="${id}"]`);
-        if(newCard){
-          const cardTopAfterRender=newCard.getBoundingClientRect().top;
-          const drift=cardTopAfterRender-cardTopBeforeRender;
-          if(Math.abs(drift)>2) window.scrollBy({top:drift,behavior:'instant'});
+        // Only scroll when opening (not closing)
+        if(!wasExpanded){
+          const headerH=(document.querySelector('header')||{offsetHeight:58}).offsetHeight||58;
+          // Scroll so the card name sits 8px below the sticky header — instant, no animation
+          window.scrollTo({top:absTop-headerH-8,behavior:'instant'});
         }
       });
     });
@@ -1501,34 +1498,20 @@ function renderUseCases(){
     <div class="uc-tools-grid">${rowsHtml}</div>
   </div>`;
 
-  // Wire up row clicks — toggle expansion inline
+  // Wire up row clicks — toggle inline expansion, never navigate away
   res.querySelectorAll('.uc-tool-row').forEach(row=>{
     row.addEventListener('click',()=>{
       const id=row.dataset.id;
-      // Record this row's top position before the DOM is rebuilt
-      const headerH=(document.querySelector('header')||{offsetHeight:58}).offsetHeight||58;
-      const rowTopBefore=row.getBoundingClientRect().top;
-      ucExpandedId=ucExpandedId===id?null:id;
+      const wasExpanded=ucExpandedId===id;
+      // Capture absolute page position of this row BEFORE DOM is rebuilt
+      const absTop=row.getBoundingClientRect().top+window.scrollY;
+      ucExpandedId=wasExpanded?null:id;
       renderUseCases();
-      // After re-render, find the NEW row element and correct any drift
-      // so the row name stays at the same position on screen
-      const newRow=document.querySelector(`.uc-tool-row[data-id="${id}"]`);
-      if(newRow){
-        const rowTopAfter=newRow.getBoundingClientRect().top;
-        const drift=rowTopAfter-rowTopBefore;
-        if(Math.abs(drift)>2) window.scrollBy({top:drift,behavior:'instant'});
-        // If we just opened the detail, nudge down slightly so the detail starts in view
-        if(ucExpandedId){
-          setTimeout(()=>{
-            const freshRow=document.querySelector(`.uc-tool-row[data-id="${id}"]`);
-            if(!freshRow) return;
-            const freshTop=freshRow.getBoundingClientRect().top;
-            // Only scroll if the row is above the header (clipped)
-            if(freshTop<headerH+4){
-              window.scrollBy({top:freshTop-headerH-8,behavior:'smooth'});
-            }
-          },30);
-        }
+      // Only scroll when opening
+      if(!wasExpanded){
+        const headerH=(document.querySelector('header')||{offsetHeight:58}).offsetHeight||58;
+        // Scroll so the tool name row sits 8px below the sticky header
+        window.scrollTo({top:absTop-headerH-8,behavior:'smooth'});
       }
     });
   });
