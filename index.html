@@ -323,7 +323,7 @@ body.wiki-mode main, body.wiki-mode footer{visibility:hidden}
 
 /* EXPANDED DETAIL */
 .tool-detail{display:none;padding:0 16px 18px;border-top:1px solid var(--border)}
-.tool-card.expanded .tool-detail{display:block;animation:fadeIn 0.2s ease}
+.tool-card.expanded .tool-detail{display:block}
 .detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px}
 @media(max-width:480px){.detail-grid{grid-template-columns:1fr}}
 .detail-section h4{font-size:9px;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);font-weight:700;margin-bottom:8px}
@@ -424,6 +424,14 @@ body.wiki-mode main, body.wiki-mode footer{visibility:hidden}
   transition:all var(--transition);box-shadow:var(--shadow-card);
 }
 .uc-tool-row:hover{border-color:var(--border-h);transform:translateX(3px);box-shadow:var(--shadow-hover)}
+.uc-row-active{border-color:var(--p1) !important;transform:none !important}
+.uc-detail-panel{
+  background:var(--bg2);border:1px solid var(--p1);border-top:none;
+  border-radius:0 0 var(--radius-md) var(--radius-md);
+  padding:18px 16px;margin-top:-4px;margin-bottom:10px;
+  animation:fadeIn 0.2s ease;
+  grid-column:1/-1;
+}
 .uc-tool-name{font-size:13px;font-weight:700;color:var(--text)}
 .uc-tool-why{font-size:11px;color:var(--text2);margin-top:3px;line-height:1.5}
 .uc-section-title{font-family:var(--ff-head);font-size:16px;font-weight:700;color:var(--text);margin-bottom:12px;display:flex;align-items:center;gap:8px}
@@ -652,7 +660,7 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
       <span class="icon-moon">🌙</span>
       <span class="icon-sun">☀️</span>
     </button>
-    <div class="header-badge">30 Tools · March 2026</div>
+    <div class="header-badge">31 Tools · March 2026</div>
   </div>
 </header>
 
@@ -676,7 +684,7 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
       <div class="kbd-wrap"><span class="kbd">⌘</span><span class="kbd">K</span></div>
     </div>
   </div>
-  <div class="search-count" id="search-count">Showing all 30 tools across 14 categories</div>
+  <div class="search-count" id="search-count">Showing all 31 tools across 14 categories</div>
 </section>
 
 <!-- Sticky search — visible when scrolled past hero -->
@@ -1209,7 +1217,37 @@ const TOOLS = [
    features:["Automatic call recording and transcription","Deal Intelligence with risk signals","Revenue Forecast AI","Conversation analytics (talk ratios, topic tracking)","Sales coaching scorecards","CRM auto-updates from call insights","Competitor intelligence tracking","Integration with entire GTM tech stack"],
    integrations:["Salesforce","HubSpot","Slack","Zoom","Teams","Outreach","Salesloft","LinkedIn","API"],
    scores:{writing:3,coding:0,research:7,creativity:1,automation:9,multimodal:6}}
-];
+,
+  {id:"openclaw",name:"OpenClaw",maker:"Peter Steinberger & Community",tagline:"The open-source AI agent that actually does things on your machine",icon:"🦞",color:"#E8572A",
+   categories:["Automation","Coding","General AI"],
+   bestFor:"Developers and power users who want a self-hosted AI agent that automates real tasks — file management, browser control, email, calendar, and messaging across WhatsApp, Telegram, Slack and 30+ platforms",
+   free:{available:true,desc:"Fully free and open-source (MIT license). Bring your own API key. API costs run $10–70/month depending on usage. Local models via Ollama are near-zero cost."},
+   paid:[
+     {name:"Free (self-hosted)",price:"$0 + API costs",perks:"Full feature set, all 100+ skills, unlimited integrations, MIT license"},
+     {name:"Hosted (community)",price:"~$20/mo",perks:"Managed hosting, built-in LLM API credits, no server setup required, cancel anytime"}
+   ],
+   useCases:[
+     "Automate email, calendar, and flight check-ins from WhatsApp or Telegram",
+     "Run shell commands, manage files, and execute scripts via chat",
+     "Control a browser — fill forms, scrape data, navigate websites autonomously",
+     "Build multi-step developer workflows with GitHub, DevOps, and cron jobs",
+     "Create custom AI skills in hours using the SKILL.md system",
+     "Route tasks to isolated AI agents across different workspaces",
+     "Automate lead generation, CRM updates, and prospect research",
+     "Use voice commands on macOS, iOS, and Android"
+   ],
+   features:[
+     "100+ built-in AgentSkills — browser, canvas, cron, sessions, file system",
+     "30+ messaging platforms — WhatsApp, Telegram, Discord, Slack, Signal, iMessage",
+     "Model-agnostic — Claude, GPT, Gemini, or fully local models via Ollama",
+     "Skills system — extend with community skills or write your own SKILL.md",
+     "Multi-agent routing — isolate workspaces with per-agent sessions",
+     "Voice wake word + talk mode on macOS, iOS, and Android",
+     "Local-first gateway — all data stays on your own machine",
+     "310,000+ GitHub stars — one of the fastest-growing open-source AI projects"
+   ],
+   integrations:["WhatsApp","Telegram","Discord","Slack","Signal","iMessage","GitHub","Notion","Obsidian","Claude API","OpenAI API","Ollama","Google Calendar","Gmail","Browser (CDP)"],
+   scores:{writing:5,coding:9,research:7,creativity:5,automation:10,multimodal:6}}];
 
 // ═══════════════ USE CASES ═══════════════
 const USE_CASES = [
@@ -1227,7 +1265,7 @@ const USE_CASES = [
    desc:"Create 2D/3D animations, motion graphics, animated avatars, and animated video content"},
   {id:"audio",label:"Voice & Audio",emoji:"🎙️",toolIds:["elevenlabs","heygen","chatgpt"],
    desc:"Generate realistic voices, clone voices, dub videos, and build voice-powered apps"},
-  {id:"automation",label:"Workflow Automation",emoji:"⚡",toolIds:["n8n","chatgpt","claude","copilot","otter-ai","gong"],
+  {id:"automation",label:"Workflow Automation",emoji:"⚡",toolIds:["n8n","openclaw","chatgpt","claude","copilot","otter-ai","gong"],
    desc:"Automate repetitive tasks, connect apps, and build AI-powered pipelines"},
   {id:"documents",label:"Document Intelligence",emoji:"📄",toolIds:["notebooklm","claude","gemini","perplexity","harvey"],
    desc:"Extract insights from PDFs, contracts, research papers, and large file collections"},
@@ -1253,7 +1291,7 @@ const CAT_META = {
   "Animation":{emoji:"🎞️",headline:"Best AI tools for animation",desc:"From stylized 2D clips to realistic 3D motion capture — AI animation tools that remove the technical barrier entirely.",scoreKey:"creativity",highlights:{pika:"Pikaffects turn static objects into cinematic animations — explode, melt, morph",runway:"30+ AI tools including motion tracking, rotoscoping, and style transfer",kling:"Strong physics realism — perfect for organic 2D and 3D-style animation",'adobe-firefly':"Firefly Animation inside After Effects — commercially safe, stays in Creative Cloud",synthesia:"Animated AI avatar videos with facial expressions and multilingual voiceover"}},
   "Design":{emoji:"✏️",headline:"Best AI tools for design and branding",desc:"Create on-brand graphics, social content, presentations, and marketing visuals — even with zero design experience.",scoreKey:"creativity",highlights:{'canva-ai':"Magic Design builds a full branded presentation from one sentence prompt",freepik:"Inpainting + Relight + Upscaler in one — professional photo editing without Photoshop",'adobe-firefly':"Generative Recolor creates thousands of color variants of a vector in seconds",midjourney:"Consistent character feature — same person or object across an entire campaign"}},
   "Voice & Audio":{emoji:"🎙️",headline:"Best AI voice and audio tools",desc:"Clone voices, narrate content, dub videos into 40+ languages, and build voice-powered apps.",scoreKey:"multimodal",highlights:{elevenlabs:"Clone your voice from 1 minute — 3,000+ voices, 29 languages, full API access",heygen:"Automated video dubbing with lip sync — upload a video, get it dubbed in any language",chatgpt:"Real-time voice conversation with Advanced Voice Mode — natural two-way dialogue"}},
-  "Automation":{emoji:"⚡",headline:"Best AI tools for workflow automation",desc:"Connect your apps, chain AI models, and build pipelines that run themselves — from email sorting to fully autonomous multi-agent systems.",scoreKey:"automation",highlights:{n8n:"400+ integrations + AI Agent nodes — build self-correcting autonomous pipelines visually",chatgpt:"Custom GPT Actions + API: trigger real-world tasks from a conversation",claude:"MCP server support — connect Claude to any tool via Model Context Protocol",copilot:"Power Automate integration — automate across all Microsoft 365 apps without code",'otter-ai':"Automatically extract action items from every meeting and push to Slack or Notion",gong:"Auto-updates CRM from call insights — no manual logging after every sales call"}},
+  "Automation":{emoji:"⚡",headline:"Best AI tools for workflow automation",desc:"Connect your apps, chain AI models, and build pipelines that run themselves — from email sorting to fully autonomous multi-agent systems.",scoreKey:"automation",highlights:{n8n:"400+ integrations + AI Agent nodes — build self-correcting autonomous pipelines visually",chatgpt:"Custom GPT Actions + API: trigger real-world tasks from a conversation",claude:"MCP server support — connect Claude to any tool via Model Context Protocol",copilot:"Power Automate integration — automate across all Microsoft 365 apps without code",'otter-ai':"Automatically extract action items from every meeting and push to Slack or Notion",gong:"Auto-updates CRM from call insights — no manual logging after every sales call",openclaw:"Self-hosted AI agent — runs shell commands, controls browsers, automates across 30+ messaging apps"}},
   "Documents":{emoji:"📄",headline:"Best tools for document intelligence",desc:"Upload contracts, research papers, PDFs, or entire knowledge bases and get cited answers from your own content.",scoreKey:"research",highlights:{notebooklm:"Answers only from your uploaded sources — zero hallucination, perfect for legal",claude:"1M token context: reads an entire book, codebase, or contract in one pass",gemini:"Multi-modal document reading — processes text, tables, charts, and images in PDFs",perplexity:"Upload files and cross-reference against live web data simultaneously",harvey:"Purpose-built for legal documents — clause-level citations and playbook enforcement"}},
   "Legal":{emoji:"⚖️",headline:"Best AI tools for legal work",desc:"Contract analysis, legal research, compliance monitoring, and document drafting — AI that meets the standards of professional legal teams.",scoreKey:"research",highlights:{harvey:"The platform top law firms trust — legal-domain trained, contract redlining, case research","claude":"Best general AI for reading dense legal documents — 1M token context, precise extraction",perplexity:"Real-time legal news and case law updates with full source citations","notebooklm":"Upload case files and contracts — Q&A across all of them with zero hallucination"}},
   "Education":{emoji:"🏫",headline:"Best AI tools for education and learning",desc:"AI tutors, research assistants, and study tools that build real understanding — not just give you the answer.",scoreKey:"research",highlights:{khanmigo:"Socratic AI tutor — guides students to find answers instead of just providing them","notebooklm":"Upload your course materials — instant Q&A and audio summaries of any lecture",chatgpt:"Explain any concept at any level, generate practice problems, check your understanding",gemini:"Deep Research for student projects — multi-source reports with citations",wolfram:"Step-by-step solutions for math, science, and engineering — shows all working",elicit:"Systematic literature review — extract data from 200M+ academic papers"}},
@@ -1346,9 +1384,20 @@ function renderExplore(){
     grid.querySelectorAll('.tool-card').forEach(card=>{
       card.addEventListener('click',()=>{
         const id=card.dataset.id;
-        state.expandedId=state.expandedId===id?null:id;
+        const wasExpanded=state.expandedId===id;
+        // Record where the card's top is RIGHT NOW, before the DOM is rebuilt
+        const headerH=(document.querySelector('header')||{offsetHeight:58}).offsetHeight||58;
+        const cardTopBeforeRender=card.getBoundingClientRect().top;
+        state.expandedId=wasExpanded?null:id;
         renderExplore();
-        if(state.expandedId)setTimeout(()=>{const c=document.querySelector(`[data-id="${id}"]`);if(c)c.scrollIntoView({behavior:'smooth',block:'nearest'});},50);
+        // After render: scroll so the card top sits exactly where it was before the click
+        // This means the card name never moves — the detail just opens below it
+        const newCard=document.querySelector(`[data-id="${id}"]`);
+        if(newCard){
+          const cardTopAfterRender=newCard.getBoundingClientRect().top;
+          const drift=cardTopAfterRender-cardTopBeforeRender;
+          if(Math.abs(drift)>2) window.scrollBy({top:drift,behavior:'instant'});
+        }
       });
     });
   }
@@ -1385,15 +1434,104 @@ function renderCompare(){
 }
 
 // ═══════════════ RENDER USE CASES ═══════════════
+// Track which tool is expanded inside the UC tab
+let ucExpandedId=null;
+
+function renderUcToolDetail(t){
+  const scoreKeys=["writing","coding","research","creativity","automation","multimodal"];
+  const scores=scoreKeys.map(k=>`<div class="score-row"><span class="score-label">${k}</span><div class="score-bar-wrap"><div class="score-bar" style="width:${t.scores[k]*10}%"></div></div><span class="score-val">${t.scores[k]}</span></div>`).join('');
+  return `<div class="uc-detail-panel" id="uc-detail-${t.id}">
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+      <div style="width:44px;height:44px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:22px;background:${t.color}18;border:1px solid ${t.color}2a">${t.icon}</div>
+      <div>
+        <div style="font-family:var(--ff-head);font-size:17px;font-weight:700;color:var(--text)">${t.name}</div>
+        <div style="font-size:12px;color:var(--text3)">${t.maker}</div>
+      </div>
+      <button onclick="ucExpandedId=null;renderUseCases()" style="margin-left:auto;background:var(--bg4);border:1px solid var(--border);color:var(--text2);padding:5px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-family:var(--ff-body);font-weight:600">✕ Close</button>
+    </div>
+    <p style="font-size:13px;color:var(--text2);margin-bottom:14px;line-height:1.6">${t.tagline}</p>
+    <div style="font-size:11px;color:var(--text3);padding:8px 10px;background:var(--detail-bg);border-radius:8px;border-left:2px solid var(--p1);margin-bottom:14px"><strong style="color:var(--p2);display:block;font-size:9px;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:2px">Best for</strong>${t.bestFor}</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px">
+      <div><div style="font-size:9px;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);font-weight:700;margin-bottom:8px">Use cases</div><ul style="list-style:none;display:flex;flex-direction:column;gap:5px">${t.useCases.slice(0,5).map(u=>`<li style="font-size:12px;color:var(--text2);display:flex;gap:6px;align-items:flex-start;line-height:1.45"><span style="color:var(--p1);flex-shrink:0;font-weight:700">→</span>${u}</li>`).join('')}</ul></div>
+      <div><div style="font-size:9px;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);font-weight:700;margin-bottom:8px">Key features</div><ul style="list-style:none;display:flex;flex-direction:column;gap:5px">${t.features.slice(0,4).map(f=>`<li style="font-size:12px;color:var(--text2);display:flex;gap:6px;align-items:flex-start;line-height:1.45"><span style="color:var(--p2);flex-shrink:0;font-weight:700">✓</span>${f}</li>`).join('')}</ul></div>
+    </div>
+    <div style="margin-bottom:14px"><div style="font-size:9px;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);font-weight:700;margin-bottom:8px">Capability scores</div>${scores}</div>
+    <div style="display:flex;align-items:center;gap:10px;padding-top:12px;border-top:1px solid var(--border)">
+      <span class="free-badge ${t.free.available?'yes':'no'}">${t.free.available?'✓ Free tier':'✗ No free tier'}</span>
+      <span style="font-size:12px;color:var(--text2)">Paid from <strong>${t.paid[0].price}</strong></span>
+    </div>
+  </div>`;
+}
+
 function renderUseCases(){
   document.getElementById('uc-cats-grid').innerHTML=USE_CASES.map(uc=>`<div class="uc-cat-card${state.activeUseCase===uc.id?' active':''}" data-ucid="${uc.id}"><span class="uc-emoji">${uc.emoji}</span><div class="uc-label">${uc.label}</div><div class="uc-count">${uc.toolIds.length} tools</div></div>`).join('');
-  document.querySelectorAll('.uc-cat-card').forEach(c=>c.addEventListener('click',()=>{state.activeUseCase=state.activeUseCase===c.dataset.ucid?null:c.dataset.ucid;renderUseCases();if(state.activeUseCase)setTimeout(()=>document.getElementById('uc-results').scrollIntoView({behavior:'smooth',block:'nearest'}),50);}));
+  document.querySelectorAll('.uc-cat-card').forEach(c=>c.addEventListener('click',()=>{
+    const newCat=c.dataset.ucid;
+    if(state.activeUseCase===newCat){state.activeUseCase=null;ucExpandedId=null;}
+    else{state.activeUseCase=newCat;ucExpandedId=null;}
+    renderUseCases();
+    if(state.activeUseCase)setTimeout(()=>document.getElementById('uc-results').scrollIntoView({behavior:'smooth',block:'nearest'}),50);
+  }));
+
   const res=document.getElementById('uc-results');
   if(!state.activeUseCase){res.innerHTML='';return;}
+
   const uc=USE_CASES.find(u=>u.id===state.activeUseCase);
   const ucTools=uc.toolIds.map(id=>TOOLS.find(t=>t.id===id)).filter(Boolean);
-  res.innerHTML=`<div style="animation:fadeIn 0.3s ease"><div class="uc-section-title">${uc.emoji} ${uc.label}</div><p style="color:var(--text2);font-size:14px;margin-bottom:18px">${uc.desc}</p><div class="uc-tools-grid">${ucTools.map(t=>`<div class="uc-tool-row" data-id="${t.id}"><div class="tool-icon" style="width:40px;height:40px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px;background:${t.color}22;border:1px solid ${t.color}33">${t.icon}</div><div><div class="uc-tool-name">${t.name} <span style="color:var(--text3);font-size:11px;font-weight:400">by ${t.maker}</span></div><div class="uc-tool-why">${t.bestFor}</div><div style="font-size:11px;color:${t.free.available?'var(--p2)':'var(--text3)'};margin-top:5px">${t.free.available?'✓ Free tier · Paid from '+t.paid[0].price:'Paid from '+t.paid[0].price}</div></div></div>`).join('')}</div></div>`;
-  res.querySelectorAll('.uc-tool-row').forEach(row=>row.addEventListener('click',()=>{state.expandedId=row.dataset.id;state.activeTab='explore';state.query='';state.category='All';document.querySelectorAll('.cat-pill').forEach(p=>p.classList.toggle('active',p.dataset.cat==='All'));switchTab('explore');renderExplore();setTimeout(()=>{const card=document.querySelector(`[data-id="${row.dataset.id}"]`);if(card)card.scrollIntoView({behavior:'smooth',block:'center'});},100);}));
+
+  // Build the row list — inject expanded detail panel after the clicked tool
+  let rowsHtml='';
+  ucTools.forEach(t=>{
+    const isExpanded=ucExpandedId===t.id;
+    rowsHtml+=`<div class="uc-tool-row${isExpanded?' uc-row-active':''}" data-id="${t.id}" style="${isExpanded?'border-color:var(--p1);background:var(--surface-glow)':''}">
+      <div class="tool-icon" style="width:40px;height:40px;border-radius:10px;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:18px;background:${t.color}18;border:1px solid ${t.color}2a">${t.icon}</div>
+      <div style="flex:1;min-width:0">
+        <div class="uc-tool-name">${t.name} <span style="color:var(--text3);font-size:11px;font-weight:400">by ${t.maker}</span></div>
+        <div class="uc-tool-why">${t.bestFor}</div>
+        <div style="font-size:11px;color:${t.free.available?'var(--p2)':'var(--text3)'};margin-top:5px">${t.free.available?'✓ Free tier · Paid from '+t.paid[0].price:'Paid from '+t.paid[0].price}</div>
+      </div>
+      <span style="color:var(--text3);font-size:13px;flex-shrink:0;transition:transform 0.25s;transform:${isExpanded?'rotate(180deg)':'rotate(0deg)'}">${isExpanded?'⌄':'⌄'}</span>
+    </div>`;
+    if(isExpanded) rowsHtml+=renderUcToolDetail(t);
+  });
+
+  res.innerHTML=`<div style="animation:fadeIn 0.3s ease">
+    <div class="uc-section-title">${uc.emoji} ${uc.label}</div>
+    <p style="color:var(--text2);font-size:13px;margin-bottom:18px">${uc.desc}</p>
+    <div class="uc-tools-grid">${rowsHtml}</div>
+  </div>`;
+
+  // Wire up row clicks — toggle expansion inline
+  res.querySelectorAll('.uc-tool-row').forEach(row=>{
+    row.addEventListener('click',()=>{
+      const id=row.dataset.id;
+      // Record this row's top position before the DOM is rebuilt
+      const headerH=(document.querySelector('header')||{offsetHeight:58}).offsetHeight||58;
+      const rowTopBefore=row.getBoundingClientRect().top;
+      ucExpandedId=ucExpandedId===id?null:id;
+      renderUseCases();
+      // After re-render, find the NEW row element and correct any drift
+      // so the row name stays at the same position on screen
+      const newRow=document.querySelector(`.uc-tool-row[data-id="${id}"]`);
+      if(newRow){
+        const rowTopAfter=newRow.getBoundingClientRect().top;
+        const drift=rowTopAfter-rowTopBefore;
+        if(Math.abs(drift)>2) window.scrollBy({top:drift,behavior:'instant'});
+        // If we just opened the detail, nudge down slightly so the detail starts in view
+        if(ucExpandedId){
+          setTimeout(()=>{
+            const freshRow=document.querySelector(`.uc-tool-row[data-id="${id}"]`);
+            if(!freshRow) return;
+            const freshTop=freshRow.getBoundingClientRect().top;
+            // Only scroll if the row is above the header (clipped)
+            if(freshTop<headerH+4){
+              window.scrollBy({top:freshTop-headerH-8,behavior:'smooth'});
+            }
+          },30);
+        }
+      }
+    });
+  });
 }
 
 // ═══════════════ TAB SWITCHING ═══════════════
@@ -1419,19 +1557,32 @@ document.querySelectorAll('.tab-btn').forEach(btn=>btn.addEventListener('click',
 document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();document.getElementById('search-input').focus();}});
 document.getElementById('hero-browse-btn').addEventListener('click',()=>{document.querySelector('.toolbar').scrollIntoView({behavior:'smooth'});});
 document.getElementById('random-btn').addEventListener('click',()=>{
-  const t=TOOLS[Math.floor(Math.random()*TOOLS.length)];
-  state.expandedId=t.id;state.query='';state.category='All';
+  // Pick a different tool than the current one
+  const candidates=TOOLS.filter(x=>x.id!==state.expandedId);
+  const pick=candidates.length?candidates[Math.floor(Math.random()*candidates.length)]:TOOLS[0];
+
+  // Step 1: collapse current card and reset filters
+  state.expandedId=null;
+  state.query='';state.category='All';
   document.querySelectorAll('.cat-pill').forEach(p=>p.classList.toggle('active',p.dataset.cat==='All'));
   if(state.activeTab!=='explore')switchTab('explore');else renderExplore();
-  // Scroll so the top of the card is visible — user sees the tool name first
+
+  // Step 2: expand the new card, then scroll AFTER animation completes
   setTimeout(()=>{
-    const card=document.querySelector(`[data-id="${t.id}"]`);
-    if(card){
-      const headerH=document.querySelector('header').offsetHeight||58;
-      const y=card.getBoundingClientRect().top+window.scrollY-headerH-12;
+    state.expandedId=pick.id;
+    renderExplore();
+
+    // Wait for the 200ms fadeIn CSS animation to fully finish before measuring
+    setTimeout(()=>{
+      const card=document.querySelector(`[data-id="${pick.id}"]`);
+      if(!card) return;
+      const headerH=(document.querySelector('header')||{offsetHeight:58}).offsetHeight||58;
+      const rect=card.getBoundingClientRect();
+      // rect.top is position relative to viewport — convert to absolute scroll position
+      const y=window.scrollY+rect.top-headerH-8;
       window.scrollTo({top:y,behavior:'smooth'});
-    }
-  },80);
+    },220);
+  },60);
 });
 (function(){
   const saved=localStorage.getItem('tp-theme');
@@ -1609,7 +1760,7 @@ renderExplore();
     // ── Greeting ──────────────────────────────────────────────────
     if(i.greeting){
       memory.update('greeting',[]);
-      return fmt(`Hey! I'm the Toolipedia Advisor.\n\nI know all 30 AI tools here — what they're good for, how they compare, what each one costs, and how to combine them.\n\nWhat are you trying to do? Could be something simple like "I want to write better emails" or something complex like an automated data pipeline. Just describe it.`);
+      return fmt(`Hey! I'm the Toolipedia Advisor.\n\nI know all 31 AI tools here — what they're good for, how they compare, what each one costs, and how to combine them.\n\nWhat are you trying to do? Could be something simple like "I want to write better emails" or something complex like an automated data pipeline. Just describe it.`);
     }
 
     // ── Thanks ────────────────────────────────────────────────────
@@ -1621,7 +1772,7 @@ renderExplore();
     // ── What can you do / meta ────────────────────────────────────
     if(i.meta){
       memory.update('meta',[]);
-      return fmt(`I know all 30 AI tools on Toolipedia — what each one does, how much it costs, when to use it, and how to combine them.\n\n**You can ask me things like:**\n• "I want to build a YouTube channel with AI"\n• "What's the best free AI stack?"\n• "I'm a lawyer — what should I use?"\n• "Tell me about Midjourney"\n• "Compare ChatGPT vs Claude"\n• "I want to automate my whole data pipeline"\n\nOr just describe your situation and I'll figure out what you need.`);
+      return fmt(`I know all 31 AI tools on Toolipedia — what each one does, how much it costs, when to use it, and how to combine them.\n\n**You can ask me things like:**\n• "I want to build a YouTube channel with AI"\n• "What's the best free AI stack?"\n• "I'm a lawyer — what should I use?"\n• "Tell me about Midjourney"\n• "Compare ChatGPT vs Claude"\n• "I want to automate my whole data pipeline"\n\nOr just describe your situation and I'll figure out what you need.`);
     }
 
     // ── Specific tool lookup ──────────────────────────────────────
@@ -1666,7 +1817,11 @@ renderExplore();
     // ── Autonomous / all tools connected ─────────────────────────
     if(i.autonomous){
       memory.update('autonomous',['n8n','claude','chatgpt','deepseek']);
-      return fmt(`To connect AI tools and run them autonomously, you need one thing: an orchestration layer.\n\n${chip('n8n')} is the right choice. It connects 400+ apps visually, has AI Agent nodes that can self-correct, and you can self-host it for free. You chain tools in order — ChatGPT decides, ElevenLabs speaks, HeyGen creates video, it all flows without touching it.\n\n${chip('claude')} or ${chip('chatgpt')} acts as the "brain" that makes decisions inside the pipeline. Claude's MCP protocol is particularly powerful for connecting to external tools.\n\n${chip('deepseek')} R1 via API is worth using inside pipelines where you need AI reasoning at high volume — it's 75–90% cheaper than GPT-4.\n\n**Where to start:** Build one small pipeline first. Something like "new email arrives → Claude summarises it → save to Notion". Once that works, chain more steps.`);
+      return fmt(`To connect AI tools and run them autonomously, you need one thing: an orchestration layer.\n\n${chip('openclaw')} and ${chip('n8n')} are the two strongest options right now.
+
+${chip('openclaw')} is open-source and runs on your own machine — connect it to WhatsApp, Telegram, or Discord and it executes real tasks: managing files, controlling browsers, running scripts. 310,000+ GitHub stars. Free to self-host, you just pay for API calls.
+
+${chip('n8n')} connects 400+ apps visually, has AI Agent nodes that can self-correct, and you can self-host it for free. You chain tools in order — ChatGPT decides, ElevenLabs speaks, HeyGen creates video, it all flows without touching it.\n\n${chip('claude')} or ${chip('chatgpt')} acts as the "brain" that makes decisions inside the pipeline. Claude's MCP protocol is particularly powerful for connecting to external tools.\n\n${chip('deepseek')} R1 via API is worth using inside pipelines where you need AI reasoning at high volume — it's 75–90% cheaper than GPT-4.\n\n**Where to start:** Build one small pipeline first. Something like "new email arrives → Claude summarises it → save to Notion". Once that works, chain more steps.`);
     }
 
     // ── YouTube / content creation ────────────────────────────────
