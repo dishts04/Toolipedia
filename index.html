@@ -631,7 +631,42 @@ footer{
 }
 footer span{color:var(--p1);font-weight:500}
 
-/* ── SCROLLBAR ────────────────────────────────────────────────────── */
+/* ── SCORE TOOLTIP ────────────────────────────────────────────────── */
+.score-info{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:16px;height:16px;border-radius:50%;flex-shrink:0;
+  background:var(--p1);color:#fff;
+  font-size:9px;font-weight:700;cursor:help;
+  position:relative;vertical-align:middle;
+  font-style:normal;line-height:1;
+}
+.score-info::after{
+  content:attr(data-tip);
+  position:absolute;bottom:calc(100% + 8px);left:50%;
+  transform:translateX(-50%);
+  background:var(--bg);color:var(--text2);
+  border:1px solid var(--border);
+  border-radius:var(--radius-sm);
+  padding:8px 12px;
+  font-size:11px;font-weight:400;line-height:1.5;
+  white-space:normal;width:220px;text-align:left;
+  pointer-events:none;opacity:0;
+  transition:opacity 0.15s ease;
+  box-shadow:var(--shadow-hover);
+  z-index:500;
+  font-family:var(--ff-body);
+}
+.score-info::before{
+  content:'';position:absolute;bottom:calc(100% + 3px);left:50%;
+  transform:translateX(-50%);
+  border:5px solid transparent;
+  border-top-color:var(--border);
+  pointer-events:none;opacity:0;
+  transition:opacity 0.15s ease;
+}
+.score-info:hover::after,.score-info:hover::before{opacity:1}
+
+/* SCROLLBAR */
 
 
 
@@ -745,6 +780,14 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
   #chat-window{width:calc(100vw - 20px)}
 }
 </style>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MFTBWFGLLE"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-MFTBWFGLLE');
+</script>
 </head>
 <body>
 <main>
@@ -767,7 +810,7 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
       <span class="icon-moon">🌙</span>
       <span class="icon-sun">☀️</span>
     </button>
-    <div class="header-badge">31 Tools · March 2026</div>
+    <div class="header-badge">35 Tools · March 2026</div>
   </div>
 </header>
 
@@ -791,7 +834,7 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
       <div class="kbd-wrap"><span class="kbd">⌘</span><span class="kbd">K</span></div>
     </div>
   </div>
-  <div class="search-count" id="search-count">Showing all 31 tools across 14 categories</div>
+  <div class="search-count" id="search-count">Showing all 35 tools across 14 categories</div>
 </section>
 
 <!-- Sticky search — visible when scrolled past hero -->
@@ -862,13 +905,14 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
           <div class="wiki-logo-text">Tool<span>ipedia</span> Community</div>
           <div class="wiki-logo-sub">Open submissions — editor reviewed before going live</div>
         </div>
-        <button onclick="closeWiki()" title="Back to Editor's pick directory" style="margin-left:12px;font-size:10px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;background:linear-gradient(135deg,rgba(124,106,247,0.18),rgba(6,214,160,0.14));border:1px solid rgba(124,106,247,0.35);color:#7C6AF7;padding:3px 10px;border-radius:10px;white-space:nowrap;font-family:sans-serif;cursor:pointer;transition:all 0.2s" onmouseover="this.style.background='linear-gradient(135deg,rgba(124,106,247,0.32),rgba(6,214,160,0.22))'" onmouseout="this.style.background='linear-gradient(135deg,rgba(124,106,247,0.18),rgba(6,214,160,0.14))'">✦ Editor's pick</button>
+        <button onclick="closeWiki()" title="Back to Editor's pick directory" style="margin-left:12px;font-size:10px;font-weight:700;letter-spacing:0.8px;text-transform:uppercase;background:linear-gradient(135deg,rgba(124,106,247,0.18),rgba(6,214,160,0.14));border:1px solid var(--border-h);color:var(--p1);padding:3px 10px;border-radius:10px;white-space:nowrap;font-family:sans-serif;cursor:pointer;transition:all 0.2s" onmouseover="this.style.background='linear-gradient(135deg,rgba(124,106,247,0.32),rgba(6,214,160,0.22))'" onmouseout="this.style.background='linear-gradient(135deg,rgba(124,106,247,0.18),rgba(6,214,160,0.14))'">✦ Editor's pick</button>
       </div>
       <div class="wiki-header-nav">
         <button class="wiki-nav-link active" data-wikitab="submit">Submit a Tool</button>
         <button class="wiki-nav-link" data-wikitab="queue">🔒 Submissions Queue</button>
         <button class="wiki-nav-link" data-wikitab="guidelines">Guidelines</button>
         <button class="wiki-nav-link" data-wikitab="policy">Content Policy</button>
+        <button class="wiki-nav-link" data-wikitab="methodology">Methodology</button>
       </div>
     </div>
 
@@ -982,11 +1026,95 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
       </div>
     </div>
 
+    <div id="wikitab-methodology" class="wiki-tab-content" style="display:none">
+      <h2 class="wiki-section-title">Methodology &amp; Update Policy</h2>
+
+      <p class="wiki-intro">Toolipedia claims to be built from real docs, benchmarks, and search data. This page explains exactly what that means — how tools are chosen, how scores are assigned, where pricing data comes from, and how often everything gets reviewed. Transparency isn't a feature here. It's the baseline.</p>
+
+      <div class="wiki-notice" style="border-left-color:var(--p4)"><strong>Honest disclaimer.</strong> Everything here is manually researched by one editor. No automated scraping, no AI-generated profiles, no sponsored placements. That means the information is as accurate as a careful human can make it — which also means it can be wrong or out of date. If you spot an error, please submit a correction through the Submit tab.</div>
+
+      <div class="wiki-guidelines">
+
+        <h3>What Toolipedia is</h3>
+        <p style="margin-bottom:10px">Toolipedia is a curated, independent directory of AI tools. It is not a product review site, not an affiliate marketplace, and not a lead generation tool for vendors. No tool pays to be listed. No tool pays for a higher score or a better description. The directory exists for one reason: to help people find the right AI tool for what they're actually trying to do.</p>
+        <p>The current directory covers 35 tools across 14 categories. It is maintained by a single editor and supported by community submissions that go through an editorial review before going live.</p>
+
+        <h3 style="margin-top:22px">How we choose tools</h3>
+        <p style="margin-bottom:8px">A tool qualifies for inclusion if it meets all four criteria:</p>
+        <ul>
+          <li><strong>Publicly accessible</strong> — available to anyone, not just employees of one company or members of a closed waitlist</li>
+          <li><strong>Meaningfully AI-powered</strong> — AI must be central to its value, not a minor add-on to an otherwise conventional product</li>
+          <li><strong>Verifiable and live</strong> — must have a working website, a documented product, and pricing we can confirm</li>
+          <li><strong>Distinct</strong> — not a clone or white-label of a tool already listed, and not so similar to an existing entry that the difference isn't meaningful</li>
+        </ul>
+        <p style="margin-top:10px">We actively look for tools that are under-discussed relative to their quality — enterprise tools, niche tools, international tools. A large marketing budget is not a criterion for inclusion, and a lack of one is not a reason for exclusion.</p>
+
+        <h3 style="margin-top:22px">How we score tools</h3>
+        <p style="margin-bottom:12px">Each tool is scored 1–10 across six dimensions. Scores are editorial — they represent the editor's informed judgment based on the inputs below, not a calculated formula. The goal is a honest, comparative signal, not a precise measurement.</p>
+
+        <div class="policy-box" style="margin-bottom:16px"><strong>Score inputs.</strong> For each tool, the editor reviews: the official documentation and feature pages; hands-on use of the free tier or trial; publicly available third-party benchmarks (MMLU, HumanEval, HELM, LMSYS Chatbot Arena, coding leaderboards where applicable); user reviews on G2, Reddit, and Hacker News threads; and the editor's own structured tests against a consistent set of tasks per category.</div>
+
+        <p style="margin-bottom:14px"><strong>1 — Writing (1–10)</strong><br>
+        Measures quality of long-form prose, ability to follow complex style instructions, coherence across extended documents, and practical usefulness for real writing tasks (articles, emails, reports, marketing copy). A score of 10 means best-in-class across all writing types. A score below 5 means the tool produces output that requires significant rewriting before use.</p>
+
+        <p style="margin-bottom:14px"><strong>2 — Coding (1–10)</strong><br>
+        Measures ability to write, debug, explain, and refactor code across multiple languages. Informed primarily by HumanEval, SWE-bench, LiveCodeBench, and structured tests across Python, JavaScript, and SQL at varying difficulty. A score of 10 means the tool consistently solves hard coding problems correctly. A score below 5 means errors are frequent enough that the output cannot be trusted without careful review.</p>
+
+        <p style="margin-bottom:14px"><strong>3 — Research (1–10)</strong><br>
+        Measures factual accuracy, citation reliability, ability to synthesize across sources, and usefulness for real research tasks. Tools that hallucinate frequently, refuse to cite sources, or cannot handle long documents are scored lower. Tools with live web access, strong grounding mechanisms, or purpose-built research pipelines score higher.</p>
+
+        <p style="margin-bottom:14px"><strong>4 — Creativity (1–10)</strong><br>
+        Measures range of creative output, quality of image or video generation, originality of ideas, and ability to produce unexpected, non-generic results. For writing tools, this tests poetic quality, narrative creativity, and tonal range. For image tools, this tests aesthetic distinctiveness against a consistent set of prompts. A 10 means the output is genuinely surprising or impressive. A low score means the output is competent but forgettable.</p>
+
+        <p style="margin-bottom:14px"><strong>5 — Automation (1–10)</strong><br>
+        Measures the tool's ability to execute multi-step tasks without supervision, connect to external services, trigger workflows, handle errors, and run reliably at scale. Tools that require a human to prompt every step score low. Tools with agents, pipelines, API-first design, or deep integration ecosystems score high.</p>
+
+        <p style="margin-bottom:14px"><strong>6 — Multimodal (1–10)</strong><br>
+        Measures the breadth and quality of non-text capabilities: image understanding, image generation, audio, video, code execution in context, PDF reading, and so on. A tool that only handles text scores 1–3. A tool with strong vision plus one other modality scores 5–7. A tool with strong performance across vision, audio, and code in a single context scores 8–10.</p>
+
+        <div class="policy-box" style="margin-top:4px;margin-bottom:0"><strong>Avoiding score inflation.</strong> Scores are calibrated against each other, not assigned in isolation. Before publishing a new tool, its scores are reviewed against the full directory to check for drift. The aim is that a 7 in Writing means roughly the same thing across all tools in the directory. Scores are revised when there is material evidence of capability change — a major model update, a new benchmark result, or a consistent pattern in user reports.</div>
+
+        <h3 style="margin-top:22px">How we track pricing and plans</h3>
+        <p style="margin-bottom:8px">Pricing data is sourced exclusively from the tool's official pricing page. Blog posts, reseller sites, and press releases are not used as primary sources. For tools without a public pricing page (enterprise-only), we note this explicitly and provide estimates from public filings, press coverage, or user-reported figures with a clear "estimated" label.</p>
+        <ul>
+          <li><strong>Annual vs monthly billing</strong> — where a tool offers both, we show the monthly cost of the annual plan (the more common purchase path) and note that monthly billing costs more. We do not hide the annual commitment requirement.</li>
+          <li><strong>Free tiers</strong> — we distinguish between a genuine free tier (no credit card, indefinite use) and a free trial (time-limited or credit-limited). The free badge on a card means the tool has a usable free tier, not just a trial.</li>
+          <li><strong>Enterprise pricing</strong> — where the vendor does not publish pricing, the card notes "Custom pricing — contact sales" rather than showing a number we cannot verify.</li>
+          <li><strong>Last verified</strong> — pricing changes without notice. Every tool card shows the month and year the pricing was last checked. If more than three months have passed since the last check, we flag the entry for review.</li>
+        </ul>
+
+        <h3 style="margin-top:22px">How often we update</h3>
+        <p style="margin-bottom:8px">The directory runs on a rolling review schedule:</p>
+        <ul>
+          <li><strong>Monthly</strong> — pricing and free tier details for the top 10 most-visited tools</li>
+          <li><strong>Quarterly</strong> — full pricing audit across all 35 tools; score recalibration for any tool that has shipped a major model or feature update</li>
+          <li><strong>As needed</strong> — immediate update when a tool announces a significant change (new model release, pricing restructure, feature removal)</li>
+          <li><strong>Community-triggered</strong> — any verified correction submitted through the community queue is reviewed within two weeks</li>
+        </ul>
+        <p style="margin-top:10px">The footer of every page shows the current data snapshot date. Individual tool cards will show a "Last verified" month in a future update.</p>
+
+        <h3 style="margin-top:22px">How you can suggest corrections</h3>
+        <p style="margin-bottom:8px">If you find an error — wrong pricing, an outdated feature, a missing integration, an inaccurate score — use the Submit tab in this Community section. Select the existing tool name, describe what's wrong and what the correct information is, and include a source link if you have one. The editor reviews all submissions before applying any change.</p>
+        <p>What helps: a direct link to the official pricing or documentation page, a benchmark result with a citation, or a specific feature that the current description misses or misrepresents.</p>
+        <p style="margin-top:8px">What doesn't help: "the score feels low" without evidence, comparisons based on a single personal use case, or requests to raise a score based on information you cannot publicly source.</p>
+
+        <h3 style="margin-top:22px">Score tooltip copy</h3>
+        <p style="margin-bottom:8px;font-size:12.5px;color:var(--text3)">The following text is used in score tooltips and sidebar blocks throughout the directory:</p>
+        <div class="policy-box"><strong>Short version (tooltip / sidebar):</strong><br><br>
+        Scores are editorial — based on the editor's structured tests, publicly available benchmarks, and hands-on use of each tool. They reflect relative performance across the directory, not absolute measurements. A 7 in Coding means this tool is better at code than most in the directory. Pricing is verified from official pages and dated by month. Neither scores nor pricing are guaranteed current — see the full Methodology for update frequency and how to report corrections.<br><br>
+        <strong>Microcopy (card footer):</strong><br><br>
+        Scores: editorial, from tests &amp; benchmarks · <span style="color:var(--p1);cursor:pointer;text-decoration:underline">See Methodology</span></div>
+
+        <p style="margin-top:16px;font-size:12px;color:var(--text3)">Methodology last updated: March 2026. This document will be revised when scoring criteria or update processes change materially.</p>
+
+      </div>
+    </div>
+
     <div class="wiki-footer"><div>Toolipedia Community · <button onclick="closeWiki()" style="background:none;border:none;color:var(--p1);cursor:pointer;font-size:13px;font-family:var(--ff-body);text-decoration:underline;padding:0">← Back to main directory</button></div><div style="color:var(--text3);font-size:12px">Open contribution model — editor reviewed</div></div>
   </div>
 </div>
 
-<footer>Built from real docs, benchmarks & search data · <span>Toolipedia</span> · March 2026</footer>
+<footer>Built from real docs, benchmarks &amp; search data · <span>Toolipedia</span> · March 2026 · <button onclick="openWiki();setTimeout(()=>{document.querySelector('[data-wikitab=methodology]').click();},100)" style="background:none;border:none;color:var(--text3);cursor:pointer;font-size:11px;font-family:var(--ff-body);text-decoration:underline;padding:0">Methodology</button></footer>
 
 <!-- CHAT WIDGET -->
 <div id="chat-bubble">
@@ -1354,15 +1482,130 @@ const TOOLS = [
      "310,000+ GitHub stars — one of the fastest-growing open-source AI projects"
    ],
    integrations:["WhatsApp","Telegram","Discord","Slack","Signal","iMessage","GitHub","Notion","Obsidian","Claude API","OpenAI API","Ollama","Google Calendar","Gmail","Browser (CDP)"],
-   scores:{writing:5,coding:9,research:7,creativity:5,automation:10,multimodal:6}}];
+   scores:{writing:5,coding:9,research:7,creativity:5,automation:10,multimodal:6}},
+  {id:"glean",name:"Glean",maker:"Glean",tagline:"Enterprise AI search — find anything across all your company's apps instantly",icon:"🔎",color:"#4A90D9",
+   categories:["Business","Research","Documents","Automation"],
+   bestFor:"Enterprise teams drowning in scattered knowledge — Glean connects Slack, Google Drive, Confluence, Salesforce, Jira and 100+ more tools into one searchable layer so every employee can find what they need in seconds",
+   free:{available:false,desc:"No free tier. Enterprise contracts only. Demo required."},
+   paid:[
+     {name:"Enterprise",price:"~$50/user/month (est.)",perks:"Universal search across 100+ connectors, Glean Assistant AI chat, Agents, custom permissions mirroring, SOC 2 Type II"},
+     {name:"Enterprise (min)",price:"~$60k/year minimum",perks:"100-seat minimum contract, mandatory 10% support fee on ARR, optional Work AI add-on ~$15/user/month"}
+   ],
+   useCases:[
+     "Search across Slack, Drive, Notion, Jira, Confluence from one bar",
+     "Ask the Glean Assistant questions and get answers grounded in company data",
+     "Onboard new hires 3x faster by surfacing relevant docs automatically",
+     "Build Glean Agents to automate repetitive knowledge-retrieval workflows",
+     "Audit and govern who has access to what knowledge across the org",
+     "Surface related documents and colleagues while you're working"
+   ],
+   features:[
+     "100+ native connectors — Slack, Google Workspace, Microsoft 365, Salesforce, Jira, Confluence, GitHub, Zendesk and more",
+     "Enterprise Graph — maps relationships between people, documents, and projects",
+     "Permission mirroring — never surfaces content a user isn't allowed to see",
+     "Glean Assistant — conversational AI grounded entirely in your company's data",
+     "Glean Agents — build automated workflows on top of your knowledge graph",
+     "Code Intelligence — understands codebase structure for technical teams",
+     "$150M Series F — named to Fast Company's World's Most Innovative Companies 2025",
+     "Deployed by 500+ enterprises including Duolingo, Grammarly, and Okta"
+   ],
+   integrations:["Slack","Google Drive","Confluence","Jira","Salesforce","GitHub","Zendesk","Notion","Microsoft 365","ServiceNow","Workday","Box"],
+   scores:{writing:4,coding:6,research:9,creativity:3,automation:7,multimodal:4}},
+
+  {id:"writer",name:"Writer",maker:"Writer",tagline:"Enterprise AI platform — brand-safe content, agents, and workflows at scale",icon:"✍️",color:"#6B4FBB",
+   categories:["Writing","Business","General AI","Automation"],
+   bestFor:"Marketing, content, and ops teams at large companies who need AI that actually knows their brand — Writer enforces your style guide, terminology, and tone automatically across every output",
+   free:{available:false,desc:"No free tier. 14-day trial available on Starter plan."},
+   paid:[
+     {name:"Starter",price:"$29/user/month (annual)",perks:"Up to 20 users, 200K words/month, 5 custom agents, CoWrite assistant, style guide"},
+     {name:"Enterprise",price:"Custom — typically $200–400/user/year",perks:"Unlimited users, Palmyra LLMs, Knowledge Graph, Agent Builder, SAML SSO, SOC 2 / HIPAA / GDPR, 100+ prebuilt agents, Playbooks, Routines"}
+   ],
+   useCases:[
+     "Generate on-brand marketing copy, emails, and reports at scale",
+     "Enforce brand voice and terminology across every team and department",
+     "Build AI agents that connect to Salesforce, Workday, Slack, and Snowflake",
+     "Run AI-powered workflows with Playbooks — no coding required",
+     "Train on proprietary data with the Knowledge Graph for accurate, grounded answers",
+     "Automate compliance-heavy content in healthcare and finance with domain models"
+   ],
+   features:[
+     "Palmyra LLMs — Writer's own enterprise language models (X5, Med, Fin, Vision)",
+     "Knowledge Graph — connects your data sources so AI outputs are always grounded",
+     "Agent Builder — build custom AI agents with low-code workflow tools",
+     "Playbooks & Routines — repeatable, automated content workflows",
+     "Style guide enforcement — every output matches your brand rules automatically",
+     "SOC 2 Type II, HIPAA, GDPR — does not train on customer data",
+     "$1.9B valuation, $320M raised — used by Uber, Spotify, L'Oreal, Accenture",
+     "100+ prebuilt agents across marketing, sales, HR, legal, and finance"
+   ],
+   integrations:["Salesforce","Slack","Google Workspace","Microsoft 365","Snowflake","Workday","Figma","Contentful","Adobe","Zendesk"],
+   scores:{writing:9,coding:4,research:6,creativity:7,automation:8,multimodal:5}},
+
+  {id:"cohere",name:"Cohere",maker:"Cohere",tagline:"Enterprise LLM platform — build AI applications on private, secure infrastructure",icon:"⬡",color:"#39B185",
+   categories:["General AI","Coding","Research","Automation","Business"],
+   bestFor:"Enterprise engineering and data teams who need to build AI applications on their own data — Cohere provides the models, embeddings, and RAG infrastructure without sending data to a third-party cloud",
+   free:{available:true,desc:"Free API tier — limited rate, non-production use. Playground access for testing all models."},
+   paid:[
+     {name:"Production API",price:"From $0.15/1M tokens (Command R)",perks:"Command R, Command R+, Embed, Rerank models, 99.9% uptime SLA, production rate limits"},
+     {name:"Enterprise",price:"Custom — private deployment available",perks:"Private cloud or on-premises deployment, dedicated endpoints, custom fine-tuning, SOC 2, HIPAA, GDPR, enterprise SLAs"}
+   ],
+   useCases:[
+     "Build enterprise search and RAG pipelines on your private company data",
+     "Fine-tune custom LLMs on proprietary datasets without data leaving your environment",
+     "Power semantic search in internal tools — better than keyword matching",
+     "Add AI chat to enterprise products with Command R API",
+     "Classify and extract structured data from documents at scale",
+     "Deploy AI in regulated industries (finance, healthcare) with full data control"
+   ],
+   features:[
+     "Command R and Command R+ — top-ranked open-weight models for enterprise RAG",
+     "Embed v3 — best-in-class text embeddings for semantic search",
+     "Rerank — boost search relevance by re-scoring retrieved results",
+     "Private deployment — run models on your own cloud or on-premises servers",
+     "Native RAG toolchain — retrieval, grounding, and citation built in",
+     "Fine-tuning — customize models on proprietary data in days, not months",
+     "$445M raised — backed by Nvidia, Salesforce, Oracle, and Index Ventures",
+     "Used by Oracle, McKinsey, HyperWrite, and 1,000+ enterprises"
+   ],
+   integrations:["LangChain","LlamaIndex","AWS","Google Cloud","Azure","Pinecone","Weaviate","Snowflake","Oracle Cloud","Elasticsearch"],
+   scores:{writing:6,coding:8,research:8,creativity:4,automation:8,multimodal:5}},
+
+  {id:"salesforce-einstein",name:"Salesforce Einstein",maker:"Salesforce",tagline:"AI embedded across the entire Salesforce platform — predictions, automation, and agents in your CRM",icon:"☁️",color:"#0070D2",
+   categories:["Sales","Business","Automation","Research"],
+   bestFor:"Sales, service, and marketing teams already on Salesforce who want AI that works inside their existing CRM workflows — Einstein predicts deal outcomes, auto-generates emails, and now deploys autonomous Agentforce AI agents",
+   free:{available:false,desc:"Included with qualifying Salesforce editions. Agentforce from $2/conversation."},
+   paid:[
+     {name:"Einstein (included)",price:"Included in Sales/Service Cloud Enterprise+",perks:"Predictive AI — lead scoring, opportunity insights, forecast guidance, email recommendations"},
+     {name:"Agentforce",price:"$2 per conversation (or bundled in Unlimited Edition)",perks:"Deploy autonomous AI agents across sales, service, marketing, and commerce — handles customer queries, books meetings, updates CRM without human intervention"}
+   ],
+   useCases:[
+     "Score leads and predict which deals will close using CRM data",
+     "Auto-generate personalised sales emails and follow-up sequences",
+     "Deploy Agentforce AI agents to handle customer service queries 24/7",
+     "Get AI-powered forecasting with confidence scores on pipeline",
+     "Summarise customer interactions and auto-update opportunity records",
+     "Run AI-powered marketing campaigns that self-optimise on audience signals"
+   ],
+   features:[
+     "Einstein Copilot — conversational AI assistant embedded in every Salesforce app",
+     "Agentforce — autonomous AI agents for sales, service, marketing, and commerce",
+     "Predictive lead and opportunity scoring trained on your own CRM data",
+     "Einstein GPT — generative AI for emails, summaries, and case responses",
+     "Data Cloud integration — unifies customer data from any source for AI grounding",
+     "Einstein Analytics — AI-powered dashboards and forecasting",
+     "Trusted AI layer — Salesforce Einstein Trust Layer prevents data from going to LLM providers",
+     "Used by 90% of Fortune 500 companies via the Salesforce platform"
+   ],
+   integrations:["Slack","MuleSoft","Tableau","Google Workspace","Microsoft 365","Heroku","AppExchange","SAP","ServiceNow","DocuSign"],
+   scores:{writing:6,coding:4,research:7,creativity:4,automation:9,multimodal:5}}];
 
 // ═══════════════ USE CASES ═══════════════
 const USE_CASES = [
-  {id:"writing",label:"Writing & Content",emoji:"✍️",toolIds:["chatgpt","claude","gemini","copilot","notion-ai","canva-ai"],
+  {id:"writing",label:"Writing & Content",emoji:"✍️",toolIds:["chatgpt","claude","gemini","copilot","notion-ai","canva-ai","writer"],
    desc:"Create blog posts, emails, marketing copy, reports, and long-form content"},
-  {id:"coding",label:"Software Development",emoji:"💻",toolIds:["cursor","claude","chatgpt","deepseek","github-copilot","lovable"],
+  {id:"coding",label:"Software Development",emoji:"💻",toolIds:["cursor","claude","chatgpt","deepseek","github-copilot","lovable","cohere"],
    desc:"Build apps, debug code, refactor, generate tests, and ship features faster"},
-  {id:"research",label:"Research & Analysis",emoji:"🔍",toolIds:["perplexity","notebooklm","elicit","gemini","grok","wolfram"],
+  {id:"research",label:"Research & Analysis",emoji:"🔍",toolIds:["perplexity","notebooklm","elicit","gemini","grok","wolfram","glean","cohere"],
    desc:"Find answers, analyze documents, fact-check, and do deep research with sources"},
   {id:"images",label:"Image Generation",emoji:"🎨",toolIds:["midjourney","adobe-firefly","chatgpt","freepik","canva-ai"],
    desc:"Create product visuals, concept art, marketing images, and brand graphics"},
@@ -1372,19 +1615,19 @@ const USE_CASES = [
    desc:"Create 2D/3D animations, motion graphics, animated avatars, and animated video content"},
   {id:"audio",label:"Voice & Audio",emoji:"🎙️",toolIds:["elevenlabs","heygen","chatgpt"],
    desc:"Generate realistic voices, clone voices, dub videos, and build voice-powered apps"},
-  {id:"automation",label:"Workflow Automation",emoji:"⚡",toolIds:["n8n","openclaw","chatgpt","claude","copilot","otter-ai","gong"],
+  {id:"automation",label:"Workflow Automation",emoji:"⚡",toolIds:["n8n","openclaw","chatgpt","claude","copilot","otter-ai","gong","salesforce-einstein","cohere"],
    desc:"Automate repetitive tasks, connect apps, and build AI-powered pipelines"},
-  {id:"documents",label:"Document Intelligence",emoji:"📄",toolIds:["notebooklm","claude","gemini","perplexity","harvey"],
+  {id:"documents",label:"Document Intelligence",emoji:"📄",toolIds:["notebooklm","claude","gemini","perplexity","harvey","glean","cohere"],
    desc:"Extract insights from PDFs, contracts, research papers, and large file collections"},
   {id:"legal",label:"Legal",emoji:"⚖️",toolIds:["harvey","claude","perplexity","notebooklm"],
    desc:"Contract analysis, legal research, compliance monitoring, and document drafting for legal teams"},
   {id:"education",label:"Education & Learning",emoji:"🏫",toolIds:["khanmigo","notebooklm","chatgpt","gemini","wolfram","elicit"],
    desc:"AI tutoring, study guides, research tools, and educational content creation"},
-  {id:"business",label:"Business & Finance",emoji:"💼",toolIds:["copilot","notion-ai","otter-ai","gong","perplexity","chatgpt"],
+  {id:"business",label:"Business & Finance",emoji:"💼",toolIds:["copilot","notion-ai","otter-ai","gong","perplexity","chatgpt","glean","writer","salesforce-einstein"],
    desc:"Business intelligence, meeting management, productivity, and financial research tools"},
   {id:"fitness",label:"Fitness & Health",emoji:"💪",toolIds:["fitbod","chatgpt","gemini"],
    desc:"AI-powered workout planning, fitness tracking, and health optimization tools"},
-  {id:"sales",label:"Sales & CRM",emoji:"📞",toolIds:["gong","chatgpt","claude","copilot","n8n"],
+  {id:"sales",label:"Sales & CRM",emoji:"📞",toolIds:["gong","chatgpt","claude","copilot","n8n","salesforce-einstein"],
    desc:"Sales coaching, deal intelligence, revenue forecasting, and CRM automation"}
 ];
 
@@ -1398,7 +1641,7 @@ const CAT_META = {
   "Animation":{emoji:"🎞️",headline:"Best AI tools for animation",desc:"From stylized 2D clips to realistic 3D motion capture — AI animation tools that remove the technical barrier entirely.",scoreKey:"creativity",highlights:{pika:"Pikaffects turn static objects into cinematic animations — explode, melt, morph",runway:"30+ AI tools including motion tracking, rotoscoping, and style transfer",kling:"Strong physics realism — perfect for organic 2D and 3D-style animation",'adobe-firefly':"Firefly Animation inside After Effects — commercially safe, stays in Creative Cloud",synthesia:"Animated AI avatar videos with facial expressions and multilingual voiceover"}},
   "Design":{emoji:"✏️",headline:"Best AI tools for design and branding",desc:"Create on-brand graphics, social content, presentations, and marketing visuals — even with zero design experience.",scoreKey:"creativity",highlights:{'canva-ai':"Magic Design builds a full branded presentation from one sentence prompt",freepik:"Inpainting + Relight + Upscaler in one — professional photo editing without Photoshop",'adobe-firefly':"Generative Recolor creates thousands of color variants of a vector in seconds",midjourney:"Consistent character feature — same person or object across an entire campaign"}},
   "Voice & Audio":{emoji:"🎙️",headline:"Best AI voice and audio tools",desc:"Clone voices, narrate content, dub videos into 40+ languages, and build voice-powered apps.",scoreKey:"multimodal",highlights:{elevenlabs:"Clone your voice from 1 minute — 3,000+ voices, 29 languages, full API access",heygen:"Automated video dubbing with lip sync — upload a video, get it dubbed in any language",chatgpt:"Real-time voice conversation with Advanced Voice Mode — natural two-way dialogue"}},
-  "Automation":{emoji:"⚡",headline:"Best AI tools for workflow automation",desc:"Connect your apps, chain AI models, and build pipelines that run themselves — from email sorting to fully autonomous multi-agent systems.",scoreKey:"automation",highlights:{n8n:"400+ integrations + AI Agent nodes — build self-correcting autonomous pipelines visually",chatgpt:"Custom GPT Actions + API: trigger real-world tasks from a conversation",claude:"MCP server support — connect Claude to any tool via Model Context Protocol",copilot:"Power Automate integration — automate across all Microsoft 365 apps without code",'otter-ai':"Automatically extract action items from every meeting and push to Slack or Notion",gong:"Auto-updates CRM from call insights — no manual logging after every sales call",openclaw:"Self-hosted AI agent — runs shell commands, controls browsers, automates across 30+ messaging apps"}},
+  "Automation":{emoji:"⚡",headline:"Best AI tools for workflow automation",desc:"Connect your apps, chain AI models, and build pipelines that run themselves — from email sorting to fully autonomous multi-agent systems.",scoreKey:"automation",highlights:{n8n:"400+ integrations + AI Agent nodes — build self-correcting autonomous pipelines visually",chatgpt:"Custom GPT Actions + API: trigger real-world tasks from a conversation",claude:"MCP server support — connect Claude to any tool via Model Context Protocol",copilot:"Power Automate integration — automate across all Microsoft 365 apps without code",'otter-ai':"Automatically extract action items from every meeting and push to Slack or Notion",gong:"Auto-updates CRM from call insights — no manual logging after every sales call",glean:"Searches your entire company knowledge base — Slack, Drive, Confluence, Jira — in one place",writer:"Enforces brand voice and style across every team's output automatically",openclaw:"Self-hosted AI agent — runs shell commands, controls browsers, automates across 30+ messaging apps"}},
   "Documents":{emoji:"📄",headline:"Best tools for document intelligence",desc:"Upload contracts, research papers, PDFs, or entire knowledge bases and get cited answers from your own content.",scoreKey:"research",highlights:{notebooklm:"Answers only from your uploaded sources — zero hallucination, perfect for legal",claude:"1M token context: reads an entire book, codebase, or contract in one pass",gemini:"Multi-modal document reading — processes text, tables, charts, and images in PDFs",perplexity:"Upload files and cross-reference against live web data simultaneously",harvey:"Purpose-built for legal documents — clause-level citations and playbook enforcement"}},
   "Legal":{emoji:"⚖️",headline:"Best AI tools for legal work",desc:"Contract analysis, legal research, compliance monitoring, and document drafting — AI that meets the standards of professional legal teams.",scoreKey:"research",highlights:{harvey:"The platform top law firms trust — legal-domain trained, contract redlining, case research","claude":"Best general AI for reading dense legal documents — 1M token context, precise extraction",perplexity:"Real-time legal news and case law updates with full source citations","notebooklm":"Upload case files and contracts — Q&A across all of them with zero hallucination"}},
   "Education":{emoji:"🏫",headline:"Best AI tools for education and learning",desc:"AI tutors, research assistants, and study tools that build real understanding — not just give you the answer.",scoreKey:"research",highlights:{khanmigo:"Socratic AI tutor — guides students to find answers instead of just providing them","notebooklm":"Upload your course materials — instant Q&A and audio summaries of any lecture",chatgpt:"Explain any concept at any level, generate practice problems, check your understanding",gemini:"Deep Research for student projects — multi-source reports with citations",wolfram:"Step-by-step solutions for math, science, and engineering — shows all working",elicit:"Systematic literature review — extract data from 200M+ academic papers"}},
@@ -1438,7 +1681,7 @@ function renderCard(t,catHighlight){
     <div class="detail-section"><h4>What you can do</h4><ul class="uc-list">${t.useCases.map(u=>`<li>${u}</li>`).join('')}</ul></div>
     <div class="detail-section"><h4>Key features</h4><ul class="feat-list">${t.features.map(f=>`<li>${f}</li>`).join('')}</ul><h4 style="margin-top:12px">Integrates with</h4><ul class="int-list">${t.integrations.map(i=>`<li>${i}</li>`).join('')}</ul></div>
   </div>
-  <div style="margin-top:16px"><h4 style="font-size:9px;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);font-weight:700;margin-bottom:8px">Capability scores</h4>${scores}</div>
+  <div style="margin-top:16px"><h4 style="font-size:9px;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:6px">Capability scores <span class="score-info" data-tip="Scores are editorial — based on structured tests &amp; public benchmarks. Scale: 1 = limited, 5 = solid, 10 = best-in-class. See Methodology in the Community tab for full details.">?</span></h4>${scores}</div>
   <div style="margin-top:16px"><h4 style="font-size:9px;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);font-weight:700;margin-bottom:8px">Paid plans</h4>
   <div class="plans-list">${t.paid.map(p=>`<div class="plan-item"><div><div class="plan-name">${p.name}</div><div class="plan-price">${p.price}</div></div><div class="plan-perks">${p.perks}</div></div>`).join('')}</div></div></div>`;
   return `<div class="tool-card${exp?' expanded':''}" data-id="${t.id}">
@@ -1492,15 +1735,15 @@ function renderExplore(){
       card.addEventListener('click',()=>{
         const id=card.dataset.id;
         const wasExpanded=state.expandedId===id;
-        // Capture absolute page position of card top BEFORE any DOM change
-        const absTop=card.getBoundingClientRect().top+window.scrollY;
         state.expandedId=wasExpanded?null:id;
         renderExplore();
-        // Only scroll when opening (not closing)
+        // Only scroll when opening — re-measure AFTER render so position is always accurate
         if(!wasExpanded){
+          const newCard=document.querySelector(`[data-id="${id}"]`);
+          if(!newCard) return;
           const headerH=(document.querySelector('header')||{offsetHeight:58}).offsetHeight||58;
-          // Scroll so the card name sits 8px below the sticky header — instant, no animation
-          window.scrollTo({top:absTop-headerH-8,behavior:'instant'});
+          const freshTop=newCard.getBoundingClientRect().top+window.scrollY;
+          window.scrollTo({top:freshTop-headerH-8,behavior:'instant'});
         }
       });
     });
@@ -1517,7 +1760,7 @@ function clearFilters(){
 
 
 // ═══════════════ RENDER COMPARE ═══════════════
-const CHART_COLORS=[{border:'#7C6AF7',bg:'rgba(124,106,247,0.15)'},{border:'#06D6A0',bg:'rgba(6,214,160,0.12)'},{border:'#FF6B6B',bg:'rgba(255,107,107,0.12)'},{border:'#F5A623',bg:'rgba(245,166,35,0.12)'}];
+const CHART_COLORS=[{border:'#D4824A',bg:'rgba(212,130,74,0.15)'},{border:'#5DB88A',bg:'rgba(93,184,138,0.12)'},{border:'#C25858',bg:'rgba(194,88,88,0.12)'},{border:'#C8963C',bg:'rgba(200,150,60,0.12)'}];
 
 function renderCompare(){
   const sel=document.getElementById('compare-selectors');
@@ -1559,7 +1802,7 @@ function renderUcToolDetail(t){
       <div><div style="font-size:9px;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);font-weight:700;margin-bottom:8px">Use cases</div><ul style="list-style:none;display:flex;flex-direction:column;gap:5px">${t.useCases.slice(0,5).map(u=>`<li style="font-size:12px;color:var(--text2);display:flex;gap:6px;align-items:flex-start;line-height:1.45"><span style="color:var(--p1);flex-shrink:0;font-weight:700">→</span>${u}</li>`).join('')}</ul></div>
       <div><div style="font-size:9px;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);font-weight:700;margin-bottom:8px">Key features</div><ul style="list-style:none;display:flex;flex-direction:column;gap:5px">${t.features.slice(0,4).map(f=>`<li style="font-size:12px;color:var(--text2);display:flex;gap:6px;align-items:flex-start;line-height:1.45"><span style="color:var(--p2);flex-shrink:0;font-weight:700">✓</span>${f}</li>`).join('')}</ul></div>
     </div>
-    <div style="margin-bottom:14px"><div style="font-size:9px;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);font-weight:700;margin-bottom:8px">Capability scores</div>${scores}</div>
+    <div style="margin-bottom:14px"><div style="font-size:9px;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:6px">Capability scores <span class="score-info" data-tip="Scores are editorial — based on structured tests &amp; public benchmarks. Scale: 1 = limited, 5 = solid, 10 = best-in-class. See Methodology in the Community tab for full details.">?</span></div>${scores}</div>
     <div style="display:flex;align-items:center;gap:10px;padding-top:12px;border-top:1px solid var(--border)">
       <span class="free-badge ${t.free.available?'yes':'no'}">${t.free.available?'✓ Free tier':'✗ No free tier'}</span>
       <span style="font-size:12px;color:var(--text2)">Paid from <strong>${t.paid[0].price}</strong></span>
@@ -1610,15 +1853,15 @@ function renderUseCases(){
     row.addEventListener('click',()=>{
       const id=row.dataset.id;
       const wasExpanded=ucExpandedId===id;
-      // Capture absolute page position of this row BEFORE DOM is rebuilt
-      const absTop=row.getBoundingClientRect().top+window.scrollY;
       ucExpandedId=wasExpanded?null:id;
       renderUseCases();
-      // Only scroll when opening
+      // Only scroll when opening — query the NEW row after re-render for accurate position
       if(!wasExpanded){
+        const newRow=document.querySelector(`.uc-tool-row[data-id="${id}"]`);
+        if(!newRow) return;
         const headerH=(document.querySelector('header')||{offsetHeight:58}).offsetHeight||58;
-        // Scroll so the tool name row sits 8px below the sticky header
-        window.scrollTo({top:absTop-headerH-8,behavior:'smooth'});
+        const freshTop=newRow.getBoundingClientRect().top+window.scrollY;
+        window.scrollTo({top:freshTop-headerH-8,behavior:'smooth'});
       }
     });
   });
@@ -1647,31 +1890,24 @@ document.querySelectorAll('.tab-btn').forEach(btn=>btn.addEventListener('click',
 document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();document.getElementById('search-input').focus();}});
 document.getElementById('hero-browse-btn').addEventListener('click',()=>{document.querySelector('.toolbar').scrollIntoView({behavior:'smooth'});});
 document.getElementById('random-btn').addEventListener('click',()=>{
-  // Pick a different tool than the current one
   const candidates=TOOLS.filter(x=>x.id!==state.expandedId);
   const pick=candidates.length?candidates[Math.floor(Math.random()*candidates.length)]:TOOLS[0];
 
-  // Step 1: collapse current card and reset filters
+  // Collapse current, reset filters
   state.expandedId=null;
   state.query='';state.category='All';
   document.querySelectorAll('.cat-pill').forEach(p=>p.classList.toggle('active',p.dataset.cat==='All'));
   if(state.activeTab!=='explore')switchTab('explore');else renderExplore();
 
-  // Step 2: expand the new card, then scroll AFTER animation completes
+  // Expand the new card, then re-measure its fresh position and scroll
   setTimeout(()=>{
     state.expandedId=pick.id;
     renderExplore();
-
-    // Wait for the 200ms fadeIn CSS animation to fully finish before measuring
-    setTimeout(()=>{
-      const card=document.querySelector(`[data-id="${pick.id}"]`);
-      if(!card) return;
-      const headerH=(document.querySelector('header')||{offsetHeight:58}).offsetHeight||58;
-      const rect=card.getBoundingClientRect();
-      // rect.top is position relative to viewport — convert to absolute scroll position
-      const y=window.scrollY+rect.top-headerH-8;
-      window.scrollTo({top:y,behavior:'smooth'});
-    },220);
+    const card=document.querySelector(`[data-id="${pick.id}"]`);
+    if(!card) return;
+    const headerH=(document.querySelector('header')||{offsetHeight:58}).offsetHeight||58;
+    const freshTop=card.getBoundingClientRect().top+window.scrollY;
+    window.scrollTo({top:freshTop-headerH-8,behavior:'smooth'});
   },60);
 });
 (function(){
@@ -1850,7 +2086,7 @@ renderExplore();
     // ── Greeting ──────────────────────────────────────────────────
     if(i.greeting){
       memory.update('greeting',[]);
-      return fmt(`Hey! I'm the Toolipedia Advisor.\n\nI know all 31 AI tools here — what they're good for, how they compare, what each one costs, and how to combine them.\n\nWhat are you trying to do? Could be something simple like "I want to write better emails" or something complex like an automated data pipeline. Just describe it.`);
+      return fmt(`Hey! I'm the Toolipedia Advisor.\n\nI know all 35 AI tools here — what they're good for, how they compare, what each one costs, and how to combine them.\n\nWhat are you trying to do? Could be something simple like "I want to write better emails" or something complex like an automated data pipeline. Just describe it.`);
     }
 
     // ── Thanks ────────────────────────────────────────────────────
@@ -1862,7 +2098,7 @@ renderExplore();
     // ── What can you do / meta ────────────────────────────────────
     if(i.meta){
       memory.update('meta',[]);
-      return fmt(`I know all 31 AI tools on Toolipedia — what each one does, how much it costs, when to use it, and how to combine them.\n\n**You can ask me things like:**\n• "I want to build a YouTube channel with AI"\n• "What's the best free AI stack?"\n• "I'm a lawyer — what should I use?"\n• "Tell me about Midjourney"\n• "Compare ChatGPT vs Claude"\n• "I want to automate my whole data pipeline"\n\nOr just describe your situation and I'll figure out what you need.`);
+      return fmt(`I know all 35 AI tools on Toolipedia — what each one does, how much it costs, when to use it, and how to combine them.\n\n**You can ask me things like:**\n• "I want to build a YouTube channel with AI"\n• "What's the best free AI stack?"\n• "I'm a lawyer — what should I use?"\n• "Tell me about Midjourney"\n• "Compare ChatGPT vs Claude"\n• "I want to automate my whole data pipeline"\n\nOr just describe your situation and I'll figure out what you need.`);
     }
 
     // ── Specific tool lookup ──────────────────────────────────────
