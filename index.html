@@ -179,19 +179,19 @@ body.wiki-mode main,body.wiki-mode footer{visibility:hidden}
   max-width:820px;margin:0 auto;
 }
 .hero-label{
-  display:inline-flex;align-items:center;gap:6px;
+  display:inline-flex;align-items:center;gap:8px;
   color:var(--text3);font-size:11px;font-weight:400;
-  letter-spacing:0.8px;text-transform:uppercase;margin-bottom:20px;
+  letter-spacing:0.6px;margin-bottom:24px;
 }
 .hero-label::before{
   content:'';width:4px;height:4px;border-radius:50%;
-  background:var(--p1);flex-shrink:0;opacity:0.8;
+  background:var(--p1);flex-shrink:0;opacity:0.7;
 }
 .hero h1{
   font-family:var(--ff-head);
-  font-size:clamp(30px,5.5vw,58px);
-  font-weight:700;line-height:1.08;
-  letter-spacing:-1px;margin-bottom:16px;color:var(--text);
+  font-size:clamp(32px,5.8vw,62px);
+  font-weight:700;line-height:1.06;
+  letter-spacing:-1.5px;margin-bottom:0;color:var(--text);
   font-variation-settings:'opsz' 40;
 }
 .hero h1 em{
@@ -199,6 +199,19 @@ body.wiki-mode main,body.wiki-mode footer{visibility:hidden}
   font-weight:300;
   font-variation-settings:'opsz' 40;
 }
+.hero-tagline{
+  font-family:var(--ff-body);
+  font-size:clamp(15px,2vw,18px);
+  font-weight:300;color:var(--text2);
+  margin:14px auto 32px;
+  line-height:1.5;
+  max-width:420px;
+  letter-spacing:0.1px;
+}
+.hero-tagline strong{
+  color:var(--text);font-weight:500;
+}
+/* legacy .hero p kept for fallback */
 .hero p{
   color:var(--text2);font-size:16px;font-weight:300;
   max-width:480px;margin:0 auto 28px;line-height:1.7;
@@ -207,28 +220,29 @@ body.wiki-mode main,body.wiki-mode footer{visibility:hidden}
 /* ADVISOR CTA */
 .advisor-cta{
   display:flex;align-items:center;justify-content:center;
-  gap:10px;flex-wrap:wrap;margin-bottom:32px;
+  gap:12px;flex-wrap:wrap;margin-bottom:32px;
 }
 .advisor-main-btn{
-  display:flex;align-items:center;gap:8px;padding:12px 22px;
+  display:flex;align-items:center;gap:9px;padding:13px 26px;
   border-radius:var(--radius-md);background:var(--p1);
   border:none;cursor:pointer;font-family:var(--ff-body);
-  font-size:14px;font-weight:600;color:#fff;
+  font-size:15px;font-weight:600;color:#fff;letter-spacing:-0.1px;
   transition:all 0.2s ease;
-  box-shadow:0 2px 12px rgba(212,130,74,0.25);
+  box-shadow:0 2px 14px rgba(212,130,74,0.28);
 }
 .advisor-main-btn:hover{
   transform:translateY(-1px);
-  box-shadow:0 4px 20px rgba(212,130,74,0.4);
+  box-shadow:0 5px 22px rgba(212,130,74,0.42);
   filter:brightness(1.05);
 }
-.advisor-main-btn .btn-icon{font-size:16px}
-.advisor-or{font-size:12px;color:var(--text3)}
+.advisor-main-btn .btn-icon{font-size:15px;opacity:0.85}
+.advisor-or{font-size:12px;color:var(--text3);letter-spacing:0.3px}
 .advisor-browse-btn{
-  padding:10px 18px;border-radius:var(--radius-md);
+  padding:11px 20px;border-radius:var(--radius-md);
   background:transparent;border:1px solid var(--border);
   color:var(--text2);font-size:13px;font-weight:400;
   cursor:pointer;font-family:var(--ff-body);transition:all var(--transition);
+  letter-spacing:0.1px;
 }
 .advisor-browse-btn:hover{border-color:var(--border-h);color:var(--text)}
 
@@ -761,6 +775,81 @@ footer span{color:var(--p1);font-weight:500}
 
 @media(max-width:768px){.wiki-infobox{float:none;width:100%;margin:0 0 18px 0}.wiki-input-group{grid-template-columns:1fr}.wiki-page{padding:16px 18px 60px}}
 
+/* ── CHAT OUTPUT FORMATTING ───────────────────────────────────────── */
+.chat-section-head{font-size:9px;text-transform:uppercase;letter-spacing:0.8px;color:var(--text3);font-weight:600;margin:14px 0 6px}
+.chat-list-item{display:flex;gap:7px;margin:4px 0;font-size:12.5px;line-height:1.5}
+.chat-list-item span:first-child{color:var(--p1);flex-shrink:0;font-weight:700}
+.chat-step{display:flex;gap:10px;align-items:flex-start;margin:6px 0;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 10px}
+.chat-step-num{background:var(--p1);color:#fff;border-radius:50%;width:18px;height:18px;display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;flex-shrink:0;margin-top:1px}
+.chat-warning{background:rgba(200,150,60,0.1);border:1px solid rgba(200,150,60,0.3);border-radius:var(--radius-sm);padding:7px 10px;font-size:12px;color:var(--p4);margin:8px 0}
+.chat-ok{background:rgba(93,184,138,0.1);border:1px solid rgba(93,184,138,0.25);border-radius:var(--radius-sm);padding:7px 10px;font-size:12px;color:var(--p2);margin:6px 0}
+.chat-divider{height:1px;background:var(--border);margin:12px 0}
+.chat-persona-btn{display:inline-block;margin:4px 4px 4px 0;padding:6px 14px;border-radius:var(--radius-sm);background:var(--bg3);border:1px solid var(--border);color:var(--text2);font-size:12px;font-weight:500;cursor:pointer;font-family:var(--ff-body);transition:all var(--transition)}
+.chat-persona-btn:hover{border-color:var(--border-h);color:var(--text);background:var(--bg4)}
+
+
+/* ── AI STACK ADVISOR STEP UI ─────────────────────────────────────── */
+/* Step progress bar */
+.adv-steps{display:flex;align-items:center;padding:14px 16px 10px;border-bottom:1px solid var(--border);background:var(--bg2);flex-shrink:0;position:sticky;top:0;z-index:10}
+.adv-step{display:flex;flex-direction:column;align-items:center;gap:3px;flex:0 0 auto}
+.adv-step-dot{width:22px;height:22px;border-radius:50%;background:var(--bg4);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:9px;font-weight:700;color:var(--text3);transition:all 0.2s}
+.adv-step.active .adv-step-dot{background:var(--p1);border-color:var(--p1);color:#fff}
+.adv-step.done .adv-step-dot{background:var(--p2);border-color:var(--p2);color:#fff}
+.adv-step-label{font-size:9px;color:var(--text3);font-weight:400;white-space:nowrap;letter-spacing:0.2px}
+.adv-step.active .adv-step-label{color:var(--p1);font-weight:600}
+.adv-step.done .adv-step-label{color:var(--p2)}
+.adv-step-line{flex:1;height:1px;background:var(--border);margin:0 6px;margin-bottom:14px;min-width:16px}
+
+/* Step 1 — Goal */
+.adv-goal-screen{padding:14px 16px 12px}
+.adv-headline{font-family:var(--ff-head);font-size:16px;font-weight:700;color:var(--text);margin-bottom:5px;font-variation-settings:'opsz' 16}
+.adv-sub{font-size:12px;color:var(--text3);margin-bottom:14px;line-height:1.5;font-weight:400}
+.adv-examples{display:flex;flex-direction:column;gap:5px}
+.adv-example-label{font-size:9px;text-transform:uppercase;letter-spacing:0.7px;color:var(--text3);margin-bottom:2px;font-weight:500}
+.adv-example-chip{text-align:left;padding:7px 11px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text2);font-size:11.5px;cursor:pointer;font-family:var(--ff-body);font-weight:400;transition:all var(--transition);line-height:1.4}
+.adv-example-chip:hover{border-color:var(--border-h);color:var(--text);background:var(--bg4)}
+
+/* Step 2 — Questions */
+.adv-prev-answer{display:flex;align-items:center;justify-content:space-between;padding:6px 16px;border-bottom:1px solid var(--border);background:var(--bg2)}
+.adv-prev-q{font-size:10px;color:var(--text3);font-weight:400}
+.adv-prev-a{font-size:11px;color:var(--p2);font-weight:600}
+.adv-question-block{padding:14px 16px}
+.adv-q-number{font-size:9px;text-transform:uppercase;letter-spacing:0.7px;color:var(--p1);font-weight:600;margin-bottom:6px}
+.adv-q-text{font-size:15px;font-weight:600;color:var(--text);margin-bottom:4px;line-height:1.35}
+.adv-q-sub{font-size:11px;color:var(--text3);margin-bottom:14px;font-weight:400}
+.adv-chips-row{display:flex;flex-direction:column;gap:7px}
+.adv-option-chip{text-align:left;padding:10px 14px;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-md);color:var(--text);font-size:13px;cursor:pointer;font-family:var(--ff-body);font-weight:500;transition:all var(--transition);display:flex;align-items:center;gap:8px}
+.adv-option-chip:hover{border-color:var(--p1);background:rgba(212,130,74,0.06);color:var(--p1)}
+.adv-option-chip:active{transform:scale(0.98)}
+
+/* Step 3 — Results */
+.adv-summary-block{margin:12px 16px 0;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-md);padding:14px}
+.adv-summary-goal{font-size:11px;color:var(--text3);font-style:italic;margin-bottom:4px;line-height:1.4}
+.adv-summary-headline{font-family:var(--ff-head);font-size:15px;font-weight:700;color:var(--text);margin-bottom:10px;font-variation-settings:'opsz' 15}
+.out-bullet{display:flex;align-items:flex-start;gap:7px;font-size:12px;color:var(--text2);margin-bottom:5px;line-height:1.45}
+.out-icon{flex-shrink:0;font-size:13px}
+.adv-breakdown{font-size:11px;color:var(--text3);border-top:1px solid var(--border);margin-top:10px;padding-top:8px;line-height:1.5}
+.adv-breakdown strong{color:var(--text2)}
+
+.adv-tools-list{padding:10px 16px 0;display:flex;flex-direction:column;gap:9px}
+.adv-tool-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-md);padding:12px;transition:border-color var(--transition)}
+.adv-tool-card:hover{border-color:var(--border-h)}
+.adv-tool-top{display:flex;align-items:center;gap:7px;margin-bottom:6px}
+.adv-layer-badge{font-size:9px;font-weight:600;padding:2px 7px;border-radius:3px;text-transform:uppercase;letter-spacing:0.4px}
+.adv-cost-free{font-size:9px;font-weight:600;padding:2px 7px;border-radius:3px;background:rgba(93,184,138,0.1);color:var(--p2);border:1px solid rgba(93,184,138,0.2)}
+.adv-cost-paid{font-size:9px;font-weight:500;color:var(--text3);padding:2px 7px;border-radius:3px;background:var(--bg4);border:1px solid var(--border)}
+.adv-tool-name{margin-bottom:5px}
+.adv-tool-name .tool-chip{font-size:13px;padding:3px 9px}
+.adv-tool-why{font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:3px}
+.adv-tool-detail{font-size:11px;color:var(--text3);line-height:1.45}
+.adv-tool-tradeoff{font-size:11px;color:var(--p4);margin-top:5px;padding:5px 8px;background:rgba(200,150,60,0.08);border-radius:var(--radius-sm);line-height:1.4}
+
+.adv-restart-row{padding:12px 16px 16px;display:flex;flex-direction:column;gap:6px;align-items:center;text-align:center}
+.adv-restart-btn{padding:8px 18px;border:1px solid var(--border);border-radius:var(--radius-sm);background:transparent;color:var(--text2);font-size:12px;font-weight:500;cursor:pointer;font-family:var(--ff-body);transition:all var(--transition)}
+.adv-restart-btn:hover{border-color:var(--border-h);color:var(--text);background:var(--bg3)}
+.adv-cta-note{font-size:10px;color:var(--text3)}
+
+
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:6px;height:6px}
 ::-webkit-scrollbar-track{background:var(--bg)}
@@ -815,16 +904,16 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
 </header>
 
 <section class="hero">
-  <div class="hero-label">The complete AI tool directory</div>
-  <h1>Find the right AI tool<br>for <em>anything you want to do</em></h1>
-  <p>Tell the AI Advisor what you want to build, create, or automate — it'll pick the exact tools and show you how to combine them.</p>
+  <div class="hero-label">35 tools · Curated &amp; scored</div>
+  <h1>The right AI stack<br>for <em>what you actually do.</em></h1>
+  <p class="hero-tagline">You know your goal. <strong>We know the tools.</strong></p>
   <div class="advisor-cta">
     <button class="advisor-main-btn" id="hero-advisor-btn">
-      <span class="btn-icon">🧠</span>
-      Chat with the AI Advisor
+      <span class="btn-icon">⬡</span>
+      Find my stack
     </button>
     <span class="advisor-or">or</span>
-    <button class="advisor-browse-btn" id="hero-browse-btn">Browse all 30 tools ↓</button>
+    <button class="advisor-browse-btn" id="hero-browse-btn">Browse all 35 tools ↓</button>
   </div>
   <div class="search-wrap">
     <div class="search-glow"></div>
@@ -1120,30 +1209,31 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
 <div id="chat-bubble">
   <div id="chat-window" class="hidden">
     <div class="chat-head">
-      <div class="chat-avatar">🧠</div>
+      <div class="chat-avatar">⬡</div>
       <div class="chat-head-info">
-        <div class="chat-head-name">Toolipedia Advisor</div>
-        <div class="chat-head-status">Tell me your goal — I'll pick your stack</div>
+        <div class="chat-head-name">AI Stack Advisor</div>
+        <div class="chat-head-status">Powered by Claude · Toolipedia</div>
       </div>
+      <button id="chat-new-btn" title="Start a new conversation" style="background:none;border:1px solid var(--border);color:var(--text3);cursor:pointer;font-size:11px;padding:4px 8px;border-radius:var(--radius-sm);transition:all var(--transition);font-family:var(--ff-body);font-weight:500;margin-right:6px;white-space:nowrap">↺ New</button>
       <button class="chat-close" id="chat-close-btn">✕</button>
     </div>
     <div id="chat-msgs"></div>
     <div class="chat-suggestions" id="chat-suggestions">
-      <button class="suggestion-chip">Connect all AI tools autonomously</button>
-      <button class="suggestion-chip">Start a YouTube channel with AI</button>
-      <button class="suggestion-chip">Build an app without coding</button>
+      <button class="suggestion-chip">Build me a solo creator stack</button>
+      <button class="suggestion-chip">AI setup for a team of 10</button>
+      <button class="suggestion-chip">Enterprise AI evaluation</button>
       <button class="suggestion-chip">Best free AI stack</button>
-      <button class="suggestion-chip">Automate my legal contracts</button>
-      <button class="suggestion-chip">AI for fitness coaching</button>
+      <button class="suggestion-chip">Compare Claude vs ChatGPT</button>
+      <button class="suggestion-chip">Automate my entire workflow</button>
     </div>
     <div class="chat-input-row">
-      <textarea id="chat-input" placeholder="What do you want to build or do?" rows="1"></textarea>
+      <textarea id="chat-input" placeholder="Describe your goal or situation…" rows="1"></textarea>
       <button id="chat-send">➤</button>
     </div>
   </div>
   <button id="chat-toggle">
-    <span>🧠</span>
-    Ask the Advisor
+    <span>⬡</span>
+    AI Stack Advisor
     <span class="notif"></span>
   </button>
 </div>
@@ -1784,6 +1874,9 @@ function renderCompare(){
 // Track which tool is expanded inside the UC tab
 let ucExpandedId=null;
 
+// Exposed to global scope so the inline onclick in renderUcToolDetail can call it
+window.closeUcDetail=function(){ucExpandedId=null;renderUseCases();};
+
 function renderUcToolDetail(t){
   const scoreKeys=["writing","coding","research","creativity","automation","multimodal"];
   const scores=scoreKeys.map(k=>`<div class="score-row"><span class="score-label">${k}</span><div class="score-bar-wrap"><div class="score-bar" style="width:${t.scores[k]*10}%"></div></div><span class="score-val">${t.scores[k]}</span></div>`).join('');
@@ -1794,7 +1887,7 @@ function renderUcToolDetail(t){
         <div style="font-family:var(--ff-head);font-size:17px;font-weight:700;color:var(--text)">${t.name}</div>
         <div style="font-size:12px;color:var(--text3)">${t.maker}</div>
       </div>
-      <button onclick="ucExpandedId=null;renderUseCases()" style="margin-left:auto;background:var(--bg4);border:1px solid var(--border);color:var(--text2);padding:5px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-family:var(--ff-body);font-weight:600">✕ Close</button>
+      <button onclick="closeUcDetail()" style="margin-left:auto;background:var(--bg4);border:1px solid var(--border);color:var(--text2);padding:5px 12px;border-radius:8px;cursor:pointer;font-size:12px;font-family:var(--ff-body);font-weight:600">✕ Close</button>
     </div>
     <p style="font-size:13px;color:var(--text2);margin-bottom:14px;line-height:1.6">${t.tagline}</p>
     <div style="font-size:11px;color:var(--text3);padding:8px 10px;background:var(--detail-bg);border-radius:8px;border-left:2px solid var(--p1);margin-bottom:14px"><strong style="color:var(--p2);display:block;font-size:9px;text-transform:uppercase;letter-spacing:0.8px;margin-bottom:2px">Best for</strong>${t.bestFor}</div>
@@ -1937,430 +2030,602 @@ document.getElementById('random-btn').addEventListener('click',()=>{
 renderExplore();
 
 
-// ═══════════════ CHAT ENGINE ═══════════════
+// ═══════════════ CHAT ENGINE — AI STACK ADVISOR v2 ═══════════════
+// 3-step structured advisor: Goal → Questions → Stack Blueprint
 (function(){
-  const win=document.getElementById('chat-window'),toggle=document.getElementById('chat-toggle'),closeBtn=document.getElementById('chat-close-btn'),msgsEl=document.getElementById('chat-msgs'),inputEl=document.getElementById('chat-input'),sendBtn=document.getElementById('chat-send'),suggestionsEl=document.getElementById('chat-suggestions');
-  let isOpen=false,isThinking=false;
+  const win=document.getElementById('chat-window'),
+        toggle=document.getElementById('chat-toggle'),
+        closeBtn=document.getElementById('chat-close-btn'),
+        msgsEl=document.getElementById('chat-msgs'),
+        inputEl=document.getElementById('chat-input'),
+        sendBtn=document.getElementById('chat-send'),
+        suggestionsEl=document.getElementById('chat-suggestions');
 
-  // ── Intent patterns ───────────────────────────────────────────────────────
-  const INTENTS={
-    meta:/what (can|do) you (do|know|help|offer)|who are you|what are you|your (capabilities|purpose|abilities)|what.*(advisor|toolipedia)|how does this (chat|work)|can you help|what do you know about/i,
-    greeting:/^(hi|hello|hey|sup|yo|howdy|good (morning|afternoon|evening)|greetings|hiya)[^a-z]*$/i,
-    thanks:/^(thanks|thank you|thx|cheers|great|awesome|perfect|nice|cool|got it|makes sense|that.s helpful|great thanks|thanks a lot|that helped|brilliant|noted)[^a-z]*$/i,
-    toolLookup:/tell me (about|more about)|what is\b|what.s\b|how does\b|explain\b|describe\b|info on|overview of|walk me through/i,
-    listTools:/list (all|your|the) tools|show (me )?(all )?tools|what tools (do you have|are there|do you know)|all (the )?ai tools|how many tools|which tools/i,
-    listCategories:/what categor|what (areas|topics|subjects) do you|what (can|do) you cover|what (domains|fields)/i,
-    followupCost:/how much|cost|price|pricing|paid|subscription|free tier|free version|afford/i,
-    followupFree:/free.*(option|version|tier|plan)|without paying|no cost|open.?source/i,
-    followupBetter:/which (one|is better)|what.s (the )?best|recommend|better for me|should i (use|pick|go with)/i,
-    professionData:/data.?analyst|bi.?analyst|data.?scientist|analyst\b|data.*pipeline|etl|data.*warehouse|power\s?bi|tableau|looker|dbt\b|airflow|snowflake|databricks/i,
-    professionDev:/developer|engineer|programmer|software|devops|backend|frontend|full.?stack/i,
-    professionMarketer:/marketer|marketing|growth|seo|ads|campaign|social media manager|content creator/i,
-    professionLegal:/lawyer|attorney|legal|law firm|compliance|paralegal/i,
-    professionTeacher:/teacher|educator|professor|instructor|trainer|curriculum/i,
-    autonomous:/autonom|self.run|connect all|orchestrat|multi.agent|agentic|run by itself|all.*ai.*tools/i,
-    pipeline:/(\-\->?|→|\bthen\b|\bafter\b|step \d|first.*then|followed by|next step).*(pipeline|workflow|data|excel|power\s?bi|hubspot|salesforce|crm|sql|csv|report|automat)/i,
-    dataAnalyst:/power\s?bi|powerbi|tableau|excel.*macro|vba|hubspot.*excel|data.*pipeline|etl|dbt\b|sql.*automat|looker|qlik/i,
-    coding:/\bcod(e|ing)\b|program|build app|debug|software|\bapi\b|deploy|github|backend|frontend|full.?stack/i,
-    writing:/writ|blog|email|content|copywriting|article|essay|draft|newsletter|caption|social.*post/i,
-    video:/\bvideo\b|film|tiktok|reel|footage|clip|talking.*head|avatar.*video/i,
-    youtube:/youtube|channel|content creator|grow.*channel/i,
-    animation:/animat|motion graphic|2d|3d.*anim|explainer.*video|cartoon/i,
-    audio:/\bvoice\b|\baudio\b|podcast|narrat|dub|voiceover|text.to.speech|clone.*voice/i,
-    research:/research|fact.check|find.*info|analyze.*doc|verify|citation|academic|scientific paper/i,
-    images:/images?\b|photo|picture|\bart\b|illustrat|\bvisual\b|graphic|\blogo\b|poster|thumbnail|product.*shot/i,
-    design:/design|brand|template|social.*post|flyer|presentation|slide deck|infographic/i,
-    automation:/automat|workflow|zapier|\bn8n\b|trigger|pipeline|connect.*tools|integrat/i,
-    nocode:/no.?code|without coding|non.?technical|no programming|cant code|don.t know how to code/i,
-    cheap:/\bfree\b|cheap|budget|affordable|low cost|no money|without paying|open.?source/i,
-    legal:/legal|contract|\blaw\b|compliance|lawsuit|litigation|attorney|lawyer/i,
-    education:/teach|learn|\bstudent\b|tutor|study|course|homework|exam|university/i,
-    fitness:/fitness|workout|exercise|gym|training|nutrition|weight|muscle|health/i,
-    sales:/\bsales\b|\bcrm\b|prospect|revenue|deal|pipeline|outreach|close.*deal/i,
-    business:/meeting|note.?taking|project mgmt|team.*tool|office|productivity|invoice/i,
-    math:/\bmath\b|calculat|equation|formula|statistic|algebra|calculus|science|physics/i,
-    compare:/\bvs\b|\bversus\b|compare|difference between|better than|which.*should/i,
+  let isOpen=false;
+
+  // ── Tool layer taxonomy ───────────────────────────────────────────
+  const LAYERS={
+    capture:   {label:'Capture',   color:'#5DB88A', desc:'Notes, transcription, idea capture'},
+    creation:  {label:'Creation',  color:'#D4824A', desc:'Writing, video, image, audio, code'},
+    orchestration:{label:'Orchestration',color:'#C8963C',desc:'Automation, agents, integrations'},
+    knowledge: {label:'Knowledge', color:'#4A90D9', desc:'Research, search, Q&A over docs'},
+    governance:{label:'Governance',color:'#9B59B6', desc:'Permissions, compliance, data control'}
   };
 
-  // ── Helpers ───────────────────────────────────────────────────────────────
-  function chip(id){const t=TOOLS.find(x=>x.id===id);return t?`<span class="tool-chip" onclick="handleChipClick('${id}')">${t.icon} ${t.name}</span>`:'';};
-  function detect(q){const h={};for(const[k,re]of Object.entries(INTENTS))if(re.test(q))h[k]=true;return h;}
-  function topTools(k,n=3){return[...TOOLS].sort((a,b)=>b.scores[k]-a.scores[k]).slice(0,n);}
-  function findTool(q){const ql=q.toLowerCase();return TOOLS.find(t=>ql.includes(t.name.toLowerCase())||ql.includes(t.id));}
-  function findTools(q){const ql=q.toLowerCase();return TOOLS.filter(t=>ql.includes(t.name.toLowerCase())||ql.includes(t.id));}
-
-  // ── Conversation memory ───────────────────────────────────────────────────
-  // Stores the last few turns so follow-up questions work
-  const memory = {
-    lastTopic: null,       // 'coding' | 'video' | 'images' | ...
-    lastTools: [],         // IDs of tools mentioned in the last answer
-    turns: 0,
-    update(topic, toolIds){ this.lastTopic=topic; this.lastTools=toolIds; this.turns++; }
+  const TOOL_META={
+    'otter-ai':         {primary:'capture',    secondary:['knowledge'],    beginner:true,  free:true,  enterprise:false},
+    'notion-ai':        {primary:'capture',    secondary:['creation','knowledge'], beginner:true, free:false, enterprise:false},
+    'notebooklm':       {primary:'knowledge',  secondary:['capture'],      beginner:true,  free:true,  enterprise:false},
+    'perplexity':       {primary:'knowledge',  secondary:[],               beginner:true,  free:true,  enterprise:false},
+    'elicit':           {primary:'knowledge',  secondary:[],               beginner:false, free:true,  enterprise:false},
+    'wolfram':          {primary:'knowledge',  secondary:[],               beginner:false, free:false, enterprise:false},
+    'glean':            {primary:'knowledge',  secondary:['orchestration','governance'], beginner:false, free:false, enterprise:true},
+    'harvey':           {primary:'knowledge',  secondary:['governance'],   beginner:false, free:false, enterprise:true},
+    'chatgpt':          {primary:'creation',   secondary:['knowledge'],    beginner:true,  free:true,  enterprise:false},
+    'claude':           {primary:'creation',   secondary:['knowledge','orchestration'], beginner:true, free:true, enterprise:false},
+    'gemini':           {primary:'creation',   secondary:['knowledge'],    beginner:true,  free:true,  enterprise:false},
+    'deepseek':         {primary:'creation',   secondary:[],               beginner:false, free:true,  enterprise:false},
+    'grok':             {primary:'creation',   secondary:['knowledge'],    beginner:true,  free:true,  enterprise:false},
+    'cursor':           {primary:'creation',   secondary:['orchestration'],beginner:false, free:true,  enterprise:false},
+    'github-copilot':   {primary:'creation',   secondary:[],               beginner:true,  free:true,  enterprise:true},
+    'lovable':          {primary:'creation',   secondary:['orchestration'],beginner:true,  free:false, enterprise:false},
+    'midjourney':       {primary:'creation',   secondary:[],               beginner:true,  free:false, enterprise:false},
+    'adobe-firefly':    {primary:'creation',   secondary:[],               beginner:true,  free:false, enterprise:true},
+    'freepik':          {primary:'creation',   secondary:[],               beginner:true,  free:true,  enterprise:false},
+    'canva-ai':         {primary:'creation',   secondary:['capture'],      beginner:true,  free:true,  enterprise:false},
+    'heygen':           {primary:'creation',   secondary:[],               beginner:true,  free:false, enterprise:false},
+    'runway':           {primary:'creation',   secondary:[],               beginner:false, free:false, enterprise:false},
+    'kling':            {primary:'creation',   secondary:[],               beginner:false, free:false, enterprise:false},
+    'pika':             {primary:'creation',   secondary:[],               beginner:true,  free:false, enterprise:false},
+    'synthesia':        {primary:'creation',   secondary:[],               beginner:true,  free:false, enterprise:true},
+    'elevenlabs':       {primary:'creation',   secondary:[],               beginner:true,  free:true,  enterprise:false},
+    'writer':           {primary:'creation',   secondary:['governance'],   beginner:false, free:false, enterprise:true},
+    'copilot':          {primary:'creation',   secondary:['orchestration','capture'], beginner:true, free:false, enterprise:true},
+    'n8n':              {primary:'orchestration',secondary:[],             beginner:false, free:true,  enterprise:true},
+    'openclaw':         {primary:'orchestration',secondary:['creation'],   beginner:false, free:true,  enterprise:false},
+    'cohere':           {primary:'orchestration',secondary:['knowledge','governance'],beginner:false,free:true,enterprise:true},
+    'salesforce-einstein':{primary:'orchestration',secondary:['knowledge','governance'],beginner:false,free:false,enterprise:true},
+    'gong':             {primary:'knowledge',  secondary:['capture','governance'],beginner:false,free:false,enterprise:true},
+    'fitbod':           {primary:'knowledge',  secondary:[],               beginner:true,  free:true,  enterprise:false},
+    'khanmigo':         {primary:'knowledge',  secondary:[],               beginner:true,  free:true,  enterprise:false},
   };
 
-  // ── Rich text formatter ───────────────────────────────────────────────────
-  // Converts a simple markup into clean HTML — no raw markdown leaking through
+  // ── Goal → tool relevance weights ────────────────────────────────
+  const GOAL_WEIGHTS={
+    youtube:    {'claude':9,'heygen':10,'elevenlabs':9,'canva-ai':8,'perplexity':7,'n8n':6,'otter-ai':5},
+    video:      {'heygen':9,'runway':8,'pika':8,'kling':7,'elevenlabs':9,'claude':7,'canva-ai':7},
+    audio:      {'elevenlabs':10,'otter-ai':7,'claude':6,'chatgpt':5},
+    writing:    {'claude':10,'chatgpt':8,'writer':7,'notion-ai':7,'perplexity':7},
+    developer:  {'cursor':10,'claude':9,'github-copilot':9,'lovable':8,'deepseek':7,'n8n':7,'notebooklm':6},
+    product:    {'lovable':9,'cursor':9,'claude':8,'n8n':7,'github-copilot':7},
+    coding:     {'cursor':10,'claude':9,'github-copilot':9,'deepseek':8,'lovable':7},
+    marketer:   {'claude':9,'canva-ai':9,'chatgpt':8,'perplexity':8,'writer':7,'freepik':7},
+    content:    {'claude':10,'chatgpt':8,'canva-ai':8,'writer':7,'perplexity':7,'notion-ai':6},
+    agency:     {'claude':9,'notion-ai':8,'otter-ai':8,'n8n':8,'canva-ai':7,'writer':7,'perplexity':7},
+    freelance:  {'claude':9,'notion-ai':8,'canva-ai':7,'otter-ai':7,'n8n':6},
+    researcher: {'perplexity':10,'notebooklm':9,'elicit':9,'claude':8,'wolfram':7},
+    knowledge:  {'notebooklm':10,'perplexity':9,'elicit':8,'claude':8,'glean':6},
+    automation: {'n8n':10,'openclaw':9,'copilot':7,'salesforce-einstein':6,'claude':6},
+    sales:      {'gong':10,'salesforce-einstein':9,'chatgpt':7,'n8n':7,'claude':7},
+    legal:      {'harvey':10,'claude':9,'notebooklm':8,'perplexity':7},
+    enterprise: {'glean':10,'writer':9,'cohere':9,'salesforce-einstein':8,'copilot':8,'claude':7},
+    team:       {'notion-ai':8,'otter-ai':8,'copilot':7,'glean':7,'n8n':7,'claude':7},
+    productivity:{'otter-ai':9,'notion-ai':8,'copilot':8,'claude':7,'chatgpt':7},
+    general:    {'chatgpt':8,'claude':8,'gemini':7,'perplexity':7,'canva-ai':6,'notion-ai':6},
+  };
+
+  // ── Adaptive questions (4 total) ─────────────────────────────────
+  const QUESTIONS=[
+    {
+      id:'budget',
+      text:'What\'s your monthly budget for AI tools?',
+      sub:'This shapes which tools are realistic for you.',
+      options:[
+        {label:'$0 — free only',  value:'none',   tag:'free_only',      icon:'🆓'},
+        {label:'Under $30/mo',    value:'low',    tag:'low_budget',     icon:'💚'},
+        {label:'$30–$100/mo',     value:'medium', tag:'medium_budget',  icon:'💛'},
+        {label:'$100+/mo',        value:'high',   tag:'high_budget',    icon:'🔵'},
+      ]
+    },
+    {
+      id:'skill',
+      text:'How comfortable are you with AI tools?',
+      sub:'Helps me choose tools that match your experience.',
+      options:[
+        {label:'Just starting out',   value:'beginner',     tag:'beginner',    icon:'🌱'},
+        {label:'I use a few already', value:'intermediate', tag:'intermediate', icon:'⚡'},
+        {label:'Power user',          value:'power',        tag:'power_user',   icon:'🚀'},
+      ]
+    },
+    {
+      id:'teamSize',
+      text:'Working solo or with others?',
+      sub:'Affects which collaboration and governance features matter.',
+      options:[
+        {label:'Just me',      value:'solo',   tag:'solo',        icon:'👤'},
+        {label:'2–5 people',   value:'small',  tag:'small_team',  icon:'👥'},
+        {label:'6–20 people',  value:'medium', tag:'medium_team', icon:'🏢'},
+        {label:'20+ people',   value:'large',  tag:'large_team',  icon:'🏗️'},
+      ]
+    },
+    {
+      id:'timeline',
+      text:'How quickly do you want to be set up?',
+      sub:'Fast setup means simpler tools. More time means I can recommend more powerful ones.',
+      options:[
+        {label:'This week',   value:'asap',     tag:'fast_setup',     icon:'⚡'},
+        {label:'1–4 weeks',   value:'soon',     tag:'normal_setup',   icon:'📅'},
+        {label:'No rush',     value:'flexible', tag:'flexible_setup', icon:'🌿'},
+      ]
+    }
+  ];
+
+  // ── Advisor session state ─────────────────────────────────────────
+  let session={
+    goal:'', goalTags:[], answers:{}, derivedTags:[], step:0,
+    questionIndex:0, stack:[]
+  };
+
+  // ── Goal parser → tags ────────────────────────────────────────────
+  function parseGoal(text){
+    const g=text.toLowerCase();
+    const t=new Set();
+    if(/youtube|channel/.test(g)){t.add('creator');t.add('youtube');t.add('video');}
+    if(/\bvideo\b|reel|tiktok|shorts|film/.test(g)){t.add('creator');t.add('video');}
+    if(/podcast|audio/.test(g)){t.add('creator');t.add('audio');}
+    if(/blog|newsletter|writ.*content|content.*creat|social.*post/.test(g)){t.add('creator');t.add('writing');t.add('content');}
+    if(/\bapp\b|saas|mvp|software|build.*product|ship.*product/.test(g)){t.add('developer');t.add('product');}
+    if(/code|program|develop|engineer|developer/.test(g)){t.add('developer');t.add('coding');}
+    if(/agency|client work|freelanc/.test(g)){t.add('agency');t.add('freelance');}
+    if(/market|campaign|seo|ads|brand/.test(g)){t.add('marketer');t.add('content');}
+    if(/sales|crm|deal|prospect|revenue/.test(g)){t.add('sales');}
+    if(/legal|contract|compliance|law/.test(g)){t.add('legal');}
+    if(/research|notes|knowledge|study|learn|reading/.test(g)){t.add('researcher');t.add('knowledge');}
+    if(/automat|workflow|pipeline|connect.*tools/.test(g)){t.add('automation');}
+    if(/meeting|team.*work|collaborat/.test(g)){t.add('team');t.add('productivity');}
+    if(/enterprise|company|organisation|org\b|business/.test(g)){t.add('enterprise');t.add('team');}
+    if(/productiv|streamline|efficien/.test(g)){t.add('productivity');}
+    if(t.size===0) t.add('general');
+    return [...t];
+  }
+
+  // ── Build derived tags from answers ──────────────────────────────
+  function buildDerivedTags(){
+    const tags=[...session.goalTags];
+    const a=session.answers;
+    if(a.budget)   tags.push(QUESTIONS[0].options.find(o=>o.value===a.budget)?.tag);
+    if(a.skill)    tags.push(QUESTIONS[1].options.find(o=>o.value===a.skill)?.tag);
+    if(a.teamSize) tags.push(QUESTIONS[2].options.find(o=>o.value===a.teamSize)?.tag);
+    if(a.timeline) tags.push(QUESTIONS[3].options.find(o=>o.value===a.timeline)?.tag);
+    return tags.filter(Boolean);
+  }
+
+  // ── Stack builder ─────────────────────────────────────────────────
+  function buildStack(){
+    const budget=session.answers.budget||'low';
+    const skill=session.answers.skill||'intermediate';
+    const team=session.answers.teamSize||'solo';
+    const fast=session.answers.timeline==='asap';
+
+    // Score every tool
+    const scores={};
+    TOOLS.forEach(t=>{
+      let score=0;
+      session.goalTags.forEach(tag=>{
+        if(GOAL_WEIGHTS[tag]&&GOAL_WEIGHTS[tag][t.id]) score+=GOAL_WEIGHTS[tag][t.id];
+      });
+
+      // Budget filter
+      if(budget==='none'&&!t.free.available) score=0;
+      if(budget==='low'){
+        const p=t.paid[0]?.price||'';
+        const n=parseFloat(p.replace(/[^0-9.]/g,''));
+        if(!t.free.available&&n>35) score=Math.floor(score*0.4);
+      }
+
+      // Skill filter
+      const meta=TOOL_META[t.id]||{beginner:false};
+      if(skill==='beginner'&&!meta.beginner) score=Math.floor(score*0.5);
+      if(skill==='power'&&meta.beginner) score+=1; // slight boost, power users can handle anything
+
+      // Speed filter — beginners + fast setup: avoid complex tools
+      if(fast&&skill==='beginner'&&!meta.beginner) score=Math.floor(score*0.3);
+
+      // Team size — enterprise tools need large teams
+      if(meta.enterprise&&(team==='solo'||team==='small')) score=Math.floor(score*0.3);
+      if(meta.enterprise&&(team==='large')) score+=3;
+
+      if(score>0) scores[t.id]=score;
+    });
+
+    // Pick best tool per layer, avoid duplicates
+    const pickedLayers={};
+    const recs=[];
+
+    // Sort by score descending
+    const sorted=Object.entries(scores)
+      .sort((a,b)=>b[1]-a[1])
+      .map(([id])=>id);
+
+    // Desired layer coverage based on goal
+    const hasCreator=session.goalTags.some(t=>['creator','video','youtube','audio','writing','content'].includes(t));
+    const hasDev=session.goalTags.some(t=>['developer','coding','product'].includes(t));
+    const hasEnterprise=session.goalTags.some(t=>['enterprise','large_team'].includes(t))||team==='large';
+    const needsKnowledge=session.goalTags.some(t=>['researcher','knowledge','legal'].includes(t));
+
+    const wantedLayers=new Set(['creation']);
+    if(!hasDev) wantedLayers.add('capture');
+    wantedLayers.add('orchestration');
+    wantedLayers.add('knowledge');
+    if(hasEnterprise) wantedLayers.add('governance');
+
+    // First pass: pick best tool per layer
+    for(const id of sorted){
+      if(recs.length>=5) break;
+      const t=TOOLS.find(x=>x.id===id);
+      if(!t) continue;
+      const meta=TOOL_META[id];
+      if(!meta) continue;
+      const layer=meta.primary;
+      if(!pickedLayers[layer]&&wantedLayers.has(layer)){
+        pickedLayers[layer]=id;
+        recs.push({tool:t, layer, score:scores[id]});
+      }
+    }
+
+    // Second pass: fill gaps with secondary layers
+    for(const id of sorted){
+      if(recs.length>=5) break;
+      if(recs.find(r=>r.tool.id===id)) continue;
+      const t=TOOLS.find(x=>x.id===id);
+      if(!t) continue;
+      const meta=TOOL_META[id];
+      if(!meta) continue;
+      for(const sl of (meta.secondary||[])){
+        if(!pickedLayers[sl]&&wantedLayers.has(sl)){
+          pickedLayers[sl]=id;
+          recs.push({tool:t, layer:sl, score:scores[id]});
+          break;
+        }
+      }
+    }
+
+    // Ensure at least 3 tools
+    if(recs.length<3){
+      for(const id of sorted){
+        if(recs.length>=3) break;
+        if(recs.find(r=>r.tool.id===id)) continue;
+        const t=TOOLS.find(x=>x.id===id);
+        if(t) recs.push({tool:t, layer:(TOOL_META[id]||{}).primary||'creation', score:scores[id]||1});
+      }
+    }
+
+    return recs.slice(0,5);
+  }
+
+  // ── Outcome estimator ─────────────────────────────────────────────
+  function estimateOutcomes(stack){
+    const budget=session.answers.budget||'low';
+    const goalTags=session.goalTags;
+
+    // Monthly cost
+    let monthlyCost=0;
+    stack.forEach(({tool})=>{
+      if(!tool.free.available){
+        const p=tool.paid[0]?.price||'$0';
+        monthlyCost+=parseFloat(p.replace(/[^0-9.]/g,''))||20;
+      }
+    });
+    const costBand=monthlyCost===0?'Minimal (~$0)':monthlyCost<30?`Minimal (~$${Math.round(monthlyCost)}/mo)`:monthlyCost<80?`Moderate (~$${Math.round(monthlyCost)}/mo)`:`Higher (~$${Math.round(monthlyCost)}/mo)`;
+
+    // Hours saved
+    let hrMin=0, hrMax=0;
+    stack.forEach(({tool,layer})=>{
+      if(layer==='orchestration'){hrMin+=4;hrMax+=10;}
+      else if(layer==='creation'){hrMin+=2;hrMax+=5;}
+      else if(layer==='knowledge'){hrMin+=2;hrMax+=4;}
+      else if(layer==='capture'){hrMin+=1;hrMax+=3;}
+    });
+
+    // Content output
+    let contentOutput='';
+    if(goalTags.includes('youtube')||goalTags.includes('video')){
+      contentOutput=stack.some(r=>r.tool.id==='heygen'||r.tool.id==='runway')?'2–3 videos/week':'1–2 videos/week';
+    } else if(goalTags.includes('writing')||goalTags.includes('content')){
+      contentOutput='8–15 posts/month';
+    } else if(goalTags.includes('developer')||goalTags.includes('coding')){
+      contentOutput='2–3x faster feature delivery';
+    }
+
+    // Context switching
+    const toolCount=stack.length;
+    const contextSwitch=toolCount<=3?`consolidates to ${toolCount} main tools`:`covers ${toolCount} needs in one planned setup`;
+
+    // Where it breaks down
+    let breakdown='';
+    if(budget==='none') breakdown='This free stack works well for getting started. You\'ll hit limits on output volume — most free tiers cap at daily or monthly limits. When your needs grow, expect to spend $20–40/month.';
+    else if(session.answers.teamSize==='solo') breakdown='This is optimised for solo use. If you bring in collaborators, you\'ll want to revisit the orchestration and capture layers for team-aware tools.';
+    else breakdown='This stack covers the core. As you scale, add a governance layer (Glean, Writer) for team-wide consistency and compliance.';
+
+    return {costBand, hrMin, hrMax, contentOutput, contextSwitch, toolCount, breakdown};
+  }
+
+  // ── Why-this-not-that per tool ────────────────────────────────────
+  function getToolReason(tool, layer, goalTags, answers){
+    const budget=answers.budget||'low';
+    const skill=answers.skill||'intermediate';
+    const id=tool.id;
+
+    const REASONS={
+      'claude':     ['Scores 9/10 for writing and research — follows complex instructions better than any other model','No free tier time limit, just daily message cap'],
+      'chatgpt':    ['Scores 8/10 across writing, coding, and creativity — the most versatile general-purpose AI','Free tier has no time limit, just hourly caps'],
+      'gemini':     ['Unlimited free tier on Flash model — best cost-to-capability ratio at $0','Multimodal from day one: image, audio, and text in one context'],
+      'cursor':     ['Best-in-class coding agent — edits multiple files at once, understands your full codebase','Free tier covers most individual dev work'],
+      'github-copilot':['Integrates directly into GitHub for PR reviews and CI — worth it if you\'re already on GitHub','Available free for students and open-source contributors'],
+      'lovable':    ['Describe an app in plain English and it deploys it — lowest floor for non-developers','No backend setup, no deployment config — genuinely zero-code'],
+      'n8n':        ['400+ connectors, AI Agent nodes, runs on a schedule — free to self-host','Steeper learning curve than Zapier but far more powerful and free'],
+      'openclaw':   ['Runs on your own machine — executes real tasks via WhatsApp/Telegram without a cloud subscription','310K+ GitHub stars, MIT licence, model-agnostic'],
+      'notebooklm': ['Fully free — upload your docs and ask questions across all of them simultaneously','Best tool for working with your own content rather than the open web'],
+      'perplexity': ['Cites every source so you can verify claims — unlike ChatGPT which can hallucinate confidently','Real-time web access, unlike most models which have a training cutoff'],
+      'canva-ai':   ['50 AI image credits per month on the free plan, plus 1M+ templates','Design tool + AI generation in one — no separate subscription for graphics'],
+      'heygen':     ['Create talking-head videos from a script without filming yourself — fastest path to YouTube content','Avatar quality is good enough for professional use at the $29/mo Creator tier'],
+      'elevenlabs': ['Best voice cloning and TTS on the market — 10,000 characters/month free','Pairs directly with HeyGen for a complete script-to-video pipeline'],
+      'otter-ai':   ['Automatic meeting transcription, action items, and Slack sync — free tier covers 300 minutes/month','Saves 30–60 minutes per meeting in manual note-taking'],
+      'notion-ai':  ['AI embedded in your knowledge base — no copy-pasting between tools','Good enough for most daily tasks; not a replacement for Claude on complex writing'],
+      'elicit':     ['Searches 200M+ academic papers — purpose-built for literature review and research synthesis','Extracts structured data from studies; ChatGPT cannot do this reliably'],
+      'writer':     ['Enforces your brand voice automatically across every team member\'s output','SOC 2, HIPAA, GDPR — the only writing AI built for enterprise compliance'],
+      'cohere':     ['Deploy LLMs on-premises — your data never leaves your infrastructure','Best-in-class RAG and embeddings for building AI into your own product'],
+      'glean':      ['Searches Slack, Drive, Confluence, Jira, Salesforce in one place — nothing falls through the cracks','Mirrors your existing permissions: users only see what they\'re authorised to see'],
+      'salesforce-einstein':['Agentforce handles customer queries autonomously — built into the CRM you already use','Lead scoring and deal prediction trained on your own pipeline data'],
+      'copilot':    ['If you\'re already on Microsoft 365, this is the highest-ROI AI purchase — it\'s inside every app you already use','Writes DAX, VBA, and Outlook emails from plain English'],
+      'deepseek':   ['Near-zero API cost with benchmark scores close to GPT-4 — best value for high-volume code generation','Open weights — deployable on your own infrastructure'],
+      'gong':       ['Records and analyses every sales call — flags at-risk deals before they slip','The most-used sales intelligence tool in enterprise; integrates with every major CRM'],
+      'harvey':     ['Purpose-built for legal — contract analysis and due diligence at law firm quality','Used by top-tier firms; not a consumer product dressed up in legal clothing'],
+      'runway':     ['Gen-3 Alpha produces the highest-quality AI video currently available','Best for cinematic and creative video; more complex than Pika but significantly better output'],
+      'midjourney': ['Consistently produces the most distinctive, high-quality images of any AI tool','A 7/10 creativity score — outputs are genuinely surprising, not generic'],
+      'adobe-firefly':['Trained on licensed Adobe Stock — commercially safe for brands','Integrated into Creative Cloud apps you may already pay for'],
+      'freepik':    ['20 free AI images per day — no subscription needed for most marketing needs','Fast and good enough for social posts; step up to Midjourney when quality matters more'],
+      'khanmigo':   ['Free for US teachers — purpose-built tutoring AI with curriculum alignment','Socratic method: it asks questions to build understanding, not just gives answers'],
+      'fitbod':     ['Adapts every workout to your recovery state and available equipment — not just a static plan','3 free workouts to try before committing; $13/month after'],
+      'wolfram':    ['Actually computes answers step-by-step — essential for maths, science, and data verification','Does not hallucinate mathematical results, unlike general LLMs'],
+      'pika':       ['Easiest interface for short-form video and effects — best starting point for social content','Lower ceiling than Runway but much faster to produce results'],
+      'kling':      ['Longer video clips at lower cost than Runway — good middle ground for volume creators','Less cinematic but more affordable for regular content production'],
+      'synthesia':  ['Enterprise avatar video with 160+ AI presenters — purpose-built for training and corporate comms','SOC 2 compliant, GDPR ready — the enterprise version of HeyGen'],
+    };
+
+    const reasons=REASONS[id]||[`Scores ${tool.scores.writing}/10 writing, ${tool.scores.coding}/10 coding, ${tool.scores.automation}/10 automation`,tool.free.available?`Free tier available — ${tool.free.desc.split('.')[0]}`:`From ${tool.paid[0].price}`];
+
+    const tradeoff= budget==='none'&&!tool.free.available?`⚠️ No free tier — skip for now, revisit when you have budget`:
+                    skill==='beginner'&&(TOOL_META[id]||{}).beginner===false?`⚠️ Steeper learning curve — worth the effort but allow a week to get productive`:
+                    tool.paid[0]?.price?.includes('Custom')?`⚠️ Enterprise pricing — request a demo to get a quote`:
+                    '';
+
+    return {why:reasons[0], detail:reasons[1]||'', tradeoff};
+  }
+
+  // ── Rich text formatter ───────────────────────────────────────────
   function fmt(text){
     return text
-      .replace(/\*\*([^*]+)\*\*/g,'<strong>$1</strong>')
-      .replace(/^### (.+)$/gm,'<div style="font-size:11px;text-transform:uppercase;letter-spacing:0.7px;color:var(--text3);font-weight:600;margin:12px 0 6px">$1</div>')
-      .replace(/^• (.+)$/gm,'<div style="display:flex;gap:7px;margin:3px 0"><span style="color:var(--p1);flex-shrink:0">→</span><span>$1</span></div>')
-      .replace(/^\d+\. (.+)$/gm,'<div style="display:flex;gap:7px;margin:4px 0"><span style="color:var(--p2);font-weight:600;flex-shrink:0;min-width:16px">$1.</span><span>$1</span></div>')
-      .replace(/^⚠️ (.+)$/gm,'<div style="background:rgba(245,166,35,0.1);border:1px solid rgba(245,166,35,0.3);border-radius:8px;padding:7px 10px;font-size:12px;color:var(--p4);margin:8px 0">⚠️ $1</div>')
-      .replace(/^---$/gm,'<div style="height:1px;background:var(--border);margin:10px 0"></div>')
+      .replace(/\*\*([^*\n]+)\*\*/g,'<strong>$1</strong>')
+      .replace(/\*([^*\n]+)\*/g,'<em>$1</em>')
+      .replace(/^[•\-] (.+)$/gm,'<div class="chat-list-item"><span>→</span><span>$1</span></div>')
+      .replace(/^(\d+)\. (.+)$/gm,'<div class="chat-step"><span class="chat-step-num">$1</span><span>$2</span></div>')
+      .replace(/^⚠️ (.+)$/gm,'<div class="chat-warning">⚠️ $1</div>')
+      .replace(/^✅ (.+)$/gm,'<div class="chat-ok">✅ $1</div>')
       .replace(/\n\n/g,'<div style="height:8px"></div>')
       .replace(/\n/g,'<br>');
   }
 
-  // ── Pipeline step builder ─────────────────────────────────────────────────
-  function buildPipelineAnswer(q){
-    const steps=[];
-    if(/fcp|raw.*data|source.*system|database|sql|postgres|mysql|api.*data|data.*source|acquire|collect.*data/i.test(q))
-      steps.push({label:'Pull the data',text:`${chip('n8n')} is your backbone here. Use its HTTP Request node (for APIs), Database node (for SQL/Postgres), or folder-watch trigger (for CSV drops). It runs on a schedule and retries automatically if something fails. Free to self-host.`});
-    if(/excel|spreadsheet|\.xlsx|workbook|local.*repo|save.*file/i.test(q))
-      steps.push({label:'Save to Excel',text:`${chip('n8n')} has a native Excel node — it writes directly to .xlsx files, appends rows, updates sheets, no scripting needed. Once the file is there, ${chip('copilot')} in Excel can help clean and format the data using plain English instructions.`});
-    if(/macro|vba|transform|clean.*data|automat.*excel/i.test(q))
-      steps.push({label:'Run macros / transform',text:`Describe what you want the macro to do in plain English and ${chip('copilot')} in Excel will write the VBA for you. If you don't have Copilot, paste the same description into ${chip('claude')} or ${chip('chatgpt')} — they're both excellent at writing VBA. Then ${chip('n8n')} can trigger the macro run via a shell command node.`});
-    if(/hubspot|salesforce|crm|merge|combine.*data|join.*data/i.test(q))
-      steps.push({label:'Pull and merge CRM data',text:`${chip('n8n')} has a native HubSpot connector. Pull contacts, deals, or companies with filters, then use n8n's Merge node to join it with your Excel data on a shared key (like email or company ID). No code needed.`});
-    if(/power\s?bi|powerbi|tableau|looker|dashboard|visuali/i.test(q))
-      steps.push({label:'Push to Power BI',text:`${chip('n8n')} pushes data to Power BI via its REST API, or you can point Power BI's DirectQuery at an Excel file on SharePoint/OneDrive that n8n keeps updated. Once your data is in Power BI, ${chip('copilot')} inside Power BI writes DAX measures from plain English — "show revenue by region as a bar chart" → it builds it.`});
-    return steps;
+  function chip(id){
+    const t=TOOLS.find(x=>x.id===id);
+    return t?`<span class="tool-chip" onclick="handleChipClick('${id}')">${t.icon} ${t.name}</span>`:'';
   }
 
-  // ── Main answer engine ────────────────────────────────────────────────────
-  function generateAnswer(raw){
-    const q=raw.trim();
-    const i=detect(q);
-    const ql=q.toLowerCase();
-    memory.turns++;
-
-    // ── Follow-up: "how much does it cost?" after a previous answer ──
-    if(i.followupCost && memory.lastTools.length && !i.coding && !i.research){
-      const tools=memory.lastTools.map(id=>TOOLS.find(t=>t.id===id)).filter(Boolean);
-      if(tools.length){
-        memory.update('cost',memory.lastTools);
-        const lines=tools.map(t=>{
-          const free=t.free.available?`Free tier: ${t.free.desc.split('.')[0]}.`:`No free tier.`;
-          const paid=`Paid from ${t.paid[0].price}.`;
-          return `${chip(t.id)} — ${free} ${paid}`;
-        });
-        return fmt(`Here's what the tools I mentioned will cost you:\n\n${lines.join('\n\n')}\n\nAnything else you want to know about any of these?`);
-      }
-    }
-
-    // ── Follow-up: "which one is free?" ──────────────────────────
-    if(i.followupFree && memory.lastTools.length){
-      const freeTools=memory.lastTools.map(id=>TOOLS.find(t=>t.id===id)).filter(t=>t&&t.free.available);
-      if(freeTools.length){
-        memory.update('free',freeTools.map(t=>t.id));
-        return fmt(`From what I mentioned, these have free tiers:\n\n${freeTools.map(t=>`${chip(t.id)} — ${t.free.desc.split('.')[0]}`).join('\n\n')}\n\nAll the others are paid-only.`);
-      }
-    }
-
-    // ── Follow-up: "which is better for me?" ─────────────────────
-    if(i.followupBetter && memory.lastTools.length >= 2 && !i.compare){
-      const tools=memory.lastTools.slice(0,2).map(id=>TOOLS.find(t=>t.id===id)).filter(Boolean);
-      if(tools.length===2){
-        const [a,b]=tools;
-        memory.update('compare',[a.id,b.id]);
-        return fmt(`Hard to say without knowing more — depends on your situation.\n\n${chip(a.id)} is better if you ${a.bestFor.split(',')[0].toLowerCase()}.\n\n${chip(b.id)} is better if you ${b.bestFor.split(',')[0].toLowerCase()}.\n\nWhat's your main goal? I can be more specific.`);
-      }
-    }
-
-    // ── Complex data pipeline ─────────────────────────────────────
-    if((i.pipeline||i.dataAnalyst||(i.professionData&&i.automation)) && !i.greeting){
-      const steps=buildPipelineAnswer(q);
-      if(steps.length>=2){
-        const hasFCP=/\bfcp\b/i.test(q);
-        let out='Good use case — this is very doable with the right tools chained together.\n\n';
-        if(hasFCP) out+='⚠️ "FCP" could mean different things — assuming it exposes an API or CSV export. Let me know if that\'s not right and I\'ll adjust.\n\n';
-        out+=`The glue for all of this is ${chip('n8n')}. It connects every step, runs on a schedule, and retries on failure. Free to self-host.\n\n---\n\n`;
-        steps.forEach((s,idx)=>{out+=`**Step ${idx+1}: ${s.label}**\n${s.text}\n\n`;});
-        out+=`---\n\n**Start here:** Build the HubSpot pull first — it's the easiest n8n node to test. Then add the Excel step, then Power BI last.`;
-        memory.update('pipeline',['n8n','copilot','claude','chatgpt']);
-        return fmt(out);
-      }
-    }
-
-    // ── Greeting ──────────────────────────────────────────────────
-    if(i.greeting){
-      memory.update('greeting',[]);
-      return fmt(`Hey! I'm the Toolipedia Advisor.\n\nI know all 35 AI tools here — what they're good for, how they compare, what each one costs, and how to combine them.\n\nWhat are you trying to do? Could be something simple like "I want to write better emails" or something complex like an automated data pipeline. Just describe it.`);
-    }
-
-    // ── Thanks ────────────────────────────────────────────────────
-    if(i.thanks){
-      const followups=['Need anything else?','Anything you want to dig into further?','Got another question?'];
-      return fmt(`Happy to help. ${followups[memory.turns%3]}`);
-    }
-
-    // ── What can you do / meta ────────────────────────────────────
-    if(i.meta){
-      memory.update('meta',[]);
-      return fmt(`I know all 35 AI tools on Toolipedia — what each one does, how much it costs, when to use it, and how to combine them.\n\n**You can ask me things like:**\n• "I want to build a YouTube channel with AI"\n• "What's the best free AI stack?"\n• "I'm a lawyer — what should I use?"\n• "Tell me about Midjourney"\n• "Compare ChatGPT vs Claude"\n• "I want to automate my whole data pipeline"\n\nOr just describe your situation and I'll figure out what you need.`);
-    }
-
-    // ── Specific tool lookup ──────────────────────────────────────
-    if(i.toolLookup||(!Object.values(i).some(Boolean)&&findTool(q))){
-      const mentioned=findTools(q);
-      if(mentioned.length===1){
-        const t=mentioned[0];
-        memory.update('toolLookup',[t.id]);
-        return fmt(`${chip(t.id)} — by ${t.maker}\n\n${t.tagline}\n\n**What it's for:** ${t.bestFor}\n\n**Things you can do with it:**\n${t.useCases.slice(0,4).map(u=>`• ${u}`).join('\n')}\n\n**Pricing:** ${t.free.available?`Free tier — ${t.free.desc.split('.')[0]}`:`No free tier`} · Paid from ${t.paid[0].price}\n\nWant to know how it fits into a specific workflow?`);
-      }
-      if(mentioned.length>1){
-        memory.update('toolLookup',mentioned.slice(0,3).map(t=>t.id));
-        return fmt(`Found a few — did you mean one of these?\n\n${mentioned.slice(0,4).map(t=>`${chip(t.id)} — ${t.tagline}`).join('\n')}\n\nJust ask about any of them and I'll break it down.`);
-      }
-    }
-
-    // ── List all tools ────────────────────────────────────────────
-    if(i.listTools){
-      const bycat={};
-      TOOLS.forEach(t=>{const c=t.categories[0];if(!bycat[c])bycat[c]=[];bycat[c].push(t);});
-      memory.update('listTools',TOOLS.map(t=>t.id));
-      return fmt(`All ${TOOLS.length} tools I know:\n\n${Object.entries(bycat).map(([cat,ts])=>`**${cat}:** ${ts.map(t=>chip(t.id)).join(' ')}`).join('\n')}\n\nClick any tool to jump to its full details. Or ask "what's best for [your goal]" and I'll narrow it down.`);
-    }
-
-    // ── List categories ───────────────────────────────────────────
-    if(i.listCategories){
-      memory.update('listCategories',[]);
-      return fmt(`I cover 14 categories:\n\n• Writing & Content\n• Software Development\n• Research & Analysis\n• Image Generation\n• Video Creation\n• Animation\n• Design & Branding\n• Voice & Audio\n• Workflow Automation\n• Document Intelligence\n• Legal\n• Education & Learning\n• Business & Productivity\n• Fitness & Health\n• Sales & CRM\n\nWhich one do you want to explore?`);
-    }
-
-    // ── Profession-based ─────────────────────────────────────────
-    if(i.professionLegal && !i.coding){
-      memory.update('legal',['harvey','notebooklm','claude','perplexity']);
-      return fmt(`For legal work, here's where AI actually adds value:\n\n${chip('harvey')} is built specifically for law firms — contract redlining, case research, compliance monitoring. Enterprise pricing, but it's the only one purpose-built for legal.\n\n${chip('notebooklm')} for your own documents. Upload contracts, case files, compliance docs. Ask questions across all of them. Every answer cites the source. Completely free.\n\n${chip('claude')} for reading dense legal text — its 1M token context can read an entire contract pack in one shot. Good for extraction and summarization.\n\n${chip('perplexity')} for live legal news and regulatory updates with citations.\n\n**Start with:** NotebookLM (free) for document Q&A. Harvey if your firm needs a full platform.`);
-    }
-
-    if(i.professionTeacher && !i.coding){
-      memory.update('education',['khanmigo','notebooklm','synthesia','chatgpt']);
-      return fmt(`For teachers and educators:\n\n${chip('khanmigo')} is the Socratic AI tutor — it guides students to the answer instead of just giving it. Free for US teachers.\n\n${chip('notebooklm')} for your course materials. Upload your lectures, textbooks, and PDFs. Students can ask questions across all of them with zero hallucination.\n\n${chip('synthesia')} for creating video lessons without filming yourself — 120+ languages, LMS-ready.\n\n${chip('chatgpt')} for writing lesson plans, rubrics, quizzes, and differentiated materials quickly.\n\n**Start with:** Khanmigo and NotebookLM — both are free for educators.`);
-    }
-
-    // ── Autonomous / all tools connected ─────────────────────────
-    if(i.autonomous){
-      memory.update('autonomous',['n8n','claude','chatgpt','deepseek']);
-      return fmt(`To connect AI tools and run them autonomously, you need one thing: an orchestration layer.\n\n${chip('openclaw')} and ${chip('n8n')} are the two strongest options right now.
-
-${chip('openclaw')} is open-source and runs on your own machine — connect it to WhatsApp, Telegram, or Discord and it executes real tasks: managing files, controlling browsers, running scripts. 310,000+ GitHub stars. Free to self-host, you just pay for API calls.
-
-${chip('n8n')} connects 400+ apps visually, has AI Agent nodes that can self-correct, and you can self-host it for free. You chain tools in order — ChatGPT decides, ElevenLabs speaks, HeyGen creates video, it all flows without touching it.\n\n${chip('claude')} or ${chip('chatgpt')} acts as the "brain" that makes decisions inside the pipeline. Claude's MCP protocol is particularly powerful for connecting to external tools.\n\n${chip('deepseek')} R1 via API is worth using inside pipelines where you need AI reasoning at high volume — it's 75–90% cheaper than GPT-4.\n\n**Where to start:** Build one small pipeline first. Something like "new email arrives → Claude summarises it → save to Notion". Once that works, chain more steps.`);
-    }
-
-    // ── YouTube / content creation ────────────────────────────────
-    if(i.youtube||(i.video&&i.writing)){
-      memory.update('youtube',['chatgpt','claude','heygen','kling','runway','elevenlabs','pika','midjourney','canva-ai']);
-      return fmt(`An AI YouTube channel is very doable. Three stages:\n\n**Scripts and research**\n${chip('chatgpt')} or ${chip('claude')} — write scripts, hooks, titles, descriptions. Claude handles longer structured content better.\n\n**The video itself (pick your style)**\n• No face on camera: ${chip('heygen')} — AI avatar, cloned voice, done\n• Cinematic footage: ${chip('kling')} or ${chip('runway')} — generate clips from scene descriptions\n• Voice narration only: ${chip('elevenlabs')} — 3,000+ voices, clone your own from 1 minute of audio\n• Stylized clips: ${chip('pika')} — good for high-energy social content\n\n**Thumbnails**\n${chip('midjourney')} for quality. ${chip('canva-ai')} to add text and branding quickly.\n\n**Start with:** ChatGPT for the script → ElevenLabs for narration → Canva AI for the thumbnail. Then add video once you have a working process.`);
-    }
-
-    // ── Coding ────────────────────────────────────────────────────
-    if(i.coding&&!i.nocode){
-      memory.update('coding',['cursor','claude','github-copilot','deepseek','lovable']);
-      return fmt(`Here's how to set up a serious AI coding setup:\n\n${chip('cursor')} for your daily IDE — it understands your whole codebase and can refactor across multiple files at once. Best tool for professional development right now.\n\n${chip('github-copilot')} if you want to stay in VS Code with tight GitHub integration — inline autocomplete as you type, PR reviews, CLI assistant.\n\n${chip('claude')} for hard problems — architecture decisions, reading large codebases, complex refactoring. Its 1M token context is genuinely useful for big projects.\n\n${chip('deepseek')} R1 via API if you need AI coding help at scale cheaply — near-GPT-4 quality at 90% lower cost.\n\n**Building a whole app?** ${chip('lovable')} generates and deploys a full React app with backend from a plain English description. Seriously.\n\n**Start with:** Cursor (free trial) for your IDE. Add Claude for the harder reasoning tasks.`);
-    }
-
-    // ── No-code app building ──────────────────────────────────────
-    if(i.nocode){
-      memory.update('nocode',['lovable','chatgpt','claude','n8n','canva-ai','elevenlabs']);
-      return fmt(`You don't need to code to ship a real product.\n\n${chip('lovable')} is the fastest path — describe your app in plain English, it generates a full React + Supabase app with auth and deploys it to a custom domain. Most MVPs take a few hours.\n\nFor AI features inside your app: connect the ${chip('chatgpt')} or ${chip('claude')} API to power chatbots, content generation, or analysis.\n\n${chip('n8n')} for backend automation — connect your app to CRM, email, payments. Visual drag-and-drop, no backend code.\n\nFor marketing: ${chip('canva-ai')} for visuals, ${chip('elevenlabs')} if you want a product demo voiceover.\n\n**Start with Lovable.** Describe exactly what you want to build and it'll get you to a working version today.`);
-    }
-
-    // ── Research ──────────────────────────────────────────────────
-    if(i.research){
-      memory.update('research',['perplexity','notebooklm','elicit','claude','wolfram']);
-      return fmt(`Depends on where your information is:\n\n**Live web research:** ${chip('perplexity')} — every answer cites sources in real time. Pro adds file uploads and a Finance research hub.\n\n**Your own documents:** ${chip('notebooklm')} — upload up to 50 PDFs, docs, or web links. Q&A across all of them, zero hallucination, all answers cite the source. Free.\n\n**Academic papers:** ${chip('elicit')} — searches 200M+ papers, extracts data across multiple studies. Built for systematic reviews.\n\n**Long single documents:** ${chip('claude')} — 1M token context means it can read an entire book or contract pack in one go.\n\n**Math and science data:** ${chip('wolfram')} — 10,000+ knowledge domains with step-by-step working.\n\n**Quickest start:** Perplexity for web research (free), NotebookLM for your own files (free).`);
-    }
-
-    // ── Images ────────────────────────────────────────────────────
-    if(i.images&&!i.video&&!i.design){
-      memory.update('images',['midjourney','adobe-firefly','chatgpt','freepik','canva-ai']);
-      return fmt(`Depends on what the image is for:\n\n${chip('midjourney')} — best visual quality, full stop. Use it for campaign imagery, editorial visuals, concept art. Has a "consistent character" feature to keep the same person across multiple images.\n\n${chip('adobe-firefly')} — if the image is going into an ad or product, use this. Trained only on licensed Adobe Stock so it's 100% commercially safe. Generative Fill inside Photoshop is genuinely powerful.\n\n${chip('freepik')} — 20 free AI images per day. Also has background removal, inpainting, and 8× upscaling. Good for day-to-day volume.\n\n${chip('canva-ai')} — generate an image and immediately drop it into a design, post, or presentation.\n\n${chip('chatgpt')} GPT Image — best at following very specific, detailed prompts accurately.\n\n**Short answer:** Midjourney for quality. Freepik if you need a free option. Adobe Firefly if it's going in a paid ad.`);
-    }
-
-    // ── Design ────────────────────────────────────────────────────
-    if(i.design&&!i.coding){
-      memory.update('design',['canva-ai','freepik','adobe-firefly','midjourney']);
-      return fmt(`For design and brand content:\n\n${chip('canva-ai')} covers 90% of day-to-day design needs — social posts, presentations, flyers, thumbnails. Magic Design turns a sentence into a full branded presentation. Magic Resize adapts any design to every platform in one click.\n\n${chip('freepik')} for image editing — background removal, photo inpainting, 8× upscaling, relighting. 20 free AI images per day.\n\n${chip('adobe-firefly')} if you're already in Photoshop or Illustrator — Generative Fill, Generative Recolor, and it's 100% safe for commercial use.\n\n${chip('midjourney')} when you need something that genuinely stops scrolling — the highest quality creative output available.\n\n**Start with:** Canva AI for everyday work. Midjourney when something needs to stand out.`);
-    }
-
-    // ── Voice & Audio ─────────────────────────────────────────────
-    if(i.audio){
-      memory.update('audio',['elevenlabs','heygen','chatgpt']);
-      return fmt(`For voice and audio:\n\n${chip('elevenlabs')} is the best. Clone your voice from just 1 minute of recording. 3,000+ built-in voices, 29 languages, real-time API. Free tier gives you 10,000 characters per month.\n\nNeed to dub a video into another language? ${chip('heygen')} does video dubbing with automated lip sync across 40+ languages.\n\n**A common workflow:** ${chip('chatgpt')} or Claude writes the script → ElevenLabs narrates it → Runway or Kling adds visuals.\n\n**Start with:** ElevenLabs free tier. It'll cover most narration needs without spending anything.`);
-    }
-
-    // ── Legal ─────────────────────────────────────────────────────
-    if(i.legal){
-      memory.update('legal',['harvey','notebooklm','claude','perplexity']);
-      return fmt(`For legal work:\n\n${chip('harvey')} is the purpose-built option — used by major law firms for contract redlining, case research, and compliance monitoring. Enterprise pricing, but it's the only one trained specifically for legal work.\n\n${chip('notebooklm')} for document review — upload your contracts, case files, and compliance docs. Ask questions across all of them, every answer cites the source. Completely free.\n\n${chip('claude')} for reading very long legal documents — its 1M token context can take in an entire contract pack at once.\n\n${chip('perplexity')} for real-time legal news, regulatory updates, and case law research with citations.\n\n**Start with:** NotebookLM (free) for your own document review. Harvey if you need a professional platform.`);
-    }
-
-    // ── Education ─────────────────────────────────────────────────
-    if(i.education){
-      memory.update('education',['khanmigo','notebooklm','elicit','wolfram','chatgpt']);
-      return fmt(`For studying and learning:\n\n${chip('khanmigo')} — this is the one for students. It's a Socratic tutor, meaning it asks you questions to guide you to the answer instead of just giving it to you. Covers maths, science, history, SAT prep. $4/month, free for US teachers.\n\n${chip('notebooklm')} — upload your lecture notes, textbooks, and course materials. Ask questions across all of them, generate audio summaries, create study guides. Completely free.\n\n${chip('wolfram')} — for maths and science. Shows you every step of the working, not just the answer.\n\n${chip('elicit')} — for academic research. Searches 200M+ papers and extracts key data across multiple studies.\n\n**Start with:** NotebookLM for your course materials — it's free and genuinely useful for exams.`);
-    }
-
-    // ── Fitness ───────────────────────────────────────────────────
-    if(i.fitness){
-      memory.update('fitness',['fitbod','chatgpt','claude']);
-      return fmt(`For fitness and training:\n\n${chip('fitbod')} is the best for gym workouts — it learns your equipment, tracks your recovery, and automatically applies progressive overload. 3 free workouts to try it. About $7/month after.\n\nFor custom plans, nutrition advice, or anything that requires a back-and-forth: ${chip('chatgpt')} or ${chip('claude')}. Describe your goals, equipment, and schedule — they'll build a detailed plan and answer follow-up questions.\n\nFitbod syncs with Apple Watch and Google Fit for automatic tracking.\n\n**Start with:** Fitbod for structured gym programming. ChatGPT for anything requiring custom advice.`);
-    }
-
-    // ── Sales ─────────────────────────────────────────────────────
-    if(i.sales){
-      memory.update('sales',['gong','chatgpt','claude','n8n','copilot']);
-      return fmt(`For sales teams:\n\n${chip('gong')} is the serious tool — it records and transcribes every sales call, shows you what your top performers do differently, flags risk in deals, and forecasts revenue. Enterprise pricing.\n\nFor outreach and content: ${chip('claude')} or ${chip('chatgpt')} for writing cold emails, proposals, and call prep. Claude is better for longer, more nuanced content.\n\n${chip('n8n')} for pipeline automation — qualify leads automatically, update CRM from call transcripts, send follow-ups. Connects to HubSpot, Salesforce, everything.\n\nIf you're on Microsoft: ${chip('copilot')} inside Dynamics 365 brings AI directly into your CRM.\n\n**Start with:** ChatGPT for outreach copy (free). n8n for automation if you want to reduce manual CRM work.`);
-    }
-
-    // ── Business / meetings ───────────────────────────────────────
-    if(i.business){
-      memory.update('business',['otter-ai','notion-ai','copilot','perplexity','chatgpt']);
-      return fmt(`For business and team productivity:\n\n${chip('otter-ai')} for meetings — auto-transcribes Zoom, Teams, and Meet calls, generates summaries and action items, and pushes them to Slack. Free for 300 minutes per month.\n\n${chip('notion-ai')} for knowledge management — Q&A across your entire company wiki, auto-draft documents, extract action items. $8/user/month add-on.\n\n${chip('copilot')} if you're on Microsoft 365 — AI built into Word, Excel, PowerPoint, Outlook, and Teams. Particularly useful for summarising long email threads and building slide decks from bullet points.\n\n${chip('perplexity')} for quick research with citations.\n\n**Start with:** Otter.ai free tier for meetings. It solves one of the biggest time sinks immediately.`);
-    }
-
-    // ── Automation ────────────────────────────────────────────────
-    if(i.automation&&!i.pipeline&&!i.dataAnalyst){
-      memory.update('automation',['n8n','chatgpt','claude','copilot']);
-      return fmt(`For automating workflows and connecting tools:\n\n${chip('n8n')} is the best option — 400+ app integrations, AI Agent nodes that self-correct, and you can self-host it for free. Visual drag-and-drop, but also supports custom code nodes in JS/Python when needed.\n\nFor Microsoft 365 users: ${chip('copilot')} with Power Automate is built right into the ecosystem.\n\nFor reasoning inside your automations: ${chip('claude')} or ${chip('chatgpt')} as the AI brain — n8n calls them as API steps within your workflow.\n\n**Common starting points:**\n• New email → AI summary → save to Notion\n• New lead → qualify with AI → update CRM\n• Daily news → summarise → send to Slack\n\n**Start with:** n8n cloud free trial. Their template library has 100+ ready-made workflows.`);
-    }
-
-    // ── Math / science ────────────────────────────────────────────
-    if(i.math){
-      memory.update('math',['wolfram','chatgpt','claude','elicit','khanmigo']);
-      return fmt(`For maths and science:\n\n${chip('wolfram')} for computation — step-by-step answers across calculus, statistics, physics, chemistry, and 10,000+ knowledge domains. The free version answers questions; Pro ($7.25/mo) shows all the working.\n\n${chip('chatgpt')} or ${chip('claude')} for explanations — they can explain concepts at any level, walk through proofs, generate practice problems, and check your working in plain English.\n\n${chip('elicit')} for academic research — searches 200M+ scientific papers.\n\n${chip('khanmigo')} for students who want to actually learn — it asks questions to guide you to the answer rather than just giving it.\n\n**Short answer:** Wolfram for computation. ChatGPT/Claude for understanding.`);
-    }
-
-    // ── Writing ───────────────────────────────────────────────────
-    if(i.writing){
-      memory.update('writing',['claude','chatgpt','gemini','copilot','canva-ai']);
-      return fmt(`For writing:\n\n${chip('claude')} for anything longer or more nuanced — articles, reports, essays, technical writing. It doesn't repeat itself, follows complex instructions, and maintains tone across long pieces.\n\n${chip('chatgpt')} for speed and volume — emails, marketing copy, social posts, high-volume content. Its custom GPTs let you save your brand voice.\n\n${chip('gemini')} if you work in Google Docs or Gmail — it drafts and rewrites directly inside those apps, no tab switching.\n\n${chip('copilot')} for the same inside Word and Outlook.\n\n${chip('canva-ai')} Magic Write if the content is going straight into a design.\n\n**Short answer:** Claude for quality, ChatGPT for volume.`);
-    }
-
-    // ── Animation ─────────────────────────────────────────────────
-    if(i.animation){
-      memory.update('animation',['pika','runway','kling','synthesia','adobe-firefly']);
-      return fmt(`For animation:\n\n${chip('pika')} — great for stylized short clips and social content. Pikaffects turn any object into something that explodes, melts, or morphs. Distinctive look.\n\n${chip('runway')} — for quality cinematic work. Motion brush, camera control, style transfer. Used in real film and ad production.\n\n${chip('kling')} — best physics realism. Water, cloth, fire all look genuinely convincing.\n\n${chip('synthesia')} — if you want a talking AI avatar, this is the most polished option. 120+ languages, used for corporate training and explainer videos.\n\n${chip('adobe-firefly')} inside After Effects for commercially safe animated elements.\n\n**Start with:** Pika for quick social clips. Runway for anything that needs to look cinematic.`);
-    }
-
-    // ── Video ─────────────────────────────────────────────────────
-    if(i.video){
-      memory.update('video',['heygen','runway','pika','kling','synthesia']);
-      return fmt(`For AI video:\n\n${chip('heygen')} for professional talking-head videos without filming — 300+ AI avatars, voice cloning, 40+ language dubbing with lip sync. Great for marketing and training.\n\n${chip('runway')} for cinematic quality — Gen-3 Alpha with motion brush and camera control.\n\n${chip('pika')} for stylized short-form clips — social media, music videos, ads.\n\n${chip('kling')} for physically realistic footage — water, cloth, fire, crowds.\n\n${chip('synthesia')} for corporate training and e-learning — LMS-ready, 120+ languages.\n\n**Quick answer:** HeyGen if you need a presenter. Runway if you want cinematic quality.`);
-    }
-
-    // ── Images ────────────────────────────────────────────────────
-    if(i.images){
-      memory.update('images',['midjourney','adobe-firefly','freepik','canva-ai','chatgpt']);
-      return fmt(`For generating images:\n\n${chip('midjourney')} — highest visual quality available. Best for creative work, campaign imagery, and editorial visuals.\n\n${chip('adobe-firefly')} — if it's going into an ad or commercial product, use this. Trained only on licensed data so it's 100% legally safe.\n\n${chip('freepik')} — 20 free AI images per day plus background removal, upscaling, and inpainting. Good for everyday volume.\n\n${chip('canva-ai')} — generate an image and immediately use it inside a design.\n\n${chip('chatgpt')} GPT Image — best at following very specific detailed prompts.\n\n**Short answer:** Midjourney for quality. Freepik for free. Adobe Firefly for commercial safety.`);
-    }
-
-    // ── Compare ───────────────────────────────────────────────────
-    if(i.compare){
-      const mentioned=findTools(q);
-      if(mentioned.length>=2){
-        const [a,b]=mentioned.slice(0,2);
-        const dims=["writing","coding","research","creativity","automation","multimodal"];
-        const scores=dims.map(d=>{
-          const av=a.scores[d]||0, bv=b.scores[d]||0;
-          if(av===bv) return `**${d}:** Tied (${av}/10)`;
-          const winner=av>bv?a:b, loser=av>bv?b:a;
-          return `**${d}:** ${chip(winner.id)} wins (${winner.scores[d]} vs ${loser.scores[d]})`;
-        });
-        memory.update('compare',[a.id,b.id]);
-        return fmt(`${chip(a.id)} vs ${chip(b.id)}\n\n${scores.join('\n')}\n\n**${a.name}** is better for: ${a.bestFor.split(',')[0]}.\n\n**${b.name}** is better for: ${b.bestFor.split(',')[0]}.\n\nWhat's your actual use case? I can give a more direct recommendation.`);
-      }
-    }
-
-    // ── Cheap / free ──────────────────────────────────────────────
-    if(i.cheap){
-      memory.update('cheap',['chatgpt','claude','gemini','perplexity','notebooklm','elicit','freepik','canva-ai','github-copilot','deepseek','n8n','elevenlabs','khanmigo']);
-      return fmt(`Here's a full free AI stack by category:\n\n**General AI:** ${chip('chatgpt')} (daily limits) · ${chip('claude')} (daily limits) · ${chip('gemini')} (unlimited on Flash)\n\n**Research:** ${chip('perplexity')} (unlimited basic) · ${chip('notebooklm')} (fully free) · ${chip('elicit')} (5,000 free credits)\n\n**Images:** ${chip('freepik')} (20/day) · ${chip('canva-ai')} (50/month + 1M templates)\n\n**Coding:** ${chip('github-copilot')} (free for students) · ${chip('deepseek')} (~$0 API cost)\n\n**Automation:** ${chip('n8n')} (free self-hosted)\n\n**Voice:** ${chip('elevenlabs')} (10,000 characters/month)\n\n**Education:** ${chip('khanmigo')} (free for US teachers) · NotebookLM (always free)\n\n**Most useful combination for most people:** Gemini + NotebookLM + Freepik + Canva AI. All free, covers most daily needs.`);
-    }
-
-    // ── Fallback — try named tool first, then smart prompt ────────
-    const namedTool=findTool(q);
-    if(namedTool){
-      memory.update('toolLookup',[namedTool.id]);
-      return fmt(`${chip(namedTool.id)} — ${namedTool.tagline}\n\n${namedTool.bestFor}\n\n**Top uses:**\n${namedTool.useCases.slice(0,3).map(u=>`• ${u}`).join('\n')}\n\n**Pricing:** ${namedTool.free.available?`Free tier available`:`No free tier`} · from ${namedTool.paid[0].price}\n\nWant to know how to combine it with other tools?`);
-    }
-
-    // Last resort — ask a clarifying question
-    memory.update('unknown',[]);
-    const clarifiers=[
-      'What are you trying to do? The more specific you are, the better I can help.',
-      'Can you describe what you want to build or automate? I\'ll match you to the right tools.',
-      'What\'s the end goal? Tell me what you\'re trying to achieve and I\'ll figure out the best tool combination.',
-    ];
-    return fmt(clarifiers[memory.turns % clarifiers.length]);
+  // ── Step indicator ────────────────────────────────────────────────
+  function stepBar(current){
+    const steps=['Define goal','Answer questions','Your stack'];
+    return `<div class="adv-steps">${steps.map((s,i)=>`<div class="adv-step ${i+1===current?'active':i+1<current?'done':''}">
+      <div class="adv-step-dot">${i+1<current?'✓':i+1}</div>
+      <div class="adv-step-label">${s}</div>
+    </div>${i<2?'<div class="adv-step-line"></div>':''}`).join('')}</div>`;
   }
 
-  function getTime(){return new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});}
-
-  function addMsg(role,text){
-    const d=document.createElement('div');
-    d.className=`msg ${role}`;
-    const b=document.createElement('div');
-    b.className='msg-bubble';
-    b.innerHTML=typeof text==='string'?text:text;
-    const tm=document.createElement('div');
-    tm.className='msg-time';
-    tm.textContent=getTime();
-    d.appendChild(b);
-    d.appendChild(tm);
-    msgsEl.appendChild(d);
-    msgsEl.scrollTop=msgsEl.scrollHeight;
-  }
-
-  function showTyping(){
-    const d=document.createElement('div');
-    d.className='msg bot';
-    d.id='typing-msg';
-    d.innerHTML='<div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
-    msgsEl.appendChild(d);
-    msgsEl.scrollTop=msgsEl.scrollHeight;
-  }
-  function removeTyping(){const t=document.getElementById('typing-msg');if(t)t.remove();}
-
-  function sendMessage(text){
-    if(!text.trim()||isThinking)return;
-    isThinking=true;sendBtn.disabled=true;
+  // ── RENDER STEP 1: Goal input ─────────────────────────────────────
+  function renderStep1(){
+    msgsEl.innerHTML=`
+      ${stepBar(1)}
+      <div class="adv-goal-screen">
+        <div class="adv-headline">What are you trying to achieve?</div>
+        <div class="adv-sub">Be specific — the more detail, the better the stack recommendation.</div>
+        <div class="adv-examples">
+          <div class="adv-example-label">Examples</div>
+          <button class="adv-example-chip" onclick="advisorSetGoal('Start and grow a YouTube channel')">Start and grow a YouTube channel</button>
+          <button class="adv-example-chip" onclick="advisorSetGoal('Ship an MVP SaaS as a solo dev')">Ship an MVP SaaS as a solo dev</button>
+          <button class="adv-example-chip" onclick="advisorSetGoal('Streamline client work as a one-person agency')">Streamline client work as a one-person agency</button>
+          <button class="adv-example-chip" onclick="advisorSetGoal('Automate research and notes for my job')">Automate research and notes for my job</button>
+        </div>
+      </div>`;
+    // Show input area for step 1
+    inputEl.style.display='';
+    sendBtn.style.display='';
+    inputEl.placeholder='Describe your goal…';
+    inputEl.value='';
+    inputEl.focus();
     suggestionsEl.style.display='none';
-    addMsg('user',fmt(text));
-    inputEl.value='';inputEl.style.height='auto';
-    showTyping();
-    // Delay feels more natural — slightly longer for complex answers
-    const delay=400+Math.random()*300;
-    setTimeout(()=>{
-      removeTyping();
-      addMsg('bot',generateAnswer(text));
-      isThinking=false;sendBtn.disabled=false;
-      inputEl.focus();
-    },delay);
   }
 
+  // ── RENDER STEP 2: Questions ──────────────────────────────────────
+  function renderStep2(){
+    const qi=session.questionIndex;
+    if(qi>=QUESTIONS.length){
+      // All answered — build stack
+      session.derivedTags=buildDerivedTags();
+      session.stack=buildStack();
+      session.step=3;
+      renderStep3();
+      return;
+    }
+    const q=QUESTIONS[qi];
+    inputEl.style.display='none';
+    sendBtn.style.display='none';
+
+    const prevAnswers=QUESTIONS.slice(0,qi).map(pq=>{
+      const ans=session.answers[pq.id];
+      if(!ans) return '';
+      const opt=pq.options.find(o=>o.value===ans);
+      return `<div class="adv-prev-answer"><span class="adv-prev-q">${pq.text}</span><span class="adv-prev-a">${opt?.icon||''} ${opt?.label||ans}</span></div>`;
+    }).filter(Boolean).join('');
+
+    msgsEl.innerHTML=`
+      ${stepBar(2)}
+      ${prevAnswers}
+      <div class="adv-question-block">
+        <div class="adv-q-number">Question ${qi+1} of ${QUESTIONS.length}</div>
+        <div class="adv-q-text">${q.text}</div>
+        <div class="adv-q-sub">${q.sub}</div>
+        <div class="adv-chips-row">
+          ${q.options.map(o=>`<button class="adv-option-chip" onclick="advisorAnswer('${q.id}','${o.value}')">${o.icon} ${o.label}</button>`).join('')}
+        </div>
+      </div>`;
+    msgsEl.scrollTop=0;
+  }
+
+  // ── RENDER STEP 3: Stack results ──────────────────────────────────
+  function renderStep3(){
+    const stack=session.stack;
+    const out=estimateOutcomes(stack);
+    inputEl.style.display='none';
+    sendBtn.style.display='none';
+
+    // Stack summary
+    const goalText=session.goal.length>60?session.goal.substring(0,57)+'…':session.goal;
+
+    const summaryBullets=[
+      `<span class="out-icon">⏱</span> Roughly <strong>${out.hrMin}–${out.hrMax} hours saved</strong> per week once set up`,
+      out.contentOutput?`<span class="out-icon">📦</span> Expected output: <strong>${out.contentOutput}</strong>`:'',
+      `<span class="out-icon">💸</span> Monthly spend: <strong>${out.costBand}</strong>`,
+      `<span class="out-icon">🔧</span> <strong>${out.toolCount} tools</strong> — ${out.contextSwitch}`,
+      stack.some(r=>r.tool.free.available)?`<span class="out-icon">🆓</span> At least one tool in the stack has a genuine <strong>free tier</strong>`:'',
+    ].filter(Boolean).map(b=>`<div class="out-bullet">${b}</div>`).join('');
+
+    // Tool cards
+    const toolCards=stack.map(({tool,layer})=>{
+      const {why,detail,tradeoff}=getToolReason(tool,layer,session.goalTags,session.answers);
+      const layerMeta=LAYERS[layer]||LAYERS.creation;
+      const costLabel=tool.free.available?`<span class="adv-cost-free">Free tier</span>`:`<span class="adv-cost-paid">From ${tool.paid[0].price}</span>`;
+      return `<div class="adv-tool-card">
+        <div class="adv-tool-top">
+          <div class="adv-layer-badge" style="background:${layerMeta.color}22;color:${layerMeta.color};border:1px solid ${layerMeta.color}44">${layerMeta.label}</div>
+          ${costLabel}
+        </div>
+        <div class="adv-tool-name">${chip(tool.id)}</div>
+        <div class="adv-tool-why">${why}</div>
+        ${detail?`<div class="adv-tool-detail">${detail}</div>`:''}
+        ${tradeoff?`<div class="adv-tool-tradeoff">${tradeoff}</div>`:''}
+      </div>`;
+    }).join('');
+
+    msgsEl.innerHTML=`
+      ${stepBar(3)}
+      <div class="adv-summary-block">
+        <div class="adv-summary-goal">"${goalText}"</div>
+        <div class="adv-summary-headline">Your AI stack</div>
+        ${summaryBullets}
+        <div class="adv-breakdown"><strong>Where this breaks down:</strong> ${out.breakdown}</div>
+      </div>
+      <div class="adv-tools-list">${toolCards}</div>
+      <div class="adv-restart-row">
+        <button class="adv-restart-btn" onclick="advisorRestart()">↺ Start over with a different goal</button>
+        <div class="adv-cta-note">Click any tool name to explore it in the directory</div>
+      </div>`;
+
+    msgsEl.scrollTop=0;
+  }
+
+  // ── Exposed globals for onclick handlers ─────────────────────────
+  window.advisorSetGoal=function(text){
+    inputEl.value=text;
+    inputEl.focus();
+  };
+
+  window.advisorAnswer=function(qId,value){
+    session.answers[qId]=value;
+    session.questionIndex++;
+    renderStep2();
+  };
+
+  window.advisorRestart=function(){
+    session={goal:'',goalTags:[],answers:{},derivedTags:[],step:0,questionIndex:0,stack:[]};
+    session.step=1;
+    renderStep1();
+  };
+
+  // ── Step 1 submit ─────────────────────────────────────────────────
+  function submitGoal(text){
+    if(!text.trim()) return;
+    session.goal=text.trim();
+    session.goalTags=parseGoal(text);
+    session.step=2;
+    session.questionIndex=0;
+    renderStep2();
+  }
+
+  // ── Chat open ─────────────────────────────────────────────────────
   function openChat(){
     isOpen=true;win.classList.remove('hidden');
-    if(msgsEl.children.length===0){
-      setTimeout(()=>addMsg('bot',fmt(`Hey 👋 I'm the Toolipedia Advisor.\n\nTell me what you want to build, create, or automate — I'll tell you exactly which tools to use and how to combine them.\n\nYou can be specific: *"I need a data pipeline from HubSpot to Power BI"* or broad: *"I want to start a YouTube channel"*. Either way, I'll point you in the right direction.`)),200);
-    }
-    inputEl.focus();
+    session={goal:'',goalTags:[],answers:{},derivedTags:[],step:0,questionIndex:0,stack:[]};
+    session.step=1;
+    renderStep1();
     const notif=toggle.querySelector('.notif');if(notif)notif.remove();
   }
 
-  window.handleChipClick=function(id){if(!id)return;state.expandedId=id;state.query='';state.category='All';document.querySelectorAll('.cat-pill').forEach(p=>p.classList.toggle('active',p.dataset.cat==='All'));switchTab('explore');renderExplore();setTimeout(()=>{const card=document.querySelector(`[data-id="${id}"]`);if(card)card.scrollIntoView({behavior:'smooth',block:'center'});win.classList.add('hidden');isOpen=false;},80);};
+  // ── Tool card deep-link ───────────────────────────────────────────
+  window.handleChipClick=function(id){
+    if(!id) return;
+    state.expandedId=id;state.query='';state.category='All';
+    document.querySelectorAll('.cat-pill').forEach(p=>p.classList.toggle('active',p.dataset.cat==='All'));
+    switchTab('explore');renderExplore();
+    setTimeout(()=>{
+      const card=document.querySelector(`[data-id="${id}"]`);
+      if(card){
+        const headerH=(document.querySelector('header')||{offsetHeight:56}).offsetHeight||56;
+        const freshTop=card.getBoundingClientRect().top+window.scrollY;
+        window.scrollTo({top:freshTop-headerH-8,behavior:'instant'});
+      }
+      win.classList.add('hidden');isOpen=false;
+    },80);
+  };
 
+  // ── Event listeners ───────────────────────────────────────────────
   toggle.addEventListener('click',()=>{if(isOpen){isOpen=false;win.classList.add('hidden');}else openChat();});
   document.getElementById('hero-advisor-btn').addEventListener('click',()=>{if(!isOpen)openChat();else win.classList.remove('hidden');});
   closeBtn.addEventListener('click',()=>{isOpen=false;win.classList.add('hidden');});
-  sendBtn.addEventListener('click',()=>sendMessage(inputEl.value));
-  inputEl.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendMessage(inputEl.value);}});
-  inputEl.addEventListener('input',()=>{inputEl.style.height='auto';inputEl.style.height=Math.min(inputEl.scrollHeight,90)+'px';});
-  suggestionsEl.querySelectorAll('.suggestion-chip').forEach(c=>c.addEventListener('click',()=>sendMessage(c.textContent.trim())));
+
+  document.getElementById('chat-new-btn').addEventListener('click',()=>{
+    session={goal:'',goalTags:[],answers:{},derivedTags:[],step:1,questionIndex:0,stack:[]};
+    renderStep1();
+    inputEl.style.display='';
+    sendBtn.style.display='';
+    inputEl.value='';
+    inputEl.focus();
+  });
+
+  sendBtn.addEventListener('click',()=>{
+    if(session.step<=1) submitGoal(inputEl.value);
+  });
+  inputEl.addEventListener('keydown',e=>{
+    if(e.key==='Enter'&&!e.shiftKey){
+      e.preventDefault();
+      if(session.step<=1) submitGoal(inputEl.value);
+    }
+  });
+  inputEl.addEventListener('input',()=>{
+    inputEl.style.height='auto';
+    inputEl.style.height=Math.min(inputEl.scrollHeight,90)+'px';
+  });
 })();
+
+
 
 // ═══════════════ WIKI ENGINE ═══════════════
 (function(){
