@@ -445,6 +445,107 @@ body.wiki-mode main,body.wiki-mode footer{visibility:hidden}
 .uc-list li::before{content:'→';color:var(--p1);flex-shrink:0;font-weight:600}
 .feat-list li::before{content:'✓';color:var(--p2);flex-shrink:0;font-weight:700}
 .int-list li::before{content:'·';color:var(--text3);flex-shrink:0;font-weight:900;font-size:16px;line-height:1}
+/* ── BUILDER SECTION (Advisor Step 3) ─────────────────────────────── */
+.builder-section{
+  margin:0 12px 12px;
+  border:1px solid var(--border);
+  border-radius:var(--radius-md);
+  overflow:hidden;
+}
+.builder-section-head{
+  display:flex;align-items:center;gap:10px;
+  padding:12px 14px 10px;
+  background:var(--bg3);border-bottom:1px solid var(--border);
+}
+.builder-section-icon{font-size:16px}
+.builder-section-title{font-size:12px;font-weight:700;color:var(--text);letter-spacing:-0.1px}
+.builder-section-sub{font-size:11px;color:var(--text3);margin-top:1px}
+.builder-cards{
+  display:grid;grid-template-columns:1fr 1fr;gap:0;
+}
+.builder-card{
+  padding:10px 12px;border-bottom:1px solid var(--border);
+  border-right:1px solid var(--border);
+}
+.builder-card:nth-child(even){border-right:none}
+.builder-card:last-child,.builder-card:nth-last-child(2):nth-child(odd){border-bottom:none}
+.builder-role{font-size:9px;text-transform:uppercase;letter-spacing:0.7px;color:var(--text3);font-weight:600;margin-bottom:3px}
+.builder-tool-name{font-size:12px;font-weight:600;color:var(--text);margin-bottom:3px}
+.builder-reason{font-size:11px;color:var(--text2);line-height:1.45;margin-bottom:5px}
+.builder-pricing{font-size:10px;color:var(--text3)}
+.builder-explore{color:var(--p1);cursor:pointer;font-weight:500}
+.builder-explore:hover{text-decoration:underline}
+.builder-note{
+  font-size:10px;color:var(--text3);padding:8px 12px;
+  background:var(--bg3);border-top:1px solid var(--border);
+  line-height:1.5;font-style:italic;
+}
+@media(max-width:420px){.builder-cards{grid-template-columns:1fr}.builder-card{border-right:none}}
+
+/* ── MODEL CARD VARIANT ───────────────────────────────────────────── */
+.tool-card[data-model="true"] .card-head .tool-icon{
+  background:var(--bg3)!important;
+}
+.model-badge{
+  display:inline-flex;align-items:center;gap:3px;
+  font-size:9px;font-weight:600;letter-spacing:0.4px;
+  padding:2px 6px;border-radius:3px;
+  background:rgba(124,58,237,0.1);
+  border:1px solid rgba(124,58,237,0.3);
+  color:#7C3AED;text-transform:uppercase;white-space:nowrap;
+}
+html.light .model-badge{color:#6D28D9}
+
+/* ── AGENT BADGE & SECTION ───────────────────────────────────────── */
+.agent-badge{
+  display:inline-flex;align-items:center;gap:4px;
+  font-size:9px;font-weight:600;letter-spacing:0.4px;
+  padding:2px 7px;border-radius:3px;
+  background:rgba(212,130,74,0.12);
+  border:1px solid rgba(212,130,74,0.35);
+  color:var(--p1);text-transform:uppercase;white-space:nowrap;
+}
+.agent-section{
+  margin-top:16px;padding-top:16px;
+  border-top:1px solid var(--border);
+}
+.agent-section-head{
+  display:flex;align-items:center;gap:8px;margin-bottom:10px;
+}
+.agent-section-title{
+  font-size:9px;text-transform:uppercase;letter-spacing:0.9px;
+  color:var(--text3);font-weight:700;
+}
+.agent-name{
+  font-size:13px;font-weight:600;color:var(--text);margin-bottom:2px;
+}
+.agent-type-pill{
+  font-size:9px;font-weight:600;letter-spacing:0.5px;text-transform:uppercase;
+  padding:2px 7px;border-radius:3px;
+  color:var(--p1);background:rgba(212,130,74,0.1);border:1px solid rgba(212,130,74,0.25);
+}
+.agent-autonomy{
+  display:flex;align-items:center;gap:5px;margin:6px 0 8px;
+}
+.agent-autonomy-label{font-size:10px;color:var(--text3);width:62px;flex-shrink:0}
+.agent-autonomy-dots{display:flex;gap:3px}
+.agent-autonomy-dot{
+  width:8px;height:8px;border-radius:50%;
+  background:var(--border);transition:background 0.2s;
+}
+.agent-autonomy-dot.on{background:var(--p1)}
+.agent-pricing{
+  font-size:11px;color:var(--text2);line-height:1.5;
+  background:var(--detail-bg);border:1px solid var(--border);
+  border-radius:var(--radius-sm);padding:7px 9px;margin-bottom:8px;
+}
+.agent-what{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+.agent-what li{
+  font-size:11px;color:var(--text2);line-height:1.45;
+  display:flex;align-items:flex-start;gap:6px;
+}
+.agent-what li::before{content:"→";color:var(--p1);font-size:10px;margin-top:1px;flex-shrink:0}
+
 .plans-list{display:flex;flex-direction:column;gap:6px}
 .plan-item{
   background:var(--detail-bg);border:1px solid var(--border);
@@ -1092,7 +1193,7 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
 </header>
 
 <section class="hero">
-  <div class="hero-label">35 tools · Curated &amp; scored</div>
+  <div class="hero-label">44 tools · Curated &amp; scored</div>
   <h1>The right AI stack<br>for <em>what you actually do.</em></h1>
   <p class="hero-tagline">You know your goal. <strong>We know the tools.</strong></p>
   <div class="advisor-cta">
@@ -1101,7 +1202,7 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
       Find my stack
     </button>
     <span class="advisor-or">or</span>
-    <button class="advisor-browse-btn" id="hero-browse-btn">Browse all 35 tools ↓</button>
+    <button class="advisor-browse-btn" id="hero-browse-btn">Browse all 44 tools ↓</button>
   </div>
   <div class="search-wrap">
     <div class="search-glow"></div>
@@ -1158,13 +1259,15 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
     <button class="cat-pill" data-cat="Education">Education</button>
     <button class="cat-pill" data-cat="Business">Business</button>
     <button class="cat-pill" data-cat="Fitness">Fitness</button>
+    <button class="cat-pill" data-cat="Agents">⚡ Agents</button>
+    <button class="cat-pill" data-cat="Models & APIs">🔧 Models & APIs</button>
     <button class="cat-pill" data-cat="Sales">Sales</button>
   </div>
 </div>
 
 <div class="toolbar">
   <div class="tabs">
-    <button class="tab-btn active" data-tab="explore">🧭 Explore <span class="badge" id="tab-count">35</span></button>
+    <button class="tab-btn active" data-tab="explore">🧭 Explore <span class="badge" id="tab-count">44</span></button>
     <button class="tab-btn" data-tab="compare">📊 Compare</button>
     <button class="tab-btn" data-tab="usecases">🎯 Use Cases</button>
   </div>
@@ -1458,7 +1561,10 @@ const TOOLS = [
    useCases:["Write emails, blogs, and marketing copy","Debug code and explain concepts","Analyze uploaded documents","Generate high-quality images with GPT Image","Create AI videos with Sora (Plus/Pro)","Real-time voice conversations","Data analysis with Python interpreter","Build custom GPTs for specific workflows"],
    features:["Multi-modal (text, image, audio, video)","Python code interpreter","Real-time web search","Memory across chats","Custom GPTs / Assistants API","Sora video generation (Plus+)"],
    integrations:["Zapier","Make.com","Teams","Slack","Salesforce","API"],
-   scores:{writing:8,coding:8,research:7,creativity:9,automation:7,multimodal:9}},
+   scores:{writing:8,coding:8,research:7,creativity:9,automation:7,multimodal:9},
+   agents:{hasAgents:true,type:"browser",name:"ChatGPT Agent Mode",autonomy:4,
+     agentPricing:"Included in Pro ($200/mo) — 400 agent msgs/month. Plus ($20/mo) gets ~40.",
+     what:["Browse websites and fill forms autonomously","Run code and create editable spreadsheets","Connect to Gmail, Drive, and GitHub","Multi-step research with Deep Research (o3)","Scheduled recurring tasks"]}},
 
   {id:"claude",name:"Claude",maker:"Anthropic",tagline:"Best for writing, deep analysis & long documents",icon:"✦",color:"#CC785C",
    categories:["General AI","Writing","Coding","Documents"],
@@ -1468,7 +1574,10 @@ const TOOLS = [
    useCases:["Write and edit long-form content with nuance","Analyze entire codebases (1M tokens)","Review legal contracts and research papers","Build interactive apps with Artifacts","Automate coding with Claude Code CLI","Create data visualizations","Document Q&A on large PDFs","Refactor legacy code systematically"],
    features:["1M token context window (beta)","Extended thinking mode","Artifacts (live code/UI renderer)","Computer use agent","Projects for persistent context","Claude Code CLI"],
    integrations:["Google Workspace","Slack","GitHub","Zapier","n8n","MCP servers","API"],
-   scores:{writing:10,coding:9,research:8,creativity:8,automation:8,multimodal:7}},
+   scores:{writing:10,coding:9,research:8,creativity:8,automation:8,multimodal:7},
+   agents:{hasAgents:true,type:"coding",name:"Claude Code + Computer Use",autonomy:5,
+     agentPricing:"Claude Code: API token usage (~$3/M input, $15/M output). Computer Use: same API pricing. Max plan ($100/mo) covers web use.",
+     what:["Edit files, run tests, commit to GitHub autonomously","Spawn parallel subagents for large tasks","Control desktop apps via Computer Use","Coordinate Agent Teams for multi-hour projects","MCP integrations with 10,000+ servers"]}},
 
   {id:"gemini",name:"Gemini",maker:"Google",tagline:"Native Google Workspace integration + massive context",icon:"◈",color:"#4285F4",
    categories:["General AI","Research","Documents"],
@@ -1478,7 +1587,10 @@ const TOOLS = [
    useCases:["Summarize and draft replies in Gmail","Analyze and build formulas in Sheets","Generate presentations in Slides","Process 1M+ token documents","Generate podcast-style audio overviews","Deep Research structured reports","Generate video with Veo 3 (Ultra)","Multimodal: image + audio + video analysis"],
    features:["1M+ token context window","Native Google Workspace integration","Deep Research mode","Audio overview generation","Veo 3 video generation (Ultra)"],
    integrations:["Gmail","Google Docs","Sheets","Slides","Drive","Meet","YouTube"],
-   scores:{writing:8,coding:7,research:9,creativity:7,automation:8,multimodal:10}},
+   scores:{writing:8,coding:7,research:9,creativity:7,automation:8,multimodal:10},
+   agents:{hasAgents:true,type:"browser",name:"Project Mariner + Jules",autonomy:4,
+     agentPricing:"Included in Google AI Ultra ($249.99/mo). Jules coding agent included in Workspace plans.",
+     what:["Browse, interact with, and complete tasks across websites","Handle up to 10 parallel browser sessions","Teach & Repeat: learn workflows from demonstrations","Jules coding agent: bugs, tests, refactoring on GitHub","Deep Research across the web"]}},
 
   {id:"perplexity",name:"Perplexity",maker:"Perplexity AI",tagline:"Research engine — real-time answers with source citations",icon:"◎",color:"#20B2AA",
    categories:["Research","General AI"],
@@ -1488,7 +1600,10 @@ const TOOLS = [
    useCases:["Market research with live web citations","Competitive analysis with current pricing","Academic research with source attribution","Fact-check claims in real-time","Compare products with up-to-date specs","Due diligence reports","Monitor news and industry trends","Finance Hub for investment research"],
    features:["Real-time web search","Inline citations on every answer","Multiple LLM model access","File uploads (Pro)","Finance and Shopping hubs","Spaces for ongoing research"],
    integrations:["Claude","GPT-4","Gemini","DeepSeek","API"],
-   scores:{writing:6,coding:5,research:10,creativity:4,automation:4,multimodal:6}},
+   scores:{writing:6,coding:5,research:10,creativity:4,automation:4,multimodal:6},
+   agents:{hasAgents:true,type:"research",name:"Deep Research + Perplexity Computer",autonomy:4,
+     agentPricing:"Deep Research: included in Pro ($20/mo). Perplexity Computer (browser agent): included in Pro.",
+     what:["Deep Research: autonomous multi-step web research over minutes","Synthesizes sources into comprehensive cited reports","Perplexity Computer: coordinates 19 AI models for long-running tasks","Handles workflows lasting hours or days autonomously","Pro Search: agentic web search with follow-up reasoning"]}},
 
   {id:"grok",name:"Grok",maker:"xAI",tagline:"Real-time X/Twitter data + lowest hallucination rate",icon:"✗",color:"#E7E7E7",
    categories:["General AI","Research"],
@@ -1508,7 +1623,10 @@ const TOOLS = [
    useCases:["Summarize email threads in Outlook","Analyze data with Python in Excel","Write and summarize docs in Word","Generate slide decks in PowerPoint","Transcribe Teams meetings","Build custom Copilot agents for SharePoint","Automate repetitive Office tasks","Collaborative AI canvas with Copilot Pages"],
    features:["Native Word/Excel/PowerPoint/Outlook/Teams","Copilot Pages (multiplayer AI canvas)","Python in Excel","Custom Copilot Agents","Enterprise-grade M365 security","Power Automate integration"],
    integrations:["Microsoft 365","SharePoint","Teams","OneDrive","Dynamics 365","Power Automate","Azure"],
-   scores:{writing:7,coding:7,research:6,creativity:6,automation:9,multimodal:7}},
+   scores:{writing:7,coding:7,research:6,creativity:6,automation:9,multimodal:7},
+   agents:{hasAgents:true,type:"workflow",name:"Copilot Studio Agents",autonomy:3,
+     agentPricing:"M365 Copilot: $21–30/user/mo (enterprise). Copilot Studio extra: $200/mo capacity pack. Credits: 25,000 for $200.",
+     what:["Build no-code agents in natural language","Computer use: agents control apps via virtual mouse/keyboard","Sales Development Agent and Workflows Agent built-in","Agent Mode in Excel, Word, and PowerPoint","Connects to 1,400+ business systems"]}},
 
   {id:"midjourney",name:"Midjourney",maker:"Midjourney Inc.",tagline:"The gold standard for AI image quality",icon:"⬟",color:"#8B5CF6",
    categories:["Image Gen","Creative"],
@@ -1528,7 +1646,10 @@ const TOOLS = [
    useCases:["Multi-file refactoring across entire codebase","Arena Mode: compare models side-by-side","Debug with full codebase context","Generate test suites from existing code","Explore unfamiliar repos fast","Build features from plain-English","Parallel multi-agent sessions","Live preview during development"],
    features:["Full codebase indexing","Arena Mode (model comparison)","Cascade AI agent","Live preview window","Parallel multi-agent sessions","Tab completion (autocomplete++)","All major AI models"],
    integrations:["GitHub","GitLab","VS Code (forked)","All languages","Terminal","Git"],
-   scores:{writing:4,coding:10,research:5,creativity:5,automation:8,multimodal:4}},
+   scores:{writing:4,coding:10,research:5,creativity:5,automation:8,multimodal:4},
+   agents:{hasAgents:true,type:"coding",name:"Cursor Agent Mode + Background Agents",autonomy:5,
+     agentPricing:"Included in Pro ($20/mo). Ultra ($200/mo) includes 20x usage. Background Agents use cloud compute.",
+     what:["Multi-file autonomous edits with full codebase awareness","Up to 8 Background Agents running in parallel cloud VMs","Each agent works on its own branch and opens a PR","Voice control and embedded browser for agents","Cursor 2.0: sandboxed terminals, parallel agent runs"]}},
 
   {id:"github-copilot",name:"GitHub Copilot",maker:"GitHub/Microsoft",tagline:"AI pair programmer built into your IDE",icon:"⚙",color:"#6E40C9",
    categories:["Coding","Development"],
@@ -1538,7 +1659,10 @@ const TOOLS = [
    useCases:["Inline autocomplete as you type","Generate functions from comments","Explain and refactor code in chat","Write unit tests for any function","GitHub PR reviews and fix suggestions","Works in VS Code, JetBrains, Neovim","Copilot Workspace for multi-file tasks","CLI assistant for command-line help"],
    features:["IDE integration (VS Code, JetBrains, Neovim)","GitHub PR integration","CLI assistant","Multi-model support","Copilot Workspace","Real-time inline completion"],
    integrations:["GitHub","VS Code","JetBrains","Neovim","Visual Studio","GitHub Actions"],
-   scores:{writing:3,coding:9,research:4,creativity:4,automation:7,multimodal:3}},
+   scores:{writing:3,coding:9,research:4,creativity:4,automation:7,multimodal:3},
+   agents:{hasAgents:true,type:"coding",name:"Copilot Coding Agent",autonomy:3,
+     agentPricing:"Included in Pro ($10/mo) and above. Premium requests beyond allocation: $0.04 each.",
+     what:["Assign a GitHub issue and agent opens a draft PR","Runs in a secure ephemeral GitHub Actions environment","Agent Mode in VS Code, JetBrains, Eclipse, Xcode","Reads files, makes changes, runs tests in a loop","Auto-corrects until tests pass or asks for guidance"]}},
 
   {id:"notebooklm",name:"NotebookLM",maker:"Google",tagline:"AI that only answers from your own documents",icon:"◉",color:"#34A853",
    categories:["Research","Documents","Education"],
@@ -1558,7 +1682,10 @@ const TOOLS = [
    useCases:["Narrate YouTube videos and podcasts","Dub videos into 29+ languages with lip sync","Clone your voice for brand narration","Generate full audiobooks from manuscripts","Create AI voice characters for games","Build voice-powered apps via API","Text-to-speech for accessibility","Personalized sales voiceover campaigns"],
    features:["29+ language dubbing with lip sync","Voice cloning from 1 minute of audio","3,000+ professional voices","Real-time voice generation API","Audio isolation and noise removal","Sound effects generation from text"],
    integrations:["Zapier","Make.com","API","HeyGen","Adobe Premiere","n8n"],
-   scores:{writing:2,coding:2,research:1,creativity:9,automation:7,multimodal:8}},
+   scores:{writing:2,coding:2,research:1,creativity:9,automation:7,multimodal:8},
+   agents:{hasAgents:true,type:"voice",name:"ElevenAgents",autonomy:3,
+     agentPricing:"Included in Starter ($5/mo) and above. Conversational AI minutes tracked against plan allocation.",
+     what:["Deploy voice + chat AI agents in minutes","Tool calling: agents take real actions during conversations","Built-in RAG: agents answer from your own documents","Visual conversation flow designer","Supports phone, web, and embedded deployment"]}},
 
   {id:"runway",name:"Runway",maker:"Runway ML",tagline:"AI video generation and visual effects",icon:"▶",color:"#EC4899",
    categories:["Video","Creative","Animation"],
@@ -1578,7 +1705,10 @@ const TOOLS = [
    useCases:["Connect ChatGPT/Claude with your CRM","Build AI-powered support pipelines","Automate lead qualification and routing","AI email sorting and response drafting","Sync data between 400+ apps automatically","Build self-correcting AI agent workflows","Monitor competitor websites for changes","Automate social posts with AI content"],
    features:["400+ native integrations","AI Agent nodes with self-correction","LLM orchestration (all major models)","Fully self-hostable and open source","Code nodes (JS and Python)","Webhook triggers","Visual drag-and-drop builder"],
    integrations:["OpenAI","Anthropic","Google AI","Slack","HubSpot","Salesforce","Gmail","Airtable","400+ more"],
-   scores:{writing:2,coding:7,research:3,creativity:2,automation:10,multimodal:4}},
+   scores:{writing:2,coding:7,research:3,creativity:2,automation:10,multimodal:4},
+   agents:{hasAgents:true,type:"workflow",name:"n8n AI Agent Nodes",autonomy:4,
+     agentPricing:"Included in all plans. Starter €24/mo (2,500 executions). Each multi-step workflow = 1 execution regardless of steps.",
+     what:["AI Agent Node built on LangChain for reasoning loops","Multi-agent architectures with specialist sub-agents","Bidirectional MCP support: connect any MCP server","200+ tool integrations per agent","Chain agents into full automated pipelines"]}},
 
   {id:"deepseek",name:"DeepSeek",maker:"DeepSeek AI",tagline:"Open-source frontier AI at a fraction of the cost",icon:"◈",color:"#06B6D4",
    categories:["General AI","Coding","Research"],
@@ -1688,7 +1818,10 @@ const TOOLS = [
    useCases:["Write and edit documents with AI inline","Q&A across your entire Notion workspace","Summarize meeting notes automatically","Generate project templates from descriptions","Extract action items from meeting transcripts","Build internal wikis with AI-assisted organization","Draft SOPs and process documentation","Autofill database properties with AI"],
    features:["AI writing and editing inline","Q&A across entire workspace","AI summarization of pages and databases","Autofill for database properties","Meeting notes to action items","Drafting from templates","Multi-language support"],
    integrations:["Slack","GitHub","Google Drive","Jira","Zapier","API","Linear","Figma"],
-   scores:{writing:8,coding:2,research:6,creativity:5,automation:7,multimodal:3}},
+   scores:{writing:8,coding:2,research:6,creativity:5,automation:7,multimodal:3},
+   agents:{hasAgents:true,type:"knowledge",name:"Notion AI Agents",autonomy:3,
+     agentPricing:"Included in Business plan ($16/member/mo). AI add-on: $8/member/mo on lower plans.",
+     what:["Works autonomously for up to 20 minutes across your workspace","Reads and writes across hundreds of pages without interruption","Answers questions from your entire knowledge base","Builds meeting notes, action items, and project plans","Notion 3.0 (Sept 2025) rebuilt from scratch as an agentic platform"]}},
 
   {id:"otter-ai",name:"Otter.ai",maker:"Otter.ai",tagline:"AI meeting notes, transcription, and action items",icon:"🦦",color:"#4F46E5",
    categories:["Business","Automation","Documents"],
@@ -1748,7 +1881,10 @@ const TOOLS = [
    useCases:["Automatically record and transcribe every sales call","Get AI deal health scores across your entire pipeline","Identify winning behaviors from your top reps","Coach salespeople using call analysis and scorecards","Forecast revenue with AI confidence intervals","Analyze competitor mentions across all calls","Surface risk signals in deals before they go cold","Generate call summaries and CRM updates automatically"],
    features:["Automatic call recording and transcription","Deal Intelligence with risk signals","Revenue Forecast AI","Conversation analytics (talk ratios, topic tracking)","Sales coaching scorecards","CRM auto-updates from call insights","Competitor intelligence tracking","Integration with entire GTM tech stack"],
    integrations:["Salesforce","HubSpot","Slack","Zoom","Teams","Outreach","Salesloft","LinkedIn","API"],
-   scores:{writing:3,coding:0,research:7,creativity:1,automation:9,multimodal:6}}
+   scores:{writing:3,coding:0,research:7,creativity:1,automation:9,multimodal:6},
+   agents:{hasAgents:true,type:"sales",name:"Gong Agents",autonomy:3,
+     agentPricing:"Included in platform subscription (custom enterprise pricing, typically $1,400–$1,600/user/year).",
+     what:["12+ specialized agents via Gong Agent Studio","Forecast Agent: auto-updates deal data and predictions","Research Agent: builds account intel before calls","Follow-up Agent: drafts emails after calls automatically","Coaching Agent: personalizes reps' development plans"]}}
 ,
   {id:"openclaw",name:"OpenClaw",maker:"Peter Steinberger & Community",tagline:"The open-source AI agent that actually does things on your machine",icon:"🦞",color:"#E8572A",
    categories:["Automation","Coding","General AI"],
@@ -1779,7 +1915,10 @@ const TOOLS = [
      "310,000+ GitHub stars — one of the fastest-growing open-source AI projects"
    ],
    integrations:["WhatsApp","Telegram","Discord","Slack","Signal","iMessage","GitHub","Notion","Obsidian","Claude API","OpenAI API","Ollama","Google Calendar","Gmail","Browser (CDP)"],
-   scores:{writing:5,coding:9,research:7,creativity:5,automation:10,multimodal:6}},
+   scores:{writing:5,coding:9,research:7,creativity:5,automation:10,multimodal:6},
+   agents:{hasAgents:true,type:"personal",name:"OpenClaw Personal Agent",autonomy:5,
+     agentPricing:"Free and open-source (MIT). API costs: $0–$150/mo depending on model and usage. Local Ollama models = near zero.",
+     what:["Acts autonomously via WhatsApp, Telegram, Slack, Discord","100+ extensible skills (email, calendar, code, web)","Model-agnostic: Claude, GPT, Gemini, or local Ollama","Runs 24/7 on your own machine as a Node.js service","250K+ GitHub stars — fastest growing open-source agent"]}},
   {id:"glean",name:"Glean",maker:"Glean",tagline:"Enterprise AI search — find anything across all your company's apps instantly",icon:"🔎",color:"#4A90D9",
    categories:["Business","Research","Documents","Automation"],
    bestFor:"Enterprise teams drowning in scattered knowledge — Glean connects Slack, Google Drive, Confluence, Salesforce, Jira and 100+ more tools into one searchable layer so every employee can find what they need in seconds",
@@ -1807,7 +1946,10 @@ const TOOLS = [
      "Deployed by 500+ enterprises including Duolingo, Grammarly, and Okta"
    ],
    integrations:["Slack","Google Drive","Confluence","Jira","Salesforce","GitHub","Zendesk","Notion","Microsoft 365","ServiceNow","Workday","Box"],
-   scores:{writing:4,coding:6,research:9,creativity:3,automation:7,multimodal:4}},
+   scores:{writing:4,coding:6,research:9,creativity:3,automation:7,multimodal:4},
+   agents:{hasAgents:true,type:"knowledge",name:"Glean Agents",autonomy:3,
+     agentPricing:"Included in Enterprise plan (~$50+/user/mo). Work AI add-on ~$15/user/mo. Minimum ~$60K/year contract.",
+     what:["Natural language Agent Builder (no code needed)","Agents grounded in your company's entire knowledge graph","Search across 100+ connected apps to complete tasks","Audit trail of every agent action","Pre-built agents for IT, HR, sales, and engineering"]}},
 
   {id:"writer",name:"Writer",maker:"Writer",tagline:"Enterprise AI platform — brand-safe content, agents, and workflows at scale",icon:"✍️",color:"#6B4FBB",
    categories:["Writing","Business","General AI","Automation"],
@@ -1836,7 +1978,10 @@ const TOOLS = [
      "100+ prebuilt agents across marketing, sales, HR, legal, and finance"
    ],
    integrations:["Salesforce","Slack","Google Workspace","Microsoft 365","Snowflake","Workday","Figma","Contentful","Adobe","Zendesk"],
-   scores:{writing:9,coding:4,research:6,creativity:7,automation:8,multimodal:5}},
+   scores:{writing:9,coding:4,research:6,creativity:7,automation:8,multimodal:5},
+   agents:{hasAgents:true,type:"workflow",name:"Writer AI HQ + Agent Builder",autonomy:3,
+     agentPricing:"Included in Enterprise plan (custom pricing, from $200+/user/year). 100+ pre-built agents in the agent library.",
+     what:["100+ ready-to-use content and workflow agents","Build custom agents with Palmyra LLMs","Agents grounded in your brand style guide and docs","Playbooks and Routines for multi-step automation","Connects to Slack, Salesforce, HubSpot, and more"]}},
 
   {id:"cohere",name:"Cohere",maker:"Cohere",tagline:"Enterprise LLM platform — build AI applications on private, secure infrastructure",icon:"⬡",color:"#39B185",
    categories:["General AI","Coding","Research","Automation","Business"],
@@ -1865,7 +2010,10 @@ const TOOLS = [
      "Used by Oracle, McKinsey, HyperWrite, and 1,000+ enterprises"
    ],
    integrations:["LangChain","LlamaIndex","AWS","Google Cloud","Azure","Pinecone","Weaviate","Snowflake","Oracle Cloud","Elasticsearch"],
-   scores:{writing:6,coding:8,research:8,creativity:4,automation:8,multimodal:5}},
+   scores:{writing:6,coding:8,research:8,creativity:4,automation:8,multimodal:5},
+   agents:{hasAgents:true,type:"knowledge",name:"North + Command A",autonomy:3,
+     agentPricing:"API-based: Command A at $2.50/M input, $10/M output. North platform: enterprise contract.",
+     what:["Command A model optimized for multi-step agentic tasks","North platform: private, secure enterprise agent deployment","Tool use and RAG built into the model architecture","Custom agents on your own infrastructure (no cloud dependency)","Best for regulated industries needing data sovereignty"]}},
 
   {id:"salesforce-einstein",name:"Salesforce Einstein",maker:"Salesforce",tagline:"AI embedded across the entire Salesforce platform — predictions, automation, and agents in your CRM",icon:"☁️",color:"#0070D2",
    categories:["Sales","Business","Automation","Research"],
@@ -1894,10 +2042,108 @@ const TOOLS = [
      "Used by 90% of Fortune 500 companies via the Salesforce platform"
    ],
    integrations:["Slack","MuleSoft","Tableau","Google Workspace","Microsoft 365","Heroku","AppExchange","SAP","ServiceNow","DocuSign"],
-   scores:{writing:6,coding:4,research:7,creativity:4,automation:9,multimodal:5}}];
+   scores:{writing:6,coding:4,research:7,creativity:4,automation:9,multimodal:5},
+   agents:{hasAgents:true,type:"sales",name:"Agentforce",autonomy:4,
+     agentPricing:"$2/conversation (pay-as-you-go) or Flex Credits: $500 per 100K credits (~$0.10/standard action). Unlimited Agentforce: bundled in Unlimited Edition.",
+     what:["Autonomous customer service agents (no human needed)","Sales Development Agent: qualifies leads, books meetings","Answers Salesforce CRM queries and updates records","Atlas Reasoning Engine for multi-step problem solving","8,000+ enterprise customers deployed as of early 2026"]}},
+
+  // ── MODELS & APIs ──────────────────────────────────────────────────────────
+  {id:"llama",name:"Llama 4",maker:"Meta",tagline:"Meta's open-weight frontier model — run locally or via API",icon:"🦙",color:"#0081FB",
+   categories:["Models & APIs"],isModel:true,
+   bestFor:"Developers who want frontier-quality output without vendor lock-in — self-host on your own hardware or use via Groq, Together AI, or Replicate at a fraction of OpenAI API pricing",
+   free:{available:true,desc:"Weights freely downloadable. Run locally with Ollama at zero API cost. Cloud inference via Groq/Together at pay-per-token rates."},
+   paid:[{name:"Groq hosted",price:"~$0.10/M tokens",perks:"Fastest inference available, 300 tokens/sec"},{name:"Together AI",price:"~$0.18/M tokens",perks:"Fine-tuning + batch jobs available"},{name:"Self-hosted",price:"GPU costs only",perks:"Full control, no data leaves your infra"}],
+   useCases:["Power a RAG pipeline on your own infrastructure","Build a custom chatbot on your data","Fine-tune on your domain for specialist tasks","Run offline agents with no API dependency","Prototype at near-zero cost before committing to a paid API"],
+   features:["405B and 70B and 8B variants","128K context window","Multimodal (Llama 4 Scout/Maverick)","Apache 2.0 license — commercial use permitted","Instruction-tuned and base weights both available"],
+   integrations:["Ollama","LangChain","LlamaIndex","Hugging Face","Groq","Together AI","AWS Bedrock","NVIDIA NIM"],
+   scores:{writing:7,coding:8,research:7,creativity:6,automation:8,multimodal:7}},
+
+  {id:"mistral",name:"Mistral Large 2",maker:"Mistral AI",tagline:"European frontier model — strong reasoning, 128K context, open weights",icon:"🌬️",color:"#FF7000",
+   categories:["Models & APIs"],isModel:true,
+   bestFor:"Teams needing GDPR-compliant AI or strong multilingual support — Mistral is European-built with data residency options and leading performance on reasoning and code",
+   free:{available:true,desc:"Mistral Small and 7B free via la Plateforme (rate-limited). Open-weight models downloadable free."},
+   paid:[{name:"Mistral Large API",price:"$2/M input, $6/M output",perks:"128K context, 80+ languages, function calling"},{name:"Mistral Small API",price:"$0.10/M input, $0.30/M output",perks:"Fast, cheap, solid for structured tasks"},{name:"Self-deployed",price:"Compute costs",perks:"On-premise for maximum compliance"}],
+   useCases:["Multilingual content processing across 80+ languages","Code generation with strong benchmark scores","Structured JSON output for API pipelines","GDPR-compliant AI in EU-hosted environments","Long-document analysis with 128K context"],
+   features:["128K context window","Multilingual: 80+ languages","Function calling and JSON mode","Apache 2.0 (Mistral 7B) — fully open","Codestral model for coding-specific tasks"],
+   integrations:["Mistral la Plateforme API","AWS Bedrock","Google Cloud","Azure","Ollama","LangChain","LlamaIndex"],
+   scores:{writing:8,coding:8,research:7,creativity:6,automation:7,multimodal:5}},
+
+  {id:"nemotron",name:"Nemotron-4",maker:"NVIDIA",tagline:"NVIDIA's model for synthetic data generation and LLM evaluation",icon:"⚡",color:"#76B900",
+   categories:["Models & APIs"],isModel:true,
+   bestFor:"ML teams who need to generate synthetic training data, evaluate other models, or build reward models for RLHF — Nemotron was built specifically to improve other models, not just be used directly",
+   free:{available:true,desc:"Nemotron-4 340B weights available on Hugging Face. Access via NVIDIA NIM free trial."},
+   paid:[{name:"NVIDIA NIM API",price:"~$0.008/K tokens (varies)",perks:"Optimized TensorRT-LLM inference, <1s latency"},{name:"Self-hosted NIM",price:"GPU + NIM license",perks:"Run on your own NVIDIA GPU cluster with enterprise SLAs"}],
+   useCases:["Generate synthetic training datasets for fine-tuning","Evaluate and score outputs from other models","Build reward models for RLHF pipelines","Run domain-specific model evaluations at scale","Power agent evaluation frameworks"],
+   features:["340B and 4B variants","Built specifically for synthetic data generation","Preference data generation for RLHF","Optimized for NVIDIA TensorRT-LLM","Available via NVIDIA NIM microservices"],
+   integrations:["NVIDIA NIM","Hugging Face","LangChain","NVIDIA AI Enterprise","TensorRT-LLM"],
+   scores:{writing:5,coding:6,research:8,creativity:4,automation:8,multimodal:4}},
+
+  {id:"gemma",name:"Gemma 3",maker:"Google DeepMind",tagline:"Google's lightweight open model — runs on a single GPU or laptop",icon:"💎",color:"#4285F4",
+   categories:["Models & APIs"],isModel:true,
+   bestFor:"Developers who need a capable model that runs locally on modest hardware — Gemma 3 27B fits on a single consumer GPU and outperforms many models its size for coding and instruction-following",
+   free:{available:true,desc:"Fully open weights — download free from Hugging Face or Kaggle. Run via Ollama at zero cost."},
+   paid:[{name:"Google AI API",price:"Free (rate-limited)",perks:"Gemma 3 via Google AI Studio"},{name:"Vertex AI",price:"Pay per token (varies)",perks:"Enterprise SLAs and Google Cloud integration"}],
+   useCases:["Run a capable AI model with no internet dependency","Power on-device or edge AI applications","Prototype locally before moving to a larger hosted model","Fine-tune on your own domain dataset","Build privacy-first apps where data can't leave the device"],
+   features:["27B, 12B, 4B, and 1B variants","128K context window","Runs on a single H100 or consumer RTX 4090","Multilingual support","Gemma Scope for model interpretability"],
+   integrations:["Ollama","Hugging Face","Google AI Studio","Vertex AI","LangChain","Keras"],
+   scores:{writing:7,coding:7,research:6,creativity:6,automation:7,multimodal:6}},
+
+  {id:"groq",name:"Groq",maker:"Groq Inc",tagline:"Fastest LLM inference available — 300+ tokens/sec on Llama and Mixtral",icon:"🚀",color:"#F55036",
+   categories:["Models & APIs"],isModel:false,isInfra:true,
+   bestFor:"Developers who need real-time LLM responses — customer support bots, voice agents, interactive coding tools — where latency matters more than absolute model quality",
+   free:{available:true,desc:"Free tier: 30 req/min on most models. Generous limits for prototyping."},
+   paid:[{name:"Pay-per-token",price:"$0.05–$0.59/M tokens",perks:"Llama 4, Mixtral, Gemma — all <$0.60/M"},{name:"Developer tier",price:"Free",perks:"6,000 tokens/min across models — enough for production prototypes"}],
+   useCases:["Real-time voice AI where <500ms latency is required","Interactive coding assistants that feel instant","High-throughput batch processing at low cost","Agentic loops where speed compounds across steps","Streaming chat at consumer scale"],
+   features:["LPU (Language Processing Unit) — purpose-built hardware","300+ tokens/sec on Llama 3.3 70B","Sub-200ms time-to-first-token","OpenAI-compatible API — drop-in replacement","Llama 4, Mixtral, Gemma 3, Qwen models available"],
+   integrations:["OpenAI SDK compatible","LangChain","LlamaIndex","n8n","Vercel AI SDK","all major frameworks"],
+   scores:{writing:7,coding:8,research:6,creativity:6,automation:9,multimodal:5}},
+
+  {id:"together-ai",name:"Together AI",maker:"Together AI",tagline:"Open-source model inference + fine-tuning platform in one",icon:"🔗",color:"#7C3AED",
+   categories:["Models & APIs"],isModel:false,isInfra:true,
+   bestFor:"Teams who want to run open models in production and eventually fine-tune them on their own data — Together handles both the hosted inference and the training pipeline",
+   free:{available:true,desc:"$25 free credits on sign-up. Access to all 50+ open models."},
+   paid:[{name:"Inference",price:"$0.10–$0.90/M tokens",perks:"50+ models including Llama 4, Mistral, DBRX"},{name:"Fine-tuning",price:"From $0.80/M tokens",perks:"Custom model training on your data"},{name:"Dedicated",price:"Custom",perks:"Reserved GPU capacity for consistent latency"}],
+   useCases:["Production inference for open-source LLMs","Fine-tune Llama or Mistral on your company's data","Run multiple open models and compare outputs","Build embedding pipelines with open embedding models","Switch between models without changing your API code"],
+   features:["50+ open-source models","Fine-tuning API for custom model training","OpenAI-compatible API","Embedding models (BAAI/bge, E5)","Serverless and dedicated deployment options"],
+   integrations:["OpenAI SDK compatible","LangChain","LlamaIndex","Hugging Face","Vercel AI SDK"],
+   scores:{writing:6,coding:7,research:6,creativity:5,automation:8,multimodal:5}},
+
+  {id:"ollama",name:"Ollama",maker:"Ollama",tagline:"Run any open LLM locally — zero API cost, zero data sent anywhere",icon:"🦙",color:"#333333",
+   categories:["Models & APIs"],isModel:false,isInfra:true,
+   bestFor:"Developers and privacy-conscious teams who want to run Llama, Mistral, Gemma, or Phi locally with a single command — no API key, no data leaving the machine, works offline",
+   free:{available:true,desc:"Completely free and open-source. Only cost is your compute."},
+   paid:[{name:"Self-hosted",price:"$0 software",perks:"Run 100+ models locally. GPU optional — many models run on CPU."}],
+   useCases:["Run LLMs with full data privacy for sensitive documents","Prototype AI features with zero API cost","Build offline-capable AI applications","Test 100+ models without paying per-token","Power local agents that control your desktop"],
+   features:["One-command model install (ollama pull llama4)","REST API on localhost:11434","OpenAI-compatible API endpoint","Runs on Mac (M-series), Windows, Linux","100+ models: Llama, Mistral, Gemma, Phi, Qwen, DeepSeek"],
+   integrations:["OpenAI SDK compatible","LangChain","LlamaIndex","Open WebUI","AnythingLLM","Continue (VS Code extension)","OpenClaw"],
+   scores:{writing:7,coding:8,research:6,creativity:6,automation:8,multimodal:5}},
+
+  {id:"pinecone",name:"Pinecone",maker:"Pinecone",tagline:"Managed vector database for semantic search and RAG pipelines",icon:"🌲",color:"#007BFF",
+   categories:["Models & APIs"],isModel:false,isInfra:true,
+   bestFor:"Developers building RAG (retrieval-augmented generation) apps who want a managed vector store — no infrastructure to maintain, scales from prototype to production without touching a server",
+   free:{available:true,desc:"Starter tier: 1 index, 100K vectors, 2GB storage — enough to build and ship a real RAG app."},
+   paid:[{name:"Standard",price:"$70/mo",perks:"5 indexes, 5M vectors, 10GB storage"},{name:"Enterprise",price:"Custom",perks:"Unlimited indexes, dedicated infra, SOC 2"}],
+   useCases:["Build a semantic search over your company knowledge base","Power a chatbot that retrieves from your own documents","Store and search embeddings from OpenAI, Cohere, or open models","Build product recommendation systems from user behavior","Enable long-term memory for AI agents"],
+   features:["Fully managed — no infrastructure to run","Real-time upserts and queries","Metadata filtering alongside vector search","Serverless tier (pay per query)","Hybrid search: dense + sparse vectors"],
+   integrations:["LangChain","LlamaIndex","OpenAI","Cohere","Hugging Face","Vercel AI SDK","n8n"],
+   scores:{writing:2,coding:6,research:8,creativity:2,automation:9,multimodal:4}},
+
+  {id:"langchain",name:"LangChain / LangGraph",maker:"LangChain Inc",tagline:"The most-used framework for building LLM applications and agents",icon:"🔗",color:"#1C3C3C",
+   categories:["Models & APIs"],isModel:false,isInfra:true,
+   bestFor:"Python or JavaScript developers building anything with LLMs beyond a simple API call — chains, RAG pipelines, agents, and multi-step reasoning workflows",
+   free:{available:true,desc:"LangChain framework is open-source and free. LangSmith (observability) free for individuals."},
+   paid:[{name:"LangSmith",price:"$39/mo (Plus)",perks:"Team tracing, evals, prompt management — production observability"},{name:"LangGraph Cloud",price:"$0.002/node exec",perks:"Hosted deployment for LangGraph agents"}],
+   useCases:["Build a RAG pipeline connecting LLM to your vector store","Create multi-step agent workflows with tool use","Chain prompts and manage conversation memory","Evaluate and debug LLM application outputs","Deploy stateful agents that run across multiple turns"],
+   features:["Modular chains and agents","50+ LLM integrations (OpenAI, Anthropic, local models)","LangGraph for stateful multi-actor applications","LangSmith for tracing and evaluation","LCEL (LangChain Expression Language) for composition"],
+   integrations:["OpenAI","Anthropic","Llama","Mistral","Pinecone","Supabase","Groq","Together AI","n8n"],
+   scores:{writing:3,coding:9,research:7,creativity:3,automation:10,multimodal:6}}];
 
 // ═══════════════ USE CASES ═══════════════
 const USE_CASES = [
+  {id:"models-apis",label:"Models & APIs",emoji:"🔧",toolIds:["llama","mistral","nemotron","gemma","groq","together-ai","ollama","pinecone","langchain","cohere","deepseek"],
+   desc:"Base models, inference platforms, and builder infrastructure — for developers calling APIs or building their own AI-powered tools"},
+  {id:"ai-agents",label:"AI Agents",emoji:"⚡",toolIds:["claude","chatgpt","cursor","openclaw","n8n","gemini","github-copilot","copilot","salesforce-einstein","perplexity","elevenlabs","glean","notion-ai","writer","gong","cohere"],
+   desc:"Tools with genuine AI agents — autonomous systems that plan, use tools, and complete multi-step tasks without constant human input"},
   {id:"writing",label:"Writing & Content",emoji:"✍️",toolIds:["chatgpt","claude","gemini","copilot","notion-ai","canva-ai","writer"],
    desc:"Create blog posts, emails, marketing copy, reports, and long-form content"},
   {id:"coding",label:"Software Development",emoji:"💻",toolIds:["cursor","claude","chatgpt","deepseek","github-copilot","lovable","cohere"],
@@ -1930,6 +2176,8 @@ const USE_CASES = [
 
 // ═══════════════ CATEGORY META ═══════════════
 const CAT_META = {
+  "Models & APIs":{emoji:"🔧",headline:"Base models, inference platforms, and builder infrastructure",desc:"These are building blocks, not finished tools. Use them when you're calling AI via API, building your own product, or need to run models on your own infrastructure.",scoreKey:"automation",highlights:{llama:"Open weights, runs locally via Ollama or on cloud at <$0.20/M tokens — no vendor lock-in",mistral:"Strong multilingual model with EU data residency — GDPR-friendly frontier performance",groq:"300+ tokens/sec — the fastest inference available, ideal for voice agents and real-time apps",ollama:"Run any model locally for free — one command install, works offline, zero data shared",pinecone:"Managed vector DB — the standard for RAG pipelines without infrastructure headaches",langchain:"Most-used LLM framework — chains, agents, RAG, and tool use in Python or JavaScript",nemotron:"NVIDIA's model for building and evaluating other models — synthetic data and RLHF"}},
+  "Agents":{emoji:"⚡",headline:"AI tools with genuine agent capabilities",desc:"These tools go beyond chat — they plan, use tools in a loop, and complete multi-step tasks autonomously. Filter by agent type: coding, browser, workflow, research, voice, or sales.",scoreKey:"automation",highlights:{cursor:"Background Agents: up to 8 parallel cloud agents each working on its own branch",claude:"Claude Code + Computer Use — edits codebases and controls desktop apps autonomously",chatgpt:"Agent Mode: browses, codes, creates spreadsheets, and connects to Gmail and Drive",n8n:"AI Agent Nodes: build full multi-agent pipelines connecting 1,400+ apps","github-copilot":"Coding Agent: assign a GitHub issue, agent opens a draft PR via Actions","salesforce-einstein":"Agentforce: autonomous customer service at $2/conversation or flex credits",openclaw:"Personal agent living in WhatsApp/Telegram — 100+ skills, runs 24/7 on your machine"}},
   "Coding":{emoji:"💻",headline:"Best AI tools for software development",desc:"From inline autocomplete to full codebase agents — these tools cut dev time, catch bugs faster, and let you ship by describing features in plain English.",scoreKey:"coding",highlights:{cursor:"Multi-file Cascade agent edits your whole codebase from one instruction",claude:"Claude Code CLI — autonomous terminal agent, handles entire feature branches",chatgpt:"Python interpreter + step-by-step debugging with live code execution",deepseek:"R1 reasoning — top coding benchmarks at 75–90% lower API cost",'github-copilot':"Inline autocomplete in VS Code, JetBrains, Neovim — no context switching",lovable:"Natural language → full React/TypeScript app deployed, zero coding needed"}},
   "General AI":{emoji:"🤖",headline:"General-purpose AI assistants",desc:"These are the everyday workhorses — text, code, images, research, and reasoning in one place. Pick based on your workflow and ecosystem.",scoreKey:"writing",highlights:{chatgpt:"Most versatile: text, images, voice, video (Sora), code, and file analysis in one",claude:"Best for long documents — 1M token context, near-zero hallucination rate",gemini:"Lives inside Gmail, Docs, Sheets — best if Google Workspace is your home base",grok:"Real-time X/Twitter data + lowest hallucination rate of any frontier model (~4%)",copilot:"Built into Word, Excel, PowerPoint, Outlook — no context switching for M365 users",deepseek:"Open-source, self-hostable, frontier quality at a fraction of OpenAI API pricing"}},
   "Research":{emoji:"🔍",headline:"Best tools for research and deep analysis",desc:"Whether you're fact-checking, analyzing 50 papers, or doing competitive intelligence — these give you grounded, cited answers you can trust.",scoreKey:"research",highlights:{perplexity:"Real-time web search with inline source citations on every single answer",notebooklm:"Upload your own documents — answers only from your sources, zero hallucination",elicit:"200M+ academic papers — extract data across dozens of studies simultaneously",gemini:"Deep Research mode builds multi-source structured reports automatically",wolfram:"Step-by-step computation across mathematics, science, and 10,000+ knowledge domains",grok:"Live X/Twitter + web data — unbeatable for trending topics and current events"}},
@@ -1953,9 +2201,8 @@ let radarChart=null;
 
 // ═══════════════ FILTER ═══════════════
 function getFiltered(){
-  return TOOLS.filter(t=>{
-    const q=state.query.toLowerCase();
-    const matchQ=!q||t.name.toLowerCase().includes(q)||t.tagline.toLowerCase().includes(q)||t.bestFor.toLowerCase().includes(q)||t.useCases.some(u=>u.toLowerCase().includes(q))||t.features.some(f=>f.toLowerCase().includes(q))||t.categories.some(c=>c.toLowerCase().includes(q))||t.maker.toLowerCase().includes(q);
+  const q=state.query.toLowerCase().trim();
+  const catFilter=t=>{
     const cm={
       "All":true,"General AI":t.categories.includes("General AI"),"Coding":t.categories.some(c=>["Coding","Development"].includes(c)),
       "Research":t.categories.includes("Research"),"Image Gen":t.categories.includes("Image Gen"),"Video":t.categories.includes("Video"),
@@ -1963,9 +2210,21 @@ function getFiltered(){
       "Voice & Audio":t.categories.includes("Voice & Audio"),"Automation":t.categories.includes("Automation"),
       "Documents":t.categories.includes("Documents"),"Legal":t.categories.includes("Legal"),
       "Education":t.categories.includes("Education"),"Business":t.categories.includes("Business"),
-      "Fitness":t.categories.includes("Fitness"),"Sales":t.categories.includes("Sales")
+      "Fitness":t.categories.includes("Fitness"),"Sales":t.categories.includes("Sales"),
+      "Agents":!!(t.agents?.hasAgents),
+      "Models & APIs":t.categories.includes("Models & APIs")
     };
-    return matchQ&&(cm[state.category]??true);
+    return cm[state.category]??true;
+  };
+  if(!q) return TOOLS.filter(catFilter);
+  // Name-priority search: if the query matches any tool's name, return only those name matches.
+  // This prevents "chatgpt" from surfacing tools that merely mention ChatGPT in their content.
+  const nameMatches=TOOLS.filter(t=>t.name.toLowerCase().includes(q)||t.maker.toLowerCase()===q);
+  if(nameMatches.length) return nameMatches.filter(catFilter);
+  // No name match — fall back to full-content search (use cases, features, tagline, categories)
+  return TOOLS.filter(t=>{
+    const matchQ=t.tagline.toLowerCase().includes(q)||t.bestFor.toLowerCase().includes(q)||t.useCases.some(u=>u.toLowerCase().includes(q))||t.features.some(f=>f.toLowerCase().includes(q))||t.categories.some(c=>c.toLowerCase().includes(q));
+    return matchQ&&catFilter(t);
   });
 }
 
@@ -1974,17 +2233,37 @@ function renderCard(t,catHighlight){
   const exp=state.expandedId===t.id;
   const scoreKeys=["writing","coding","research","creativity","automation","multimodal"];
   const scores=scoreKeys.map(k=>`<div class="score-row"><span class="score-label">${k}</span><div class="score-bar-wrap"><div class="score-bar" style="width:${t.scores[k]*10}%"></div></div><span class="score-val">${t.scores[k]}</span></div>`).join('');
+
+  // Agent section — shown only when tool has agents
+  const agentSection=t.agents?.hasAgents?`
+  <div class="agent-section">
+    <div class="agent-section-head">
+      <span class="agent-section-title">AI Agent</span>
+      <span class="agent-type-pill">${t.agents.type}</span>
+    </div>
+    <div class="agent-name">${t.agents.name}</div>
+    <div class="agent-autonomy">
+      <span class="agent-autonomy-label">Autonomy</span>
+      <div class="agent-autonomy-dots">${[1,2,3,4,5].map(n=>`<div class="agent-autonomy-dot${n<=t.agents.autonomy?' on':''}"></div>`).join('')}</div>
+      <span style="font-size:10px;color:var(--text3)">${['','Assisted','Assisted','Supervised','Near-autonomous','Fully autonomous'][t.agents.autonomy]}</span>
+    </div>
+    <div class="agent-pricing">💸 ${t.agents.agentPricing}</div>
+    <ul class="agent-what">${t.agents.what.map(w=>`<li>${w}</li>`).join('')}</ul>
+  </div>`:'';
+
   const detail=`<div class="tool-detail"><div class="detail-grid">
     <div class="detail-section"><h4>What you can do</h4><ul class="uc-list">${t.useCases.map(u=>`<li>${u}</li>`).join('')}</ul></div>
     <div class="detail-section"><h4>Key features</h4><ul class="feat-list">${t.features.map(f=>`<li>${f}</li>`).join('')}</ul><h4 style="margin-top:12px">Integrates with</h4><ul class="int-list">${t.integrations.map(i=>`<li>${i}</li>`).join('')}</ul></div>
   </div>
   <div style="margin-top:16px"><h4 style="font-size:9px;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:6px">Capability scores <span class="score-info" data-tip="Scores are editorial — based on structured tests &amp; public benchmarks. Scale: 1 = limited, 5 = solid, 10 = best-in-class. See Methodology in the Community tab for full details.">?</span></h4>${scores}</div>
   <div style="margin-top:16px"><h4 style="font-size:9px;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);font-weight:700;margin-bottom:8px">Paid plans</h4>
-  <div class="plans-list">${t.paid.map(p=>`<div class="plan-item"><div><div class="plan-name">${p.name}</div><div class="plan-price">${p.price}</div></div><div class="plan-perks">${p.perks}</div></div>`).join('')}</div></div></div>`;
-  return `<div class="tool-card${exp?' expanded':''}" data-id="${t.id}">
+  <div class="plans-list">${t.paid.map(p=>`<div class="plan-item"><div><div class="plan-name">${p.name}</div><div class="plan-price">${p.price}</div></div><div class="plan-perks">${p.perks}</div></div>`).join('')}</div></div>
+  ${agentSection}</div>`;
+
+  return `<div class="tool-card${exp?' expanded':''}" data-id="${t.id}"${(t.isModel||t.isInfra)?' data-model="true"':''}>
     <div class="card-head"><div class="tool-icon" style="background:var(--bg3);border:1px solid var(--border)"><span style="filter:drop-shadow(0 0 4px ${t.color}66)">${t.icon}</span></div>
     <div class="tool-info"><div class="tool-name">${t.name}</div><div class="tool-maker">${t.maker}</div>
-    <div class="tool-tags">${t.categories.slice(0,2).map((c,i)=>`<span class="tag${i===0?' primary':''}">${c}</span>`).join('')}</div></div></div>
+    <div class="tool-tags">${t.categories.slice(0,2).map((c,i)=>`<span class="tag${i===0?' primary':''}">${c}</span>`).join('')}${t.agents?.hasAgents?'<span class="agent-badge">⚡ Agents</span>':''}${(t.isModel||t.isInfra)?`<span class="model-badge">${t.isModel?'Open model':'Infrastructure'}</span>`:''}</div></div></div>
     <div class="card-body"><div class="tagline">${t.tagline}</div>
     ${catHighlight?`<div class="bestfor" style="border-left-color:var(--p2)"><strong style="color:var(--p2)">Why for this</strong>${catHighlight}</div>`:`<div class="bestfor"><strong>Best for</strong>${t.bestFor}</div>`}</div>
     <div class="card-footer"><span class="free-badge ${t.free.available?'yes':'no'}">${t.free.available?'✓ Free':'✗ Paid'}</span><div class="paid-from">From <span>${t.paid[0].price}</span></div><span class="expand-arrow">⌄</span></div>
@@ -2179,12 +2458,35 @@ function switchTab(tab){
 
 // ═══════════════ EVENT LISTENERS ═══════════════
 document.getElementById('search-input').addEventListener('input',e=>{state.query=e.target.value;if(state.activeTab!=='explore')switchTab('explore');renderExplore();});
+document.getElementById('search-input').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();searchEnterAction();}});
+
 // Sticky search mirrors main search
 document.getElementById('sticky-search-input').addEventListener('input',e=>{
   state.query=e.target.value;
   document.getElementById('search-input').value=e.target.value;
   if(state.activeTab!=='explore')switchTab('explore');renderExplore();
 });
+document.getElementById('sticky-search-input').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();searchEnterAction();}});
+
+// Enter on search: 1 result → expand + scroll to it; multiple → scroll to first card
+function searchEnterAction(){
+  const filtered=getFiltered();
+  if(!filtered.length) return;
+  const stickyBar=document.getElementById('sticky-search');
+  const headerH=(document.querySelector('header')||{offsetHeight:56}).offsetHeight+((stickyBar&&stickyBar.classList.contains('visible'))?stickyBar.offsetHeight:0);
+  if(filtered.length===1){
+    // Auto-expand the single match and scroll to it
+    state.expandedId=filtered[0].id;
+    renderExplore();
+    const card=document.querySelector(`[data-id="${filtered[0].id}"]`);
+    if(card) window.scrollTo({top:card.getBoundingClientRect().top+window.scrollY-headerH-8,behavior:'smooth'});
+  } else {
+    // Scroll to first result card in the grid
+    const firstCard=document.querySelector('.tool-card');
+    if(firstCard) window.scrollTo({top:firstCard.getBoundingClientRect().top+window.scrollY-headerH-8,behavior:'smooth'});
+  }
+  document.activeElement.blur(); // dismiss keyboard on mobile
+}
 document.getElementById('cats-container').addEventListener('click',e=>{const p=e.target.closest('.cat-pill');if(!p)return;state.category=p.dataset.cat;document.querySelectorAll('.cat-pill').forEach(x=>x.classList.toggle('active',x.dataset.cat===state.category));if(state.activeTab!=='explore')switchTab('explore');renderExplore();});
 document.querySelectorAll('.tab-btn').forEach(btn=>btn.addEventListener('click',()=>switchTab(btn.dataset.tab)));
 document.addEventListener('keydown',e=>{if((e.metaKey||e.ctrlKey)&&e.key==='k'){e.preventDefault();document.getElementById('search-input').focus();}});
@@ -2365,6 +2667,16 @@ renderExplore();
         {label:'1–4 weeks',   value:'soon',     tag:'normal_setup',   icon:'📅'},
         {label:'No rush',     value:'flexible', tag:'flexible_setup', icon:'🌿'},
       ]
+    },
+    {
+      id:'builder',
+      text:'Are you building with APIs or using tools directly?',
+      sub:'Helps me add a "For builders" section if you need base models, inference platforms, or developer infrastructure.',
+      options:[
+        {label:'Using tools (no code)',     value:'user',    tag:'tool_user',    icon:'🖱️'},
+        {label:'Some API use',              value:'hybrid',  tag:'api_hybrid',   icon:'⚡'},
+        {label:'Building — APIs & code',    value:'builder', tag:'api_builder',  icon:'🛠️'},
+      ]
     }
   ];
 
@@ -2405,6 +2717,7 @@ renderExplore();
     if(a.skill)    tags.push(QUESTIONS[1].options.find(o=>o.value===a.skill)?.tag);
     if(a.teamSize) tags.push(QUESTIONS[2].options.find(o=>o.value===a.teamSize)?.tag);
     if(a.timeline) tags.push(QUESTIONS[3].options.find(o=>o.value===a.timeline)?.tag);
+    if(a.builder)  tags.push(QUESTIONS[4].options.find(o=>o.value===a.builder)?.tag);
     return tags.filter(Boolean);
   }
 
@@ -2747,6 +3060,10 @@ renderExplore();
       </div>`;
     }).join('');
 
+    // Builder stack — shown when user answered "api_hybrid" or "api_builder"
+    const isBuilder=session.answers.builder==='builder'||session.answers.builder==='hybrid';
+    const builderSection=isBuilder?buildBuilderSection():'';
+
     getM().innerHTML=`
       ${stepBar(3)}
       <div class="adv-summary-block">
@@ -2756,6 +3073,7 @@ renderExplore();
         <div class="adv-breakdown"><strong>Where this breaks down:</strong> ${out.breakdown}</div>
       </div>
       <div class="adv-tools-list">${toolCards}</div>
+      ${builderSection}
       <div class="adv-restart-row">
         <button class="adv-chat-stack-btn" onclick="openProFeature('chat')">
           ⬡ Chat about your stack <span class="adv-pro-badge">PRO</span>
@@ -2768,6 +3086,79 @@ renderExplore();
       </div>`;
 
     getM().scrollTop=0;
+  }
+
+  // ── Builder stack section ─────────────────────────────────────────
+  function buildBuilderSection(){
+    const goal=session.goalTags;
+    const isHybrid=session.answers.builder==='hybrid';
+    const budget=session.answers.budget||'low';
+    const hasCoding=goal.some(t=>['developer','coding','product'].includes(t));
+    const hasResearch=goal.some(t=>['researcher','knowledge'].includes(t));
+    const hasAutomation=goal.some(t=>['automation'].includes(t));
+    const hasContent=goal.some(t=>['creator','writing','content'].includes(t));
+
+    // Pick base model recommendation
+    let baseModel,baseReason;
+    if(budget==='none'||budget==='low'){
+      baseModel='llama'; baseReason='Free weights — run via Ollama at zero API cost, or Groq at <$0.10/M tokens';
+    } else if(hasCoding){
+      baseModel='mistral'; baseReason='Codestral model leads coding benchmarks; strong reasoning at $0.10/M tokens';
+    } else {
+      baseModel='llama'; baseReason='Best open-weight model — Llama 4 matches frontier quality at a fraction of the cost';
+    }
+
+    // Pick inference platform
+    let infra,infraReason;
+    if(budget==='none'){
+      infra='ollama'; infraReason='Run locally for free — one command, works offline, no data sent anywhere';
+    } else if(hasCoding||isHybrid){
+      infra='groq'; infraReason='300+ tokens/sec — coding agents feel instant at this speed';
+    } else {
+      infra='together-ai'; infraReason='50+ models, fine-tuning built-in, $25 free credit to start';
+    }
+
+    // Pick glue/framework
+    let glue,glueReason;
+    if(hasAutomation||!hasCoding){
+      glue='langchain'; glueReason='Simplest path to agents, RAG, and multi-step chains in Python or JavaScript';
+    } else {
+      glue='langchain'; glueReason='LangGraph for stateful agents; LangSmith for tracing and debugging';
+    }
+
+    // Pick vector store if relevant
+    const needsVectors=hasResearch||hasKnowledge(goal)||hasCoding;
+    function hasKnowledge(g){return g.some(t=>['knowledge','researcher','legal'].includes(t));}
+
+    const modelTool=TOOLS.find(t=>t.id===baseModel);
+    const infraTool=TOOLS.find(t=>t.id===infra);
+    const glueTool=TOOLS.find(t=>t.id===glue);
+    const pineconeTool=TOOLS.find(t=>t.id==='pinecone');
+
+    const makeBuilderCard=(tool,role,reason)=>`
+      <div class="builder-card">
+        <div class="builder-role">${role}</div>
+        <div class="builder-tool-name">${tool.icon} ${tool.name}</div>
+        <div class="builder-reason">${reason}</div>
+        <div class="builder-pricing">${tool.paid[0].price} · <span class="builder-explore" onclick="handleChipClick('${tool.id}')">Explore →</span></div>
+      </div>`;
+
+    return `<div class="builder-section">
+      <div class="builder-section-head">
+        <div class="builder-section-icon">🛠️</div>
+        <div>
+          <div class="builder-section-title">For builders</div>
+          <div class="builder-section-sub">Base models, inference, and glue for your API stack</div>
+        </div>
+      </div>
+      <div class="builder-cards">
+        ${makeBuilderCard(modelTool,'Base model',baseReason)}
+        ${makeBuilderCard(infraTool,'Inference platform',infraReason)}
+        ${makeBuilderCard(glueTool,'Framework',glueReason)}
+        ${needsVectors?makeBuilderCard(pineconeTool,'Vector store','Store and search embeddings for your RAG pipeline'):''}
+      </div>
+      <div class="builder-note">These are building blocks — they need code to wire together. The tools above are for doing work directly without writing code.</div>
+    </div>`;
   }
 
   // Expose LAYERS for Pro engine access
