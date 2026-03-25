@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Toolipedia — Find the Right AI Tool for Anything</title>
+<meta name="description" content="Toolipedia is a living reference for AI tools and stacks. A hand-picked directory plus an AI stack advisor — built so you can choose once and stop scrolling forever.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,600;0,9..144,700;0,9..144,800;1,9..144,300;1,9..144,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
@@ -448,11 +449,12 @@ body.wiki-mode main,body.wiki-mode footer{visibility:hidden}
 .plan-item{
   background:var(--detail-bg);border:1px solid var(--border);
   border-radius:var(--radius-sm);padding:8px 10px;
-  display:flex;align-items:flex-start;gap:9px;
+  display:flex;flex-direction:column;gap:3px;
 }
-.plan-price{font-size:13px;font-weight:700;color:var(--text);white-space:nowrap;min-width:76px}
-.plan-name{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;margin-bottom:1px}
-.plan-perks{font-size:11px;color:var(--text2);line-height:1.4}
+.plan-item>div:first-child{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.plan-price{font-size:13px;font-weight:700;color:var(--text);word-break:break-word}
+.plan-name{font-size:9px;color:var(--text3);text-transform:uppercase;letter-spacing:0.5px;white-space:nowrap}
+.plan-perks{font-size:11px;color:var(--text2);line-height:1.5;word-break:break-word}
 .score-row{display:flex;align-items:center;gap:8px;margin-top:6px}
 .score-label{font-size:10px;color:var(--text3);width:68px;flex-shrink:0;text-transform:capitalize;font-weight:500}
 .score-bar-wrap{flex:1;height:3px;background:var(--score-track);border-radius:2px;overflow:hidden}
@@ -478,6 +480,60 @@ body.wiki-mode main,body.wiki-mode footer{visibility:hidden}
 }
 .empty-action-btn:hover{filter:brightness(1.07);transform:translateY(-1px)}
 .empty-clear-hint{font-size:12px;color:var(--text3);margin-top:10px}
+
+/* ── PILLARS BAND ─────────────────────────────────────────────────── */
+.pillars{
+  max-width:1400px;margin:0 auto;
+  padding:32px 28px 36px;
+  display:grid;grid-template-columns:repeat(3,1fr);gap:0;
+  border-top:1px solid var(--border);
+  border-bottom:1px solid var(--border);
+}
+.pillar{padding:0 28px}
+.pillar:not(:last-child){border-right:1px solid var(--border)}
+.pillar-label{
+  font-size:9px;font-weight:600;letter-spacing:1.1px;
+  text-transform:uppercase;color:var(--p1);
+  margin-bottom:8px;
+}
+.pillar-head{
+  font-family:var(--ff-head);
+  font-size:17px;font-weight:700;
+  color:var(--text);line-height:1.2;
+  margin-bottom:7px;letter-spacing:-0.3px;
+}
+.pillar-body{
+  font-size:13px;color:var(--text2);
+  line-height:1.65;font-weight:400;
+}
+@media(max-width:700px){
+  .pillars{grid-template-columns:1fr;padding:24px 20px 28px}
+  .pillar{padding:18px 0}
+  .pillar:not(:last-child){border-right:none;border-bottom:1px solid var(--border);padding-bottom:22px;margin-bottom:4px}
+}
+
+/* ── ADVISOR HOW-IT-WORKS ─────────────────────────────────────────── */
+.adv-how{
+  margin-top:22px;padding-top:18px;
+  border-top:1px solid var(--border);
+  display:flex;flex-direction:column;gap:10px;
+}
+.adv-how-title{
+  font-size:9px;text-transform:uppercase;letter-spacing:1px;
+  color:var(--text3);font-weight:600;margin-bottom:2px;
+}
+.adv-how-step{
+  display:flex;align-items:flex-start;gap:10px;
+}
+.adv-how-num{
+  width:20px;height:20px;border-radius:50%;
+  background:var(--bg3);border:1px solid var(--border);
+  font-size:10px;font-weight:700;color:var(--text3);
+  display:flex;align-items:center;justify-content:center;
+  flex-shrink:0;margin-top:1px;
+}
+.adv-how-text{font-size:12px;color:var(--text2);line-height:1.5}
+.adv-how-text strong{color:var(--text);font-weight:600}
 
 /* ── CAT HERO ─────────────────────────────────────────────────────── */
 .cat-hero-card{
@@ -850,6 +906,138 @@ footer span{color:var(--p1);font-weight:500}
 .adv-cta-note{font-size:10px;color:var(--text3)}
 
 
+
+/* ── PRO GATE ─────────────────────────────────────────────────────────── */
+.pro-gate-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,0.55);z-index:9000;
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  backdrop-filter:blur(4px);
+}
+.pro-gate-modal{
+  background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);
+  padding:28px 24px;max-width:380px;width:100%;text-align:center;
+  box-shadow:0 20px 60px rgba(0,0,0,0.4);
+}
+.pro-gate-badge{
+  display:inline-block;background:linear-gradient(135deg,var(--p1),var(--p4));
+  color:#fff;font-size:9px;font-weight:700;letter-spacing:1px;
+  text-transform:uppercase;padding:3px 10px;border-radius:3px;margin-bottom:14px;
+}
+.pro-gate-title{font-family:var(--ff-head);font-size:20px;font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.2;font-variation-settings:'opsz' 20}
+.pro-gate-desc{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:20px;font-weight:400}
+.pro-gate-features{text-align:left;margin-bottom:20px;display:flex;flex-direction:column;gap:7px}
+.pro-gate-feature{display:flex;align-items:flex-start;gap:8px;font-size:12.5px;color:var(--text2)}
+.pro-gate-feature span:first-child{color:var(--p1);flex-shrink:0;font-weight:700;font-size:13px}
+.pro-gate-cta{
+  width:100%;padding:12px;background:var(--p1);border:none;border-radius:var(--radius-md);
+  color:#fff;font-family:var(--ff-body);font-size:14px;font-weight:600;cursor:pointer;
+  transition:all 0.2s ease;margin-bottom:10px;
+}
+.pro-gate-cta:hover{filter:brightness(1.08);transform:translateY(-1px)}
+.pro-gate-close{
+  background:none;border:none;color:var(--text3);font-size:12px;cursor:pointer;
+  font-family:var(--ff-body);padding:4px 8px;border-radius:var(--radius-sm);
+  transition:color var(--transition);
+}
+.pro-gate-close:hover{color:var(--text)}
+
+/* ── CONVERSATIONAL CHAT MODE ─────────────────────────────────────────── */
+.conv-head{
+  padding:10px 14px;border-bottom:1px solid var(--border);
+  background:var(--bg3);display:flex;align-items:center;gap:10px;
+}
+.conv-head-back{
+  background:none;border:1px solid var(--border);color:var(--text2);
+  font-size:11px;font-weight:500;padding:4px 9px;border-radius:var(--radius-sm);
+  cursor:pointer;font-family:var(--ff-body);transition:all var(--transition);
+}
+.conv-head-back:hover{border-color:var(--border-h);color:var(--text)}
+.conv-head-info{flex:1}
+.conv-head-title{font-size:12px;font-weight:600;color:var(--text)}
+.conv-head-sub{font-size:10px;color:var(--text3);margin-top:1px}
+.conv-msg-area{flex:1;overflow-y:auto;padding:12px;display:flex;flex-direction:column;gap:8px;scroll-behavior:smooth}
+.conv-msg-area::-webkit-scrollbar{width:3px}
+.conv-msg-area::-webkit-scrollbar-thumb{background:rgba(212,130,74,0.2);border-radius:2px}
+.conv-msg{display:flex;flex-direction:column;gap:3px}
+.conv-msg.user{align-items:flex-end}
+.conv-msg.bot{align-items:flex-start}
+.conv-bubble{
+  max-width:90%;padding:8px 11px;border-radius:10px;
+  font-size:12.5px;line-height:1.55;word-break:break-word;
+}
+.conv-msg.user .conv-bubble{background:var(--p1);color:#fff}
+.conv-msg.bot .conv-bubble{background:var(--bg3);border:1px solid var(--border);color:var(--text2)}
+.conv-msg.bot .conv-bubble strong{color:var(--text)}
+.conv-time{font-size:9px;color:var(--text3)}
+.conv-input-row{padding:10px 12px;border-top:1px solid var(--border);display:flex;gap:7px;align-items:flex-end}
+#conv-input{
+  flex:1;background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);
+  padding:8px 11px;color:var(--text);font-family:var(--ff-body);font-size:12.5px;
+  outline:none;resize:none;max-height:80px;min-height:34px;
+  transition:border-color var(--transition);line-height:1.5;
+}
+#conv-input::placeholder{color:var(--text3)}
+#conv-input:focus{border-color:var(--border-h)}
+#conv-send{
+  width:32px;height:32px;border-radius:var(--radius-sm);background:var(--p1);
+  border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;
+  font-size:13px;transition:all var(--transition);flex-shrink:0;color:#fff;
+}
+#conv-send:hover{filter:brightness(1.08)}
+
+/* ── STACK HEALTH CHECKER (Pro) ─────────────────────────────────────── */
+.health-screen{padding:14px 16px}
+.health-headline{font-family:var(--ff-head);font-size:15px;font-weight:700;color:var(--text);margin-bottom:4px;font-variation-settings:'opsz' 15}
+.health-sub{font-size:12px;color:var(--text3);margin-bottom:14px;line-height:1.5}
+.health-input-area{
+  border:1.5px dashed var(--border);border-radius:var(--radius-md);
+  padding:14px;background:var(--bg3);margin-bottom:12px;
+}
+.health-input-label{font-size:11px;color:var(--text3);margin-bottom:8px;font-weight:500}
+#health-tools-input{
+  width:100%;background:var(--bg2);border:1px solid var(--border);
+  border-radius:var(--radius-sm);padding:8px 10px;color:var(--text);
+  font-family:var(--ff-body);font-size:12px;outline:none;resize:none;
+  min-height:60px;transition:border-color var(--transition);
+}
+#health-tools-input:focus{border-color:var(--border-h)}
+#health-tools-input::placeholder{color:var(--text3)}
+.health-analyze-btn{
+  width:100%;padding:10px;background:var(--p1);border:none;
+  border-radius:var(--radius-sm);color:#fff;font-family:var(--ff-body);
+  font-size:13px;font-weight:600;cursor:pointer;transition:all var(--transition);
+}
+.health-analyze-btn:hover{filter:brightness(1.07)}
+.health-results{margin-top:12px}
+.health-section{margin-bottom:12px}
+.health-section-label{font-size:9px;text-transform:uppercase;letter-spacing:0.7px;font-weight:600;margin-bottom:6px}
+.health-item{display:flex;align-items:flex-start;gap:7px;font-size:12px;color:var(--text2);margin-bottom:4px;line-height:1.45}
+.health-item .hi{flex-shrink:0;font-size:13px}
+
+/* ── CHAT ABOUT STACK BUTTON (Step 3) ───────────────────────────────── */
+.adv-chat-stack-btn{
+  width:100%;padding:12px;background:var(--bg3);
+  border:1.5px solid var(--p1);border-radius:var(--radius-md);
+  color:var(--p1);font-family:var(--ff-body);font-size:13px;font-weight:600;
+  cursor:pointer;transition:all var(--transition);
+  display:flex;align-items:center;justify-content:center;gap:8px;margin-bottom:6px;
+}
+.adv-chat-stack-btn:hover{background:rgba(212,130,74,0.08)}
+.adv-pro-badge{
+  font-size:8px;font-weight:700;letter-spacing:0.6px;text-transform:uppercase;
+  background:linear-gradient(135deg,var(--p1),var(--p4));color:#fff;
+  padding:2px 6px;border-radius:2px;margin-left:4px;
+}
+.adv-health-btn{
+  width:100%;padding:10px;background:transparent;
+  border:1px solid var(--border);border-radius:var(--radius-md);
+  color:var(--text2);font-family:var(--ff-body);font-size:12px;font-weight:400;
+  cursor:pointer;transition:all var(--transition);
+  display:flex;align-items:center;justify-content:center;gap:7px;
+}
+.adv-health-btn:hover{border-color:var(--border-h);color:var(--text);background:var(--bg3)}
+
+
 /* SCROLLBAR */
 ::-webkit-scrollbar{width:6px;height:6px}
 ::-webkit-scrollbar-track{background:var(--bg)}
@@ -926,6 +1114,25 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
   <div class="search-count" id="search-count">Showing all 35 tools across 14 categories</div>
 </section>
 
+<!-- Pillars band — 3-second orientation for new visitors -->
+<div class="pillars">
+  <div class="pillar">
+    <div class="pillar-label">Curated directory</div>
+    <div class="pillar-head">35 tools worth your time</div>
+    <div class="pillar-body">Not a scraped list of thousands. Every tool is manually researched, scored across six dimensions, and explained in plain English — free tier and all.</div>
+  </div>
+  <div class="pillar">
+    <div class="pillar-label">AI Stack Advisor</div>
+    <div class="pillar-head">A stack built for your goal</div>
+    <div class="pillar-body">Answer a few questions. Get a complete recommendation across writing, research, automation and video — with a reason and trade-off for every pick.</div>
+  </div>
+  <div class="pillar">
+    <div class="pillar-label">Open &amp; independent</div>
+    <div class="pillar-head">No pay-to-rank, ever</div>
+    <div class="pillar-body">Community submissions, editor review, public methodology. If a tool ranks high, it scored high. Payment plays no part — not now, not later.</div>
+  </div>
+</div>
+
 <!-- Sticky search — visible when scrolled past hero -->
 <div class="sticky-search" id="sticky-search">
   <div class="search-inner">
@@ -957,7 +1164,7 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
 
 <div class="toolbar">
   <div class="tabs">
-    <button class="tab-btn active" data-tab="explore">🧭 Explore <span class="badge" id="tab-count">30</span></button>
+    <button class="tab-btn active" data-tab="explore">🧭 Explore <span class="badge" id="tab-count">35</span></button>
     <button class="tab-btn" data-tab="compare">📊 Compare</button>
     <button class="tab-btn" data-tab="usecases">🎯 Use Cases</button>
   </div>
@@ -1009,7 +1216,7 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
       <div class="wiki-clearfix">
         <div class="wiki-infobox">
           <div class="wiki-infobox-title">About this directory</div>
-          <table><tr><td>Curated tools</td><td>30</td></tr><tr><td>Categories</td><td>14</td></tr><tr><td>Community submissions</td><td id="wiki-count-display">0 pending</td></tr><tr><td>Last updated</td><td>March 2026</td></tr><tr><td>Maintained by</td><td>@dishts04</td></tr><tr><td>Model</td><td>Editor-curated + community review</td></tr></table>
+          <table><tr><td>Curated tools</td><td>35</td></tr><tr><td>Categories</td><td>14</td></tr><tr><td>Community submissions</td><td id="wiki-count-display">0 pending</td></tr><tr><td>Last updated</td><td>March 2026</td></tr><tr><td>Maintained by</td><td>@dishts04</td></tr><tr><td>Model</td><td>Editor-curated + community review</td></tr></table>
         </div>
         <h2 class="wiki-section-title">Submit an AI Tool</h2>
         <p class="wiki-intro">Toolipedia is a curated directory — every public listing is reviewed before it goes live. If you know an AI tool that belongs here, fill in the form below. The editor reviews all submissions and either approves, requests changes, or explains why it wasn't accepted. The process is similar to how Wikipedia handles article creation: open contributions reviewed by editors before going public.</p>
@@ -1203,7 +1410,7 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
   </div>
 </div>
 
-<footer>Built from real docs, benchmarks &amp; search data · <span>Toolipedia</span> · March 2026 · <button onclick="openWiki();setTimeout(()=>{document.querySelector('[data-wikitab=methodology]').click();},100)" style="background:none;border:none;color:var(--text3);cursor:pointer;font-size:11px;font-family:var(--ff-body);text-decoration:underline;padding:0">Methodology</button></footer>
+<footer>A hand-picked directory plus an AI stack advisor — built so you can choose once and stop scrolling forever. · <span>Toolipedia</span> · March 2026 · <button onclick="openWiki();setTimeout(()=>{document.querySelector('[data-wikitab=methodology]').click();},100)" style="background:none;border:none;color:var(--text3);cursor:pointer;font-size:11px;font-family:var(--ff-body);text-decoration:underline;padding:0">Methodology</button></footer>
 
 <!-- CHAT WIDGET -->
 <div id="chat-bubble">
@@ -1831,7 +2038,7 @@ function renderExplore(){
         if(!wasExpanded){
           const newCard=document.querySelector(`[data-id="${id}"]`);
           if(!newCard) return;
-          const headerH=(document.querySelector('header')||{offsetHeight:58}).offsetHeight||58;
+          const stickyBar=document.getElementById('sticky-search');const headerH=(document.querySelector('header')||{offsetHeight:56}).offsetHeight+((stickyBar&&stickyBar.classList.contains('visible'))?stickyBar.offsetHeight:0);
           const freshTop=newCard.getBoundingClientRect().top+window.scrollY;
           window.scrollTo({top:freshTop-headerH-8,behavior:'instant'});
         }
@@ -1952,7 +2159,7 @@ function renderUseCases(){
       if(!wasExpanded){
         const newRow=document.querySelector(`.uc-tool-row[data-id="${id}"]`);
         if(!newRow) return;
-        const headerH=(document.querySelector('header')||{offsetHeight:58}).offsetHeight||58;
+        const stickyBar=document.getElementById('sticky-search');const headerH=(document.querySelector('header')||{offsetHeight:56}).offsetHeight+((stickyBar&&stickyBar.classList.contains('visible'))?stickyBar.offsetHeight:0);
         const freshTop=newRow.getBoundingClientRect().top+window.scrollY;
         window.scrollTo({top:freshTop-headerH-8,behavior:'smooth'});
       }
@@ -1998,7 +2205,7 @@ document.getElementById('random-btn').addEventListener('click',()=>{
     renderExplore();
     const card=document.querySelector(`[data-id="${pick.id}"]`);
     if(!card) return;
-    const headerH=(document.querySelector('header')||{offsetHeight:58}).offsetHeight||58;
+    const stickyBar=document.getElementById('sticky-search');const headerH=(document.querySelector('header')||{offsetHeight:56}).offsetHeight+((stickyBar&&stickyBar.classList.contains('visible'))?stickyBar.offsetHeight:0);
     const freshTop=card.getBoundingClientRect().top+window.scrollY;
     window.scrollTo({top:freshTop-headerH-8,behavior:'smooth'});
   },60);
@@ -2034,14 +2241,15 @@ renderExplore();
 // 3-step structured advisor: Goal → Questions → Stack Blueprint
 (function(){
   const win=document.getElementById('chat-window'),
-        toggle=document.getElementById('chat-toggle'),
-        closeBtn=document.getElementById('chat-close-btn'),
-        msgsEl=document.getElementById('chat-msgs'),
-        inputEl=document.getElementById('chat-input'),
-        sendBtn=document.getElementById('chat-send'),
-        suggestionsEl=document.getElementById('chat-suggestions');
+        toggle=document.getElementById('chat-toggle');
+  // Live getters — always fetch fresh elements after DOM rebuilds
+  const getM  =()=>document.getElementById('chat-msgs');
+  const getI  =()=>document.getElementById('chat-input');
+  const getS  =()=>document.getElementById('chat-send');
+  const getSug=()=>document.getElementById('chat-suggestions');
 
   let isOpen=false;
+  window._advisorSession={goal:'',goalTags:[],answers:{},derivedTags:[],step:0,questionIndex:0,stack:[]};
 
   // ── Tool layer taxonomy ───────────────────────────────────────────
   const LAYERS={
@@ -2432,7 +2640,7 @@ renderExplore();
 
   // ── RENDER STEP 1: Goal input ─────────────────────────────────────
   function renderStep1(){
-    msgsEl.innerHTML=`
+    getM().innerHTML=`
       ${stepBar(1)}
       <div class="adv-goal-screen">
         <div class="adv-headline">What are you trying to achieve?</div>
@@ -2444,14 +2652,29 @@ renderExplore();
           <button class="adv-example-chip" onclick="advisorSetGoal('Streamline client work as a one-person agency')">Streamline client work as a one-person agency</button>
           <button class="adv-example-chip" onclick="advisorSetGoal('Automate research and notes for my job')">Automate research and notes for my job</button>
         </div>
+        <div class="adv-how">
+          <div class="adv-how-title">How it works</div>
+          <div class="adv-how-step">
+            <div class="adv-how-num">1</div>
+            <div class="adv-how-text"><strong>Describe your goal</strong> — what you want to build, create, or automate, and your rough budget.</div>
+          </div>
+          <div class="adv-how-step">
+            <div class="adv-how-num">2</div>
+            <div class="adv-how-text"><strong>Answer four quick questions</strong> — skill level, team size, timeline, and how you work.</div>
+          </div>
+          <div class="adv-how-step">
+            <div class="adv-how-num">3</div>
+            <div class="adv-how-text"><strong>Get your stack</strong> — a small set of tools covering every layer you need, with pricing and honest trade-offs for each.</div>
+          </div>
+        </div>
       </div>`;
     // Show input area for step 1
-    inputEl.style.display='';
-    sendBtn.style.display='';
-    inputEl.placeholder='Describe your goal…';
-    inputEl.value='';
-    inputEl.focus();
-    suggestionsEl.style.display='none';
+    getI().style.display='';
+    getS().style.display='';
+    getI().placeholder='Describe your goal…';
+    getI().value='';
+    getI().focus();
+    getSug().style.display='none';
   }
 
   // ── RENDER STEP 2: Questions ──────────────────────────────────────
@@ -2466,8 +2689,8 @@ renderExplore();
       return;
     }
     const q=QUESTIONS[qi];
-    inputEl.style.display='none';
-    sendBtn.style.display='none';
+    getI().style.display='none';
+    getS().style.display='none';
 
     const prevAnswers=QUESTIONS.slice(0,qi).map(pq=>{
       const ans=session.answers[pq.id];
@@ -2476,7 +2699,7 @@ renderExplore();
       return `<div class="adv-prev-answer"><span class="adv-prev-q">${pq.text}</span><span class="adv-prev-a">${opt?.icon||''} ${opt?.label||ans}</span></div>`;
     }).filter(Boolean).join('');
 
-    msgsEl.innerHTML=`
+    getM().innerHTML=`
       ${stepBar(2)}
       ${prevAnswers}
       <div class="adv-question-block">
@@ -2487,17 +2710,17 @@ renderExplore();
           ${q.options.map(o=>`<button class="adv-option-chip" onclick="advisorAnswer('${q.id}','${o.value}')">${o.icon} ${o.label}</button>`).join('')}
         </div>
       </div>`;
-    msgsEl.scrollTop=0;
+    getM().scrollTop=0;
   }
 
   // ── RENDER STEP 3: Stack results ──────────────────────────────────
   function renderStep3(){
     const stack=session.stack;
     const out=estimateOutcomes(stack);
-    inputEl.style.display='none';
-    sendBtn.style.display='none';
+    getI().style.display='none';
+    getS().style.display='none';
+    window._advisorSession=session; // expose for Pro engine
 
-    // Stack summary
     const goalText=session.goal.length>60?session.goal.substring(0,57)+'…':session.goal;
 
     const summaryBullets=[
@@ -2505,10 +2728,9 @@ renderExplore();
       out.contentOutput?`<span class="out-icon">📦</span> Expected output: <strong>${out.contentOutput}</strong>`:'',
       `<span class="out-icon">💸</span> Monthly spend: <strong>${out.costBand}</strong>`,
       `<span class="out-icon">🔧</span> <strong>${out.toolCount} tools</strong> — ${out.contextSwitch}`,
-      stack.some(r=>r.tool.free.available)?`<span class="out-icon">🆓</span> At least one tool in the stack has a genuine <strong>free tier</strong>`:'',
+      stack.some(r=>r.tool.free.available)?`<span class="out-icon">🆓</span> At least one tool has a genuine <strong>free tier</strong>`:'',
     ].filter(Boolean).map(b=>`<div class="out-bullet">${b}</div>`).join('');
 
-    // Tool cards
     const toolCards=stack.map(({tool,layer})=>{
       const {why,detail,tradeoff}=getToolReason(tool,layer,session.goalTags,session.answers);
       const layerMeta=LAYERS[layer]||LAYERS.creation;
@@ -2525,7 +2747,7 @@ renderExplore();
       </div>`;
     }).join('');
 
-    msgsEl.innerHTML=`
+    getM().innerHTML=`
       ${stepBar(3)}
       <div class="adv-summary-block">
         <div class="adv-summary-goal">"${goalText}"</div>
@@ -2535,28 +2757,40 @@ renderExplore();
       </div>
       <div class="adv-tools-list">${toolCards}</div>
       <div class="adv-restart-row">
+        <button class="adv-chat-stack-btn" onclick="openProFeature('chat')">
+          ⬡ Chat about your stack <span class="adv-pro-badge">PRO</span>
+        </button>
+        <button class="adv-health-btn" onclick="openProFeature('health')">
+          🩺 Stack health checker <span class="adv-pro-badge">PRO</span>
+        </button>
         <button class="adv-restart-btn" onclick="advisorRestart()">↺ Start over with a different goal</button>
         <div class="adv-cta-note">Click any tool name to explore it in the directory</div>
       </div>`;
 
-    msgsEl.scrollTop=0;
+    getM().scrollTop=0;
   }
+
+  // Expose LAYERS for Pro engine access
+  window._LAYERS=LAYERS;
+  window._TOOL_META=TOOL_META;
 
   // ── Exposed globals for onclick handlers ─────────────────────────
   window.advisorSetGoal=function(text){
-    inputEl.value=text;
-    inputEl.focus();
+    getI().value=text;
+    getI().focus();
   };
 
   window.advisorAnswer=function(qId,value){
     session.answers[qId]=value;
     session.questionIndex++;
+    window._advisorSession=session; // keep in sync
     renderStep2();
   };
 
   window.advisorRestart=function(){
     session={goal:'',goalTags:[],answers:{},derivedTags:[],step:0,questionIndex:0,stack:[]};
     session.step=1;
+    window._advisorSession=session;
     renderStep1();
   };
 
@@ -2567,8 +2801,12 @@ renderExplore();
     session.goalTags=parseGoal(text);
     session.step=2;
     session.questionIndex=0;
+    window._advisorSession=session;
     renderStep2();
   }
+  // Expose for Pro engine restore flow
+  window._submitGoal=submitGoal;
+  window._renderStep3=renderStep3;
 
   // ── Chat open ─────────────────────────────────────────────────────
   function openChat(){
@@ -2588,7 +2826,7 @@ renderExplore();
     setTimeout(()=>{
       const card=document.querySelector(`[data-id="${id}"]`);
       if(card){
-        const headerH=(document.querySelector('header')||{offsetHeight:56}).offsetHeight||56;
+        const stickyBar=document.getElementById('sticky-search');const headerH=(document.querySelector('header')||{offsetHeight:56}).offsetHeight+((stickyBar&&stickyBar.classList.contains('visible'))?stickyBar.offsetHeight:0);
         const freshTop=card.getBoundingClientRect().top+window.scrollY;
         window.scrollTo({top:freshTop-headerH-8,behavior:'instant'});
       }
@@ -2596,33 +2834,547 @@ renderExplore();
     },80);
   };
 
-  // ── Event listeners ───────────────────────────────────────────────
+  // ── Event listeners — use delegation on win so they survive DOM rebuilds ──
   toggle.addEventListener('click',()=>{if(isOpen){isOpen=false;win.classList.add('hidden');}else openChat();});
   document.getElementById('hero-advisor-btn').addEventListener('click',()=>{if(!isOpen)openChat();else win.classList.remove('hidden');});
-  closeBtn.addEventListener('click',()=>{isOpen=false;win.classList.add('hidden');});
 
-  document.getElementById('chat-new-btn').addEventListener('click',()=>{
-    session={goal:'',goalTags:[],answers:{},derivedTags:[],step:1,questionIndex:0,stack:[]};
-    renderStep1();
-    inputEl.style.display='';
-    sendBtn.style.display='';
-    inputEl.value='';
-    inputEl.focus();
-  });
-
-  sendBtn.addEventListener('click',()=>{
-    if(session.step<=1) submitGoal(inputEl.value);
-  });
-  inputEl.addEventListener('keydown',e=>{
-    if(e.key==='Enter'&&!e.shiftKey){
-      e.preventDefault();
-      if(session.step<=1) submitGoal(inputEl.value);
+  // Delegate click/keydown/input on win — works even after innerHTML replacement
+  win.addEventListener('click',e=>{
+    const t=e.target;
+    if(t.id==='chat-close-btn'||t.closest('#chat-close-btn')){isOpen=false;win.classList.add('hidden');return;}
+    if(t.id==='chat-new-btn'||t.closest('#chat-new-btn')){
+      session={goal:'',goalTags:[],answers:{},derivedTags:[],step:1,questionIndex:0,stack:[]};
+      window._advisorSession=session;
+      renderStep1();
+      return;
+    }
+    if(t.id==='chat-send'||t.closest('#chat-send')){
+      if(session.step<=1) submitGoal(getI().value);
+      return;
     }
   });
-  inputEl.addEventListener('input',()=>{
-    inputEl.style.height='auto';
-    inputEl.style.height=Math.min(inputEl.scrollHeight,90)+'px';
+  win.addEventListener('keydown',e=>{
+    if(e.target.id==='chat-input'&&e.key==='Enter'&&!e.shiftKey){
+      e.preventDefault();
+      if(session.step<=1) submitGoal(getI().value);
+    }
   });
+  win.addEventListener('input',e=>{
+    if(e.target.id==='chat-input'){
+      e.target.style.height='auto';
+      e.target.style.height=Math.min(e.target.scrollHeight,90)+'px';
+    }
+  });
+})();
+
+
+
+// ═══════════════ PRO FEATURES ENGINE ═══════════════
+// ═══════════════ PRO FEATURES ENGINE ═══════════════
+(function(){
+
+  // ── Expanded knowledge base (100 common tools not in directory) ──────────
+  // Compact format — enough for the advisor to reason about without editorial listing
+  const KNOWN_TOOLS={
+    // Automation & Workflow
+    'zapier':         {name:'Zapier',          layer:'orchestration', free:true,  price:'$19.99/mo',  desc:'Connect 6,000+ apps with trigger-action workflows. Easiest no-code automation for beginners. Trade-off: gets expensive fast at volume.'},
+    'make':           {name:'Make (Integromat)',layer:'orchestration', free:true,  price:'$9/mo',      desc:'Visual workflow builder, more powerful than Zapier at lower cost. Steeper learning curve.'},
+    'activepieces':   {name:'Activepieces',    layer:'orchestration', free:true,  price:'$0 self-host',desc:'Open-source Zapier alternative. 100+ integrations, self-hostable, MIT licence.'},
+    'retool':         {name:'Retool',          layer:'orchestration', free:true,  price:'$10/user/mo', desc:'Build internal tools and dashboards with drag-and-drop. Best for ops teams without engineers.'},
+    'airtable':       {name:'Airtable',        layer:'capture',       free:true,  price:'$20/user/mo', desc:'Database-spreadsheet hybrid. Good for structured data, light project management, content calendars.'},
+    'pipedream':      {name:'Pipedream',       layer:'orchestration', free:true,  price:'$29/mo',     desc:'Code-first automation. Best for developers who want more control than Zapier.'},
+    'tray.io':        {name:'Tray.io',         layer:'orchestration', free:false, price:'Custom',     desc:'Enterprise integration platform. Competes with MuleSoft at lower cost.'},
+
+    // Productivity & Collaboration
+    'notion':         {name:'Notion',          layer:'capture',       free:true,  price:'$10/user/mo', desc:'Docs, databases, wikis, and project management in one. Popular with startups. No AI unless you add Notion AI.'},
+    'obsidian':       {name:'Obsidian',        layer:'capture',       free:true,  price:'$50/yr sync', desc:'Local-first note-taking with linked thinking. Popular with researchers and writers. No cloud unless you pay for sync.'},
+    'roam':           {name:'Roam Research',   layer:'capture',       free:false, price:'$15/mo',     desc:'Networked note-taking for deep thinkers. Smaller community than Obsidian but loyal power users.'},
+    'logseq':         {name:'Logseq',          layer:'capture',       free:true,  price:'$0',         desc:'Open-source Roam alternative. Local files, Markdown, privacy-first.'},
+    'slack':          {name:'Slack',           layer:'capture',       free:true,  price:'$7.25/user/mo',desc:'Team messaging. Most popular for startups and tech companies. Integrates with almost everything.'},
+    'discord':        {name:'Discord',         layer:'capture',       free:true,  price:'$9.99/mo Pro',desc:'Community and team chat. Better than Slack for communities and async-heavy teams.'},
+    'loom':           {name:'Loom',            layer:'capture',       free:true,  price:'$12.50/user/mo',desc:'Async video messaging. Record screen + face, share instantly. Reduces meetings significantly.'},
+    'linear':         {name:'Linear',          layer:'capture',       free:true,  price:'$8/user/mo',  desc:'Fast, opinionated project management for software teams. Beats Jira on UX.'},
+    'jira':           {name:'Jira',            layer:'capture',       free:true,  price:'$8.15/user/mo',desc:'Enterprise project management. Complex but deeply integrated with the Atlassian ecosystem.'},
+    'asana':          {name:'Asana',           layer:'capture',       free:true,  price:'$10.99/user/mo',desc:'Project and task management. Better for non-technical teams than Linear or Jira.'},
+    'monday':         {name:'Monday.com',      layer:'capture',       free:false, price:'$9/user/mo',  desc:'Visual work management. Popular with agencies and marketing teams.'},
+    'clickup':        {name:'ClickUp',         layer:'capture',       free:true,  price:'$7/user/mo',  desc:'All-in-one project management. Feature-dense — can be overwhelming. Good for solo operators.'},
+    'todoist':        {name:'Todoist',         layer:'capture',       free:true,  price:'$4/mo',       desc:'Simple personal task manager. Best for individuals who just need a clean to-do list.'},
+
+    // Design & Creative
+    'figma':          {name:'Figma',           layer:'creation',      free:true,  price:'$12/user/mo', desc:'Best UI/UX design tool. Standard for product teams. Now has AI features for design generation.'},
+    'framer':         {name:'Framer',          layer:'creation',      free:true,  price:'$15/mo',      desc:'Design and publish websites with AI. Better than Webflow for designers, simpler than code.'},
+    'webflow':        {name:'Webflow',         layer:'creation',      free:true,  price:'$14/mo',      desc:'No-code website builder with full CSS control. Best for marketing sites without developers.'},
+    'adobe-express':  {name:'Adobe Express',   layer:'creation',      free:true,  price:'$9.99/mo',    desc:'Quick social graphics and templates. Simpler than Creative Cloud, more powerful than Canva for brand work.'},
+    'descript':       {name:'Descript',        layer:'creation',      free:true,  price:'$12/mo',      desc:'Edit video by editing the transcript. Best tool for podcast and talking-head video editing.'},
+    'capcut':         {name:'CapCut',          layer:'creation',      free:true,  price:'$7.99/mo Pro',desc:'Video editing optimised for short-form social. Best free tool for TikTok and Reels editing.'},
+    'opus-clip':      {name:'Opus Clip',       layer:'creation',      free:true,  price:'$15/mo',      desc:'AI that cuts long videos into viral short clips automatically. Popular with YouTubers repurposing content.'},
+    'sora':           {name:'Sora (OpenAI)',   layer:'creation',      free:false, price:'Included in ChatGPT Pro ($200/mo)', desc:'OpenAI\'s video generation model. High quality but expensive access tier.'},
+
+    // Writing & Content
+    'jasper':         {name:'Jasper',          layer:'creation',      free:false, price:'$39/mo',      desc:'AI writing for marketing teams. Brand voice training, templates for ads and emails. Older than Claude/ChatGPT but purpose-built for marketing.'},
+    'copy-ai':        {name:'Copy.ai',         layer:'creation',      free:true,  price:'$36/mo',      desc:'Marketing copy generation. Good for social posts, email subject lines, ad copy at volume.'},
+    'sudowrite':      {name:'Sudowrite',       layer:'creation',      free:false, price:'$19/mo',      desc:'AI writing tool purpose-built for fiction writers. Story engine, character development, world-building.'},
+    'grammarly':      {name:'Grammarly',       layer:'creation',      free:true,  price:'$12/mo',      desc:'Grammar, tone, and style checker. Works across browser, Word, and Google Docs. Not a writer — a reviewer.'},
+    'hemingway':      {name:'Hemingway Editor',layer:'creation',      free:true,  price:'$19.99 one-time',desc:'Readability checker. Highlights complex sentences and passive voice. Simple, effective, offline version available.'},
+
+    // Research & Knowledge
+    'consensus':      {name:'Consensus',       layer:'knowledge',     free:true,  price:'$8.99/mo',    desc:'Searches and summarises peer-reviewed research. Good complement to Elicit for academic work.'},
+    'semantic-scholar':{name:'Semantic Scholar',layer:'knowledge',    free:true,  price:'$0',          desc:'Free academic search engine with AI paper summaries. Good starting point before Elicit.'},
+    'readwise':       {name:'Readwise',        layer:'knowledge',     free:false, price:'$7.99/mo',     desc:'Resurfaces your highlights from books, articles, and Kindle. Reader app for saving web articles with AI summaries.'},
+    'mem':            {name:'Mem',             layer:'knowledge',     free:false, price:'$14.99/mo',    desc:'AI-powered personal knowledge base. Automatically surfaces relevant notes as you write.'},
+    'fireflies':      {name:'Fireflies.ai',    layer:'capture',       free:true,  price:'$10/mo',       desc:'Meeting transcription and search. Competes with Otter.ai — slightly better integrations with CRMs.'},
+    'fathom':         {name:'Fathom',          layer:'capture',       free:true,  price:'$15/mo Pro',   desc:'Meeting recorder and summariser. Particularly clean UI, very popular with sales teams on Zoom.'},
+
+    // Development
+    'replit':         {name:'Replit',          layer:'creation',      free:true,  price:'$25/mo',       desc:'Browser-based IDE with AI. Good for prototyping and learning. Competes with Lovable for quick apps.'},
+    'vercel-v0':      {name:'v0 by Vercel',    layer:'creation',      free:true,  price:'$20/mo Pro',   desc:'Generate React components from text prompts. Best for frontend developers who know React.'},
+    'bolt':           {name:'Bolt.new',        layer:'creation',      free:true,  price:'$20/mo',       desc:'Full-stack app builder from StackBlitz. Competes with Lovable — good for developers who want more control.'},
+    'windsurf':       {name:'Windsurf',        layer:'creation',      free:true,  price:'$15/mo',       desc:'AI IDE from Codeium. Competes with Cursor — good free tier, slightly less powerful agent mode.'},
+    'codeium':        {name:'Codeium',         layer:'creation',      free:true,  price:'$12/mo',       desc:'AI code completion. Free alternative to GitHub Copilot for individual developers.'},
+    'tabnine':        {name:'Tabnine',         layer:'creation',      free:true,  price:'$12/mo',       desc:'AI code completion with privacy focus. Runs locally, no code sent to cloud. Good for regulated industries.'},
+    'sourcegraph':    {name:'Sourcegraph Cody',layer:'knowledge',     free:true,  price:'$9/mo',        desc:'AI that understands your entire codebase — across repositories. Good for large engineering teams.'},
+
+    // CRM & Sales
+    'hubspot':        {name:'HubSpot',         layer:'orchestration', free:true,  price:'$15/mo Starter',desc:'CRM, marketing, sales, and support in one platform. Free CRM is genuinely useful. AI features in paid tiers.'},
+    'pipedrive':      {name:'Pipedrive',       layer:'orchestration', free:false, price:'$14/user/mo',  desc:'Sales-focused CRM. Cleaner than HubSpot for pure sales pipeline management.'},
+    'apollo':         {name:'Apollo.io',       layer:'knowledge',     free:true,  price:'$49/mo',       desc:'Sales intelligence and outreach. 275M+ contact database. Better than LinkedIn Sales Navigator for prospecting at scale.'},
+    'clay':           {name:'Clay',            layer:'orchestration', free:true,  price:'$149/mo',      desc:'AI-powered lead enrichment and outreach automation. Popular with growth teams — pulls from 50+ data sources.'},
+    'instantly':      {name:'Instantly.ai',    layer:'orchestration', free:false, price:'$37/mo',       desc:'Cold email automation at scale. Manages sending infrastructure and warm-up automatically.'},
+
+    // Analytics & Data
+    'mixpanel':       {name:'Mixpanel',        layer:'knowledge',     free:true,  price:'$20/mo',       desc:'Product analytics. Tracks user behaviour and funnels. Better than Google Analytics for SaaS products.'},
+    'amplitude':      {name:'Amplitude',       layer:'knowledge',     free:true,  price:'$49/mo',       desc:'Product intelligence. Deeper behavioural analytics than Mixpanel. Popular with growth teams.'},
+    'ga4':            {name:'Google Analytics 4',layer:'knowledge',   free:true,  price:'$0',           desc:'Free web analytics. Less intuitive than Mixpanel but standard for content sites and e-commerce.'},
+    'metabase':       {name:'Metabase',        layer:'knowledge',     free:true,  price:'$500/mo cloud', desc:'Business intelligence and dashboards from your database. Open-source, self-hostable. Good alternative to Tableau for smaller teams.'},
+    'dbt':            {name:'dbt (data build tool)',layer:'orchestration',free:true,price:'$100/mo cloud',desc:'Transform data in your warehouse using SQL. Standard tool for analytics engineering teams.'},
+
+    // Customer Support
+    'intercom':       {name:'Intercom',        layer:'orchestration', free:false, price:'$39/mo',       desc:'Customer messaging and support with AI agents. Fin AI resolves ~50% of support queries automatically.'},
+    'zendesk':        {name:'Zendesk',         layer:'orchestration', free:false, price:'$55/agent/mo', desc:'Enterprise customer support platform. More powerful than Intercom for large support teams.'},
+    'freshdesk':      {name:'Freshdesk',       layer:'orchestration', free:true,  price:'$15/agent/mo', desc:'Simpler alternative to Zendesk. Good for SMBs that don\'t need Zendesk\'s complexity.'},
+
+    // Finance & Legal
+    'stripe':         {name:'Stripe',          layer:'orchestration', free:true,  price:'2.9%+30¢/txn', desc:'Payment processing. Standard for SaaS and e-commerce. Stripe Radar uses ML for fraud detection.'},
+    'quickbooks':     {name:'QuickBooks',      layer:'knowledge',     free:false, price:'$30/mo',       desc:'Accounting for small businesses. Has AI features for expense categorisation and cash flow forecasting.'},
+    'xero':           {name:'Xero',            layer:'knowledge',     free:false, price:'$15/mo',       desc:'Cloud accounting. Popular alternative to QuickBooks, particularly outside the US.'},
+    'ironclad':       {name:'Ironclad',        layer:'governance',    free:false, price:'Custom',       desc:'Contract lifecycle management with AI. Competes with Harvey on contract work for enterprise legal teams.'},
+    'docusign':       {name:'DocuSign',        layer:'orchestration', free:false, price:'$15/mo',       desc:'E-signature and contract management. Has AI for contract analysis in higher tiers.'},
+
+    // HR & Recruiting
+    'ashby':          {name:'Ashby',           layer:'orchestration', free:false, price:'$390/mo',      desc:'All-in-one recruiting platform with strong analytics. Popular with high-growth startups.'},
+    'greenhouse':     {name:'Greenhouse',      layer:'orchestration', free:false, price:'Custom',       desc:'Enterprise applicant tracking system. Standard at companies 200+ employees.'},
+    'rippling':       {name:'Rippling',        layer:'orchestration', free:false, price:'$8/user/mo',   desc:'HR, IT, and finance in one platform. Automates onboarding across all systems simultaneously.'},
+
+    // Email & Marketing
+    'mailchimp':      {name:'Mailchimp',       layer:'orchestration', free:true,  price:'$13/mo',       desc:'Email marketing with AI content suggestions. Good for newsletters and small lists. Gets expensive at scale.'},
+    'convertkit':     {name:'ConvertKit (Kit)',layer:'orchestration', free:true,  price:'$25/mo',       desc:'Email marketing for creators. Better than Mailchimp for newsletter businesses and course creators.'},
+    'beehiiv':        {name:'Beehiiv',         layer:'orchestration', free:true,  price:'$42/mo',       desc:'Newsletter platform with built-in monetisation. Popular with Substack alternatives. Has AI writing assistant.'},
+    'substack':       {name:'Substack',        layer:'orchestration', free:true,  price:'10% of revenue',desc:'Newsletter publishing with built-in paid subscriptions. Free until you charge — then 10% cut.'},
+    'lemlist':        {name:'Lemlist',         layer:'orchestration', free:false, price:'$59/mo',       desc:'Personalised cold email and LinkedIn outreach. AI personalisation from prospect data.'},
+
+    // Infrastructure & DevOps
+    'vercel':         {name:'Vercel',          layer:'orchestration', free:true,  price:'$20/mo Pro',   desc:'Deploy frontend apps instantly. Best for Next.js projects. Edge functions, analytics, preview deployments.'},
+    'railway':        {name:'Railway',         layer:'orchestration', free:true,  price:'$5/mo Hobby',  desc:'Deploy any app or database in minutes. Simpler than AWS. Good for backend services and APIs.'},
+    'render':         {name:'Render',          layer:'orchestration', free:true,  price:'$7/mo',        desc:'Cloud hosting with free tier. Good alternative to Heroku. Auto-deploys from GitHub.'},
+    'supabase':       {name:'Supabase',        layer:'orchestration', free:true,  price:'$25/mo Pro',   desc:'Open-source Firebase alternative. Postgres database, auth, storage, edge functions. Popular with solo devs.'},
+    'firebase':       {name:'Firebase',        layer:'orchestration', free:true,  price:'Pay-as-you-go',desc:'Google\'s app backend. Auth, database, hosting, functions. Good for mobile apps and rapid prototyping.'},
+    'aws':            {name:'AWS',             layer:'orchestration', free:true,  price:'Pay-as-you-go',desc:'Enterprise cloud infrastructure. Steepest learning curve, widest capability. Standard for large-scale deployments.'},
+    'pinecone':       {name:'Pinecone',        layer:'knowledge',     free:true,  price:'$70/mo Starter',desc:'Vector database for AI applications. Standard choice for RAG pipelines and semantic search.'},
+    'weaviate':       {name:'Weaviate',        layer:'knowledge',     free:true,  price:'$25/mo',       desc:'Open-source vector database. More flexible than Pinecone, self-hostable.'},
+
+    // Social & Content
+    'buffer':         {name:'Buffer',          layer:'orchestration', free:true,  price:'$6/mo',        desc:'Schedule social media posts across platforms. Simple and affordable for solo creators.'},
+    'later':          {name:'Later',           layer:'orchestration', free:true,  price:'$18/mo',       desc:'Visual social media planner. Best for Instagram and TikTok content calendars.'},
+    'taplio':         {name:'Taplio',          layer:'creation',      free:false, price:'$49/mo',       desc:'LinkedIn content creation and scheduling with AI. Popular with personal brand builders.'},
+    'typefully':      {name:'Typefully',       layer:'creation',      free:true,  price:'$12.50/mo',    desc:'Write and schedule Twitter/X threads. Clean editor, good analytics.'},
+
+    // Security & Governance
+    '1password':      {name:'1Password',       layer:'governance',    free:false, price:'$3/user/mo',   desc:'Password and secret management. Business tier includes team vaults and access controls.'},
+    'okta':           {name:'Okta',            layer:'governance',    free:false, price:'$2/user/mo',   desc:'Identity and access management. SSO for all your SaaS tools. Standard for companies 50+ people.'},
+    'vanta':          {name:'Vanta',           layer:'governance',    free:false, price:'$7,500/yr',    desc:'Automated SOC 2 and ISO 27001 compliance. Reduces audit prep from months to weeks.'},
+  };
+
+  // ── Find a tool in directory OR knowledge base ────────────────────────────
+  window.findToolAnywhere=function(name){
+    const nl=name.toLowerCase().trim();
+    // Search directory first
+    const inDir=TOOLS.find(t=>
+      t.name.toLowerCase()===nl ||
+      t.id===nl.replace(/\s+/g,'-') ||
+      t.name.toLowerCase().includes(nl) ||
+      nl.includes(t.name.toLowerCase())
+    );
+    if(inDir) return {found:true, inDirectory:true, tool:inDir};
+    // Search knowledge base
+    const kbKey=Object.keys(KNOWN_TOOLS).find(k=>
+      k===nl.replace(/\s+/g,'-') ||
+      KNOWN_TOOLS[k].name.toLowerCase()===nl ||
+      KNOWN_TOOLS[k].name.toLowerCase().includes(nl) ||
+      nl.includes(KNOWN_TOOLS[k].name.toLowerCase())
+    );
+    if(kbKey) return {found:true, inDirectory:false, kb:KNOWN_TOOLS[kbKey], id:kbKey};
+    return {found:false};
+  };
+
+  // ── Pro gate ──────────────────────────────────────────────────────────────
+  window.openProFeature=function(feature){
+    if(feature==='chat') openConversationalChat();
+    else if(feature==='health') openHealthChecker();
+    else showProGate();
+  };
+
+  window.closeProGate=function(){
+    document.getElementById('pro-gate-overlay').style.display='none';
+  };
+
+  window.joinProWaitlist=function(){
+    // In future: connect to Tally/Typeform waitlist form
+    // For now: open email
+    window.open('mailto:?subject=Toolipedia Pro Waitlist&body=I want to join the Toolipedia Pro waitlist. My goal: ','_blank');
+    closeProGate();
+  };
+
+  function showProGate(){
+    document.getElementById('pro-gate-overlay').style.display='flex';
+  }
+
+  // ── CONVERSATIONAL CHAT MODE ──────────────────────────────────────────────
+  // Context-aware chat loaded with the user's session data
+  let convHistory=[]; // conversation turns
+  let isConvThinking=false;
+
+  function getConvContext(){
+    // Build a rich context string from the session
+    const s=window._advisorSession||{};
+    const budget=s.answers?.budget||'unknown';
+    const skill=s.answers?.skill||'unknown';
+    const teamSize=s.answers?.teamSize||'solo';
+    const stack=(s.stack||[]).map(r=>r.tool.name).join(', ');
+    const goalTags=(s.goalTags||[]).join(', ');
+    return {goal:s.goal||'',budget,skill,teamSize,stack,goalTags};
+  }
+
+  function convFmt(text){
+    return text
+      .replace(/\*\*([^*\n]+)\*\*/g,'<strong>$1</strong>')
+      .replace(/\*([^*\n]+)\*/g,'<em>$1</em>')
+      .replace(/^[•\-] (.+)$/gm,'<div style="display:flex;gap:6px;margin:3px 0;font-size:12px"><span style="color:var(--p1);flex-shrink:0">→</span><span>$1</span></div>')
+      .replace(/^⚠️ (.+)$/gm,'<div style="background:rgba(200,150,60,0.1);border:1px solid rgba(200,150,60,0.25);border-radius:5px;padding:5px 8px;font-size:11.5px;color:var(--p4);margin:5px 0">⚠️ $1</div>')
+      .replace(/\n\n/g,'<div style="height:6px"></div>')
+      .replace(/\n/g,'<br>');
+  }
+
+  function convChip(id){
+    const t=TOOLS.find(x=>x.id===id);
+    return t?`<span class="tool-chip" onclick="handleChipClick('${id}')">${t.icon} ${t.name}</span>`:'';
+  }
+
+  function convAnswer(userMsg){
+    const ctx=getConvContext();
+    const q=userMsg.toLowerCase();
+
+    // Tool lookup (directory + knowledge base)
+    const words=userMsg.match(/\b[A-Za-z][A-Za-z\s\-\.]{2,}\b/g)||[];
+    for(const w of words){
+      const result=window.findToolAnywhere(w);
+      if(result.found){
+        if(result.inDirectory){
+          const t=result.tool;
+          const reason=ctx.budget==='none'&&!t.free.available
+            ?`⚠️ ${t.name} doesn't have a free tier — worth waiting until your budget grows.`
+            :`It's already in your directory. Scores ${t.scores.automation}/10 for automation, ${t.scores.writing}/10 for writing.`;
+          return convFmt(`${convChip(t.id)} — ${t.tagline}\n\n${reason}\n\n${t.bestFor}`);
+        } else {
+          const kb=result.kb;
+          return convFmt(`**${kb.name}** (${kb.layer} layer)\n\n${kb.desc}\n\n${kb.free?'✅ Has a free tier.':'No free tier.'} Paid from **${kb.price}**.\n\n⚠️ ${kb.name} isn't formally listed in the Toolipedia directory yet — I know it well but haven't scored it editorially. Want me to show how it fits with your current stack?`);
+        }
+      }
+    }
+
+    // Free alternative
+    if(/free|afford|cheaper|without paying|no cost/.test(q)){
+      const stackIds=(window._advisorSession?.stack||[]).map(r=>r.tool.id);
+      const paidTools=stackIds.map(id=>TOOLS.find(t=>t.id===id)).filter(t=>t&&!t.free.available);
+      if(paidTools.length){
+        const t=paidTools[0];
+        const freeAlts=TOOLS.filter(x=>x.free.available&&x.categories.some(c=>t.categories.includes(c))&&x.id!==t.id).slice(0,2);
+        return convFmt(`If ${t.name} is too expensive right now, the closest free alternatives are:\n\n${freeAlts.map(a=>`• ${convChip(a.id)} — ${a.free.desc.split('.')[0]}`).join('\n')}\n\nYou'll lose some capability but the free tiers are genuinely usable for getting started.`);
+      }
+    }
+
+    // How to connect two tools
+    if(/connect|integrate|link|sync|how.*work.*together|pass.*data/.test(q)){
+      const tools=words.map(w=>window.findToolAnywhere(w)).filter(r=>r.found);
+      if(tools.length>=2){
+        const a=tools[0].inDirectory?tools[0].tool.name:tools[0].kb.name;
+        const b=tools[1].inDirectory?tools[1].tool.name:tools[1].kb.name;
+        const n8nNote=TOOLS.find(t=>t.id==='n8n');
+        return convFmt(`To connect **${a}** and **${b}**:\n\n• ${convChip('n8n')} is the cleanest way — it has native connectors for most tools, free to self-host. Build a workflow that triggers when something happens in ${a} and acts in ${b}.\n\n• If you need something simpler with no setup, Zapier does the same thing with a point-and-click interface — free tier covers basic connections.\n\nWant me to describe the exact workflow steps?`);
+      }
+    }
+
+    // Budget/pricing context from session
+    if(/how much|cost|price|budget|afford/.test(q)){
+      const stack=(window._advisorSession?.stack||[]);
+      if(stack.length){
+        let total=0;
+        const lines=stack.map(({tool})=>{
+          if(tool.free.available) return `• ${tool.name} — free tier available`;
+          const p=parseFloat((tool.paid[0]?.price||'$0').replace(/[^0-9.]/g,''))||20;
+          total+=p;
+          return `• ${tool.name} — from ${tool.paid[0]?.price}`;
+        });
+        return convFmt(`Here's what your stack costs:\n\n${lines.join('\n')}\n\n**Estimated total: ~$${Math.round(total)}/month**\n\nAll tools have free trials — I'd suggest testing on free tiers first before committing to paid plans.`);
+      }
+    }
+
+    // Implementation guidance
+    if(/how.*start|where.*start|implement|set up|get started|first step|begin/.test(q)){
+      const stack=(window._advisorSession?.stack||[]);
+      const fast=window._advisorSession?.answers?.timeline==='asap';
+      const skill=window._advisorSession?.answers?.skill||'intermediate';
+      if(stack.length){
+        const order=stack.slice(0,3).map((r,i)=>`${i+1}. **${r.tool.name}** — ${r.tool.useCases[0]}`).join('\n');
+        return convFmt(`Here's how to set up your stack${fast?' quickly':''}:\n\n${order}\n\n${skill==='beginner'?'Start with the first tool only. Get comfortable before adding the next. Most people try to use too many tools at once and use none of them well.':'Set up each tool in order. The first one in your stack is the foundation — get that working before connecting the others.'}`);
+      }
+    }
+
+    // What tool for X
+    if(/what.*tool|which.*tool|best.*for|recommend.*for/.test(q)){
+      return convFmt(`Tell me more specifically what you're trying to do and I'll point you to the right tool — either from your stack or from the 135 tools I know about.\n\nFor example: "What's the best tool for scheduling LinkedIn posts?" or "Which tool helps me transcribe meetings?"`);
+    }
+
+    // Unknown — helpful redirect
+    convHistory.push({role:'user',text:userMsg});
+    return convFmt(`I'm focused on your stack context — goal: **${ctx.goal||'your project'}**, budget: ${ctx.budget}, team: ${ctx.teamSize}.\n\nAsk me things like:\n• "Is there a free version of [tool]?"\n• "How do I connect [tool A] and [tool B]?"\n• "What should I set up first?"\n• "How much will this stack cost me?"\n• "What does [any AI tool] do?"`);
+  }
+
+  function openConversationalChat(){
+    const chatWin=document.getElementById('chat-window');
+    const ctx=getConvContext();
+    convHistory=[];
+
+    // Replace chat window content with conversational UI
+    chatWin.innerHTML=`
+      <div class="conv-head">
+        <button class="conv-head-back" onclick="restoreAdvisorView()">← Back to stack</button>
+        <div class="conv-head-info">
+          <div class="conv-head-title">Chat about your stack</div>
+          <div class="conv-head-sub">${ctx.goal?`Goal: ${ctx.goal.substring(0,40)}${ctx.goal.length>40?'…':''}`:'Ask me anything about your tools'}</div>
+        </div>
+      </div>
+      <div class="conv-msg-area" id="conv-msgs"></div>
+      <div class="conv-input-row">
+        <textarea id="conv-input" placeholder="Ask about your stack…" rows="1"></textarea>
+        <button id="conv-send">➤</button>
+      </div>`;
+
+    const convMsgs=chatWin.querySelector('#conv-msgs');
+    const convInput=chatWin.querySelector('#conv-input');
+    const convSend=chatWin.querySelector('#conv-send');
+
+    function addConvMsg(role,text){
+      const d=document.createElement('div');
+      d.className=`conv-msg ${role}`;
+      const b=document.createElement('div');
+      b.className='conv-bubble';
+      b.innerHTML=text;
+      const tm=document.createElement('div');
+      tm.className='conv-time';
+      tm.textContent=new Date().toLocaleTimeString([],{hour:'2-digit',minute:'2-digit'});
+      d.appendChild(b);d.appendChild(tm);
+      convMsgs.appendChild(d);
+      convMsgs.scrollTop=convMsgs.scrollHeight;
+    }
+
+    function showConvTyping(){
+      const d=document.createElement('div');
+      d.className='conv-msg bot';d.id='conv-typing';
+      d.innerHTML='<div class="typing-indicator"><div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div></div>';
+      convMsgs.appendChild(d);convMsgs.scrollTop=convMsgs.scrollHeight;
+    }
+    function removeConvTyping(){const t=document.getElementById('conv-typing');if(t)t.remove();}
+
+    function sendConvMsg(){
+      const text=convInput.value.trim();
+      if(!text||isConvThinking)return;
+      isConvThinking=true;convSend.disabled=true;
+      addConvMsg('user',convFmt(text));
+      convInput.value='';convInput.style.height='auto';
+      showConvTyping();
+      setTimeout(()=>{
+        removeConvTyping();
+        const reply=convAnswer(text);
+        addConvMsg('bot',reply);
+        isConvThinking=false;convSend.disabled=false;
+        convInput.focus();
+      },350+Math.random()*200);
+    }
+
+    convSend.addEventListener('click',sendConvMsg);
+    convInput.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendConvMsg();}});
+    convInput.addEventListener('input',()=>{convInput.style.height='auto';convInput.style.height=Math.min(convInput.scrollHeight,80)+'px';});
+
+    // Greeting pre-loaded with context
+    const stackNames=(ctx.stack||'').split(', ').filter(Boolean).slice(0,3).join(', ');
+    const greeting=ctx.stack
+      ?`Your stack is ready — ${stackNames}${ctx.stack.split(',').length>3?` and ${ctx.stack.split(',').length-3} more`:''}.
+
+Ask me anything:\n• "Is there a free version of [tool]?"\n• "How do I connect [tool A] and [tool B]?"\n• "What should I set up first?"\n• "How much will this cost me?"\n• "What does [any AI tool] do?"`
+      :`I'm ready to help. Ask me anything about your AI tools.`;
+
+    setTimeout(()=>addConvMsg('bot',convFmt(greeting)),150);
+    convInput.focus();
+  }
+
+  // ── Restore advisor view (back from chat) ─────────────────────────────────
+  window.restoreAdvisorView=function(){
+    const chatWin=document.getElementById('chat-window');
+    // Restore the original chat window HTML structure
+    chatWin.innerHTML=`
+      <div class="chat-head">
+        <div class="chat-avatar">⬡</div>
+        <div class="chat-head-info">
+          <div class="chat-head-name">AI Stack Advisor</div>
+          <div class="chat-head-status">Powered by Claude · Toolipedia</div>
+        </div>
+        <button id="chat-new-btn" title="Start a new conversation" style="background:none;border:1px solid var(--border);color:var(--text3);cursor:pointer;font-size:11px;padding:4px 8px;border-radius:var(--radius-sm);transition:all var(--transition);font-family:var(--ff-body);font-weight:500;margin-right:6px;white-space:nowrap">↺ New</button>
+        <button class="chat-close" id="chat-close-btn">✕</button>
+      </div>
+      <div id="chat-msgs"></div>
+      <div class="chat-suggestions" id="chat-suggestions">
+        <button class="suggestion-chip">Build me a solo creator stack</button>
+        <button class="suggestion-chip">AI setup for a team of 10</button>
+        <button class="suggestion-chip">Enterprise AI evaluation</button>
+        <button class="suggestion-chip">Best free AI stack</button>
+        <button class="suggestion-chip">Compare Claude vs ChatGPT</button>
+        <button class="suggestion-chip">Automate my entire workflow</button>
+      </div>
+      <div class="chat-input-row">
+        <textarea id="chat-input" placeholder="Describe your goal…" rows="1"></textarea>
+        <button id="chat-send">➤</button>
+      </div>`;
+
+    // Event listeners handled by delegation on win — no re-wiring needed
+
+    // Show the Step 3 results if we have a session
+    if(window._advisorSession?.step===3&&window._renderStep3){
+      window._renderStep3();
+    }
+  };
+
+  // ── STACK HEALTH CHECKER ──────────────────────────────────────────────────
+  function openHealthChecker(){
+    const chatWin=document.getElementById('chat-window');
+    chatWin.innerHTML=`
+      <div class="conv-head">
+        <button class="conv-head-back" onclick="restoreAdvisorView()">← Back to stack</button>
+        <div class="conv-head-info">
+          <div class="conv-head-title">Stack health checker</div>
+          <div class="conv-head-sub">Find overlaps, gaps, and what to cut</div>
+        </div>
+      </div>
+      <div style="flex:1;overflow-y:auto">
+        <div class="health-screen">
+          <div class="health-headline">What AI tools are you currently using?</div>
+          <div class="health-sub">List them separated by commas. Include tools you're not sure about — that's the point.</div>
+          <div class="health-input-area">
+            <div class="health-input-label">Your current tools</div>
+            <textarea id="health-tools-input" placeholder="e.g. ChatGPT, Notion, Zapier, Canva, Grammarly, Midjourney…" rows="3"></textarea>
+          </div>
+          <button class="health-analyze-btn" onclick="runHealthCheck()">Analyse my stack →</button>
+          <div id="health-results" class="health-results"></div>
+        </div>
+      </div>`;
+  }
+
+  window.runHealthCheck=function(){
+    const input=document.getElementById('health-tools-input').value.trim();
+    if(!input) return;
+    const results=document.getElementById('health-results');
+    results.innerHTML='<div style="font-size:12px;color:var(--text3);padding:8px 0">Analysing your stack…</div>';
+
+    setTimeout(()=>{
+      const toolNames=input.split(',').map(s=>s.trim()).filter(Boolean);
+      const found=[], notFound=[];
+      const layers={};
+
+      toolNames.forEach(name=>{
+        const result=window.findToolAnywhere(name);
+        if(result.found){
+          const layer=result.inDirectory
+            ?((window._TOOL_META||{})[result.tool.id]||{}).primary||'creation'
+            :result.kb.layer;
+          const displayName=result.inDirectory?result.tool.name:result.kb.name;
+          const hasFree=result.inDirectory?result.tool.free.available:result.kb.free;
+          const price=result.inDirectory?result.tool.paid[0]?.price:result.kb.price;
+          found.push({name:displayName,layer,hasFree,price,inDir:result.inDirectory});
+          if(!layers[layer]) layers[layer]=[];
+          layers[layer].push(displayName);
+        } else {
+          notFound.push(name);
+        }
+      });
+
+      // Identify overlaps
+      const overlaps=Object.entries(layers).filter(([,tools])=>tools.length>1);
+      // Identify gaps
+      const coveredLayers=new Set(Object.keys(layers));
+      const neededLayers=['creation','knowledge','orchestration'];
+      const gaps=neededLayers.filter(l=>!coveredLayers.has(l));
+
+      let html='';
+
+      // Overlaps
+      if(overlaps.length){
+        html+=`<div class="health-section">
+          <div class="health-section-label" style="color:var(--p4)">⚠️ Overlaps — consider cutting</div>
+          ${overlaps.map(([layer,tools])=>`
+            <div class="health-item">
+              <span class="hi">🔁</span>
+              <span><strong>${tools.join(' and ')}</strong> both cover the ${(window._LAYERS||{})[layer]?.label||layer} layer. Pick the one you use more and drop the other.</span>
+            </div>`).join('')}
+        </div>`;
+      }
+
+      // Gaps
+      if(gaps.length){
+        html+=`<div class="health-section">
+          <div class="health-section-label" style="color:var(--p1)">📭 Gaps — consider adding</div>
+          ${gaps.map(g=>`
+            <div class="health-item">
+              <span class="hi">➕</span>
+              <span>No <strong>${(window._LAYERS||{})[g]?.label||g}</strong> layer tool. ${g==='orchestration'?'Without automation your tools are siloed — add n8n (free) or Zapier to connect them.':g==='knowledge'?'You have no research or Q&A tool — Perplexity (free) or NotebookLM (free) would add this.':'Add a creation layer tool like Claude or ChatGPT for writing and ideation.'}</span>
+            </div>`).join('')}
+        </div>`;
+      }
+
+      // What you have
+      if(found.length){
+        html+=`<div class="health-section">
+          <div class="health-section-label" style="color:var(--p2)">✅ Recognised in your stack (${found.length})</div>
+          ${found.map(t=>`
+            <div class="health-item">
+              <span class="hi">${t.hasFree?'🆓':'💳'}</span>
+              <span><strong>${t.name}</strong> — ${(window._LAYERS||{})[t.layer]?.label||t.layer} layer${t.hasFree?' · free tier':` · ${t.price}`}${!t.inDir?' <em style="color:var(--text3)">(not yet in directory)</em>':''}</span>
+            </div>`).join('')}
+        </div>`;
+      }
+
+      // Unrecognised
+      if(notFound.length){
+        html+=`<div class="health-section">
+          <div class="health-section-label" style="color:var(--text3)">❓ Not recognised (${notFound.length})</div>
+          <div class="health-item"><span class="hi">❓</span><span>${notFound.join(', ')} — I don\'t have these in my knowledge base yet. Submit them via the Community tab and I\'ll add them.</span></div>
+        </div>`;
+      }
+
+      if(!html) html='<div style="font-size:12px;color:var(--text3)">I couldn\'t identify any tools from what you entered. Try separating them with commas — e.g. "ChatGPT, Notion, Zapier"</div>';
+
+      results.innerHTML=html;
+    },600);
+  };
+
 })();
 
 
@@ -2815,5 +3567,23 @@ renderExplore();
 })();
 })();
 </script>
+
+<!-- PRO GATE MODAL -->
+<div id="pro-gate-overlay" class="pro-gate-overlay" style="display:none" onclick="if(event.target===this)closeProGate()">
+  <div class="pro-gate-modal">
+    <div class="pro-gate-badge">Toolipedia Pro</div>
+    <div class="pro-gate-title">This is a Pro feature</div>
+    <div class="pro-gate-desc">The free advisor gives you a full stack blueprint. Pro unlocks the conversation — ask follow-ups, explore alternatives, and get implementation guidance.</div>
+    <div class="pro-gate-features">
+      <div class="pro-gate-feature"><span>⬡</span><span>Chat about your stack — ask follow-ups, compare alternatives</span></div>
+      <div class="pro-gate-feature"><span>🩺</span><span>Stack health checker — find overlaps, gaps, and what to drop</span></div>
+      <div class="pro-gate-feature"><span>💾</span><span>Save and revisit your stack anytime</span></div>
+      <div class="pro-gate-feature"><span>📊</span><span>Market intelligence reports and pricing alerts</span></div>
+    </div>
+    <button class="pro-gate-cta" onclick="joinProWaitlist()">Join the Pro waitlist — it's free</button>
+    <button class="pro-gate-close" onclick="closeProGate()">Maybe later</button>
+  </div>
+</div>
+
 </body>
 </html>
