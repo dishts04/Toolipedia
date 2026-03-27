@@ -1674,6 +1674,26 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
 .advo-da-btn.primary{background:var(--p1);border-color:var(--p1);color:#fff}
 .advo-da-btn.primary:hover{background:var(--p4);border-color:var(--p4)}
 
+
+/* ── BUILD MODE ARCH NOTES ──────────────────────────────────────── */
+.advo-arch-notes{
+  background:rgba(212,130,74,0.06);
+  border:1px solid rgba(212,130,74,0.2);
+  border-radius:var(--radius-md);
+  padding:14px 16px;
+  margin-top:2px;
+}
+.advo-arch-notes-label{
+  font-size:11px;font-weight:700;color:var(--p1);
+  margin-bottom:10px;
+}
+.advo-arch-note{
+  font-size:11.5px;color:var(--text2);line-height:1.6;
+  padding:4px 0;border-bottom:1px solid rgba(212,130,74,0.1);
+}
+.advo-arch-note:last-child{border-bottom:none}
+.advo-idea-meta{display:flex;align-items:center;gap:8px;margin-top:4px;flex-wrap:wrap}
+.advo-learn-time{font-size:10px;color:var(--text3)}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MFTBWFGLLE"></script>
@@ -3220,92 +3240,172 @@ const GOAL_WEIGHTS={
 };
 
 // ── Adaptive questions (4 total) ─────────────────────────────────
-const QUESTIONS=[
+// ── IDEA MODE questions — non-technical, outcome-focused ──────────
+const IDEA_QUESTIONS=[
   {
-    id:'budget',
-    text:'What\'s your monthly budget for AI tools?',
-    sub:'This shapes which tools are realistic for you.',
+    id:'goal_type',
+    text:'What are you primarily trying to achieve?',
+    sub:'This is the anchor — everything else flows from your answer here.',
     options:[
-      {label:'$0 — free only',  value:'none',   tag:'free_only',      icon:'🆓'},
-      {label:'Under $30/mo',    value:'low',    tag:'low_budget',     icon:'💚'},
-      {label:'$30–$100/mo',     value:'medium', tag:'medium_budget',  icon:'💛'},
-      {label:'$100+/mo',        value:'high',   tag:'high_budget',    icon:'🔵'},
+      {label:'Grow an audience',          value:'creator',      tag:'creator',      icon:'🎬'},
+      {label:'Create content faster',     value:'content',      tag:'content',      icon:'✍️'},
+      {label:'Research & learn better',   value:'researcher',   tag:'researcher',   icon:'🔍'},
+      {label:'Automate repetitive work',  value:'automation',   tag:'automation',   icon:'⚡'},
+      {label:'Run my client business',    value:'agency',       tag:'agency',       icon:'🏢'},
+      {label:'Build something to sell',   value:'product',      tag:'product',      icon:'💡'},
+    ]
+  },
+  {
+    id:'output_format',
+    text:'What does your finished work look like?',
+    sub:'Determines which creation layer of your stack matters most.',
+    options:[
+      {label:'Written — blogs, emails, scripts',  value:'text',   tag:'writing',   icon:'📝'},
+      {label:'Visual — graphics, images, design', value:'visual', tag:'content',   icon:'🎨'},
+      {label:'Video — YouTube, reels, courses',   value:'video',  tag:'video',     icon:'🎥'},
+      {label:'Audio — podcasts, voiceovers',      value:'audio',  tag:'audio',     icon:'🎙️'},
+      {label:'Documents — reports, proposals',    value:'docs',   tag:'knowledge', icon:'📄'},
+      {label:'Data — analysis, dashboards',       value:'data',   tag:'researcher',icon:'📊'},
+    ]
+  },
+  {
+    id:'domain',
+    text:'What field are you working in?',
+    sub:'Some domains need specialised tools — legal, medical, and sales each have dedicated AI.',
+    options:[
+      {label:'Marketing & social',   value:'marketing', tag:'marketer',  icon:'📣'},
+      {label:'Legal & compliance',   value:'legal',     tag:'legal',     icon:'⚖️'},
+      {label:'Sales & CRM',          value:'sales',     tag:'sales',     icon:'💼'},
+      {label:'Research & education', value:'research',  tag:'researcher',icon:'🎓'},
+      {label:'Creative & media',     value:'creative',  tag:'creator',   icon:'🎭'},
+      {label:'General business',     value:'general',   tag:'general',   icon:'💼'},
+    ]
+  },
+  {
+    id:'existing_tools',
+    text:'What tools do you already use daily?',
+    sub:'The best AI tools sit close to your existing environment — no steep learning curve.',
+    options:[
+      {label:'Google Workspace',        value:'google',   tag:'productivity', icon:'📧'},
+      {label:'Notion / Obsidian',       value:'notion',   tag:'knowledge',    icon:'📓'},
+      {label:'Canva / Adobe',           value:'design',   tag:'content',      icon:'🖌️'},
+      {label:'Slack / Teams / Zoom',    value:'comms',    tag:'team',         icon:'💬'},
+      {label:'Starting fresh — none',   value:'none',     tag:'general',      icon:'🌱'},
     ]
   },
   {
     id:'skill',
-    text:'How comfortable are you with AI tools?',
-    sub:'Helps me choose tools that match your experience.',
+    text:'How comfortable are you with new software?',
+    sub:'Honest answer = better recommendations. No judgement here.',
     options:[
-      {label:'Just starting out',   value:'beginner',     tag:'beginner',    icon:'🌱'},
-      {label:'I use a few already', value:'intermediate', tag:'intermediate', icon:'⚡'},
-      {label:'Power user',          value:'power',        tag:'power_user',   icon:'🚀'},
+      {label:'I keep it simple — email & basic apps', value:'beginner',     tag:'beginner',    icon:'🌱'},
+      {label:'I pick up new tools reasonably fast',   value:'intermediate', tag:'intermediate', icon:'⚡'},
+      {label:'I explore features others ignore',      value:'power',        tag:'power_user',   icon:'🚀'},
     ]
   },
   {
-    id:'teamSize',
-    text:'Working solo or with others?',
-    sub:'Affects which collaboration and governance features matter.',
+    id:'budget',
+    text:'What can you spend on AI tools per month?',
+    sub:'Free tiers are genuinely useful — I will always show them first.',
     options:[
-      {label:'Just me',      value:'solo',   tag:'solo',        icon:'👤'},
-      {label:'2–5 people',   value:'small',  tag:'small_team',  icon:'👥'},
-      {label:'6–20 people',  value:'medium', tag:'medium_team', icon:'🏢'},
-      {label:'20+ people',   value:'large',  tag:'large_team',  icon:'🏗️'},
+      {label:'$0 — free only',     value:'none',   tag:'free_only',     icon:'🆓'},
+      {label:'Up to $30/mo',       value:'low',    tag:'low_budget',    icon:'💚'},
+      {label:'$30–$100/mo',        value:'medium', tag:'medium_budget', icon:'💛'},
+      {label:'$100+ / no limit',   value:'high',   tag:'high_budget',   icon:'🔵'},
+    ]
+  },
+];
+
+// ── BUILD MODE questions — technical, architecture-focused ─────────
+const BUILD_QUESTIONS=[
+  {
+    id:'lang_stack',
+    text:'What is your primary language and runtime?',
+    sub:'Narrows framework and SDK recommendations to what actually works in your stack.',
+    options:[
+      {label:'Python',              value:'python',  tag:'developer', icon:'🐍'},
+      {label:'TypeScript / Node',   value:'ts',      tag:'developer', icon:'🟦'},
+      {label:'Go',                  value:'go',      tag:'developer', icon:'🐹'},
+      {label:'Java / JVM',          value:'java',    tag:'developer', icon:'☕'},
+      {label:'Multi-language / TBD',value:'multi',   tag:'developer', icon:'🔀'},
     ]
   },
   {
-    id:'outputType',
-    text:'What are you primarily trying to produce?',
-    sub:'Shapes which tool layers matter most for your stack.',
+    id:'deployment',
+    text:'Where will this run?',
+    sub:'Data residency and compliance constraints start here.',
     options:[
-      {label:'Content & media',     value:'content',   tag:'content_focus',  icon:'✍️'},
-      {label:'Software / product',  value:'software',  tag:'software_focus', icon:'💻'},
-      {label:'Automated workflows', value:'workflow',  tag:'workflow_focus', icon:'⚡'},
-      {label:'Analysis & insights', value:'analysis',  tag:'analysis_focus', icon:'🔍'},
+      {label:'AWS',                    value:'aws',    tag:'enterprise', icon:'🟠'},
+      {label:'Google Cloud',           value:'gcp',    tag:'enterprise', icon:'🔵'},
+      {label:'Azure',                  value:'azure',  tag:'enterprise', icon:'🟣'},
+      {label:'Self-hosted / on-prem',  value:'selfhost',tag:'enterprise',icon:'🖥️'},
+      {label:'Multi-cloud / edge',     value:'multi',  tag:'developer',  icon:'🌐'},
     ]
   },
   {
-    id:'scale',
-    text:'What\'s your expected scale?',
-    sub:'Affects which tools are production-ready vs just for prototyping.',
+    id:'latency',
+    text:'What response time does your product need?',
+    sub:'This determines streaming, caching, and async queue architecture.',
     options:[
-      {label:'Just me / prototype',  value:'prototype', tag:'prototype_scale', icon:'🧪'},
-      {label:'Small audience <1K',   value:'small',     tag:'small_scale',     icon:'🌱'},
-      {label:'Growing 1K–50K',       value:'medium',    tag:'medium_scale',    icon:'📈'},
-      {label:'Large 50K+ users',     value:'large',     tag:'large_scale',     icon:'🚀'},
+      {label:'Real-time — under 200ms',    value:'realtime', tag:'developer', icon:'⚡'},
+      {label:'Interactive — under 2s',     value:'fast',     tag:'developer', icon:'🚀'},
+      {label:'Near real-time — under 10s', value:'medium',   tag:'developer', icon:'📈'},
+      {label:'Batch — minutes are fine',   value:'batch',    tag:'developer', icon:'📦'},
     ]
   },
   {
-    id:'security',
-    text:'How sensitive is your data?',
-    sub:'Determines whether privacy, compliance, or self-hosting matter.',
+    id:'compliance',
+    text:'What compliance requirements apply?',
+    sub:'A yes immediately changes which models, vector stores, and cloud configs are viable.',
     options:[
-      {label:'Public / no concerns',   value:'public',     tag:'public_data',      icon:'🌐'},
-      {label:'Standard business data', value:'standard',   tag:'standard_data',    icon:'🔒'},
-      {label:'HIPAA / SOC 2 / GDPR',  value:'regulated',  tag:'regulated_data',   icon:'🏥'},
+      {label:'None — public or internal data only',   value:'none',     tag:'public_data',    icon:'🌐'},
+      {label:'GDPR — EU user data',                   value:'gdpr',     tag:'standard_data',  icon:'🇪🇺'},
+      {label:'HIPAA — healthcare data',               value:'hipaa',    tag:'regulated_data', icon:'🏥'},
+      {label:'SOC 2 / PCI — financial or enterprise', value:'soc2',     tag:'regulated_data', icon:'🔐'},
+    ]
+  },
+  {
+    id:'build_vs_buy',
+    text:'How much custom AI will you build?',
+    sub:'This single answer shapes whether we recommend managed APIs, frameworks, or self-hosted models.',
+    options:[
+      {label:'API consumer — call OpenAI/Anthropic, ship fast',         value:'api_consumer', tag:'api_hybrid',  icon:'🔌'},
+      {label:'Prompt engineer — RAG, tool use, careful prompting',      value:'rag',          tag:'api_hybrid',  icon:'🧩'},
+      {label:'Fine-tuner — adapt an open model to my domain',           value:'finetune',     tag:'api_builder', icon:'🔬'},
+      {label:'Infrastructure builder — self-host, own the whole stack', value:'infra',        tag:'api_builder', icon:'🏗️'},
+    ]
+  },
+  {
+    id:'model_need',
+    text:'What AI capability is at the core of your product?',
+    sub:'Different tasks need different model families — generalist LLMs are not always the right tool.',
+    options:[
+      {label:'Text generation / chat / reasoning', value:'text',       tag:'developer', icon:'💬'},
+      {label:'Code generation / completion',       value:'code',       tag:'coding',    icon:'💻'},
+      {label:'Vision — image understanding or generation', value:'vision', tag:'developer',icon:'👁️'},
+      {label:'Voice — speech to text or text to speech',  value:'voice',  tag:'audio',   icon:'🎙️'},
+      {label:'Semantic search / embeddings / RAG',        value:'embed',  tag:'knowledge',icon:'🔍'},
+      {label:'Autonomous agents — multi-step, tool use',  value:'agents', tag:'automation',icon:'⚡'},
     ]
   },
   {
     id:'timeline',
-    text:'How quickly do you want to be set up?',
-    sub:'Fast setup means simpler tools. More time means I can recommend more powerful ones.',
+    text:'When do you need to ship?',
+    sub:'Affects how much operational complexity is realistic right now.',
     options:[
-      {label:'This week',   value:'asap',     tag:'fast_setup',     icon:'⚡'},
-      {label:'1–4 weeks',   value:'soon',     tag:'normal_setup',   icon:'📅'},
-      {label:'No rush',     value:'flexible', tag:'flexible_setup', icon:'🌿'},
+      {label:'This week — prototype or proof-of-concept', value:'asap',     tag:'fast_setup',     icon:'⚡'},
+      {label:'One month — working MVP',                   value:'soon',     tag:'normal_setup',   icon:'📅'},
+      {label:'1–3 months — production-ready',             value:'quarter',  tag:'normal_setup',   icon:'🏗️'},
+      {label:'6+ months — full architecture, no rush',    value:'flexible', tag:'flexible_setup', icon:'🌿'},
     ]
   },
-  {
-    id:'builder',
-    text:'Are you building with APIs or using tools directly?',
-    sub:'Helps me add a "For builders" section if you need base models, inference platforms, or developer infrastructure.',
-    options:[
-      {label:'Using tools (no code)',     value:'user',    tag:'tool_user',    icon:'🖱️'},
-      {label:'Some API use',              value:'hybrid',  tag:'api_hybrid',   icon:'⚡'},
-      {label:'Building — APIs & code',    value:'builder', tag:'api_builder',  icon:'🛠️'},
-    ]
-  }
 ];
+
+// ── Convenience accessor — returns the right Q set for current mode ─
+function getQuestions(){
+  const session=window._advisorSession||{mode:null};
+  return session.mode==='build'?BUILD_QUESTIONS:IDEA_QUESTIONS;
+}
 
 // ── Advisor session state ─────────────────────────────────────────
 let session={
@@ -3342,25 +3442,55 @@ function buildDerivedTags(){
   const session=window._advisorSession||{goalTags:[],answers:{},goal:'',stack:[]};
   const tags=[...session.goalTags];
   const a=session.answers;
-  QUESTIONS.forEach(q=>{
-    if(a[q.id]) tags.push(q.options.find(o=>o.value===a[q.id])?.tag);
-  });
-  if(a.outputType==='software') {tags.push('developer');tags.push('coding');}
-  if(a.outputType==='workflow') {tags.push('automation');}
-  if(a.outputType==='content')  {tags.push('creator');}
-  if(a.outputType==='analysis') {tags.push('researcher');}
-  if(a.scale==='large'||a.scale==='medium') tags.push('enterprise');
-  if(a.security==='regulated') {tags.push('enterprise');tags.push('legal');}
-  return tags.filter(Boolean);
+  const isBuild=session.mode==='build';
+
+  if(isBuild){
+    // Build mode — derive tags from architecture questions
+    tags.push('developer');
+    if(a.model_need==='code')   {tags.push('coding');tags.push('developer');}
+    if(a.model_need==='voice')  tags.push('audio');
+    if(a.model_need==='embed'||a.model_need==='agents') tags.push('automation');
+    if(a.model_need==='agents') tags.push('automation');
+    if(a.compliance==='hipaa'||a.compliance==='soc2') {tags.push('enterprise');tags.push('legal');}
+    if(a.compliance==='gdpr')   tags.push('enterprise');
+    if(a.build_vs_buy==='finetune'||a.build_vs_buy==='infra') {tags.push('api_builder');tags.push('coding');}
+    if(a.build_vs_buy==='rag'||a.build_vs_buy==='api_consumer') tags.push('api_hybrid');
+    tags.push('api_builder'); // build mode always includes builder section
+    session.answers.builder='builder'; // force builder section in Step 3
+  } else {
+    // Idea mode — derive tags from goal + context answers
+    const Qs=IDEA_QUESTIONS;
+    Qs.forEach(q=>{ if(a[q.id]) tags.push(q.options.find(o=>o.value===a[q.id])?.tag); });
+    if(a.goal_type==='creator')    {tags.push('creator');tags.push('youtube');}
+    if(a.goal_type==='content')    {tags.push('content');tags.push('writing');}
+    if(a.goal_type==='researcher') tags.push('researcher');
+    if(a.goal_type==='automation') tags.push('automation');
+    if(a.goal_type==='agency')     {tags.push('agency');tags.push('freelance');}
+    if(a.goal_type==='product')    {tags.push('developer');tags.push('product');}
+    if(a.output_format==='video')  tags.push('video');
+    if(a.output_format==='audio')  tags.push('audio');
+    if(a.output_format==='text')   tags.push('writing');
+    if(a.output_format==='visual') tags.push('content');
+    if(a.domain==='legal')    tags.push('legal');
+    if(a.domain==='sales')    tags.push('sales');
+    if(a.domain==='research') tags.push('researcher');
+    if(a.domain==='marketing') tags.push('marketer');
+  }
+  return [...new Set(tags)].filter(Boolean);
 }
 
 // ── Stack builder ─────────────────────────────────────────────────
 function buildStack(){
   const session=window._advisorSession||{goalTags:[],answers:{},goal:'',stack:[]};
+  const isBuild=session.mode==='build';
   const budget=session.answers.budget||'low';
-  const skill=session.answers.skill||'intermediate';
+  const skill=isBuild?'power':(session.answers.skill||'intermediate');
   const team=session.answers.teamSize||'solo';
   const fast=session.answers.timeline==='asap';
+  const compliance=session.answers.compliance||'none';
+  const buildVsBuy=session.answers.build_vs_buy||'api_consumer';
+  const modelNeed=session.answers.model_need||'text';
+  const latency=session.answers.latency||'fast';
 
   // Score every tool
   const scores={};
@@ -3389,6 +3519,28 @@ function buildStack(){
     // Team size — enterprise tools need large teams
     if(meta.enterprise&&(team==='solo'||team==='small')) score=Math.floor(score*0.3);
     if(meta.enterprise&&(team==='large')) score+=3;
+
+    // Build-mode specific scoring
+    if(isBuild){
+      // Compliance: regulated data → boost compliant tools, penalise others
+      if(compliance==='hipaa'||compliance==='soc2'){
+        const secure=['harvey','cohere','glean','copilot','writer','notion-ai'].includes(t.id);
+        if(secure) score+=5;
+        else if(!t.features?.some(f=>/hipaa|soc.?2|gdpr|compliance|private/i.test(f))) score=Math.floor(score*0.4);
+      }
+      // Model need alignment
+      if(modelNeed==='code'&&['cursor','github-copilot','deepseek'].includes(t.id)) score+=6;
+      if(modelNeed==='voice'&&['elevenlabs','otter-ai'].includes(t.id)) score+=6;
+      if(modelNeed==='agents'&&t.agents?.hasAgents) score+=5;
+      if(modelNeed==='embed'&&['pinecone','notebooklm','perplexity'].includes(t.id)) score+=5;
+      // Build vs buy preference
+      if(buildVsBuy==='infra'||buildVsBuy==='finetune'){
+        if(t.isModel||t.isInfra) score+=6;
+      }
+      if(buildVsBuy==='api_consumer'&&!(t.isModel||t.isInfra)) score+=2;
+      // Latency: real-time needs fast inference
+      if(latency==='realtime'&&['groq','cursor','deepseek'].includes(t.id)) score+=4;
+    }
 
     if(score>0) scores[t.id]=score;
   });
@@ -3613,8 +3765,9 @@ function renderStep1(){
 
 // ── RENDER STEP 2: Questions ──────────────────────────────────────
 function renderStep2(){
+  const Qs=getQuestions();
   const qi=session.questionIndex;
-  if(qi>=QUESTIONS.length){
+  if(qi>=Qs.length){
     // All answered — build stack
     session.derivedTags=buildDerivedTags();
     session.stack=buildStack();
@@ -3622,11 +3775,11 @@ function renderStep2(){
     renderStep3();
     return;
   }
-  const q=QUESTIONS[qi];
+  const q=Qs[qi];
   inputEl.style.display='none';
   sendBtn.style.display='none';
 
-  const prevAnswers=QUESTIONS.slice(0,qi).map(pq=>{
+  const prevAnswers=Qs.slice(0,qi).map(pq=>{
     const ans=session.answers[pq.id];
     if(!ans) return '';
     const opt=pq.options.find(o=>o.value===ans);
@@ -3637,7 +3790,7 @@ function renderStep2(){
     ${stepBar(2)}
     ${prevAnswers}
     <div class="adv-question-block">
-      <div class="adv-q-number">Question ${qi+1} of ${QUESTIONS.length}</div>
+      <div class="adv-q-number">Question ${qi+1} of ${Qs.length}</div>
       <div class="adv-q-text">${q.text}</div>
       <div class="adv-q-sub">${q.sub}</div>
       <div class="adv-chips-row">
@@ -3646,64 +3799,6 @@ function renderStep2(){
     </div>`;
   msgsEl.scrollTop=0;
 }
-
-// ── RENDER STEP 3: Stack results ──────────────────────────────────
-function renderStep3(){
-  const stack=session.stack;
-  const out=estimateOutcomes(stack);
-  inputEl.style.display='none';
-  sendBtn.style.display='none';
-  window._advisorSession=session; // expose for Pro engine
-
-  const goalText=session.goal.length>60?session.goal.substring(0,57)+'…':session.goal;
-
-  const summaryBullets=[
-    `<span class="out-icon">⏱</span> Roughly <strong>${out.hrMin}–${out.hrMax} hours saved</strong> per week once set up`,
-    out.contentOutput?`<span class="out-icon">📦</span> Expected output: <strong>${out.contentOutput}</strong>`:'',
-    `<span class="out-icon">💸</span> Monthly spend: <strong>${out.costBand}</strong>`,
-    `<span class="out-icon">🔧</span> <strong>${out.toolCount} tools</strong> — ${out.contextSwitch}`,
-    stack.some(r=>r.tool.free.available)?`<span class="out-icon">🆓</span> At least one tool has a genuine <strong>free tier</strong>`:'',
-  ].filter(Boolean).map(b=>`<div class="out-bullet">${b}</div>`).join('');
-
-  const toolCards=stack.map(({tool,layer})=>{
-    const {why,detail,tradeoff}=getToolReason(tool,layer,session.goalTags,session.answers);
-    const layerMeta=LAYERS[layer]||LAYERS.creation;
-    const costLabel=tool.free.available?`<span class="adv-cost-free">Free tier</span>`:`<span class="adv-cost-paid">From ${tool.paid[0].price}</span>`;
-    return `<div class="adv-tool-card">
-      <div class="adv-tool-top">
-        <div class="adv-layer-badge" style="background:${layerMeta.color}22;color:${layerMeta.color};border:1px solid ${layerMeta.color}44">${layerMeta.label}</div>
-        ${costLabel}
-      </div>
-      <div class="adv-tool-name">${chip(tool.id)}</div>
-      <div class="adv-tool-why">${why}</div>
-      ${detail?`<div class="adv-tool-detail">${detail}</div>`:''}
-      ${tradeoff?`<div class="adv-tool-tradeoff">${tradeoff}</div>`:''}
-    </div>`;
-  }).join('');
-
-  msgsEl.innerHTML=`
-    ${stepBar(3)}
-    <div class="adv-summary-block">
-      <div class="adv-summary-goal">"${goalText}"</div>
-      <div class="adv-summary-headline">Your AI stack</div>
-      ${summaryBullets}
-      <div class="adv-breakdown"><strong>Where this breaks down:</strong> ${out.breakdown}</div>
-    </div>
-    <div class="adv-tools-list">${toolCards}</div>
-    <div class="adv-restart-row">
-      <button class="adv-chat-stack-btn" onclick="openProFeature('chat')">
-        ⬡ Chat about your stack <span class="adv-pro-badge">PRO</span>
-      </button>
-      <button class="adv-health-btn" onclick="openProFeature('health')">
-        🩺 Stack health checker <span class="adv-pro-badge">PRO</span>
-      </button>
-      <button class="adv-restart-btn" onclick="advisorRestart()">↺ Start over with a different goal</button>
-      <div class="adv-cta-note">Click any tool name to explore it in the directory</div>
-    </div>`;
-
-  msgsEl.scrollTop=0;
-}
-
 
 // ── Builder infrastructure section ───────────────────────────────────────
 function buildBuilderSection(){
@@ -3928,8 +4023,9 @@ function buildBuilderSection(){
 
   // ── STEP 2: Questions ─────────────────────────────────────────────
   function renderStep2(){
+    const Qs=getQuestions();
     const qi=session.questionIndex;
-    if(qi>=QUESTIONS.length){
+    if(qi>=Qs.length){
       session.derivedTags=buildDerivedTags();
       session.stack=buildStack();
       session.step=3;
@@ -3939,17 +4035,17 @@ function buildBuilderSection(){
     session.step=2;
     window._advisorSession=session;
     showInput(false);
-    const q=QUESTIONS[qi];
+    const q=Qs[qi];
 
     // Previous answers as pills
-    const prevPills=QUESTIONS.slice(0,qi).map(pq=>{
+    const prevPills=Qs.slice(0,qi).map(pq=>{
       const ans=session.answers[pq.id];
       if(!ans) return '';
       const opt=pq.options.find(o=>o.value===ans);
       return `<div class="advo-prev-pill">${opt?.icon||''} ${opt?.label||ans}</div>`;
     }).filter(Boolean).join('');
 
-    const total=QUESTIONS.length;
+    const total=Qs.length;
     const pct=Math.round((qi/total)*100);
 
     setStage(`
@@ -3970,7 +4066,7 @@ function buildBuilderSection(){
       </div>`);
   }
 
-  // ── STEP 3: Stack results ─────────────────────────────────────────
+  // ── STEP 3: Results — two completely different outputs per mode ──
   function renderStep3(){
     session.step=3;
     const stack=session.stack;
@@ -3980,21 +4076,125 @@ function buildBuilderSection(){
 
     const goalText=session.goal.length>70?session.goal.substring(0,67)+'…':session.goal;
     const out=estimateOutcomes(stack);
-
-    // Cost estimate
     const totalMin=stack.reduce((acc,r)=>acc+(r.tool.free.available?0:(parseFloat(r.tool.paid[0].price.replace(/[^0-9.]/g,''))||0)),0);
     const totalMax=stack.reduce((acc,r)=>acc+(parseFloat(r.tool.paid[0].price.replace(/[^0-9.]/g,''))||0),0);
 
-    // Layered sections
+    if(session.mode==='build'){
+      renderBuildResults(stack, goalText, out, totalMin, totalMax);
+    } else {
+      renderIdeaResults(stack, goalText, out, totalMin, totalMax);
+    }
+  }
+
+  // ── Idea mode: workflow-focused tool cards ────────────────────────
+  function renderIdeaResults(stack, goalText, out, totalMin, totalMax){
     const LAYER_CFG=[
-      {layer:'creation',     icon:'✍️', name:'Creation',      tagline:'Where the AI does the actual work'},
-      {layer:'capture',      icon:'🎙️', name:'Capture',       tagline:'Notes, transcription, context gathering'},
-      {layer:'knowledge',    icon:'🔍', name:'Knowledge',     tagline:'Research, search, retrieval'},
-      {layer:'orchestration',icon:'⚡', name:'Automation',    tagline:'Connecting and running the workflow'},
-      {layer:'governance',   icon:'🔒', name:'Governance',    tagline:'Security, compliance, access control'},
+      {layer:'creation',     icon:'✍️', name:'Your main tool',    tagline:'Do the core work here'},
+      {layer:'capture',      icon:'🎙️', name:'Capture & input',   tagline:'Get information in'},
+      {layer:'knowledge',    icon:'🔍', name:'Research & search',  tagline:'Find and understand information'},
+      {layer:'orchestration',icon:'⚡', name:'Connect & automate', tagline:'Make tools work together'},
+      {layer:'governance',   icon:'🔒', name:'Control & security', tagline:'Keep your data safe'},
     ];
 
     const sections=LAYER_CFG.map(ls=>{
+      const tools=stack.filter(r=>r.layer===ls.layer);
+      if(!tools.length) return '';
+      return `<div class="advo-layer">
+        <div class="advo-layer-head">
+          <span class="advo-layer-icon">${ls.icon}</span>
+          <span class="advo-layer-name">${ls.name}</span>
+          <span class="advo-layer-tagline">${ls.tagline}</span>
+        </div>
+        ${tools.map(({tool})=>{
+          const {why,tradeoff}=getToolReason(tool,ls.layer,session.goalTags,session.answers);
+          const learnTime=TOOL_META[tool.id]?.beginner?'⭐ Easy to start':'⭐⭐ Some setup';
+          return `<div class="advo-result-tool">
+            <div class="advo-result-icon">${tool.icon}</div>
+            <div class="advo-result-body">
+              <div class="advo-result-name">${chip(tool.id)}</div>
+              <div class="advo-result-why">${why}</div>
+              <div class="advo-idea-meta">
+                <span class="advo-learn-time">${learnTime}</span>
+                ${tradeoff?`<span class="advo-result-tradeoff" style="font-size:10px">${tradeoff.replace('⚠️ ','').replace('⚠️','')}</span>`:''}
+              </div>
+            </div>
+            <div class="advo-result-cost ${tool.free.available?'free':'paid'}">${tool.free.available?'Free':'From '+tool.paid[0].price}</div>
+          </div>`;
+        }).join('')}
+      </div>`;
+    }).join('');
+
+    setStage(`
+      <div class="advo-results-wrap">
+        <div class="advo-results-hero">
+          <div class="advo-results-eyebrow">💡 Idea Analysis · Your personalised stack</div>
+          <h2 class="advo-results-goal">"${goalText}"</h2>
+          <div class="advo-results-meta">
+            <div class="advo-meta-pill">⏱ ${out.hrMin}–${out.hrMax} hrs/week saved</div>
+            <div class="advo-meta-pill">💸 ~$${Math.round(totalMin)}–$${Math.round(totalMax)}/mo</div>
+            <div class="advo-meta-pill">🔧 ${stack.length} tools</div>
+            ${stack.some(r=>r.tool.free.available)?'<div class="advo-meta-pill free">🆓 Includes free tiers</div>':''}
+          </div>
+        </div>
+        <div class="advo-layers-container">
+          <div class="advo-layers-stack">${sections}</div>
+          <div class="advo-results-sidebar">
+            <div class="advo-sidebar-card">
+              <div class="advo-sc-label">Getting started</div>
+              <div class="advo-sc-text">Start with the first tool only. Add the rest once you have a workflow. Don't set up everything at once.</div>
+            </div>
+            <div class="advo-sidebar-card">
+              <div class="advo-sc-label">Where this breaks down</div>
+              <div class="advo-sc-text">${out.breakdown}</div>
+            </div>
+            ${out.contentOutput?`<div class="advo-sidebar-card">
+              <div class="advo-sc-label">What you can expect to produce</div>
+              <div class="advo-sc-value">${out.contentOutput}</div>
+            </div>`:''}
+            <div class="advo-sidebar-card">
+              <div class="advo-sc-label">Pro features</div>
+              <button class="advo-pro-btn" onclick="openProFeature('chat')">⬡ Chat about your stack <span class="adv-pro-badge">PRO</span></button>
+              <button class="advo-pro-btn" onclick="openProFeature('health')">🩺 Stack health check <span class="adv-pro-badge">PRO</span></button>
+            </div>
+          </div>
+        </div>
+        <div class="advo-results-footer">
+          <button class="advo-restart-full" onclick="advisorRestart()">↺ New analysis</button>
+          <div class="advo-footer-note">Click any tool name to see the full breakdown</div>
+        </div>
+      </div>`);
+  }
+
+  // ── Build mode: architecture-focused output ───────────────────────
+  function renderBuildResults(stack, goalText, out, totalMin, totalMax){
+    const a=session.answers;
+    const compliance=a.compliance||'none';
+    const buildVsBuy=a.build_vs_buy||'api_consumer';
+    const modelNeed=a.model_need||'text';
+    const latency=a.latency||'fast';
+    const lang=a.lang_stack||'python';
+    const deploy=a.deployment||'aws';
+
+    // Architecture decision notes
+    const archNotes=[];
+    if(latency==='realtime') archNotes.push('Real-time latency requirement → use streaming APIs and edge caching. Avoid batch orchestration frameworks for your hot path.');
+    if(compliance==='hipaa') archNotes.push('HIPAA applies → ensure BAA is signed with every vendor. Limit to Anthropic, OpenAI Enterprise, or self-hosted. No free-tier tools in your production stack.');
+    if(compliance==='soc2') archNotes.push('SOC 2 required → verify attestation for each vendor. Audit logs must be enabled. Consider Cohere or Anthropic Enterprise for the model layer.');
+    if(compliance==='gdpr') archNotes.push('GDPR applies → confirm EU data residency for your model API provider. Consider Azure OpenAI (EU regions) or self-hosted.');
+    if(buildVsBuy==='infra') archNotes.push('Self-hosting intent → plan for GPU provisioning, model versioning, and monitoring from day one. vLLM + LangServe is the standard serving stack.');
+    if(buildVsBuy==='finetune') archNotes.push('Fine-tuning planned → store labelled examples from the start. LoRA fine-tuning on Llama 3 / Mistral is cost-effective at most scales.');
+    if(latency==='batch') archNotes.push('Batch workload → async queues (Celery, RQ, or cloud-native) let you use cheaper models and avoid rate limits.');
+
+    // Architecture layers for build mode
+    const ARCH_LAYERS=[
+      {layer:'creation',     icon:'🧠', name:'Model layer',        tagline:'Your LLM / inference endpoint'},
+      {layer:'knowledge',    icon:'🗄️', name:'Data & retrieval',   tagline:'Vector store, embeddings, RAG'},
+      {layer:'orchestration',icon:'⚙️', name:'Orchestration',      tagline:'Chains, agents, prompt management'},
+      {layer:'capture',      icon:'📡', name:'Input & output',     tagline:'APIs, parsers, output handlers'},
+      {layer:'governance',   icon:'🔍', name:'Observability',      tagline:'Tracing, evals, cost tracking'},
+    ];
+
+    const sections=ARCH_LAYERS.map(ls=>{
       const tools=stack.filter(r=>r.layer===ls.layer);
       if(!tools.length) return '';
       return `<div class="advo-layer">
@@ -4012,49 +4212,64 @@ function buildBuilderSection(){
               <div class="advo-result-why">${why}</div>
               ${tradeoff?`<div class="advo-result-tradeoff">${tradeoff.replace('⚠️ ','').replace('⚠️','')}</div>`:''}
             </div>
-            <div class="advo-result-cost ${tool.free.available?'free':'paid'}">${tool.free.available?'Free':'From '+tool.paid[0].price}</div>
+            <div class="advo-result-cost paid">From ${tool.paid[0].price}</div>
           </div>`;
         }).join('')}
       </div>`;
     }).join('');
 
-    // Builder section
-    const isBuilder=session.answers.builder==='builder'||session.answers.builder==='hybrid';
-    const bSection=isBuilder?buildBuilderSection():'';
+    // Always show builder infrastructure in build mode
+    const bSection=buildBuilderSection();
+
+    // Cost table
+    const apiCost=`~$${Math.round(totalMin)}–$${Math.round(totalMax)}/mo`;
+    const selfHostNote=buildVsBuy==='infra'?'Self-hosted GPU: add $300–$2,000/mo for compute depending on model size and load.':'';
 
     setStage(`
       <div class="advo-results-wrap">
         <div class="advo-results-hero">
-          <div class="advo-results-eyebrow">${session.mode==='build'?'Build Analysis':'Idea Analysis'} · Complete</div>
+          <div class="advo-results-eyebrow">🛠️ Build Analysis · Architecture recommendation</div>
           <h2 class="advo-results-goal">"${goalText}"</h2>
           <div class="advo-results-meta">
-            <div class="advo-meta-pill">⏱ ${out.hrMin}–${out.hrMax} hrs/week saved</div>
-            <div class="advo-meta-pill">💸 ~$${Math.round(totalMin)}–$${Math.round(totalMax)}/mo</div>
-            <div class="advo-meta-pill">🔧 ${stack.length} tools</div>
-            ${stack.some(r=>r.tool.free.available)?'<div class="advo-meta-pill free">🆓 Has free tier</div>':''}
+            <div class="advo-meta-pill">💸 API cost: ${apiCost}</div>
+            <div class="advo-meta-pill">🔧 ${stack.length} components</div>
+            <div class="advo-meta-pill">📦 ${lang.toUpperCase()} / ${deploy.toUpperCase()}</div>
+            ${compliance!=='none'?`<div class="advo-meta-pill" style="background:rgba(194,88,88,0.1);color:var(--p3)">⚠ ${compliance.toUpperCase()} applies</div>`:''}
           </div>
         </div>
         <div class="advo-layers-container">
-          <div class="advo-layers-stack">${sections}${bSection?`<div class="advo-builder-wrap">${bSection}</div>`:''}</div>
+          <div class="advo-layers-stack">
+            ${sections}
+            ${bSection?`<div class="advo-builder-wrap">${bSection}</div>`:''}
+            ${archNotes.length?`<div class="advo-arch-notes">
+              <div class="advo-arch-notes-label">⚠️ Architecture decisions for your context</div>
+              ${archNotes.map(n=>`<div class="advo-arch-note">→ ${n}</div>`).join('')}
+            </div>`:''}
+          </div>
           <div class="advo-results-sidebar">
             <div class="advo-sidebar-card">
-              <div class="advo-sc-label">Where this breaks down</div>
-              <div class="advo-sc-text">${out.breakdown}</div>
+              <div class="advo-sc-label">Cost at scale</div>
+              <div class="advo-sc-text">API route: ${apiCost}. ${selfHostNote} Self-hosting breaks even vs APIs at roughly 60% sustained GPU utilisation.</div>
             </div>
-            ${out.contentOutput?`<div class="advo-sidebar-card">
-              <div class="advo-sc-label">Expected output</div>
-              <div class="advo-sc-value">${out.contentOutput}</div>
-            </div>`:''}
+            <div class="advo-sidebar-card">
+              <div class="advo-sc-label">Build vs buy verdict</div>
+              <div class="advo-sc-text">${
+                buildVsBuy==='api_consumer'?'Ship with managed APIs first. Optimise infra only when you hit rate limits or cost ceilings.':
+                buildVsBuy==='rag'?'RAG over managed APIs is the right call for most products. Build the retrieval layer; buy the model.':
+                buildVsBuy==='finetune'?'Fine-tuning is worth it only with 1,000+ high-quality examples. Start with RAG and switch if accuracy plateaus.':
+                'Full self-hosting gives control but doubles operational complexity. Ensure you have dedicated ML engineering capacity.'
+              }</div>
+            </div>
             <div class="advo-sidebar-card">
               <div class="advo-sc-label">Pro features</div>
-              <button class="advo-pro-btn" onclick="openProFeature('chat')">⬡ Chat about your stack <span class="adv-pro-badge">PRO</span></button>
-              <button class="advo-pro-btn" onclick="openProFeature('health')">🩺 Stack health checker <span class="adv-pro-badge">PRO</span></button>
+              <button class="advo-pro-btn" onclick="openProFeature('chat')">⬡ Chat about your architecture <span class="adv-pro-badge">PRO</span></button>
+              <button class="advo-pro-btn" onclick="openProFeature('health')">🩺 Stack health check <span class="adv-pro-badge">PRO</span></button>
             </div>
           </div>
         </div>
         <div class="advo-results-footer">
-          <button class="advo-restart-full" onclick="advisorRestart()">↺ Start a new analysis</button>
-          <div class="advo-footer-note">Click any tool name to explore it in the directory</div>
+          <button class="advo-restart-full" onclick="advisorRestart()">↺ New analysis</button>
+          <div class="advo-footer-note">Click any tool name to see docs, pricing, and agent capabilities</div>
         </div>
       </div>`);
   }
@@ -4088,8 +4303,10 @@ function buildBuilderSection(){
 
   window.advisorAnswer=function(qId,value){
     session.answers[qId]=value;
-    session.questionIndex++;
+    const Qs=getQuestions();
+    session.questionIndex=Math.min(session.questionIndex+1, Qs.length);
     window._advisorSession=session;
+    saveSession();
     renderStep2();
   };
 
