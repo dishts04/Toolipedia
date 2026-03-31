@@ -1802,7 +1802,29 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
 .advo-da-btn.primary:hover{background:var(--p4);border-color:var(--p4)}
 
 
-/* ── BUILD MODE ARCH NOTES ──────────────────────────────────────── */
+/* ── STACK EXPORT CARD ───────────────────────────────────────────── */
+.advo-export-card{
+  background:linear-gradient(135deg,rgba(212,130,74,0.06),rgba(93,184,138,0.04));
+  border-color:rgba(212,130,74,0.2);
+}
+.advo-export-desc{
+  font-size:11.5px;color:var(--text2);line-height:1.55;margin-bottom:10px;
+}
+.advo-export-btn{
+  width:100%;padding:9px 14px;
+  border-radius:var(--radius-sm);
+  background:var(--p1);border:none;
+  color:#fff;font-size:12px;font-weight:600;
+  font-family:var(--ff-body);cursor:pointer;
+  transition:all 0.15s;margin-bottom:6px;
+  display:flex;align-items:center;justify-content:center;gap:6px;
+}
+.advo-export-btn:hover{background:var(--p4);transform:translateY(-1px);}
+.advo-export-hint{
+  font-size:10px;color:var(--text3);text-align:center;
+}
+
+
 .advo-arch-notes{
   background:rgba(212,130,74,0.06);
   border:1px solid rgba(212,130,74,0.2);
@@ -2917,7 +2939,7 @@ const TOOLS = [
 
   {id:"together-ai",name:"Together AI",maker:"Together AI",tagline:"Open-source model inference + fine-tuning in one platform — best all-rounder for teams avoiding two providers",icon:"🔗",color:"#7C3AED",
    categories:["Models & APIs"],isModel:false,isInfra:true,
-   bestFor:"Teams who want to run open models in production and eventually fine-tune them on their own data — Together handles both the hosted inference and the training pipeline",
+   bestFor:"The all-rounder for open-model inference and fine-tuning in one platform — ideal when you don't want two separate providers. Not the fastest for inference (Groq/Fireworks beat it on speed) and not the most flexible for custom training (Modal wins there), but the best single platform covering both jobs at reasonable cost.",
    free:{available:true,desc:"$25 free credits on sign-up. Access to all 50+ open models."},
    paid:[{name:"Inference",price:"$0.10–$0.90/M tokens",perks:"50+ models including Llama 4, Mistral, DBRX"},{name:"Fine-tuning",price:"From $0.80/M tokens",perks:"Custom model training on your data"},{name:"Dedicated",price:"Custom",perks:"Reserved GPU capacity for consistent latency"}],
    useCases:["Production inference for open-source LLMs","Fine-tune Llama or Mistral on your company's data","Run multiple open models and compare outputs","Build embedding pipelines with open embedding models","Switch between models without changing your API code"],
@@ -3744,6 +3766,62 @@ const GOAL_WEIGHTS={
 };
 
 // ── Adaptive questions (4 total) ─────────────────────────────────
+
+// ── Official tool URLs — used in Stack Export JSON ───────────────
+const TOOL_URLS={
+  'chatgpt':           {url:'https://chat.openai.com',          docs:'https://platform.openai.com/docs'},
+  'claude':            {url:'https://claude.ai',                 docs:'https://docs.anthropic.com'},
+  'gemini':            {url:'https://gemini.google.com',         docs:'https://ai.google.dev/docs'},
+  'grok':              {url:'https://grok.com',                  docs:'https://docs.x.ai'},
+  'deepseek':          {url:'https://chat.deepseek.com',         docs:'https://platform.deepseek.com/api-docs'},
+  'perplexity':        {url:'https://perplexity.ai',             docs:'https://docs.perplexity.ai'},
+  'notebooklm':        {url:'https://notebooklm.google.com',     docs:'https://support.google.com/notebooklm'},
+  'elicit':            {url:'https://elicit.com',                docs:'https://elicit.com/help'},
+  'wolfram':           {url:'https://wolframalpha.com',          docs:'https://products.wolframalpha.com/api'},
+  'cursor':            {url:'https://cursor.com',                docs:'https://docs.cursor.com'},
+  'github-copilot':    {url:'https://github.com/features/copilot', docs:'https://docs.github.com/en/copilot'},
+  'lovable':           {url:'https://lovable.dev',               docs:'https://docs.lovable.dev'},
+  'windsurf':          {url:'https://codeium.com/windsurf',      docs:'https://docs.codeium.com'},
+  'otter-ai':          {url:'https://otter.ai',                  docs:'https://help.otter.ai'},
+  'notion-ai':         {url:'https://notion.so',                 docs:'https://developers.notion.com'},
+  'canva-ai':          {url:'https://canva.com',                 docs:'https://www.canva.com/developers'},
+  'adobe-firefly':     {url:'https://firefly.adobe.com',         docs:'https://developer.adobe.com/firefly-api'},
+  'freepik':           {url:'https://freepik.com',               docs:'https://docs.freepik.com'},
+  'midjourney':        {url:'https://midjourney.com',            docs:'https://docs.midjourney.com'},
+  'runway':            {url:'https://runwayml.com',              docs:'https://docs.dev.runwayml.com'},
+  'pika':              {url:'https://pika.art',                  docs:'https://pika.art/api'},
+  'seedance':          {url:'https://www.capcut.com',            docs:'https://www.capcut.com/tools/ai-video-generator'},
+  'heygen':            {url:'https://heygen.com',                docs:'https://docs.heygen.com'},
+  'synthesia':         {url:'https://synthesia.io',              docs:'https://docs.synthesia.io'},
+  'elevenlabs':        {url:'https://elevenlabs.io',             docs:'https://elevenlabs.io/docs'},
+  'n8n':               {url:'https://n8n.io',                    docs:'https://docs.n8n.io'},
+  'copilot':           {url:'https://copilot.microsoft.com',     docs:'https://learn.microsoft.com/en-us/copilot'},
+  'writer':            {url:'https://writer.com',                docs:'https://dev.writer.com'},
+  'glean':             {url:'https://glean.com',                 docs:'https://developers.glean.com'},
+  'harvey':            {url:'https://harvey.ai',                 docs:'https://harvey.ai'},
+  'gong':              {url:'https://gong.io',                   docs:'https://gong.io/resources'},
+  'salesforce-einstein':{url:'https://salesforce.com/products/einstein', docs:'https://developer.salesforce.com/einstein'},
+  'cohere':            {url:'https://cohere.com',                docs:'https://docs.cohere.com'},
+  'khanmigo':          {url:'https://khanacademy.org/khanmigo',  docs:'https://support.khanacademy.com'},
+  'fitbod':            {url:'https://fitbod.me',                 docs:'https://help.fitbod.me'},
+  'openclaw':          {url:'https://openclaw.ai',               docs:'https://github.com/steipete/openclaw'},
+  'llama':             {url:'https://llama.com',                 docs:'https://llama.meta.com/docs/'},
+  'mistral':           {url:'https://mistral.ai',                docs:'https://docs.mistral.ai'},
+  'gemma':             {url:'https://ai.google.dev',             docs:'https://ai.google.dev/gemma/docs'},
+  'nemotron':          {url:'https://developer.nvidia.com/nemotron', docs:'https://docs.nvidia.com/nemo-framework'},
+  'groq':              {url:'https://groq.com',                  docs:'https://console.groq.com/docs'},
+  'together-ai':       {url:'https://together.ai',               docs:'https://docs.together.ai'},
+  'ollama':            {url:'https://ollama.com',                docs:'https://github.com/ollama/ollama'},
+  'pinecone':          {url:'https://pinecone.io',               docs:'https://docs.pinecone.io'},
+  'langchain':         {url:'https://langchain.com',             docs:'https://python.langchain.com/docs'},
+  'gamma':             {url:'https://gamma.app',                 docs:'https://help.gamma.app'},
+  'fathom':            {url:'https://fathom.video',              docs:'https://help.fathom.video'},
+  'grammarly':         {url:'https://grammarly.com',             docs:'https://developer.grammarly.com'},
+  'descript':          {url:'https://descript.com',              docs:'https://help.descript.com'},
+  'jasper':            {url:'https://jasper.ai',                 docs:'https://developers.jasper.ai'},
+  'fireflies':         {url:'https://fireflies.ai',              docs:'https://docs.fireflies.ai'},
+};
+
 // ── IDEA MODE questions — non-technical, outcome-focused ──────────
 const IDEA_QUESTIONS=[
   {
@@ -4683,6 +4761,12 @@ function buildBuilderSection(){
               <div class="advo-sc-label">What you can expect to produce</div>
               <div class="advo-sc-value">${out.contentOutput}</div>
             </div>`:''}
+            <div class="advo-sidebar-card advo-export-card">
+              <div class="advo-sc-label">Export your stack</div>
+              <div class="advo-export-desc">Download as JSON — share with your team, hand off to a developer, or keep as a reference.</div>
+              <button class="advo-export-btn" id="stack-export-btn" onclick="downloadStackJSON()">↓ Download stack.json</button>
+              <div class="advo-export-hint">Free · No account · Works offline</div>
+            </div>
             <div class="advo-sidebar-card">
               <div class="advo-sc-label">Pro features</div>
               <button class="advo-pro-btn" onclick="openProFeature('chat')">⬡ Chat about your stack <span class="adv-pro-badge">PRO</span></button>
@@ -4692,7 +4776,7 @@ function buildBuilderSection(){
         </div>
         <div class="advo-results-footer">
           <button class="advo-restart-full" onclick="advisorRestart()">↺ New analysis</button>
-          <div class="advo-footer-note">Click any tool name to see the full breakdown</div>
+          <div class="advo-footer-note">Click any tool name to see the full breakdown${session.stack&&session.stack.some(r=>r.tool&&r.tool.id==='n8n')?' · <a href="https://github.com/dishts04/toolipedia-stacks" target="_blank" style="color:var(--p1);text-decoration:none;font-weight:600">↗ n8n workflow templates</a>':''}</div>
         </div>
       </div>`);
     // Insert edit-answers section after render
@@ -4812,6 +4896,12 @@ function buildBuilderSection(){
                 'Full self-hosting gives control but doubles operational complexity. Ensure you have dedicated ML engineering capacity.'
               }</div>
             </div>
+            <div class="advo-sidebar-card advo-export-card">
+              <div class="advo-sc-label">Export your stack</div>
+              <div class="advo-export-desc">Download as JSON with architecture context, API key variables, and official docs links for every tool.</div>
+              <button class="advo-export-btn" id="stack-export-btn" onclick="downloadStackJSON()">↓ Download stack.json</button>
+              <div class="advo-export-hint">Free · No account · Works offline</div>
+            </div>
             <div class="advo-sidebar-card">
               <div class="advo-sc-label">Pro features</div>
               <button class="advo-pro-btn" onclick="openProFeature('chat')">⬡ Chat about your architecture <span class="adv-pro-badge">PRO</span></button>
@@ -4821,7 +4911,7 @@ function buildBuilderSection(){
         </div>
         <div class="advo-results-footer">
           <button class="advo-restart-full" onclick="advisorRestart()">↺ New analysis</button>
-          <div class="advo-footer-note">Click any tool name to see docs, pricing, and agent capabilities</div>
+          <div class="advo-footer-note">Click any tool name to see docs, pricing, and agent capabilities${session.stack&&session.stack.some(r=>r.tool&&r.tool.id==='n8n')?' · <a href="https://github.com/dishts04/toolipedia-stacks" target="_blank" style="color:var(--p1);text-decoration:none;font-weight:600">↗ n8n workflow templates</a>':''}</div>
         </div>
       </div>`);
     // Insert edit-answers section after render
@@ -4830,6 +4920,168 @@ function buildBuilderSection(){
       if(wrap){const ea=document.createElement('div');ea.innerHTML=renderEditAnswers();wrap.insertBefore(ea.firstChild,wrap.querySelector('.advo-layers-container'));}
     },10);
   }
+
+
+  // ── Stack Export JSON ─────────────────────────────────────────────
+  function buildStackExportJSON(){
+    // Always read from window._advisorSession — the single source of truth
+    const s=window._advisorSession||session;
+    if(!s||!s.stack||!s.stack.length) return null;
+
+    const isBuild=s.mode==='build';
+    const a=s.answers||{};
+    const date=new Date().toISOString().split('T')[0];
+
+    const layerLabels={
+      creation:    isBuild?'Model layer':'Your main tool',
+      knowledge:   isBuild?'Data & retrieval':'Research & search',
+      orchestration:isBuild?'Orchestration':'Connect & automate',
+      capture:     isBuild?'Input & output':'Capture & input',
+      governance:  isBuild?'Observability':'Control & security',
+    };
+
+    const tools=s.stack.map(function(item){
+      const tool=item.tool;
+      const layer=item.layer;
+      if(!tool) return null;
+      const urls=(typeof TOOL_URLS!=='undefined'&&TOOL_URLS[tool.id])||{};
+      const meta=(typeof TOOL_META!=='undefined'&&TOOL_META[tool.id])||{};
+      let why='';
+      try{
+        const r=getToolReason(tool,layer,s.goalTags||[],a);
+        why=r&&r.why?r.why:'';
+      }catch(e){ why='Recommended for your stack.'; }
+      const paidPrice=tool.paid&&tool.paid[0]?tool.paid[0].price:null;
+      return {
+        id:tool.id,
+        name:tool.name,
+        maker:tool.maker||'',
+        role:layerLabels[layer]||layer,
+        why:why,
+        freeTier:tool.free&&tool.free.available?tool.free.desc:null,
+        paidFrom:paidPrice,
+        signupUrl:urls.url||null,
+        docsUrl:urls.docs||null,
+        beginnerFriendly:meta.beginner||false,
+      };
+    }).filter(Boolean);
+
+    const costMin=s.stack.reduce(function(acc,r){
+      return acc+(r.tool&&r.tool.free&&r.tool.free.available?0:(parseFloat((r.tool&&r.tool.paid&&r.tool.paid[0]?r.tool.paid[0].price:'')||''.replace(/[^0-9.]/g,''))||0));
+    },0);
+    const costMax=s.stack.reduce(function(acc,r){
+      return acc+(parseFloat((r.tool&&r.tool.paid&&r.tool.paid[0]?r.tool.paid[0].price:'')||''.replace(/[^0-9.]/g,''))||0);
+    },0);
+
+    const ideaNextSteps=isBuild?[]:[
+      'Start with your first tool only — do not set up everything at once.',
+      'Use the free tier for 2 weeks before committing to a paid plan.',
+      (tools[0]?'Sign up for '+tools[0].name+' first — it covers your core workflow.':'Sign up for the first tool first.'),
+      'Add a second tool only once the first is part of your daily habit.',
+      'Return to Toolipedia in 30 days — your needs will be clearer then.',
+    ];
+
+    const buildContext=isBuild?{
+      language:a.lang_stack||null,
+      deployment:a.deployment||null,
+      latency:a.latency||null,
+      compliance:a.compliance||'none',
+      approach:a.build_vs_buy||null,
+      coreCapability:a.model_need||null,
+      timeline:a.timeline||null,
+    }:null;
+
+    const output={
+      toolipedia:{version:'1.0',exported:date,source:'https://dishts04.github.io/Toolipedia'},
+      analysis:{
+        mode:isBuild?'Build Analysis':'Idea Analysis',
+        goal:s.goal||'',
+        estimatedMonthlyCost:'$'+Math.round(costMin)+'–$'+Math.round(costMax)+'/mo',
+      },
+      tools:tools,
+    };
+    if(isBuild&&buildContext) output.buildContext=buildContext;
+    if(!isBuild) output.nextSteps=ideaNextSteps;
+    output.note=isBuild
+      ?'Add your API keys to the env variables listed. Start with the model layer before wiring orchestration.'
+      :'Start with one tool. Come back to Toolipedia when your needs grow.';
+
+    return JSON.stringify(output,null,2);
+  }
+
+  window.downloadStackJSON=function(){
+    const btn=document.getElementById('stack-export-btn');
+
+    // Check stack exists
+    const s=window._advisorSession||session;
+    if(!s||!s.stack||!s.stack.length){
+      if(btn){
+        const orig=btn.innerHTML;
+        btn.innerHTML='⚠ Generate a stack first';
+        btn.style.background='rgba(194,88,88,0.15)';
+        setTimeout(function(){btn.innerHTML=orig;btn.style.background='';},2500);
+      }
+      return;
+    }
+
+    const json=buildStackExportJSON();
+    if(!json){
+      if(btn){btn.innerHTML='⚠ Export failed';setTimeout(function(){btn.innerHTML='↓ Download stack.json';},2000);}
+      return;
+    }
+
+    const mode=s.mode==='build'?'build':'idea';
+    const date=new Date().toISOString().split('T')[0];
+    const filename='toolipedia-stack-'+mode+'-'+date+'.json';
+
+    // Method 1: Blob URL (preferred)
+    try{
+      const blob=new Blob([json],{type:'application/json'});
+      const url=URL.createObjectURL(blob);
+      const link=document.createElement('a');
+      link.href=url;
+      link.download=filename;
+      link.style.display='none';
+      document.body.appendChild(link);
+      link.click();
+      setTimeout(function(){
+        document.body.removeChild(link);
+        URL.revokeObjectURL(url);
+      },100);
+    }catch(e){
+      // Method 2: data URI fallback
+      try{
+        const dataUri='data:application/json;charset=utf-8,'+encodeURIComponent(json);
+        const link=document.createElement('a');
+        link.setAttribute('href',dataUri);
+        link.setAttribute('download',filename);
+        link.style.display='none';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+      }catch(e2){
+        // Method 3: open in new tab as last resort
+        const win=window.open('','_blank');
+        if(win){win.document.write('<pre>'+json.replace(/</g,'&lt;')+'</pre>');}
+        return;
+      }
+    }
+
+    // Success feedback
+    if(btn){
+      const orig=btn.innerHTML;
+      btn.innerHTML='✓ Downloaded';
+      btn.style.background='rgba(93,184,138,0.15)';
+      btn.style.borderColor='rgba(93,184,138,0.4)';
+      btn.style.color='var(--p2)';
+      setTimeout(function(){
+        btn.innerHTML=orig;
+        btn.style.background='';
+        btn.style.borderColor='';
+        btn.style.color='';
+      },2000);
+    }
+  };
 
   // ── Expose for compatibility ──────────────────────────────────────
   window._renderStep3=renderStep3;
