@@ -1913,6 +1913,170 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
   transition:opacity 0.15s;flex-shrink:0;font-weight:600;
 }
 
+/* ── MCP Config Generator ────────────────────────────────────────── */
+.advo-mcp-btn{
+  width:100%;margin-top:8px;padding:9px 14px;
+  background:rgba(93,184,138,0.12);
+  border:1px solid rgba(93,184,138,0.3);
+  border-radius:8px;color:var(--p2);
+  font-size:12px;font-weight:600;cursor:pointer;
+  transition:background 0.15s,border-color 0.15s;
+  text-align:center;
+}
+.advo-mcp-btn:hover{background:rgba(93,184,138,0.22);border-color:rgba(93,184,138,0.5)}
+.advo-mcp-none{font-size:11px;color:var(--text3);margin-top:8px;opacity:0.7}
+.advo-mcp-modal{
+  position:fixed;inset:0;z-index:9999;
+  background:rgba(0,0,0,0.75);
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;
+}
+.advo-mcp-card{
+  background:var(--bg2);
+  border:1px solid var(--border1);
+  border-radius:16px;width:100%;max-width:600px;
+  max-height:85vh;display:flex;flex-direction:column;
+  box-shadow:0 24px 64px rgba(0,0,0,0.4);
+}
+.advo-mcp-header{
+  display:flex;align-items:center;justify-content:space-between;
+  padding:16px 20px 12px;border-bottom:1px solid var(--border1);
+}
+.advo-mcp-title{font-size:14px;font-weight:700;color:var(--text1)}
+.advo-mcp-close{
+  background:none;border:none;color:var(--text3);
+  font-size:18px;cursor:pointer;padding:2px 6px;border-radius:6px;
+  transition:color 0.15s;
+}
+.advo-mcp-close:hover{color:var(--text1)}
+.advo-mcp-body{padding:16px 20px;overflow-y:auto;flex:1}
+.advo-mcp-path{
+  font-size:11px;color:var(--text3);margin-bottom:10px;
+  background:rgba(255,255,255,0.04);border-radius:6px;
+  padding:6px 10px;font-family:monospace;
+}
+.advo-mcp-pre{
+  background:rgba(0,0,0,0.3);border:1px solid var(--border1);
+  border-radius:8px;padding:14px;overflow-x:auto;
+  font-size:12px;font-family:monospace;color:var(--text1);
+  line-height:1.6;margin:0;white-space:pre;
+}
+.advo-mcp-footer{
+  padding:12px 20px 16px;border-top:1px solid var(--border1);
+  display:flex;gap:8px;
+}
+.advo-mcp-copy,.advo-mcp-download{
+  flex:1;padding:9px 14px;border-radius:8px;
+  font-size:13px;font-weight:600;cursor:pointer;
+  transition:background 0.15s;border:none;
+}
+.advo-mcp-copy{background:var(--p2);color:#fff}
+.advo-mcp-copy:hover{background:#4aa876}
+.advo-mcp-download{
+  background:rgba(212,130,74,0.12);
+  border:1px solid rgba(212,130,74,0.3);
+  color:var(--p1);
+}
+.advo-mcp-download:hover{background:rgba(212,130,74,0.22)}
+.advo-mcp-restart-note{
+  font-size:10.5px;color:var(--text3);text-align:center;
+  padding:0 20px 14px;
+}
+
+/* ── Visit Site buttons ──────────────────────────────────────────── */
+.visit-site-row{display:flex;gap:8px;margin-top:14px;padding-top:12px;border-top:1px solid var(--border)}
+.visit-site-btn{
+  flex:1;padding:8px 12px;border-radius:8px;font-size:12px;font-weight:600;
+  text-align:center;text-decoration:none;cursor:pointer;
+  background:var(--p1);color:#fff;border:none;display:inline-block;
+  transition:background 0.15s;
+}
+.visit-site-btn:hover{background:var(--p4);color:#fff}
+.visit-docs-btn{
+  flex:1;padding:8px 12px;border-radius:8px;font-size:12px;font-weight:600;
+  text-align:center;text-decoration:none;display:inline-block;
+  background:rgba(212,130,74,0.1);color:var(--p1);
+  border:1px solid rgba(212,130,74,0.3);
+  transition:background 0.15s,border-color 0.15s;
+}
+.visit-docs-btn:hover{background:rgba(212,130,74,0.2);border-color:rgba(212,130,74,0.5);color:var(--p1)}
+/* Peek panel visit row */
+.adv-peek-visit-row{display:flex;gap:8px;margin-top:12px;padding-top:12px;border-top:1px solid var(--border1)}
+
+/* ── Comparison Export ───────────────────────────────────────────── */
+.compare-top-bar{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:18px;flex-wrap:wrap}
+.compare-top-bar p{margin:0}
+.compare-pdf-btn{
+  padding:7px 14px;border-radius:8px;font-size:12px;font-weight:600;
+  background:rgba(212,130,74,0.1);border:1px solid rgba(212,130,74,0.3);
+  color:var(--p1);cursor:pointer;transition:background 0.15s,border-color 0.15s;
+  white-space:nowrap;flex-shrink:0;
+}
+.compare-pdf-btn:hover{background:rgba(212,130,74,0.2);border-color:rgba(212,130,74,0.5)}
+.compare-print-header{display:none}
+
+@media print{
+  /* Hide everything except the compare panel */
+  body>*{display:none!important}
+  #panel-compare{display:block!important;padding:0!important}
+  .compare-top-bar,.compare-selectors{display:none!important}
+  .compare-print-header{
+    display:block!important;
+    padding:0 0 16px;border-bottom:2px solid #333;margin-bottom:20px;
+  }
+  .cph-title{font-size:18px;font-weight:700;color:#111;font-family:serif}
+  .cph-tools{font-size:13px;color:#444;margin:4px 0 2px}
+  .cph-url{font-size:11px;color:#888}
+  .compare-grid{
+    display:grid!important;grid-template-columns:1fr 1fr;gap:16px;
+  }
+  .chart-card{
+    box-shadow:none!important;border:1px solid #ddd!important;
+    break-inside:avoid;page-break-inside:avoid;
+  }
+  .compare-legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px}
+  .leg-dot{width:10px;height:10px;border-radius:50%;display:inline-block;margin-right:4px}
+  .price-table th,.price-table td{color:#333!important}
+  .pill-green{background:#e6f4ef!important;color:#2d7a55!important}
+  .pill-red{background:#fce8e8!important;color:#b04040!important}
+}
+
+/* ── Team Stack Sharing ──────────────────────────────────────────── */
+.advo-share-btn{
+  width:100%;margin-top:8px;padding:9px 14px;
+  background:rgba(93,184,138,0.15);
+  border:1px solid rgba(93,184,138,0.35);
+  border-radius:8px;color:var(--p2);
+  font-size:12px;font-weight:600;cursor:pointer;
+  transition:background 0.15s,border-color 0.15s;
+  text-align:center;
+}
+.advo-share-btn:hover{background:rgba(93,184,138,0.25);border-color:rgba(93,184,138,0.55)}
+.advo-share-btn.copied{background:rgba(93,184,138,0.25);border-color:rgba(93,184,138,0.6);color:var(--p2)}
+/* Email capture */
+.advo-email-card .advo-email-row{display:flex;gap:6px;margin-top:8px}
+.advo-email-input{
+  flex:1;padding:8px 10px;border-radius:7px;font-size:12px;
+  border:1px solid var(--border);background:var(--bg2);color:var(--text1);
+  outline:none;font-family:var(--ff-body);
+}
+.advo-email-input:focus{border-color:var(--p1)}
+.advo-email-btn{
+  padding:8px 12px;border-radius:7px;font-size:12px;font-weight:600;
+  background:var(--p1);color:#fff;border:none;cursor:pointer;white-space:nowrap;
+  transition:background 0.15s;
+}
+.advo-email-btn:hover{background:var(--p4)}
+.advo-email-btn:disabled{opacity:0.6;cursor:default}
+.advo-email-hint{font-size:11px;color:var(--text3);margin-top:4px;min-height:14px}
+.footer-email-strip{
+  text-align:center;padding:16px 24px;border-top:1px solid var(--border);
+  background:var(--bg2);font-size:12px;color:var(--text2);
+}
+.footer-email-strip strong{color:var(--text1);display:block;margin-bottom:8px;font-size:13px}
+.footer-email-strip-row{display:inline-flex;gap:6px;align-items:center}
+.footer-email-strip .advo-email-input{width:200px;flex:none}
+
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MFTBWFGLLE"></script>
@@ -2094,8 +2258,12 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
 </div>
 
 <div class="panel" id="panel-compare">
-  <p style="font-size:13px;color:var(--text2);margin-bottom:18px">Select up to 4 tools to compare across 6 dimensions.</p>
+  <div class="compare-top-bar">
+    <p style="font-size:13px;color:var(--text2);margin:0">Select up to 4 tools to compare across 6 dimensions.</p>
+    <button class="compare-pdf-btn" onclick="exportComparePDF()">🖨 Print / Save as PDF</button>
+  </div>
   <div class="compare-selectors" id="compare-selectors"></div>
+  <div class="compare-print-header" id="compare-print-header"></div>
   <div class="compare-grid" id="compare-charts">
     <div class="chart-card"><h3>Capability Radar</h3><div class="chart-wrap"><canvas id="radarChart"></canvas></div><div class="compare-legend" id="compare-legend"></div></div>
     <div class="chart-card"><h3>Pricing Side by Side</h3><div style="overflow-x:auto"><table class="price-table" id="price-table"></table></div></div>
@@ -2328,6 +2496,14 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
   </div>
 </div>
 
+<div class="footer-email-strip">
+  <strong>Stay updated</strong>
+  <div class="footer-email-strip-row">
+    <input class="advo-email-input" type="email" id="footer-email-input" placeholder="you@example.com">
+    <button class="advo-email-btn" id="footer-email-btn" onclick="submitEmailCapture('footer-email-input','footer-email-btn','footer-email-hint','footer')">Notify me</button>
+  </div>
+  <span class="advo-email-hint" id="footer-email-hint"></span>
+</div>
 <footer>A hand-picked directory plus an AI stack advisor — built so you can choose once and stop scrolling forever. · <span>Toolipedia</span> · March 2026 · <button onclick="openWiki();setTimeout(()=>{document.querySelector('[data-wikitab=methodology]').click();},100)" style="background:none;border:none;color:var(--text3);cursor:pointer;font-size:11px;font-family:var(--ff-body);text-decoration:underline;padding:0">Methodology</button></footer>
 
 <!-- CHAT WIDGET -->
@@ -3216,7 +3392,7 @@ function renderCard(t,catHighlight){
   <div style="margin-top:16px"><h4 style="font-size:9px;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:6px">Capability scores <span class="score-info" data-tip="Scores are editorial — based on structured tests &amp; public benchmarks. Scale: 1 = limited, 5 = solid, 10 = best-in-class. See Methodology in the Community tab for full details.">?</span></h4>${scores}</div>
   <div style="margin-top:16px"><h4 style="font-size:9px;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);font-weight:700;margin-bottom:8px">Paid plans</h4>
   <div class="plans-list">${t.paid.map(p=>`<div class="plan-item"><div><div class="plan-name">${p.name}</div><div class="plan-price">${p.price}</div></div><div class="plan-perks">${p.perks}</div></div>`).join('')}</div></div>
-  ${agentSection}</div>`;
+  ${agentSection}${visitSiteHTML(t.id)}</div>`;
 
   return `<div class="tool-card${exp?' expanded':''}" data-id="${t.id}"${(t.isModel||t.isInfra)?' data-model="true"':''}>
     <div class="card-head"><div class="tool-icon" style="background:var(--bg3);border:1px solid var(--border)"><span style="filter:drop-shadow(0 0 4px ${t.color}66)">${t.icon}</span></div>
@@ -3315,6 +3491,14 @@ function renderCompare(){
   }
   document.getElementById('compare-legend').innerHTML=sel2.map((t,i)=>`<div class="leg-item"><div class="leg-dot" style="background:${CHART_COLORS[i%4].border}"></div><span>${t.name}</span></div>`).join('');
   document.getElementById('price-table').innerHTML=`<thead><tr><th>Tool</th><th>Free Tier</th><th>Starting Price</th><th>Best Plan</th></tr></thead><tbody>${sel2.map(t=>`<tr><td>${t.icon} ${t.name}</td><td>${t.free.available?'<span class="pill-green">✓ Free</span>':'<span class="pill-red">✗ None</span>'}</td><td style="color:var(--p2);font-weight:600">${t.paid[0].price}</td><td>${t.paid[0].name} — ${t.paid[0].perks.split(',')[0]}</td></tr>`).join('')}</tbody>`;
+  // Update print header
+  const ph=document.getElementById('compare-print-header');
+  if(ph){
+    const date=new Date().toLocaleDateString('en-US',{year:'numeric',month:'long',day:'numeric'});
+    ph.innerHTML='<div class="cph-title">Toolipedia · Tool Comparison</div>'
+      +'<div class="cph-tools">'+sel2.map(t=>t.name).join(' vs ')+'</div>'
+      +'<div class="cph-url">dishts04.github.io/Toolipedia · '+date+'</div>';
+  }
 }
 
 // ═══════════════ RENDER USE CASES ═══════════════
@@ -3604,6 +3788,30 @@ document.getElementById('hero-browse-btn').addEventListener('click',()=>{documen
     track.innerHTML=cards.join('')+cards.join('');
   }
 
+  // Export Compare as PDF via browser print dialog
+  window.exportComparePDF=function(){
+    try{
+      const canvas=document.getElementById('radarChart');
+      let img=null;
+      // Snapshot canvas → <img> so print dialog captures it reliably
+      if(canvas&&typeof radarChart!=='undefined'&&radarChart){
+        try{
+          const dataUrl=radarChart.toBase64Image();
+          img=document.createElement('img');
+          img.src=dataUrl;
+          img.style.cssText='width:100%;height:280px;object-fit:contain;display:block';
+          canvas.parentNode.replaceChild(img,canvas);
+        }catch(e){}
+      }
+      window.print();
+      // Restore canvas after print dialog closes
+      window.addEventListener('afterprint',function restore(){
+        try{if(img&&canvas)img.parentNode.replaceChild(canvas,img);}catch(e){}
+        window.removeEventListener('afterprint',restore);
+      });
+    }catch(e){}
+  };
+
   // Click: pre-select both tools in compare tab, switch, then scroll to charts
   window.tickerCompare=function(idA,idB){
     state.compareIds=[idA,idB];
@@ -3821,6 +4029,60 @@ const TOOL_URLS={
   'jasper':            {url:'https://jasper.ai',                 docs:'https://developers.jasper.ai'},
   'fireflies':         {url:'https://fireflies.ai',              docs:'https://docs.fireflies.ai'},
 };
+
+// ── MCP Server configs — tools with published MCP servers ─────────
+const MCP_CONFIGS={
+  'github-copilot':{
+    serverName:'github',
+    command:'npx',
+    args:['-y','@modelcontextprotocol/server-github'],
+    env:{GITHUB_PERSONAL_ACCESS_TOKEN:'<YOUR_GITHUB_TOKEN>'}
+  },
+  'notion-ai':{
+    serverName:'notion',
+    command:'npx',
+    args:['-y','@notionhq/notion-mcp-server'],
+    env:{OPENAPI_MCP_HEADERS:'{"Authorization": "Bearer <YOUR_NOTION_TOKEN>"}'}
+  },
+  'n8n':{
+    serverName:'n8n',
+    command:'npx',
+    args:['-y','n8n-mcp'],
+    env:{N8N_API_URL:'<YOUR_N8N_URL>',N8N_API_KEY:'<YOUR_N8N_API_KEY>'}
+  },
+  'pinecone':{
+    serverName:'pinecone',
+    command:'npx',
+    args:['-y','@pinecone-database/mcp'],
+    env:{PINECONE_API_KEY:'<YOUR_PINECONE_API_KEY>'}
+  },
+  'ollama':{
+    serverName:'ollama',
+    command:'npx',
+    args:['-y','mcp-ollama'],
+    env:{OLLAMA_HOST:'http://localhost:11434'}
+  },
+  'wolfram':{
+    serverName:'wolfram',
+    command:'npx',
+    args:['-y','@wolfram/mcp-server-wolfram-alpha'],
+    env:{WOLFRAM_ALPHA_APP_ID:'<YOUR_WOLFRAM_APP_ID>'}
+  }
+};
+
+// ── Visit Site helper ─────────────────────────────────────────────
+function visitSiteHTML(id){
+  var urls={};
+  try{urls=TOOL_URLS[id]||{};}catch(e){}
+  if(!urls.url) return '';
+  var docsBtn=urls.docs
+    ?'<a href="'+urls.docs+'" target="_blank" rel="noopener" class="visit-docs-btn">📄 Docs</a>'
+    :'';
+  return '<div class="visit-site-row">'
+    +'<a href="'+urls.url+'" target="_blank" rel="noopener" class="visit-site-btn">↗ Visit Site</a>'
+    +docsBtn
+    +'</div>';
+}
 
 // ── IDEA MODE questions — non-technical, outcome-focused ──────────
 const IDEA_QUESTIONS=[
@@ -4664,6 +4926,13 @@ function buildBuilderSection(){
     const totalMin=stack.reduce((acc,r)=>acc+(r.tool.free.available?0:(parseFloat(r.tool.paid[0].price.replace(/[^0-9.]/g,''))||0)),0);
     const totalMax=stack.reduce((acc,r)=>acc+(parseFloat(r.tool.paid[0].price.replace(/[^0-9.]/g,''))||0),0);
 
+    // Build and store MCP config for the generated stack
+    try{
+      const mcpCfg=buildMCPConfig(stack);
+      session.mcpConfig=mcpCfg;
+      window._advisorSession=session;
+    }catch(e){}
+
     if(session.mode==='build'){
       renderBuildResults(stack, goalText, out, totalMin, totalMax);
     } else {
@@ -4766,6 +5035,18 @@ function buildBuilderSection(){
               <div class="advo-export-desc">Download as JSON — share with your team, hand off to a developer, or keep as a reference.</div>
               <button class="advo-export-btn" id="stack-export-btn" onclick="downloadStackJSON()">↓ Download stack.json</button>
               <div class="advo-export-hint">Free · No account · Works offline</div>
+              ${(function(){const mc=session.mcpConfig;const n=mc?Object.keys(mc.mcpServers||{}).length:0;return n>0?'<button class="advo-mcp-btn" onclick="showMCPModal()">⚡ Generate MCP Config</button><div class="advo-export-hint">For Claude Desktop &middot; '+n+' tool'+(n===1?'':'s')+' supported</div>':'<div class="advo-mcp-none">No MCP-compatible tools in this stack</div>';})()}
+              <button class="advo-share-btn" id="advo-share-btn" onclick="copyShareLink()">🔗 Copy share link</button>
+              <div class="advo-export-hint">Share this stack with your team</div>
+            </div>
+            <div class="advo-sidebar-card advo-email-card">
+              <div class="advo-sc-label">Stay updated</div>
+              <div class="advo-export-desc">Get notified when new tools are added or your stack changes.</div>
+              <div class="advo-email-row">
+                <input class="advo-email-input" type="email" id="advo-email-input" placeholder="you@example.com">
+                <button class="advo-email-btn" id="advo-email-btn" onclick="submitEmailCapture(\'advo-email-input\',\'advo-email-btn\',\'advo-email-hint\',\'stack-idea\')">Notify me</button>
+              </div>
+              <div class="advo-email-hint" id="advo-email-hint"></div>
             </div>
             <div class="advo-sidebar-card">
               <div class="advo-sc-label">Pro features</div>
@@ -4901,6 +5182,18 @@ function buildBuilderSection(){
               <div class="advo-export-desc">Download as JSON with architecture context, API key variables, and official docs links for every tool.</div>
               <button class="advo-export-btn" id="stack-export-btn" onclick="downloadStackJSON()">↓ Download stack.json</button>
               <div class="advo-export-hint">Free · No account · Works offline</div>
+              ${(function(){const mc=session.mcpConfig;const n=mc?Object.keys(mc.mcpServers||{}).length:0;return n>0?'<button class="advo-mcp-btn" onclick="showMCPModal()">⚡ Generate MCP Config</button><div class="advo-export-hint">For Claude Desktop &middot; '+n+' tool'+(n===1?'':'s')+' supported</div>':'<div class="advo-mcp-none">No MCP-compatible tools in this stack</div>';})()}
+              <button class="advo-share-btn" id="advo-share-btn" onclick="copyShareLink()">🔗 Copy share link</button>
+              <div class="advo-export-hint">Share this stack with your team</div>
+            </div>
+            <div class="advo-sidebar-card advo-email-card">
+              <div class="advo-sc-label">Stay updated</div>
+              <div class="advo-export-desc">Get notified when new tools are added or your stack changes.</div>
+              <div class="advo-email-row">
+                <input class="advo-email-input" type="email" id="advo-email-input-b" placeholder="you@example.com">
+                <button class="advo-email-btn" id="advo-email-btn-b" onclick="submitEmailCapture(\'advo-email-input-b\',\'advo-email-btn-b\',\'advo-email-hint-b\',\'stack-build\')">Notify me</button>
+              </div>
+              <div class="advo-email-hint" id="advo-email-hint-b"></div>
             </div>
             <div class="advo-sidebar-card">
               <div class="advo-sc-label">Pro features</div>
@@ -5081,6 +5374,112 @@ function buildBuilderSection(){
         btn.style.color='';
       },2000);
     }
+  };
+
+  // ── MCP Config Generator ─────────────────────────────────────────
+  function buildMCPConfig(stack){
+    const mcpServers={};
+    stack.forEach(function(item){
+      try{
+        const cfg=MCP_CONFIGS[item.tool.id];
+        if(cfg){
+          mcpServers[cfg.serverName]={command:cfg.command,args:cfg.args};
+          if(cfg.env) mcpServers[cfg.serverName].env=cfg.env;
+        }
+      }catch(e){}
+    });
+    return {mcpServers:mcpServers};
+  }
+
+  window.showMCPModal=function(){
+    try{
+      const s=window._advisorSession||session;
+      if(!s||!s.mcpConfig){return;}
+      const json=JSON.stringify(s.mcpConfig,null,2);
+
+      // Remove any existing modal
+      const existing=document.getElementById('advo-mcp-modal');
+      if(existing) existing.remove();
+
+      const modal=document.createElement('div');
+      modal.id='advo-mcp-modal';
+      modal.className='advo-mcp-modal';
+      modal.innerHTML=
+        '<div class="advo-mcp-card">'+
+          '<div class="advo-mcp-header">'+
+            '<span class="advo-mcp-title">⚡ Claude Desktop MCP Config</span>'+
+            '<button class="advo-mcp-close" onclick="document.getElementById(\'advo-mcp-modal\').remove()">×</button>'+
+          '</div>'+
+          '<div class="advo-mcp-body">'+
+            '<div class="advo-mcp-path">~/Library/Application Support/Claude/claude_desktop_config.json</div>'+
+            '<pre class="advo-mcp-pre" id="advo-mcp-json">'+json.replace(/</g,'&lt;').replace(/>/g,'&gt;')+'</pre>'+
+          '</div>'+
+          '<div class="advo-mcp-footer">'+
+            '<button class="advo-mcp-copy" id="advo-mcp-copy-btn" onclick="window._mcpCopy()">Copy</button>'+
+            '<button class="advo-mcp-download" onclick="window._mcpDownload()">↓ Download</button>'+
+          '</div>'+
+          '<div class="advo-mcp-restart-note">Restart Claude Desktop after saving the file</div>'+
+        '</div>';
+
+      // Close on backdrop click
+      modal.addEventListener('click',function(e){
+        if(e.target===modal) modal.remove();
+      });
+      document.body.appendChild(modal);
+    }catch(e){}
+  };
+
+  window._mcpCopy=function(){
+    try{
+      const s=window._advisorSession||session;
+      if(!s||!s.mcpConfig) return;
+      const json=JSON.stringify(s.mcpConfig,null,2);
+      const btn=document.getElementById('advo-mcp-copy-btn');
+      navigator.clipboard.writeText(json).then(function(){
+        if(btn){btn.textContent='Copied!';setTimeout(function(){btn.textContent='Copy';},2000);}
+      }).catch(function(){
+        // Fallback: select the pre text
+        try{
+          const pre=document.getElementById('advo-mcp-json');
+          const range=document.createRange();
+          range.selectNodeContents(pre);
+          const sel=window.getSelection();
+          sel.removeAllRanges();
+          sel.addRange(range);
+          if(btn){btn.textContent='Selected!';}
+        }catch(e2){}
+      });
+    }catch(e){}
+  };
+
+  window._mcpDownload=function(){
+    try{
+      const s=window._advisorSession||session;
+      if(!s||!s.mcpConfig) return;
+      const json=JSON.stringify(s.mcpConfig,null,2);
+      try{
+        const blob=new Blob([json],{type:'application/json'});
+        const url=URL.createObjectURL(blob);
+        const link=document.createElement('a');
+        link.href=url;
+        link.download='claude_desktop_config.json';
+        link.style.display='none';
+        document.body.appendChild(link);
+        link.click();
+        setTimeout(function(){document.body.removeChild(link);URL.revokeObjectURL(url);},100);
+      }catch(e){
+        try{
+          const dataUri='data:application/json;charset=utf-8,'+encodeURIComponent(json);
+          const link=document.createElement('a');
+          link.setAttribute('href',dataUri);
+          link.setAttribute('download','claude_desktop_config.json');
+          link.style.display='none';
+          document.body.appendChild(link);
+          link.click();
+          document.body.removeChild(link);
+        }catch(e2){}
+      }
+    }catch(e){}
   };
 
   // ── Expose for compatibility ──────────────────────────────────────
@@ -5317,6 +5716,7 @@ function buildBuilderSection(){
         ${t.paid.slice(0,2).map(p=>`<div class="adv-peek-paid">From <strong>${p.price}</strong> · ${p.name}</div>`).join('')}
       </div>
       ${t.agents?.hasAgents?`<div class="adv-peek-agent">⚡ ${t.agents.name} · Autonomy ${'●'.repeat(t.agents.autonomy)}${'○'.repeat(5-t.agents.autonomy)}</div>`:''}
+      <div class="adv-peek-visit-row">${visitSiteHTML(id)}</div>
       <div class="adv-peek-actions">
         <button class="adv-peek-view-btn" onclick="peekViewFull('${id}')">View full details in directory →</button>
         <button class="adv-peek-back-btn" onclick="closePeek()">← Back to your stack</button>
@@ -5417,6 +5817,124 @@ function buildBuilderSection(){
     },50);
   };
   window.renderModePicker=renderModePicker;
+
+  // ── Team Stack Sharing ────────────────────────────────────────────
+  function encodeShareState(){
+    try{
+      const s=window._advisorSession||session;
+      if(!s||!s.stack||!s.stack.length) return null;
+      const payload={
+        m:s.mode,
+        g:s.goal,
+        gt:s.goalTags,
+        a:s.answers,
+        dt:s.derivedTags,
+        s:s.stack.map(function(r){return [r.tool.id,r.layer,r.score];})
+      };
+      return btoa(unescape(encodeURIComponent(JSON.stringify(payload))));
+    }catch(e){return null;}
+  }
+
+  function decodeShareState(encoded){
+    try{
+      const json=decodeURIComponent(escape(atob(encoded)));
+      const p=JSON.parse(json);
+      if(!p.m||!p.s) return null;
+      return p;
+    }catch(e){return null;}
+  }
+
+  function rehydrateSharedStack(compactStack){
+    const result=[];
+    compactStack.forEach(function(item){
+      try{
+        const t=TOOLS.find(function(x){return x.id===item[0];});
+        if(t) result.push({tool:t,layer:item[1],score:item[2]});
+      }catch(e){}
+    });
+    return result;
+  }
+
+  window.submitEmailCapture=function(inputId,btnId,hintId,context){
+    var FORMSPREE_ID='xojplgyo';
+    var input=document.getElementById(inputId);
+    var btn=document.getElementById(btnId);
+    var hint=document.getElementById(hintId);
+    var email=input?input.value.trim():'';
+    if(!email||!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){
+      if(hint)hint.textContent='Please enter a valid email.';
+      return;
+    }
+    if(btn){btn.disabled=true;btn.textContent='Sending\u2026';}
+    fetch('https://formspree.io/f/'+FORMSPREE_ID,{
+      method:'POST',
+      headers:{'Content-Type':'application/json','Accept':'application/json'},
+      body:JSON.stringify({email:email,context:context})
+    }).then(function(r){
+      if(r.ok){
+        if(btn)btn.textContent='\u2713 Done!';
+        if(hint)hint.textContent='';
+        if(input)input.value='';
+      }else{
+        if(btn){btn.disabled=false;btn.textContent='Notify me';}
+        if(hint)hint.textContent='Something went wrong. Try again.';
+      }
+    }).catch(function(){
+      if(btn){btn.disabled=false;btn.textContent='Notify me';}
+      if(hint)hint.textContent='Something went wrong. Try again.';
+    });
+  };
+
+  window.copyShareLink=function(){
+    try{
+      const encoded=encodeShareState();
+      if(!encoded) return;
+      const url=window.location.origin+window.location.pathname+'?stack='+encoded;
+      const btn=document.getElementById('advo-share-btn');
+      navigator.clipboard.writeText(url).then(function(){
+        if(btn){btn.textContent='✓ Link copied!';btn.classList.add('copied');}
+        setTimeout(function(){if(btn){btn.textContent='🔗 Copy share link';btn.classList.remove('copied');}},2000);
+      }).catch(function(){
+        // Fallback: create temp input
+        try{
+          const inp=document.createElement('input');
+          inp.value=url;inp.style.position='fixed';inp.style.opacity='0';
+          document.body.appendChild(inp);inp.select();document.execCommand('copy');
+          document.body.removeChild(inp);
+          if(btn){btn.textContent='✓ Link copied!';btn.classList.add('copied');}
+          setTimeout(function(){if(btn){btn.textContent='🔗 Copy share link';btn.classList.remove('copied');}},2000);
+        }catch(e2){}
+      });
+    }catch(e){}
+  };
+
+  function checkShareURL(){
+    try{
+      const params=new URLSearchParams(window.location.search);
+      const encoded=params.get('stack');
+      if(!encoded) return;
+      const p=decodeShareState(encoded);
+      if(!p) return;
+      const stack=rehydrateSharedStack(p.s);
+      if(!stack.length) return;
+      session.mode=p.m||'idea';
+      session.goal=p.g||'';
+      session.goalTags=p.gt||[];
+      session.answers=p.a||{};
+      session.derivedTags=p.dt||[];
+      session.stack=stack;
+      session.step=3;
+      try{session.mcpConfig=buildMCPConfig(stack);}catch(e){}
+      window._advisorSession=session;
+      // Auto-open advisor and show step 3
+      const openBtn=document.getElementById('adv-open-btn')||document.querySelector('[onclick*="openAdvisor"]');
+      if(openBtn) openBtn.click();
+      setTimeout(function(){try{window._renderStep3();}catch(e){}},150);
+    }catch(e){}
+  }
+
+  // Run URL check after DOM is ready
+  setTimeout(checkShareURL,0);
 
 })();
 
