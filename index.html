@@ -461,9 +461,30 @@ body.wiki-mode main,body.wiki-mode footer{visibility:hidden}
 }
 .tool-card:hover .tool-icon{transform:scale(1.06)}
 .tool-info{flex:1;min-width:0}
+.tool-name-row{display:flex;align-items:baseline;gap:6px;min-width:0}
+.card-visit-btn{
+  display:inline-flex;
+  align-items:center;gap:3px;
+  font-size:10px;font-weight:500;
+  color:var(--text3);
+  text-decoration:none;
+  flex-shrink:0;
+  white-space:nowrap;
+  transition:color 0.15s;
+  letter-spacing:0.1px;
+  line-height:1.4;
+}
+.tool-card:hover .card-visit-btn,
+.tool-card.expanded .card-visit-btn{
+  color:var(--p1);
+}
+.card-visit-btn:hover{
+  text-decoration:underline;
+}
 .tool-name{
   font-family:var(--ff-body);font-size:14px;font-weight:600;
   color:var(--text);line-height:1.3;letter-spacing:-0.1px;
+  flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;
 }
 .tool-maker{font-size:11px;color:var(--text3);margin-top:2px;font-weight:400}
 .tool-tags{display:flex;gap:4px;flex-wrap:wrap;margin-top:7px}
@@ -3394,6 +3415,61 @@ function getFiltered(){
 }
 
 // ═══════════════ RENDER CARD ═══════════════
+// ── Official tool URLs — used in Stack Export JSON ───────────────
+const TOOL_URLS={
+  'chatgpt':           {url:'https://chat.openai.com',          docs:'https://platform.openai.com/docs'},
+  'claude':            {url:'https://claude.ai',                 docs:'https://docs.anthropic.com'},
+  'gemini':            {url:'https://gemini.google.com',         docs:'https://ai.google.dev/docs'},
+  'grok':              {url:'https://grok.com',                  docs:'https://docs.x.ai'},
+  'deepseek':          {url:'https://chat.deepseek.com',         docs:'https://platform.deepseek.com/api-docs'},
+  'perplexity':        {url:'https://perplexity.ai',             docs:'https://docs.perplexity.ai'},
+  'notebooklm':        {url:'https://notebooklm.google.com',     docs:'https://support.google.com/notebooklm'},
+  'elicit':            {url:'https://elicit.com',                docs:'https://elicit.com/help'},
+  'wolfram':           {url:'https://wolframalpha.com',          docs:'https://products.wolframalpha.com/api'},
+  'cursor':            {url:'https://cursor.com',                docs:'https://docs.cursor.com'},
+  'github-copilot':    {url:'https://github.com/features/copilot', docs:'https://docs.github.com/en/copilot'},
+  'lovable':           {url:'https://lovable.dev',               docs:'https://docs.lovable.dev'},
+  'windsurf':          {url:'https://codeium.com/windsurf',      docs:'https://docs.codeium.com'},
+  'otter-ai':          {url:'https://otter.ai',                  docs:'https://help.otter.ai'},
+  'notion-ai':         {url:'https://notion.so',                 docs:'https://developers.notion.com'},
+  'canva-ai':          {url:'https://canva.com',                 docs:'https://www.canva.com/developers'},
+  'adobe-firefly':     {url:'https://firefly.adobe.com',         docs:'https://developer.adobe.com/firefly-api'},
+  'freepik':           {url:'https://freepik.com',               docs:'https://docs.freepik.com'},
+  'midjourney':        {url:'https://midjourney.com',            docs:'https://docs.midjourney.com'},
+  'runway':            {url:'https://runwayml.com',              docs:'https://docs.dev.runwayml.com'},
+  'pika':              {url:'https://pika.art',                  docs:'https://pika.art/api'},
+  'seedance':          {url:'https://www.capcut.com',            docs:'https://www.capcut.com/tools/ai-video-generator'},
+  'heygen':            {url:'https://heygen.com',                docs:'https://docs.heygen.com'},
+  'synthesia':         {url:'https://synthesia.io',              docs:'https://docs.synthesia.io'},
+  'elevenlabs':        {url:'https://elevenlabs.io',             docs:'https://elevenlabs.io/docs'},
+  'n8n':               {url:'https://n8n.io',                    docs:'https://docs.n8n.io'},
+  'copilot':           {url:'https://copilot.microsoft.com',     docs:'https://learn.microsoft.com/en-us/copilot'},
+  'writer':            {url:'https://writer.com',                docs:'https://dev.writer.com'},
+  'glean':             {url:'https://glean.com',                 docs:'https://developers.glean.com'},
+  'harvey':            {url:'https://harvey.ai',                 docs:'https://harvey.ai'},
+  'gong':              {url:'https://gong.io',                   docs:'https://gong.io/resources'},
+  'salesforce-einstein':{url:'https://salesforce.com/products/einstein', docs:'https://developer.salesforce.com/einstein'},
+  'cohere':            {url:'https://cohere.com',                docs:'https://docs.cohere.com'},
+  'khanmigo':          {url:'https://khanacademy.org/khanmigo',  docs:'https://support.khanacademy.com'},
+  'fitbod':            {url:'https://fitbod.me',                 docs:'https://help.fitbod.me'},
+  'openclaw':          {url:'https://openclaw.ai',               docs:'https://github.com/steipete/openclaw'},
+  'llama':             {url:'https://llama.com',                 docs:'https://llama.meta.com/docs/'},
+  'mistral':           {url:'https://mistral.ai',                docs:'https://docs.mistral.ai'},
+  'gemma':             {url:'https://ai.google.dev',             docs:'https://ai.google.dev/gemma/docs'},
+  'nemotron':          {url:'https://developer.nvidia.com/nemotron', docs:'https://docs.nvidia.com/nemo-framework'},
+  'groq':              {url:'https://groq.com',                  docs:'https://console.groq.com/docs'},
+  'together-ai':       {url:'https://together.ai',               docs:'https://docs.together.ai'},
+  'ollama':            {url:'https://ollama.com',                docs:'https://github.com/ollama/ollama'},
+  'pinecone':          {url:'https://pinecone.io',               docs:'https://docs.pinecone.io'},
+  'langchain':         {url:'https://langchain.com',             docs:'https://python.langchain.com/docs'},
+  'gamma':             {url:'https://gamma.app',                 docs:'https://help.gamma.app'},
+  'fathom':            {url:'https://fathom.video',              docs:'https://help.fathom.video'},
+  'grammarly':         {url:'https://grammarly.com',             docs:'https://developer.grammarly.com'},
+  'descript':          {url:'https://descript.com',              docs:'https://help.descript.com'},
+  'jasper':            {url:'https://jasper.ai',                 docs:'https://developers.jasper.ai'},
+  'fireflies':         {url:'https://fireflies.ai',              docs:'https://docs.fireflies.ai'},
+};
+
 function renderCard(t,catHighlight){
   const exp=state.expandedId===t.id;
   const scoreKeys=["writing","coding","research","creativity","automation","multimodal"];
@@ -3427,7 +3503,7 @@ function renderCard(t,catHighlight){
 
   return `<div class="tool-card${exp?' expanded':''}" data-id="${t.id}"${(t.isModel||t.isInfra)?' data-model="true"':''}>
     <div class="card-head"><div class="tool-icon" style="background:var(--bg3);border:1px solid var(--border)"><span style="filter:drop-shadow(0 0 4px ${t.color}66)">${t.icon}</span></div>
-    <div class="tool-info"><div class="tool-name">${t.name}</div><div class="tool-maker">${t.maker}</div>
+    <div class="tool-info"><div class="tool-name-row"><div class="tool-name">${t.name}</div>${(TOOL_URLS[t.id]?.url)?`<a href="${TOOL_URLS[t.id].url}" target="_blank" rel="noopener" class="card-visit-btn" onclick="event.stopPropagation()">↗ Visit site</a>`:''}</div><div class="tool-maker">${t.maker}</div>
     <div class="tool-tags">${t.categories.slice(0,2).map((c,i)=>`<span class="tag${i===0?' primary':''}">${c}</span>`).join('')}${t.agents?.hasAgents?'<span class="agent-badge">⚡ Agents</span>':''}${(t.isModel||t.isInfra)?`<span class="model-badge">${t.isModel?'Open model':'Infrastructure'}</span>`:''}</div></div></div>
     <div class="card-body"><div class="tagline">${t.tagline}</div>
     ${catHighlight?`<div class="bestfor" style="border-left-color:var(--p2)"><strong style="color:var(--p2)">Why for this</strong>${catHighlight}</div>`:`<div class="bestfor"><strong>Best for</strong>${t.bestFor}</div>`}</div>
@@ -3479,15 +3555,46 @@ function renderExplore(){
       card.addEventListener('click',()=>{
         const id=card.dataset.id;
         const wasExpanded=state.expandedId===id;
-        state.expandedId=wasExpanded?null:id;
-        renderExplore();
-        // Only scroll when opening — re-measure AFTER render so position is always accurate
-        if(!wasExpanded){
-          const newCard=document.querySelector(`[data-id="${id}"]`);
-          if(!newCard) return;
-          const stickyBar=document.getElementById('sticky-search');const headerH=(document.querySelector('header')||{offsetHeight:56}).offsetHeight+((stickyBar&&stickyBar.classList.contains('visible'))?stickyBar.offsetHeight:0);
-          const freshTop=newCard.getBoundingClientRect().top+window.scrollY;
-          window.scrollTo({top:freshTop-headerH-8,behavior:'instant'});
+
+        // Collapse all other cards in-place first
+        grid.querySelectorAll('.tool-card.expanded').forEach(c=>{
+          if(c.dataset.id!==id){
+            c.classList.remove('expanded');
+            const det=c.querySelector('.tool-detail');
+            if(det) det.style.display='none';
+            const arr=c.querySelector('.expand-arrow');
+            if(arr){arr.style.transform='';arr.style.color='';}
+          }
+        });
+
+        if(wasExpanded){
+          // Collapse this card in-place
+          card.classList.remove('expanded');
+          const det=card.querySelector('.tool-detail');
+          if(det) det.style.display='none';
+          const arr=card.querySelector('.expand-arrow');
+          if(arr){arr.style.transform='';arr.style.color='';}
+          state.expandedId=null;
+        } else {
+          // Expand in-place — no re-render, no scroll jump
+          card.classList.add('expanded');
+          const det=card.querySelector('.tool-detail');
+          if(det) det.style.display='block';
+          const arr=card.querySelector('.expand-arrow');
+          if(arr){arr.style.transform='rotate(180deg)';arr.style.color='var(--p1)';}
+          state.expandedId=id;
+
+          // Scroll card top into view (header-aware), smooth
+          requestAnimationFrame(()=>{
+            const stickyBar=document.getElementById('sticky-search');
+            const headerH=(document.querySelector('header')||{offsetHeight:56}).offsetHeight
+              +((stickyBar&&stickyBar.classList.contains('visible'))?stickyBar.offsetHeight:0);
+            const cardTop=card.getBoundingClientRect().top+window.scrollY;
+            const scrollTarget=cardTop-headerH-8;
+            if(window.scrollY>scrollTarget+2){
+              window.scrollTo({top:scrollTarget,behavior:'smooth'});
+            }
+          });
         }
       });
     });
@@ -4006,60 +4113,6 @@ const GOAL_WEIGHTS={
 
 // ── Adaptive questions (4 total) ─────────────────────────────────
 
-// ── Official tool URLs — used in Stack Export JSON ───────────────
-const TOOL_URLS={
-  'chatgpt':           {url:'https://chat.openai.com',          docs:'https://platform.openai.com/docs'},
-  'claude':            {url:'https://claude.ai',                 docs:'https://docs.anthropic.com'},
-  'gemini':            {url:'https://gemini.google.com',         docs:'https://ai.google.dev/docs'},
-  'grok':              {url:'https://grok.com',                  docs:'https://docs.x.ai'},
-  'deepseek':          {url:'https://chat.deepseek.com',         docs:'https://platform.deepseek.com/api-docs'},
-  'perplexity':        {url:'https://perplexity.ai',             docs:'https://docs.perplexity.ai'},
-  'notebooklm':        {url:'https://notebooklm.google.com',     docs:'https://support.google.com/notebooklm'},
-  'elicit':            {url:'https://elicit.com',                docs:'https://elicit.com/help'},
-  'wolfram':           {url:'https://wolframalpha.com',          docs:'https://products.wolframalpha.com/api'},
-  'cursor':            {url:'https://cursor.com',                docs:'https://docs.cursor.com'},
-  'github-copilot':    {url:'https://github.com/features/copilot', docs:'https://docs.github.com/en/copilot'},
-  'lovable':           {url:'https://lovable.dev',               docs:'https://docs.lovable.dev'},
-  'windsurf':          {url:'https://codeium.com/windsurf',      docs:'https://docs.codeium.com'},
-  'otter-ai':          {url:'https://otter.ai',                  docs:'https://help.otter.ai'},
-  'notion-ai':         {url:'https://notion.so',                 docs:'https://developers.notion.com'},
-  'canva-ai':          {url:'https://canva.com',                 docs:'https://www.canva.com/developers'},
-  'adobe-firefly':     {url:'https://firefly.adobe.com',         docs:'https://developer.adobe.com/firefly-api'},
-  'freepik':           {url:'https://freepik.com',               docs:'https://docs.freepik.com'},
-  'midjourney':        {url:'https://midjourney.com',            docs:'https://docs.midjourney.com'},
-  'runway':            {url:'https://runwayml.com',              docs:'https://docs.dev.runwayml.com'},
-  'pika':              {url:'https://pika.art',                  docs:'https://pika.art/api'},
-  'seedance':          {url:'https://www.capcut.com',            docs:'https://www.capcut.com/tools/ai-video-generator'},
-  'heygen':            {url:'https://heygen.com',                docs:'https://docs.heygen.com'},
-  'synthesia':         {url:'https://synthesia.io',              docs:'https://docs.synthesia.io'},
-  'elevenlabs':        {url:'https://elevenlabs.io',             docs:'https://elevenlabs.io/docs'},
-  'n8n':               {url:'https://n8n.io',                    docs:'https://docs.n8n.io'},
-  'copilot':           {url:'https://copilot.microsoft.com',     docs:'https://learn.microsoft.com/en-us/copilot'},
-  'writer':            {url:'https://writer.com',                docs:'https://dev.writer.com'},
-  'glean':             {url:'https://glean.com',                 docs:'https://developers.glean.com'},
-  'harvey':            {url:'https://harvey.ai',                 docs:'https://harvey.ai'},
-  'gong':              {url:'https://gong.io',                   docs:'https://gong.io/resources'},
-  'salesforce-einstein':{url:'https://salesforce.com/products/einstein', docs:'https://developer.salesforce.com/einstein'},
-  'cohere':            {url:'https://cohere.com',                docs:'https://docs.cohere.com'},
-  'khanmigo':          {url:'https://khanacademy.org/khanmigo',  docs:'https://support.khanacademy.com'},
-  'fitbod':            {url:'https://fitbod.me',                 docs:'https://help.fitbod.me'},
-  'openclaw':          {url:'https://openclaw.ai',               docs:'https://github.com/steipete/openclaw'},
-  'llama':             {url:'https://llama.com',                 docs:'https://llama.meta.com/docs/'},
-  'mistral':           {url:'https://mistral.ai',                docs:'https://docs.mistral.ai'},
-  'gemma':             {url:'https://ai.google.dev',             docs:'https://ai.google.dev/gemma/docs'},
-  'nemotron':          {url:'https://developer.nvidia.com/nemotron', docs:'https://docs.nvidia.com/nemo-framework'},
-  'groq':              {url:'https://groq.com',                  docs:'https://console.groq.com/docs'},
-  'together-ai':       {url:'https://together.ai',               docs:'https://docs.together.ai'},
-  'ollama':            {url:'https://ollama.com',                docs:'https://github.com/ollama/ollama'},
-  'pinecone':          {url:'https://pinecone.io',               docs:'https://docs.pinecone.io'},
-  'langchain':         {url:'https://langchain.com',             docs:'https://python.langchain.com/docs'},
-  'gamma':             {url:'https://gamma.app',                 docs:'https://help.gamma.app'},
-  'fathom':            {url:'https://fathom.video',              docs:'https://help.fathom.video'},
-  'grammarly':         {url:'https://grammarly.com',             docs:'https://developer.grammarly.com'},
-  'descript':          {url:'https://descript.com',              docs:'https://help.descript.com'},
-  'jasper':            {url:'https://jasper.ai',                 docs:'https://developers.jasper.ai'},
-  'fireflies':         {url:'https://fireflies.ai',              docs:'https://docs.fireflies.ai'},
-};
 
 // ── MCP Server configs — tools with published MCP servers ─────────
 const MCP_CONFIGS={
