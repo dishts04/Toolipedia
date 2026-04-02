@@ -2077,6 +2077,37 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
 .footer-email-strip-row{display:inline-flex;gap:6px;align-items:center}
 .footer-email-strip .advo-email-input{width:200px;flex:none}
 
+/* ── DEEP PROFILE MODAL ───────────────────────────────────────────── */
+.dp-overlay{position:fixed;inset:0;z-index:9500;display:none;align-items:center;justify-content:center;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);padding:16px}
+.dp-modal{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);width:100%;max-width:580px;max-height:82vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+.dp-header{position:sticky;top:0;background:var(--bg2);padding:18px 20px 14px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between;z-index:1}
+.dp-header-left{display:flex;align-items:center;gap:10px}
+.dp-tool-name{font-family:var(--ff-head);font-size:18px;font-weight:700;color:var(--text1);font-variation-settings:'opsz' 20}
+.dp-badge{font-size:9px;font-weight:700;letter-spacing:1px;text-transform:uppercase;background:linear-gradient(135deg,var(--p1),var(--p4));color:#fff;padding:3px 10px;border-radius:3px}
+.dp-close{background:none;border:none;color:var(--text3);font-size:20px;cursor:pointer;line-height:1;padding:4px 8px;border-radius:var(--radius-sm);transition:color var(--transition);font-family:var(--ff-body)}
+.dp-close:hover{color:var(--text1)}
+.dp-body{padding:20px;display:flex;flex-direction:column;gap:18px}
+.dp-section-label{font-size:9px;font-weight:700;letter-spacing:0.9px;text-transform:uppercase;color:var(--text3);margin-bottom:8px}
+.dp-verdict{font-size:13px;color:var(--text1);line-height:1.72;font-weight:400}
+.dp-who-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dp-who-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-md);padding:12px}
+.dp-who-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.7px;margin-bottom:5px}
+.dp-who-label.for{color:var(--p2)}
+.dp-who-label.notfor{color:#e05555}
+.dp-who-text{font-size:12px;color:var(--text2);line-height:1.55;margin:0}
+.dp-step-list{list-style:none;padding:0;margin:0;display:flex;flex-direction:column;gap:7px}
+.dp-step-list li{font-size:12.5px;color:var(--text2);line-height:1.5;padding-left:22px;position:relative}
+.dp-step-list li::before{content:attr(data-n);position:absolute;left:0;color:var(--p1);font-weight:700;font-size:11px;top:1px}
+.dp-pitfall-list{display:flex;flex-direction:column;gap:7px}
+.dp-pitfall-item{background:rgba(224,85,85,0.07);border:1px solid rgba(224,85,85,0.18);border-radius:var(--radius-md);padding:10px 12px;font-size:12px;color:var(--text2);line-height:1.55}
+.dp-power-tip{background:rgba(212,130,74,0.08);border:1px solid rgba(212,130,74,0.25);border-radius:var(--radius-md);padding:12px 14px;font-size:12.5px;color:var(--text1);line-height:1.62}
+.dp-vs-list{display:flex;flex-direction:column;gap:8px}
+.dp-vs-item{background:var(--bg);border:1px solid var(--border);border-radius:var(--radius-md);padding:10px 12px}
+.dp-vs-name{font-size:11px;font-weight:700;color:var(--text1);margin-bottom:3px}
+.dp-vs-edge{font-size:12px;color:var(--text2);line-height:1.5}
+.dp-profile-btn{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:8px 14px;background:rgba(212,130,74,0.08);border:1px solid rgba(212,130,74,0.28);border-radius:var(--radius-md);font-size:12px;font-weight:600;color:var(--p1);cursor:pointer;transition:all 0.15s;font-family:var(--ff-body)}
+.dp-profile-btn:hover{background:rgba(212,130,74,0.16);border-color:rgba(212,130,74,0.5)}
+
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MFTBWFGLLE"></script>
@@ -3392,7 +3423,7 @@ function renderCard(t,catHighlight){
   <div style="margin-top:16px"><h4 style="font-size:9px;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:6px">Capability scores <span class="score-info" data-tip="Scores are editorial — based on structured tests &amp; public benchmarks. Scale: 1 = limited, 5 = solid, 10 = best-in-class. See Methodology in the Community tab for full details.">?</span></h4>${scores}</div>
   <div style="margin-top:16px"><h4 style="font-size:9px;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);font-weight:700;margin-bottom:8px">Paid plans</h4>
   <div class="plans-list">${t.paid.map(p=>`<div class="plan-item"><div><div class="plan-name">${p.name}</div><div class="plan-price">${p.price}</div></div><div class="plan-perks">${p.perks}</div></div>`).join('')}</div></div>
-  ${agentSection}${visitSiteHTML(t.id)}</div>`;
+  ${agentSection}${visitSiteHTML(t.id)}${(function(){var dp=null;try{dp=DEEP_PROFILES[t.id];}catch(e){}return dp?'<button class="dp-profile-btn" onclick="openDeepProfile(\''+t.id+'\')">📖 Deep Profile</button>':'';}())}</div>`;
 
   return `<div class="tool-card${exp?' expanded':''}" data-id="${t.id}"${(t.isModel||t.isInfra)?' data-model="true"':''}>
     <div class="card-head"><div class="tool-icon" style="background:var(--bg3);border:1px solid var(--border)"><span style="filter:drop-shadow(0 0 4px ${t.color}66)">${t.icon}</span></div>
@@ -4067,6 +4098,145 @@ const MCP_CONFIGS={
     command:'npx',
     args:['-y','@wolfram/mcp-server-wolfram-alpha'],
     env:{WOLFRAM_ALPHA_APP_ID:'<YOUR_WOLFRAM_APP_ID>'}
+  }
+};
+
+// ── Deep Tool Profiles ────────────────────────────────────────────
+const DEEP_PROFILES={
+  'claude':{
+    verdict:'Claude is the best general-purpose AI for anyone whose work lives in language — long documents, code review, nuanced writing, and analytical reasoning. Its 1M-token context window is practically unmatched for ingesting entire codebases or research corpora in a single session. The free tier (Sonnet 4.6) is among the most capable free tiers of any frontier model.',
+    whoFor:'Writers, lawyers, researchers, and developers who produce long-form or highly nuanced output and need a model that stays coherent across thousands of words without losing the thread.',
+    notFor:'Users who primarily need real-time web data, image generation, or a quick answer — Perplexity or ChatGPT are faster for those jobs.',
+    idealWorkflow:['Load your entire document, codebase, or research corpus in a single session using a Project','Use extended thinking for decisions that require multi-step reasoning (strategy docs, architecture choices)','Draft in Claude, then export to Artifacts for an interactive preview or shareable HTML/code output','For recurring tasks, save system prompts in a Project to preserve context across sessions'],
+    pitfalls:['Daily usage limits on the free tier arrive sooner than most people expect — heavy users will hit them within hours','Claude declines to generate certain content that other models will attempt; this is by design but can frustrate edge-case tasks','No native image generation — you need Midjourney or Canva AI for visuals'],
+    powerTip:'Paste a long document and ask Claude to "identify the three weakest assumptions and propose how to stress-test each one" — this produces editorial insight that prompt-level tools cannot replicate.',
+    vs:[{name:'ChatGPT',edge:'Claude handles much longer documents without losing coherence; ChatGPT has a larger plugin ecosystem and built-in image generation'},{name:'Gemini',edge:'Claude\'s reasoning is stronger on nuanced writing and contract analysis; Gemini wins on native Google Workspace integration and multimodal tasks'}]
+  },
+  'chatgpt':{
+    verdict:'ChatGPT is the broadest AI tool in existence — it does text, images, code, voice, video (Sora), and data analysis in one subscription. Its strength is breadth: it is the most capable single tool for users who don\'t want to juggle multiple products. GPT-5.2 on the free tier makes it a legitimate daily driver even without paying.',
+    whoFor:'Generalists — content creators, students, small business owners, and anyone who wants one AI that handles the full range of everyday tasks without a learning curve.',
+    notFor:'Power users with a specific deep use case. Claude beats it on long documents; Cursor beats it on coding; Perplexity beats it on research with citations.',
+    idealWorkflow:['Start with a GPT for your domain (writing, coding, marketing) from the GPT store — thousands of pre-configured assistants exist','Use the Python code interpreter for any data analysis — upload a CSV and ask questions in plain English','Enable memory so it retains context about your role, preferences, and ongoing projects','Use Projects to organize work into separate contexts (one per client, topic, or workflow)'],
+    pitfalls:['GPT-5.2 on the free tier has session-based usage limits that can reset mid-project','Custom GPTs vary wildly in quality — third-party ones can be outdated or poorly configured','Sora video generation is Plus/Pro-only and the results still look AI-generated under close scrutiny'],
+    powerTip:'Use "Custom Instructions" (Settings → Personalization) to define your role, preferred output format, and what to never include — this eliminates boilerplate prompting on every session.',
+    vs:[{name:'Claude',edge:'ChatGPT has native image generation, Sora video, and a far larger plugin/GPT ecosystem; Claude wins on document depth and writing quality'},{name:'Gemini',edge:'ChatGPT has a superior third-party plugin/integration ecosystem; Gemini is better for users already inside Google Workspace'}]
+  },
+  'gemini':{
+    verdict:'Gemini is the right AI if Google Workspace is your operating system. No other frontier model integrates as deeply into Gmail, Docs, Sheets, Slides, and Drive — it can draft, summarize, and analyze across your entire Google environment. The 1M+ token context window and native multimodal capabilities (image, audio, video analysis in one model) are genuinely class-leading.',
+    whoFor:'Google Workspace power users — teams running on Gmail, Docs, and Drive who want AI that appears inline rather than in a separate tab. Also ideal for users processing large multimodal documents.',
+    notFor:'Users on Microsoft 365 (use Copilot instead), or anyone whose primary need is creative writing quality or deep code review.',
+    idealWorkflow:['Enable Gemini in Gmail sidebar — draft replies and summarize threads without leaving your inbox','Use Gemini in Sheets to build formulas and analyze data via natural language','Use Deep Research for structured competitive or market research reports — it synthesizes dozens of sources with citations','For large document work, upload directly to Gemini\'s 1M+ context window rather than using the Workspace sidebar'],
+    pitfalls:['Deep Research and the best models (2.5 Pro) require the $19.99/mo AI Pro tier — the free tier is significantly less capable','Gemini\'s creative writing quality lags behind Claude and ChatGPT on nuanced prose','Veo 3 video generation is locked to the $249.99/mo Ultra tier — a steep jump'],
+    powerTip:'In NotebookLM (Gemini\'s companion product, free), upload your research sources and use Gemini to cross-reference them — this grounds every answer in your own documents and eliminates hallucination risk.',
+    vs:[{name:'Claude',edge:'Gemini\'s Google Workspace integration and multimodal breadth (image + audio + video in one model) is unmatched; Claude wins on writing depth and document reasoning'},{name:'Copilot',edge:'Gemini dominates for Google Workspace users; Copilot is the equivalent choice for Microsoft 365 users — they\'re parallel, not substitutes'}]
+  },
+  'cursor':{
+    verdict:'Cursor is the most capable AI IDE available for developers working on real, multi-file projects. Unlike GitHub Copilot\'s inline suggestions, Cursor\'s Agent Mode can autonomously read, plan, and edit across your entire codebase. The Arena Mode — which lets you compare two models\' output side-by-side — is a unique feature that accelerates model calibration.',
+    whoFor:'Full-stack and backend developers who work on mid-to-large codebases and want AI that understands the full project, not just the current file. Especially strong for TypeScript, Python, and Go.',
+    notFor:'Developers who prefer staying inside JetBrains IDEs with tight GitHub integration — GitHub Copilot\'s IDE coverage is broader. Beginners may find the configuration overhead steep.',
+    idealWorkflow:['Index your entire repo on first launch so Cursor has full codebase context from day one','Use Agent Mode (@codebase) for multi-file features: describe the goal and let it plan and edit autonomously','Run Arena Mode when trying a new approach — compare Claude vs GPT-4o output on the same task','Use Background Agents for long-running tasks (test suite generation, large refactors) while you work on something else'],
+    pitfalls:['The free plan after the 2-week Pro trial has severely limited AI completions — most serious developers need Pro at $20/mo','Agent Mode can go off-rails on ambiguous instructions — always checkpoint with git before long autonomous runs','Background Agents are powerful but consume fast-request quota quickly on complex tasks'],
+    powerTip:'Add a `.cursorrules` file to your repo root with your code style, naming conventions, and forbidden patterns — every agent run and completion will respect these rules automatically.',
+    vs:[{name:'GitHub Copilot',edge:'Cursor\'s full codebase understanding and Agent Mode are fundamentally more powerful than Copilot\'s per-file completions; Copilot has better GitHub PR integration and IDE breadth'},{name:'Windsurf',edge:'Cursor has Arena Mode and more mature agent tooling; Windsurf (by Codeium) is a strong alternative at a lower price point with Cascade agent'}]
+  },
+  'github-copilot':{
+    verdict:'GitHub Copilot is the AI coding tool for developers who don\'t want to leave their existing IDE. It works in VS Code, JetBrains, Neovim, Visual Studio, and Xcode — no app switching required. The GitHub integration is unmatched: it reviews pull requests, suggests fixes, and lets you assign issues directly to its autonomous Coding Agent.',
+    whoFor:'Developers who live in JetBrains IDEs, use GitHub as their primary workflow, or need AI coding assistance that requires zero behavior change — it works inside the tools you already use.',
+    notFor:'Developers who need multi-file autonomous refactoring or full codebase understanding — Cursor\'s Agent Mode is significantly more capable for those tasks.',
+    idealWorkflow:['Enable the IDE extension in your existing editor — no setup beyond auth is required','Use inline completions for repetitive code patterns, then Copilot Chat for explaining and refactoring','Assign GitHub Issues to Copilot Coding Agent — it opens a draft PR with the fix for you to review','Use Copilot CLI (`gh copilot suggest`) for shell command help without leaving the terminal'],
+    pitfalls:['The free tier for most developers is limited — the $10/mo Individual plan is the minimum viable subscription','Copilot Coding Agent is still early-stage and works best on well-scoped, isolated bugs rather than architectural changes','Code suggestions can be confidently wrong on niche libraries or internal APIs the model hasn\'t seen'],
+    powerTip:'In the Copilot Chat sidebar, use `#file:` and `#selection:` references to ground the conversation in exactly the code you\'re working on — this dramatically improves suggestion relevance.',
+    vs:[{name:'Cursor',edge:'GitHub Copilot\'s IDE breadth and GitHub PR integration beat Cursor; Cursor\'s autonomous agent and codebase understanding are significantly deeper'},{name:'Windsurf',edge:'Copilot has GitHub-native features no other tool can match; Windsurf offers more generous completions on its free tier'}]
+  },
+  'perplexity':{
+    verdict:'Perplexity is the best AI for research that must be current and cited. Every answer includes inline source links — you can verify the claim before you use it. This makes it the right tool for fact-checking, competitive research, and any question where being wrong carries consequences. The free tier\'s unlimited basic search is a genuine differentiator.',
+    whoFor:'Researchers, journalists, marketers, and professionals who need real-time, cited answers — not a clever-sounding response that might be 18 months out of date.',
+    notFor:'Creative tasks, long-form writing, or anything that benefits from a model\'s own synthesis and reasoning depth. Perplexity retrieves and summarizes; it does not ideate.',
+    idealWorkflow:['Ask specific, factual questions rather than open-ended ones — the more precise the query, the better the source selection','Use the Finance Hub (Pro) for investment research — it pulls live pricing, filings, and analyst data','Create a Space for ongoing research projects — it maintains context across sessions and lets you add source documents','Switch to a reasoning model (o3 or Claude) within Perplexity Pro for complex multi-step analysis'],
+    pitfalls:['Perplexity is a retrieval tool — it can hallucinate when the underlying sources disagree or when it can\'t find good results','Pro search limits (300/day) sound generous but run out fast on intensive research days','Sources are sometimes behind paywalls, making verification difficult without a separate subscription'],
+    powerTip:'Append "include exact publication dates on all sources" to research prompts — this reveals when sources are outdated before you cite them.',
+    vs:[{name:'ChatGPT',edge:'Perplexity\'s real-time citations make every answer verifiable; ChatGPT\'s web search exists but sources are less consistently surfaced'},{name:'NotebookLM',edge:'Perplexity searches the live web; NotebookLM is grounded in documents you upload — use Perplexity for current events, NotebookLM for deep analysis of known sources'}]
+  },
+  'n8n':{
+    verdict:'n8n is the automation platform for technical teams that want genuine flexibility — not the guardrails of Zapier. Being open-source and self-hostable means you can run it inside your own infrastructure, store no data with third parties, and build workflows that are arbitrarily complex. The AI Agent node with LangChain and MCP support makes it the most capable open-source AI orchestration tool available.',
+    whoFor:'Developers, technical founders, and ops teams who need automation that goes beyond Zapier\'s row limits and Make\'s visual complexity — teams willing to write occasional JavaScript or Python for full control.',
+    notFor:'Non-technical users who want drag-and-drop with no code. Zapier or Make are faster to start with for business users. n8n requires comfort with APIs, JSON, and occasional debugging.',
+    idealWorkflow:['Self-host on a $6/mo VPS (DigitalOcean or Hetzner) for full data control and near-unlimited executions','Use the AI Agent node to chain Claude or GPT-4o with tool calls (web search, database writes, email sends)','Add MCP server support to connect agents to any tool that exposes an MCP interface','Build error-handling branches on every workflow — n8n makes it easy to catch failures and retry automatically'],
+    pitfalls:['Self-hosting requires server administration — updates, backups, and uptime are your responsibility','The cloud-hosted free trial is time-limited; the cloud Starter plan ($24/mo) has a 2,500 execution cap that fills quickly on busy workflows','Complex workflows with many branches can become visually overwhelming — good naming and documentation discipline is essential'],
+    powerTip:'Use the "Wait" node with a webhook resume to build human-in-the-loop workflows: the automation pauses, sends an email asking for approval, and only continues when someone clicks a link.',
+    vs:[{name:'Zapier',edge:'n8n\'s self-hosting, open-source code, and AI Agent nodes give far more power; Zapier has a larger app library and a lower learning curve'},{name:'Make (Integromat)',edge:'n8n\'s code nodes and agent support surpass Make for AI workflows; Make\'s visual interface is more beginner-friendly for non-developers'}]
+  },
+  'midjourney':{
+    verdict:'Midjourney produces the highest aesthetic quality of any AI image generator for commercial and creative work. V7 has closed most of the gap on photorealism while retaining the painterly quality that makes its outputs stand out. The web interface is now solid, but serious users still find Discord fastest for iteration. There is no free tier — every plan requires a paid subscription.',
+    whoFor:'Designers, marketers, art directors, and creators who need commercially usable images with strong aesthetic coherence — product art, concept illustrations, brand imagery, and editorial visuals.',
+    notFor:'Users who need free image generation (use DALL-E 3 via ChatGPT free tier or Canva AI), or those who need native design tool integration (use Adobe Firefly in Photoshop).',
+    idealWorkflow:['Use the web interface at midjourney.com for organized project management and visual exploration','Start with reference images (--sref) to anchor the visual direction, then iterate with style parameters','Use consistent character mode (--cref) for maintaining a character or person across multiple images','Inpaint specific regions to fix faces, hands, or backgrounds without regenerating the full image'],
+    pitfalls:['The 200 fast-GPU images on the Basic plan ($10/mo) evaporate quickly during active creative work — most users need Standard ($30/mo)','Midjourney struggles with precise text rendering in images — use Canva AI or Adobe Firefly for type-heavy designs','Image consistency across a campaign requires careful use of style and character references; it\'s not automatic'],
+    powerTip:'Use `--style raw` combined with a detailed photographic prompt to get clean, photo-realistic outputs that avoid Midjourney\'s signature painterly style when you need editorial realism.',
+    vs:[{name:'DALL-E 3 (ChatGPT)',edge:'Midjourney\'s aesthetic quality and stylistic coherence are superior; DALL-E 3 is free with ChatGPT and better for exact prompt following'},{name:'Adobe Firefly',edge:'Midjourney wins on artistic quality; Firefly wins on commercial IP safety and native Photoshop/Illustrator integration'}]
+  },
+  'elevenlabs':{
+    verdict:'ElevenLabs is the clear leader in AI voice synthesis — the gap between its output and competitors is audible. The voice cloning from one minute of audio is good enough for brand narration; the 29-language dubbing with lip sync is the most practical multilingual video localization tool available to independent creators. The free tier (10,000 characters/month) is enough to test and validate the output quality.',
+    whoFor:'Content creators producing YouTube videos, podcasts, or online courses who want consistent, professional narration; marketing teams dubbing video into multiple languages; developers building voice-powered applications.',
+    notFor:'Live conversational voice AI (ElevenLabs\' real-time latency is not suited for phone agents — use a specialized provider for that use case).',
+    idealWorkflow:['Clone your voice with a 1–3 minute clean recording — no background noise, natural speaking pace','Use the Dubbing Studio to localize existing videos: upload, select target languages, review and adjust timings','For audiobook production, use the Projects feature to manage chapters and maintain consistent voice settings','Integrate via API for dynamic text-to-speech in apps — the latency is low enough for on-demand generation'],
+    pitfalls:['Character limits can burn through faster than expected — 30,000 characters (~22 min of audio) on the $5/mo Starter plan is tight for podcast production','Cloned voices can sound slightly robotic on very fast or emotionally extreme speech — test edge cases before committing to a campaign','Commercial use requires Starter plan or above; the free tier\'s output cannot be monetized'],
+    powerTip:'Use the "Pronunciation Dictionary" to add custom pronunciations for brand names, technical terms, or proper nouns — this eliminates the most common cause of unnatural-sounding narration.',
+    vs:[{name:'OpenAI TTS',edge:'ElevenLabs\' voice cloning and multilingual dubbing are significantly more capable; OpenAI TTS is cheaper and sufficient for simple voice output without cloning'},{name:'HeyGen',edge:'ElevenLabs is the better audio-only voice tool; HeyGen pairs voice with avatar video for talking-head presentation — they\'re complementary, not competing'}]
+  },
+  'notebooklm':{
+    verdict:'NotebookLM is one of the few genuinely free AI tools with no meaningful limitation on its core feature. Upload up to 50 sources — PDFs, Docs, YouTube videos, web pages, audio — and every answer it gives is grounded exclusively in those sources with inline citations. This eliminates hallucination risk almost entirely and makes it the safest research tool for professional contexts.',
+    whoFor:'Researchers, students, lawyers, consultants, and anyone who needs to deeply understand a specific body of documents — not general knowledge, but your documents.',
+    notFor:'Users who need real-time information, web search, or answers beyond their uploaded sources. NotebookLM explicitly refuses to answer from general knowledge — this is a feature, not a limitation.',
+    idealWorkflow:['Create one Notebook per research project or document set — do not mix unrelated sources','After uploading, generate the automatic study guide or FAQ to get oriented before diving into specific questions','Use audio overviews to create a podcast-style briefing on your source material — useful for passive learning while commuting','For legal or compliance work, always verify citations — click through to the source section to confirm the exact passage'],
+    pitfalls:['50-source and 500,000-word-per-source limits mean very large document collections require splitting into multiple Notebooks','NotebookLM cannot retrieve information outside your uploaded sources — do not use it for questions about recent events or external data','Audio overviews can run 15–30 minutes and cannot be meaningfully edited — they are for passive listening, not precise delivery'],
+    powerTip:'Add a "meta-source" — a plain text document listing the key questions you need answered — as your first upload. NotebookLM will use this to frame its answers more precisely when you interact with the other sources.',
+    vs:[{name:'Perplexity',edge:'NotebookLM is fully grounded in your documents with zero hallucination risk; Perplexity searches the live web for current information'},{name:'Claude',edge:'NotebookLM\'s source-grounding and citation system are safer for professional research; Claude offers more creative synthesis and can reason beyond the documents provided'}]
+  },
+  'canva-ai':{
+    verdict:'Canva AI is the fastest route from idea to polished visual for non-designers. Magic Studio bundles image generation, background removal, AI copy, and presentation creation in one surface — no jumping between tools. The free tier is genuinely usable, and the template library means the gap between Canva output and professionally designed work is smaller than any other tool at this price.',
+    whoFor:'Non-designers who need professional-looking social content, presentations, and marketing materials quickly — small business owners, social media managers, educators, and solo content creators.',
+    notFor:'Professional designers who need precise control, layer masks, or print-ready CMYK output — use Adobe Creative Cloud. Also not suitable for photorealistic image generation (Midjourney is the better choice).',
+    idealWorkflow:['Set up a Brand Kit (Pro) first — upload your logo, brand colors, and fonts so every template auto-applies them','Use Magic Design to generate a full presentation from a prompt, then refine individual slides rather than building from scratch','Use Magic Write for social captions and short copy directly inside the design canvas — avoids switching to a separate writing tool','Use Resize and Magic Switch (Pro) to produce every social format (Instagram, LinkedIn, Twitter, email) from a single design'],
+    pitfalls:['The free tier includes AI image generation (50 uses/month) but lacks the Brand Kit and advanced Magic Studio tools — most consistent users need Pro at $15/mo','Canva AI\'s image generation lags behind Midjourney and DALL-E 3 for complex artistic compositions — stick to product mockups and flat design','Template over-use means your designs may look like other Canva users\' designs — heavy customization is required for brand differentiation'],
+    powerTip:'Use "Magic Grab" on existing images to isolate subjects from their backgrounds without using the separate Background Remover — it works inline inside the editor and saves significant time on product imagery.',
+    vs:[{name:'Adobe Express',edge:'Canva\'s template library and Magic Studio AI tools are broader; Adobe Express has better integration with Photoshop and Firefly\'s commercially safe AI'},{name:'Midjourney',edge:'Canva AI is the complete design tool with templates, text, and collaboration; Midjourney is strictly image generation but at significantly higher quality'}]
+  },
+  'lovable':{
+    verdict:'Lovable is the most accessible full-stack app builder available to non-developers. Unlike no-code tools that produce static sites, Lovable generates real React/TypeScript with a working Supabase backend — authentication, database, APIs. A non-technical founder can realistically ship an MVP in a day. The main constraint is that complex business logic still requires developer review.',
+    whoFor:'Non-technical founders, product managers, and designers who want to ship a real web application — not a mockup or a landing page, but a working product with user auth and a database.',
+    notFor:'Senior developers building production-scale systems requiring custom infrastructure. Lovable\'s generated code is good but benefits from review and may need refactoring at scale.',
+    idealWorkflow:['Describe the app in one paragraph: who uses it, what they do, what data it stores — the more specific, the better the initial generation','Connect Supabase immediately after first generation to unlock auth, database, and storage without writing a line of SQL','Iterate via chat: ask for specific UI changes, new features, or bug fixes conversationally rather than manually editing generated code','Sync to GitHub and review the generated code before deploying to production — treat Lovable as a very fast junior developer whose work needs review'],
+    pitfalls:['The 100 messages/month on Starter ($20/mo) can be consumed faster than expected on complex or iterative projects','Lovable sometimes introduces regressions when adding new features — maintain git checkpoints before major changes','Generated code patterns can be non-idiomatic for experienced developers; a code review pass is strongly recommended before production'],
+    powerTip:'Create a `PRODUCT.md` file in your project describing the full product spec, user roles, and data model. Reference it in every chat prompt as "follow PRODUCT.md" to keep all generations consistent with your original architecture.',
+    vs:[{name:'Cursor',edge:'Lovable is faster for non-developers to get a working app; Cursor gives experienced developers full code control and runs inside their existing IDE'},{name:'Bolt.new',edge:'Lovable\'s Supabase integration and project management are more mature; Bolt.new is faster to prototype but weaker on backend scaffolding'}]
+  },
+  'heygen':{
+    verdict:'HeyGen is the most practical AI avatar video tool for marketing and L&D teams. The combination of 300+ realistic avatars, instant voice cloning, and 40+ language dubbing with lip sync means you can produce localized video content at a scale that would require a full production team otherwise. The business case is strongest for teams producing repetitive talking-head content — product updates, training videos, sales outreach.',
+    whoFor:'Marketing teams creating product demo and explainer videos at scale, L&D teams producing training and onboarding content, and sales teams personalizing outreach video without appearing on camera.',
+    notFor:'Creators who need cinematic, emotionally resonant video storytelling — AI avatars cannot convey authentic human emotion. Use real footage for high-trust or high-stakes content.',
+    idealWorkflow:['Create a custom avatar of yourself or a brand spokesperson — this takes 2 minutes of clean footage and becomes the consistent face of your content','Use templates for recurring video formats (product update, feature announcement) to maintain visual consistency','Script first — HeyGen\'s quality is entirely dependent on the script quality, not the AI','Use the translation feature to dub existing recordings into additional languages before creating avatar versions'],
+    pitfalls:['15 credits on Creator ($29/mo) — roughly 15 minutes of video — runs out quickly during active production weeks','Avatar lip sync quality degrades on fast speech, accented voices, or technical terminology — test your script before full production','Highly realistic custom avatars can raise authenticity concerns with audiences — disclose AI use in marketing contexts'],
+    powerTip:'Use the "Script to Video" feature with a structured template (opening hook, key point, CTA) and let HeyGen match scenes to script sections — this is 3× faster than building scene by scene.',
+    vs:[{name:'Synthesia',edge:'HeyGen\'s avatar quality and voice cloning are slightly ahead for marketing use; Synthesia has stronger LMS/SCORM integration for enterprise L&D'},{name:'ElevenLabs',edge:'HeyGen adds avatar video to voice; ElevenLabs is the better pure-audio tool for voice cloning and podcast narration without video'}]
+  },
+  'runway':{
+    verdict:'Runway is the professional\'s AI video tool — Gen-3 Alpha produces the most controllable, cinematically usable AI video available for short-form production. The camera control system (pan, tilt, zoom, track) is the feature that separates it from competitors: you can direct a shot, not just generate one. The primary limitation is cost — credits disappear fast on 1080p output.',
+    whoFor:'Video professionals, filmmakers, and high-production content creators who need AI-generated footage that holds up in a professional edit — B-roll, VFX shots, scene extensions, and product visualizations.',
+    notFor:'Casual content creators who want quick social clips at low cost — Pika or CapCut\'s AI features are more economical. Runway\'s value is in professional-quality controllability, not volume.',
+    idealWorkflow:['Use image-to-video for the most controllable results — generate or source a strong still frame, then animate it with Motion Brush','Set camera movement first (Gen-3 camera controls), then guide subject motion with Motion Brush — this order produces the most coherent shots','Generate at 720p for drafts, then upscale the approved shot to 1080p — this preserves credits during iteration','Use Act-One to animate a character\'s facial expressions and lip sync from a reference video performance'],
+    pitfalls:['Credits are expensive: 50 credits = roughly 5 seconds of 1080p video. The $28/mo Pro plan (2,250 credits) produces roughly 225 seconds of final output','Gen-3 Alpha still struggles with extended human motion and hands over more than 4–5 seconds','Custom model training (on your brand\'s visual style) requires the Pro plan and significant time to tune'],
+    powerTip:'Use "Reference Style" to upload a mood board image that defines the visual look (film grain, color grade, lighting style) of your generation — this produces far more on-brand output than text style descriptions alone.',
+    vs:[{name:'Pika',edge:'Runway\'s camera control and output quality are more professional; Pika\'s Pikaffects and pricing are better for stylized social content'},{name:'Sora (ChatGPT)',edge:'Runway\'s camera controls and image-to-video precision are better for professional production; Sora generates longer coherent clips but with less directorial control'}]
+  },
+  'notion-ai':{
+    verdict:'Notion AI\'s key advantage is workspace-wide Q&A — you can ask a question and it searches across every page, database, and note you\'ve ever written to surface the answer. For teams that have invested heavily in Notion as their knowledge base, this transforms it from a storage tool into a retrieval tool. The $8/user/mo add-on is reasonable but requires an existing Notion habit to justify.',
+    whoFor:'Teams and individuals who already live in Notion for project management, documentation, and note-taking — and want AI that operates within that existing knowledge base rather than as a separate product.',
+    notFor:'New users who haven\'t yet built a Notion knowledge base — the AI\'s value scales directly with how much content you\'ve already created in Notion. If you\'re starting fresh, Claude or ChatGPT are more immediately useful.',
+    idealWorkflow:['Use Q&A to search your workspace before starting any new project — surface existing research and avoid duplicating work','Enable Autofill on key database properties (Status, Priority, Summary) to keep records updated without manual input','Use the Meeting Notes template with AI-generated action items — connect it to your calendar so it automatically creates a page for each meeting','Build a weekly review workflow: prompt Notion AI to summarize all pages updated in the last 7 days and list open action items'],
+    pitfalls:['Q&A quality degrades with a messy, poorly organized workspace — AI is only as good as the structure of your existing notes','Notion AI is an add-on at $8/user/mo on top of the base plan — the full cost for a team on Business plan is $24/user/mo ($16 + $8)','AI-generated content in Notion can confidently fabricate citations if asked questions outside the workspace — it does not have access to external knowledge'],
+    powerTip:'Create a "Master Context" page listing your current projects, team roles, and active priorities. Reference it in Notion AI prompts with "@" to ground every generation in your specific situation — this dramatically improves relevance.',
+    vs:[{name:'Coda AI',edge:'Notion AI\'s workspace breadth and template ecosystem are larger; Coda AI has stronger formula/automation capabilities for data-heavy docs'},{name:'Claude',edge:'Notion AI lives inside your existing workflow and can access your notes; Claude\'s reasoning and writing quality are significantly deeper for standalone tasks'}]
   }
 };
 
@@ -5855,6 +6025,39 @@ function buildBuilderSection(){
     return result;
   }
 
+  // ── Deep Profile modal ──────────────────────────────────────────
+  window.openDeepProfile=function(id){
+    var dp=null;
+    try{dp=DEEP_PROFILES[id];}catch(e){}
+    if(!dp) return;
+    var tool=null;
+    try{tool=TOOLS.find(function(t){return t.id===id;});}catch(e){}
+    var name=tool?tool.name:id;
+    var steps=dp.idealWorkflow.map(function(s,i){return '<li data-n="'+(i+1)+'">'+s+'</li>';}).join('');
+    var pitfalls=dp.pitfalls.map(function(p){return '<div class="dp-pitfall-item">⚠ '+p+'</div>';}).join('');
+    var vsItems=dp.vs.map(function(v){return '<div class="dp-vs-item"><div class="dp-vs-name">vs '+v.name+'</div><div class="dp-vs-edge">'+v.edge+'</div></div>';}).join('');
+    var html='<div class="dp-header">'
+      +'<div class="dp-header-left"><span class="dp-tool-name">'+name+'</span><span class="dp-badge">Deep Profile</span></div>'
+      +'<button class="dp-close" onclick="closeDeepProfile()">✕</button>'
+      +'</div>'
+      +'<div class="dp-body">'
+      +'<div><div class="dp-section-label">Verdict</div><div class="dp-verdict">'+dp.verdict+'</div></div>'
+      +'<div><div class="dp-section-label">Who it\'s for · Who should skip it</div><div class="dp-who-row"><div class="dp-who-card"><div class="dp-who-label for">✓ For you if</div><p class="dp-who-text">'+dp.whoFor+'</p></div><div class="dp-who-card"><div class="dp-who-label notfor">✗ Skip if</div><p class="dp-who-text">'+dp.notFor+'</p></div></div></div>'
+      +'<div><div class="dp-section-label">Ideal workflow</div><ul class="dp-step-list">'+steps+'</ul></div>'
+      +'<div><div class="dp-section-label">Watch out for</div><div class="dp-pitfall-list">'+pitfalls+'</div></div>'
+      +'<div><div class="dp-section-label">Power tip</div><div class="dp-power-tip">💡 '+dp.powerTip+'</div></div>'
+      +'<div><div class="dp-section-label">How it compares</div><div class="dp-vs-list">'+vsItems+'</div></div>'
+      +'</div>';
+    var modal=document.getElementById('dp-modal');
+    var overlay=document.getElementById('dp-overlay');
+    if(modal) modal.innerHTML=html;
+    if(overlay){overlay.style.display='flex';document.body.style.overflow='hidden';}
+  };
+  window.closeDeepProfile=function(){
+    var overlay=document.getElementById('dp-overlay');
+    if(overlay){overlay.style.display='none';document.body.style.overflow='';}
+  };
+
   window.submitEmailCapture=function(inputId,btnId,hintId,context){
     var FORMSPREE_ID='xojplgyo';
     var input=document.getElementById(inputId);
@@ -5926,10 +6129,9 @@ function buildBuilderSection(){
       session.step=3;
       try{session.mcpConfig=buildMCPConfig(stack);}catch(e){}
       window._advisorSession=session;
-      // Auto-open advisor and show step 3
-      const openBtn=document.getElementById('adv-open-btn')||document.querySelector('[onclick*="openAdvisor"]');
-      if(openBtn) openBtn.click();
-      setTimeout(function(){try{window._renderStep3();}catch(e){}},150);
+      // Auto-open advisor and jump straight to the shared stack
+      try{openAdvisor();}catch(e){}
+      setTimeout(function(){try{renderStep3();}catch(e){}},150);
     }catch(e){}
   }
 
@@ -6691,6 +6893,11 @@ Ask me anything:\n• "Is there a free version of [tool]?"\n• "How do I connec
 })();
 })();
 </script>
+
+<!-- DEEP PROFILE MODAL -->
+<div id="dp-overlay" class="dp-overlay" style="display:none" onclick="if(event.target===this)closeDeepProfile()">
+  <div id="dp-modal" class="dp-modal"></div>
+</div>
 
 <!-- PRO GATE MODAL -->
 <div id="pro-gate-overlay" class="pro-gate-overlay" style="display:none" onclick="if(event.target===this)closeProGate()">
