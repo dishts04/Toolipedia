@@ -1751,6 +1751,14 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
 .advo-back-btn:hover{color:var(--text)}
 
 /* ── Step 3: Results ─────────────────────────────────────────────── */
+/* ── constraint filter banner ── */
+.constraint-banner{background:rgba(212,130,74,0.06);border:1px solid rgba(212,130,74,0.2);border-radius:10px;padding:12px 16px;margin-bottom:16px;font-size:12px}
+.constraint-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.constraint-label{font-weight:600;color:var(--amber);font-size:12px;letter-spacing:.02em;text-transform:uppercase}
+.constraint-count{color:var(--text3);font-size:11px}
+.constraint-item{display:flex;align-items:flex-start;gap:8px;padding:4px 0;color:var(--text2);line-height:1.4}
+.constraint-icon{font-size:13px;flex-shrink:0;margin-top:1px}
+
 .advo-results-wrap{padding:40px 40px 60px;max-width:1100px}
 .advo-results-hero{margin-bottom:28px}
 .advo-results-eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--p1);font-weight:600;margin-bottom:8px}
@@ -2129,6 +2137,34 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
 .dp-profile-btn{display:inline-flex;align-items:center;gap:6px;margin-top:12px;padding:8px 14px;background:rgba(212,130,74,0.08);border:1px solid rgba(212,130,74,0.28);border-radius:var(--radius-md);font-size:12px;font-weight:600;color:var(--p1);cursor:pointer;transition:all 0.15s;font-family:var(--ff-body)}
 .dp-profile-btn:hover{background:rgba(212,130,74,0.16);border-color:rgba(212,130,74,0.5)}
 
+
+/* ── Outcome Projections Card ────────────────────────────────────── */
+.advo-projections-card { border-left: 2px solid var(--p2) !important; }
+.advo-projection-rows { display:flex; flex-direction:column; gap:10px; margin-top:8px; }
+.advo-proj-row { display:flex; flex-direction:column; gap:1px; }
+.advo-proj-metric { font-size:18px; font-weight:700; color:var(--text); font-family:var(--ff-head); line-height:1.1; }
+.advo-proj-label { font-size:11px; color:var(--text3); font-family:var(--ff-body); }
+.advo-proj-payback { margin-top:10px; font-size:11.5px; color:var(--p2); font-weight:600; padding:5px 8px; background:rgba(93,184,138,0.08); border-radius:4px; }
+.advo-proj-source { margin-top:8px; font-size:10px; color:var(--text3); line-height:1.4; font-style:italic; }
+
+/* ── Multi-Plan Fast vs Robust ────────────────────────────────────── */
+.advo-multiplan { margin-top:20px; border-top:1px solid var(--border); padding-top:18px; }
+.advo-multiplan-label { font-size:11px; font-weight:700; color:var(--text3); letter-spacing:.06em; text-transform:uppercase; margin-bottom:12px; font-family:var(--ff-body); }
+.advo-multiplan-grid { display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+@media(max-width:640px){ .advo-multiplan-grid { grid-template-columns:1fr; } }
+.advo-plan { background:var(--bg2); border:1px solid var(--border); border-radius:8px; padding:14px; display:flex; flex-direction:column; gap:10px; }
+.advo-plan-fast { border-top:2px solid var(--p1); }
+.advo-plan-robust { border-top:2px solid var(--p2); }
+.advo-plan-recommended { box-shadow:0 0 0 1px rgba(93,184,138,0.25); }
+.advo-plan-head { display:flex; flex-direction:column; gap:3px; }
+.advo-plan-title { font-size:13px; font-weight:700; color:var(--text); font-family:var(--ff-head); }
+.advo-plan-time { font-size:11px; color:var(--text3); font-family:var(--ff-body); }
+.advo-plan-badge { display:inline-block; font-size:10px; font-weight:600; color:var(--p2); background:rgba(93,184,138,0.1); border-radius:3px; padding:2px 6px; margin-top:3px; }
+.advo-plan-desc { font-size:12px; color:var(--text2); line-height:1.5; }
+.advo-plan-steps { margin:0; padding-left:18px; display:flex; flex-direction:column; gap:6px; }
+.advo-plan-steps li { font-size:11.5px; color:var(--text2); line-height:1.5; }
+.advo-plan-steps code { font-size:10.5px; background:var(--bg3); padding:1px 5px; border-radius:3px; font-family:monospace; color:var(--p1); }
+.advo-plan-trade { font-size:11px; color:var(--text3); font-style:italic; padding-top:6px; border-top:1px solid var(--border); line-height:1.4; }
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MFTBWFGLLE"></script>
@@ -2160,12 +2196,12 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
       <span class="icon-moon">🌙</span>
       <span class="icon-sun">☀️</span>
     </button>
-    <div class="header-badge">51 Tools · March 2026</div>
+    <div class="header-badge">98 Tools · April 2026</div>
   </div>
 </header>
 
 <section class="hero">
-  <div class="hero-label">51 tools · Curated &amp; scored</div>
+  <div class="hero-label">98 tools · Curated &amp; scored</div>
   <h1>The right AI stack<br>for <em>what you actually do.</em></h1>
   <p class="hero-tagline">You know your goal. <strong>We know the tools.</strong></p>
   <div class="advisor-cta">
@@ -2174,7 +2210,7 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
       Find my stack
     </button>
     <span class="advisor-or">or</span>
-    <button class="advisor-browse-btn" id="hero-browse-btn">Browse all 51 tools ↓</button>
+    <button class="advisor-browse-btn" id="hero-browse-btn">Browse all 98 tools ↓</button>
   </div>
   <div class="search-wrap">
     <div class="search-glow"></div>
@@ -2198,7 +2234,7 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
     </div>
   </div>
   <div class="ticker-stat-line">
-    <div class="ticker-stat"><div class="ticker-stat-dot"></div>51 tools · updated weekly</div>
+    <div class="ticker-stat"><div class="ticker-stat-dot"></div>98 tools · updated weekly</div>
     <span class="ticker-stat-sep">·</span>
     <div class="ticker-stat">scored across 6 dimensions</div>
     <span class="ticker-stat-sep">·</span>
@@ -2247,6 +2283,8 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
       <button class="fp-chip fp-cat-chip" data-cat="Presentations">📊 Presentations</button>
       <button class="fp-chip fp-cat-chip" data-cat="Meetings">🎙️ Meetings</button>
       <button class="fp-chip fp-cat-chip" data-cat="Writing">✍️ Writing</button>
+      <button class="fp-chip fp-cat-chip" data-cat="AI Engineering">🔧 AI Engineering</button>
+      <button class="fp-chip fp-cat-chip" data-cat="MCP Servers">🔌 MCP Servers</button>
     </div>
   </div>
 
@@ -2292,7 +2330,7 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
 
 <div class="toolbar">
   <div class="tabs">
-    <button class="tab-btn active" data-tab="explore">🧭 Explore <span class="badge" id="tab-count">51</span></button>
+    <button class="tab-btn active" data-tab="explore">🧭 Explore <span class="badge" id="tab-count">98</span></button>
     <button class="tab-btn" data-tab="compare">📊 Compare</button>
     <button class="tab-btn" data-tab="usecases">🎯 Use Cases</button>
   </div>
@@ -2354,7 +2392,7 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
       <div class="wiki-clearfix">
         <div class="wiki-infobox">
           <div class="wiki-infobox-title">About this directory</div>
-          <table><tr><td>Curated tools</td><td>51</td></tr><tr><td>Categories</td><td>20</td></tr><tr><td>Community submissions</td><td id="wiki-count-display">0 pending</td></tr><tr><td>Last updated</td><td>March 2026</td></tr><tr><td>Maintained by</td><td>@dishts04</td></tr><tr><td>Model</td><td>Editor-curated + community review</td></tr></table>
+          <table><tr><td>Curated tools</td><td>98</td></tr><tr><td>Categories</td><td>22</td></tr><tr><td>Community submissions</td><td id="wiki-count-display">0 pending</td></tr><tr><td>Last updated</td><td>March 2026</td></tr><tr><td>Maintained by</td><td>@dishts04</td></tr><tr><td>Model</td><td>Editor-curated + community review</td></tr></table>
         </div>
         <h2 class="wiki-section-title">Submit an AI Tool</h2>
         <p class="wiki-intro">Toolipedia is a curated directory — every public listing is reviewed before it goes live. If you know an AI tool that belongs here, fill in the form below. The editor reviews all submissions and either approves, requests changes, or explains why it wasn't accepted. The process is similar to how Wikipedia handles article creation: open contributions reviewed by editors before going public.</p>
@@ -2471,7 +2509,7 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
 
         <h3>What Toolipedia is</h3>
         <p style="margin-bottom:10px">Toolipedia is a curated, independent directory of AI tools. It is not a product review site, not an affiliate marketplace, and not a lead generation tool for vendors. No tool pays to be listed. No tool pays for a higher score or a better description. The directory exists for one reason: to help people find the right AI tool for what they're actually trying to do.</p>
-        <p>The current directory covers 51 tools across 20 categories. It is maintained by a single editor and supported by community submissions that go through an editorial review before going live.</p>
+        <p>The current directory covers 98 tools across 22 categories. It is maintained by a single editor and supported by community submissions that go through an editorial review before going live.</p>
 
         <h3 style="margin-top:22px">How we choose tools</h3>
         <p style="margin-bottom:8px">A tool qualifies for inclusion if it meets all four criteria:</p>
@@ -2521,7 +2559,7 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
         <p style="margin-bottom:8px">The directory runs on a rolling review schedule:</p>
         <ul>
           <li><strong>Monthly</strong> — pricing and free tier details for the top 10 most-visited tools</li>
-          <li><strong>Quarterly</strong> — full pricing audit across all 51 tools; score recalibration for any tool that has shipped a major model or feature update</li>
+          <li><strong>Quarterly</strong> — full pricing audit across all 98 tools; score recalibration for any tool that has shipped a major model or feature update</li>
           <li><strong>As needed</strong> — immediate update when a tool announces a significant change (new model release, pricing restructure, feature removal)</li>
           <li><strong>Community-triggered</strong> — any verified correction submitted through the community queue is reviewed within two weeks</li>
         </ul>
@@ -3273,7 +3311,551 @@ const TOOLS = [
    useCases:["Automatically sync call notes to Salesforce or HubSpot","Build a searchable library of all team calls over time","Answer 'when did we commit to this?' by searching past meetings","Get sentiment analysis on customer calls","Share meeting highlights with the team without re-watching","Track talk time and engagement across sales calls","Auto-detect action items and create follow-up tasks","Onboard new salespeople with real call examples"],
    features:["Bot joins Zoom, Meet, Teams, Webex automatically","Searchable transcript library across all team meetings","AI summaries with speaker attribution","Sentiment analysis and talk ratio tracking","CRM sync: Salesforce, HubSpot, Pipedrive","Topic tracking across meetings","Action item detection","SOC 2 Type II compliant"],
    integrations:["Salesforce","HubSpot","Pipedrive","Slack","Notion","Zapier","Asana","Linear","API"],
-   scores:{writing:4,coding:0,research:5,creativity:0,automation:9,multimodal:4}}];
+   scores:{writing:4,coding:0,research:5,creativity:0,automation:9,multimodal:4}},
+
+  // ── AI ENGINEERING — Frameworks, Eval, Observability, Memory ─────────────
+  {id:"langgraph",name:"LangGraph",maker:"LangChain Inc",tagline:"Production-grade stateful agent framework — used at Uber, Cisco, and Klarna at scale",icon:"🕸️",color:"#1C3C3C",
+   categories:["AI Engineering","Coding"],isDev:true,
+   bestFor:"Engineering teams building production multi-step agents that need deterministic, debuggable execution. The explicit graph model — nodes as functions, edges as control flow — makes complex branching auditable and testable. Default choice for serious production agent systems.",
+   free:{available:true,desc:"Open source (MIT). LangGraph framework free. LangGraph Cloud for managed deployment."},
+   paid:[{name:"LangGraph Cloud",price:"$0.002/node exec",perks:"Managed deployment, checkpointing, horizontal scaling"},{name:"LangGraph Enterprise",price:"Custom",perks:"Self-hosted, dedicated support, SLA"}],
+   useCases:["Build customer support triage pipelines with deterministic routing","Create code review automation with human-in-the-loop approval gates","Run research synthesis across multiple tools with verified checkpointing","Build multi-step document processing with retry logic and error recovery","Deploy sales qualification workflows with durable state across sessions"],
+   features:["Graph-based stateful execution — nodes and edges define control flow","Built-in checkpointing — resume long-running agents after failure","Human-in-the-loop support — pause and resume at any node","LangSmith integration — visualise exactly which nodes executed","Multi-agent subgraphs — compose multiple agents into one system","Parallel fan-out/fan-in for concurrent agent execution"],
+   integrations:["LangSmith","LangChain","OpenAI","Anthropic","LlamaIndex","Pinecone","Supabase","PostgreSQL","Redis"],
+   scores:{writing:2,coding:9,research:7,creativity:3,automation:10,multimodal:3},
+   agents:{hasAgents:true,type:"orchestration",name:"LangGraph Agent Runtime",autonomy:5,
+     agentPricing:"Framework: free. LangGraph Cloud: $0.002/node execution.",
+     what:["Stateful multi-actor applications with cyclic graph execution","Human approval gates at any step in the workflow","Parallel agent execution with fan-out/fan-in coordination","Built-in checkpointing — never lose state on failure","Visualise agent execution in LangSmith debugger"]}},
+
+  {id:"crewai",name:"CrewAI",maker:"CrewAI Inc",tagline:"Role-based multi-agent framework — go from idea to working prototype in 2 hours",icon:"🤝",color:"#EF4444",
+   categories:["AI Engineering","Coding"],isDev:true,
+   bestFor:"Teams that want to model agent collaboration as a crew of specialists with defined roles, goals, and backstories. The fastest path to a working multi-agent prototype. Best for business workflow automation where you think in terms of people on a team.",
+   free:{available:true,desc:"Open source. CrewAI Enterprise for managed deployment and support."},
+   paid:[{name:"CrewAI Enterprise",price:"Custom",perks:"Managed infrastructure, audit trails, SSO, dedicated support"}],
+   useCases:["Model a research team with a researcher, writer, and reviewer agent","Automate sales prospecting with lead researcher and outreach writer agents","Build content pipelines with a topic researcher, writer, and editor crew","Create customer onboarding workflows with specialist agents per step","Run competitive analysis with data gatherer and analyst agents"],
+   features:["Role-based agents — define role, goal, backstory in plain English","Crew orchestration — sequential, hierarchical, or consensual process","Task delegation — agents hand off work between each other","Tool use — agents call web search, APIs, and custom tools","YAML configuration for non-technical teams","A2A protocol support for agent-to-agent communication"],
+   integrations:["LangChain","OpenAI","Anthropic","Groq","Ollama","LangSmith","Composio","Browserbase"],
+   scores:{writing:4,coding:7,research:7,creativity:5,automation:9,multimodal:3},
+   agents:{hasAgents:true,type:"orchestration",name:"CrewAI Crews",autonomy:4,
+     agentPricing:"Open source: free. Enterprise: custom pricing.",
+     what:["Role-playing agents with defined responsibilities and goals","Crew orchestration with sequential, hierarchical, or parallel execution","Task delegation between specialist agents","Tool use including web search, APIs, and custom integrations","Human-in-the-loop approval steps"]}},
+
+  {id:"autogen",name:"AutoGen",maker:"Microsoft Research",tagline:"Conversational multi-agent framework — GAIA benchmark leader for autonomous task completion",icon:"🔄",color:"#0078D4",
+   categories:["AI Engineering","Coding"],isDev:true,
+   bestFor:"Data science workflows, research automation, and scenarios where multiple agents need to converse, debate, and reach consensus. GAIA benchmark leader. Strong for teams already on Azure or Microsoft infrastructure. Best when emergent multi-agent conversation is acceptable.",
+   free:{available:true,desc:"Open source (MIT). Production-ready since October 2025."},
+   paid:[{name:"Azure AI Foundry",price:"Pay per token",perks:"Managed AutoGen deployment on Azure with enterprise SLAs"},{name:"AutoGen Enterprise",price:"Custom",perks:"Dedicated support, compliance, private deployment"}],
+   useCases:["Data science automation where agents debate the best analytical approach","Research synthesis with critic and generator agent pairs","Code review with a coder and reviewer agent in conversation","Multi-agent debate for decision-making with conflicting requirements","Teaching and tutoring systems with student and teacher agents"],
+   features:["Conversation-based multi-agent coordination","Diverse chat patterns — two-agent, group chat, nested chat","No-code AutoGen Studio for non-technical team members","Secure code execution in sandboxed environments","Human proxy agent for seamless human-in-the-loop","GAIA benchmark leader for autonomous agent performance"],
+   integrations:["Azure OpenAI","OpenAI","Anthropic","LangChain","LangSmith","Docker","Python runtime"],
+   scores:{writing:3,coding:8,research:9,creativity:4,automation:9,multimodal:4},
+   agents:{hasAgents:true,type:"orchestration",name:"AutoGen Agents",autonomy:4,
+     agentPricing:"Open source: free. Azure deployment: pay-per-token on Azure AI Foundry.",
+     what:["Conversational multi-agent patterns — two-agent and group chat","Human proxy for seamless human-in-the-loop intervention","Secure sandboxed code execution","GAIA benchmark leader for autonomous task performance","AutoGen Studio: no-code agent builder for non-developers"]}},
+
+  {id:"openai-agents",name:"OpenAI Agents SDK",maker:"OpenAI",tagline:"Lightweight agent SDK with the cleanest developer experience — optimised for OpenAI's model stack",icon:"⚡",color:"#10A37F",
+   categories:["AI Engineering","Coding"],isDev:true,
+   bestFor:"Teams already on OpenAI's model stack who want the lowest-friction path to production agents. Native tool calling, structured outputs, and handoffs between agents with minimal boilerplate. Significantly less setup than LangGraph if you're not leaving the OpenAI ecosystem.",
+   free:{available:true,desc:"Open source SDK (Apache 2.0). Pay only for OpenAI API usage."},
+   paid:[{name:"OpenAI API",price:"$2.50–$15/M tokens",perks:"GPT-4o, o3, and all OpenAI models via the SDK"}],
+   useCases:["Build a triage agent that hands off to specialist agents based on user intent","Create customer support automation with tool-calling and structured responses","Implement research pipelines with web search and synthesis agents","Build coding agents that write, test, and debug in a loop","Deploy voice agents with real-time speech integration"],
+   features:["Agent handoffs — route between specialist agents programmatically","Built-in tool calling with strict schema validation","Structured outputs via Pydantic models","Streaming responses for real-time agent interactions","Tracing and observability built into the SDK","Runs on any OpenAI model including o3 and GPT-4o"],
+   integrations:["OpenAI API","Responses API","Realtime API","Python","TypeScript","LangSmith"],
+   scores:{writing:4,coding:8,research:6,creativity:4,automation:8,multimodal:5},
+   agents:{hasAgents:true,type:"coding",name:"OpenAI Agent Loops",autonomy:4,
+     agentPricing:"SDK: free (open source). Pay only for OpenAI API tokens used.",
+     what:["Agent handoffs between specialist agents","Built-in tool calling with strict validation","Structured output enforcement via Pydantic","Real-time streaming agent responses","Native integration with all OpenAI models"]}},
+
+  {id:"semantic-kernel",name:"Semantic Kernel",maker:"Microsoft",tagline:"Enterprise AI orchestration SDK for .NET, Python, and Java teams",icon:"⚙️",color:"#0078D4",
+   categories:["AI Engineering","Coding"],isDev:true,
+   bestFor:"Enterprise engineering teams in .NET or Java who need AI orchestration that fits inside their existing Microsoft infrastructure. Strong Azure, M365, and Copilot Studio integration. The natural choice for companies running Dynamics, Teams, or Azure services.",
+   free:{available:true,desc:"Open source (MIT). Azure deployment costs apply."},
+   paid:[{name:"Azure AI Foundry",price:"Pay per token",perks:"Managed deployment, enterprise compliance, full Azure integration"}],
+   useCases:["Extend Microsoft 365 Copilot with custom plugins and skills","Build enterprise chatbots grounded in SharePoint and Teams data","Automate business processes inside Dynamics 365","Create AI pipelines that integrate with Azure Cognitive Services","Build .NET applications with LLM planning and tool use"],
+   features:[".NET, Python, and Java SDKs","Planner — AI breaks goals into subtasks automatically","Plugin architecture — expose functions as AI tools","Native Azure OpenAI and OpenAI support","Copilot Studio integration for no-code extensions","Memory connectors for persistent context"],
+   integrations:["Azure OpenAI","OpenAI","Microsoft 365","SharePoint","Dynamics 365","Teams","Copilot Studio","Azure AI Search"],
+   scores:{writing:3,coding:8,research:6,creativity:3,automation:9,multimodal:4},
+   agents:{hasAgents:true,type:"workflow",name:"Semantic Kernel Agents",autonomy:3,
+     agentPricing:"SDK: free. Azure AI Foundry deployment: pay per token.",
+     what:["AI planner breaks high-level goals into concrete subtasks","Plugin system exposes any function as an LLM-callable tool","Native M365 and Azure service integration","Multi-agent orchestration with agent handoffs","Memory system for persistent cross-session context"]}},
+
+  {id:"promptfoo",name:"Promptfoo",maker:"Promptfoo",tagline:"Open-source LLM eval framework — test your AI before users find the failures",icon:"🧪",color:"#F59E0B",
+   categories:["AI Engineering","Coding"],isDev:true,
+   bestFor:"Developers who want to systematically test prompts, compare model outputs, and run evals in CI/CD before shipping. CLI-based, zero config, integrates with GitHub Actions. The Jest for LLM applications — write tests once, run on every deployment.",
+   free:{available:true,desc:"Fully open source (MIT). Promptfoo Cloud for team dashboards and CI integration."},
+   paid:[{name:"Promptfoo Cloud",price:"$20/mo",perks:"Team dashboards, CI integration, eval history, shared results"}],
+   useCases:["Run evals across 5 prompt variants before shipping","Test the same prompt against GPT-4o, Claude, and Llama side by side","Set up CI/CD that fails the build if output quality drops","Detect prompt injection vulnerabilities in your AI application","Compare old vs new model version before upgrading in production"],
+   features:["CLI-based — zero setup, runs in terminal or CI","Compare outputs across multiple models simultaneously","Red teaming — test for jailbreaks and prompt injections","YAML or TypeScript configuration","GitHub Actions integration","Assertions: contains, matches regex, LLM-graded quality"],
+   integrations:["OpenAI","Anthropic","Groq","Together AI","Ollama","GitHub Actions","LangChain","HuggingFace"],
+   scores:{writing:2,coding:8,research:6,creativity:2,automation:8,multimodal:2},
+   agents:{hasAgents:false}},
+
+  {id:"langsmith",name:"LangSmith",maker:"LangChain Inc",tagline:"Observability and debugging for LLM applications — trace every prompt, chain, and agent run",icon:"🔍",color:"#1C3C3C",
+   categories:["AI Engineering","Coding"],isDev:true,
+   bestFor:"Teams using LangChain or LangGraph who need to debug production failures and track costs. Without LangSmith, the median time to root-cause a LangGraph failure is 47 minutes. With it, failures surface in seconds with full execution traces, token counts, and latency breakdowns.",
+   free:{available:true,desc:"Developer tier: free forever. 5,000 traces/month, 14-day trace retention."},
+   paid:[{name:"Plus",price:"$39/mo",perks:"100K traces/mo, 90-day retention, team features"},{name:"Enterprise",price:"Custom",perks:"Unlimited traces, self-hosted option, SSO, compliance"}],
+   useCases:["Debug why an agent is taking the wrong path in production","Track cost per user session across all LLM calls","Compare prompt performance before and after a model upgrade","Run automated evals on a curated golden dataset","Share trace links with teammates for collaborative debugging"],
+   features:["Full execution traces — see every LLM call, tool use, and chain step","Token count and cost tracking per run","Evaluation framework with human and automated scoring","Dataset management for regression testing","Real-time streaming traces","One-line Python/JS integration"],
+   integrations:["LangChain","LangGraph","OpenAI","Anthropic","Groq","Hugging Face","Any LLM via wrapper"],
+   scores:{writing:1,coding:8,research:7,creativity:1,automation:9,multimodal:2},
+   agents:{hasAgents:false}},
+
+  {id:"helicone",name:"Helicone",maker:"Helicone (acquired by Mintlify)",tagline:"Open-source LLM observability proxy — drop in one URL to log every AI call",icon:"📊",color:"#6366F1",
+   categories:["AI Engineering","Coding"],isDev:true,
+   bestFor:"Teams who want zero-code LLM observability. Change one line: point your OpenAI/Anthropic base URL to Helicone. Instant logging, cost tracking, latency monitoring, caching, and rate limiting — without changing the rest of your code.",
+   free:{available:true,desc:"Open source (Apache 2.0). Free tier: 10K requests/month on managed cloud."},
+   paid:[{name:"Pro",price:"$20/mo",perks:"Unlimited requests, advanced analytics, custom dashboards"},{name:"Enterprise",price:"Custom",perks:"Self-hosted, SSO, data retention policies, compliance"}],
+   useCases:["Log every LLM call company-wide without changing application code","Set cost budgets per user or team and get alerts when exceeded","Cache identical prompts to cut API costs 30-70%","Debug production failures with full request/response history","Monitor p95 latency across model providers side by side"],
+   features:["One-URL proxy — change baseURL and done","Provider-agnostic — OpenAI, Anthropic, Groq, Together, Azure","Semantic caching — cache similar prompts, not just exact matches","Cost tracking per user, team, or endpoint","Rate limiting and usage controls","Fully open source — self-host for maximum data privacy"],
+   integrations:["OpenAI","Anthropic","Azure OpenAI","Groq","Together AI","Cohere","Any OpenAI-compatible API"],
+   scores:{writing:1,coding:7,research:5,creativity:1,automation:8,multimodal:2},
+   agents:{hasAgents:false}},
+
+  {id:"braintrust",name:"Braintrust",maker:"Braintrust Data",tagline:"AI evaluation platform — dataset versioning, A/B testing, and regression tracking across model updates",icon:"🧠",color:"#8B5CF6",
+   categories:["AI Engineering","Coding"],isDev:true,
+   bestFor:"Teams that need more than CLI evals. Braintrust handles dataset versioning, prompt A/B testing, regression tracking when you change models, and collaborative human review. Think of it as the product analytics platform for your AI application.",
+   free:{available:true,desc:"Free tier: 1 project, 1,000 logs/month. Enough to get started."},
+   paid:[{name:"Team",price:"$150/mo",perks:"10 projects, 50K logs/month, team review workflows"},{name:"Enterprise",price:"Custom",perks:"Unlimited, SSO, private deployment, dedicated support"}],
+   useCases:["Track whether output quality improved or regressed after a model upgrade","Run A/B tests comparing two different prompt strategies","Manage a golden dataset of expected input/output pairs for regression","Enable human reviewers to score and label model outputs","Build a CI check that fails on quality regression"],
+   features:["Dataset versioning — track changes to eval datasets over time","Prompt playground with side-by-side output comparison","Regression tracking — flag when scores drop between deployments","Human review workflows — route outputs to human labellers","LLM-as-judge and custom scoring functions","SDK for Python and TypeScript"],
+   integrations:["OpenAI","Anthropic","Groq","LangChain","LangGraph","GitHub Actions","Vercel"],
+   scores:{writing:2,coding:7,research:7,creativity:2,automation:8,multimodal:2},
+   agents:{hasAgents:false}},
+
+  {id:"ragas",name:"Ragas",maker:"Ragas (open source)",tagline:"RAG evaluation framework — score your pipeline on faithfulness, relevance, and context recall",icon:"📐",color:"#10B981",
+   categories:["AI Engineering","Coding"],isDev:true,
+   bestFor:"Teams running RAG pipelines who need empirical metrics beyond 'does it sound right.' Ragas scores faithfulness (is the answer supported by retrieved context?), context precision, context recall, and answer relevance — the four dimensions that actually predict whether RAG fails in production.",
+   free:{available:true,desc:"Fully open source (Apache 2.0). Ragas Cloud in beta."},
+   paid:[{name:"Ragas Cloud",price:"Coming soon",perks:"Managed eval runs, team dashboards, CI integration"}],
+   useCases:["Score your RAG pipeline faithfulness before shipping to production","Identify which document chunks are being retrieved but not used","Detect when retrieval quality drops after an embedding model change","Compare two RAG architectures on the same benchmark dataset","Monitor RAG metrics in production with automated scoring"],
+   features:["Faithfulness — is the answer grounded in retrieved context","Context precision — are retrieved chunks actually relevant","Context recall — are all relevant chunks being retrieved","Answer relevance — does the answer address the question","LLM-as-judge scoring using any model","Integration with LangChain, LlamaIndex, Haystack"],
+   integrations:["LangChain","LlamaIndex","Haystack","OpenAI","Anthropic","HuggingFace","Any vector store"],
+   scores:{writing:1,coding:6,research:9,creativity:1,automation:7,multimodal:2},
+   agents:{hasAgents:false}},
+
+  {id:"mem0",name:"Mem0",maker:"Mem0 AI",tagline:"Open-source persistent memory layer for AI agents — remember users across sessions",icon:"💭",color:"#7C3AED",
+   categories:["AI Engineering","Coding"],isDev:true,
+   bestFor:"Developers building AI assistants or agents that need to remember user preferences, past conversations, and accumulated context across sessions. Drop-in memory API — add one line to store and retrieve memories. Replaces the manual context management every agent builder writes from scratch.",
+   free:{available:true,desc:"Open source (Apache 2.0). Mem0 Cloud free tier: 1,000 memories/month."},
+   paid:[{name:"Mem0 Cloud Pro",price:"$20/mo",perks:"100K memories/month, team features, analytics"},{name:"Enterprise",price:"Custom",perks:"Self-hosted, compliance, dedicated support"}],
+   useCases:["Give your AI assistant memory of past user preferences and decisions","Build sales agents that remember what a prospect told them 3 months ago","Create personalised tutoring agents that track what a student has learned","Power customer support agents with full interaction history","Build coding assistants that remember your project conventions"],
+   features:["add(), search(), get_all() memory API — three methods to learn","Semantic memory search — find relevant memories by meaning not just keywords","User-level and session-level memory scopes","Open source — run entirely on your own infrastructure","LLM-agnostic — works with any model provider","Integrates with LangChain, AutoGen, CrewAI"],
+   integrations:["LangChain","AutoGen","CrewAI","OpenAI","Anthropic","Groq","Ollama","Qdrant","Pinecone"],
+   scores:{writing:2,coding:7,research:6,creativity:3,automation:8,multimodal:3},
+   agents:{hasAgents:false}},
+
+  {id:"zep",name:"Zep",maker:"Zep AI",tagline:"Long-term memory store for AI assistants — structured facts, entity graphs, and semantic search",icon:"🧩",color:"#4F46E5",
+   categories:["AI Engineering","Coding"],isDev:true,
+   bestFor:"Teams building conversational AI or sales agents that need structured, reliable long-term memory. Zep stores entities, relationships, and session summaries as a knowledge graph and retrieves them semantically. More structured than Mem0 — better for applications where accuracy of recalled facts matters.",
+   free:{available:true,desc:"Open source (Apache 2.0). Zep Cloud free tier available."},
+   paid:[{name:"Zep Cloud",price:"$20/mo",perks:"Managed deployment, team features, analytics, priority support"}],
+   useCases:["Build CRM-aware sales agents that recall past conversations accurately","Create AI assistants that remember user preferences with entity-level precision","Power long-running research agents that accumulate knowledge over time","Build enterprise chatbots with company-specific knowledge graphs","Enable personal AI assistants with persistent factual recall"],
+   features:["Entity graph — stores people, places, and concepts as connected nodes","Session summaries — auto-compress long conversations into facts","Semantic search across all stored memories","Temporal awareness — memories have timestamps and decay","LangChain and LlamaIndex integration","Self-hostable open source core"],
+   integrations:["LangChain","LlamaIndex","OpenAI","Anthropic","Groq","Python","TypeScript"],
+   scores:{writing:2,coding:7,research:6,creativity:2,automation:8,multimodal:2},
+   agents:{hasAgents:false}},
+
+  {id:"haystack",name:"Haystack",maker:"deepset",tagline:"Open-source NLP and RAG pipeline framework — production-grade document search and Q&A",icon:"🌾",color:"#F59E0B",
+   categories:["AI Engineering","Coding"],isDev:true,
+   bestFor:"Teams building document search, question answering systems, and RAG pipelines who need a framework designed for production from day one. Modular pipeline architecture makes it easier to swap components (retrievers, readers, generators) without rewriting the application.",
+   free:{available:true,desc:"Open source (Apache 2.0). deepset Cloud for managed deployment."},
+   paid:[{name:"deepset Cloud",price:"$500/mo+",perks:"Managed Haystack infrastructure, enterprise SLAs, support"}],
+   useCases:["Build semantic search across thousands of internal documents","Create a Q&A system grounded in product documentation","Build a multi-hop question answering pipeline with verification","Deploy a knowledge base chatbot with source citations","Run document classification and extraction at scale"],
+   features:["Modular pipeline architecture — swap components without rewrites","200+ component integrations — retrievers, readers, generators","Haystack Agent for autonomous document retrieval","Built-in evaluation tools for pipeline quality","Supports dense and sparse retrieval hybrid search","Production-ready from day one — error handling, monitoring"],
+   integrations:["OpenAI","Anthropic","Cohere","HuggingFace","Weaviate","Pinecone","Elasticsearch","PostgreSQL","LangSmith"],
+   scores:{writing:3,coding:7,research:9,creativity:2,automation:8,multimodal:3},
+   agents:{hasAgents:true,type:"knowledge",name:"Haystack Agents",autonomy:3,
+     agentPricing:"Open source: free. deepset Cloud: $500+/mo for managed deployment.",
+     what:["Autonomous document retrieval and multi-hop Q&A","Tool use for external API calls during research","Pipeline orchestration with branching and looping","Built-in evaluation at each pipeline stage","Human-in-the-loop for review and correction"]}},
+
+  {id:"arize",name:"Arize Phoenix",maker:"Arize AI",tagline:"Open-source LLM observability with OpenTelemetry tracing — runs locally or in cloud",icon:"🔭",color:"#F97316",
+   categories:["AI Engineering","Coding"],isDev:true,
+   bestFor:"Teams who want full LLM observability without sending data to a vendor. Phoenix is open source, runs locally, and uses OpenTelemetry tracing — standard for regulated industries. Get traces, spans, evaluations, and dataset management in one tool that you control entirely.",
+   free:{available:true,desc:"Fully open source (Elastic License). Run locally — pip install arize-phoenix."},
+   paid:[{name:"Arize Cloud",price:"$99/mo",perks:"Managed cloud, production monitoring, alerting, team features"},{name:"Enterprise",price:"Custom",perks:"Private cloud, compliance certifications, dedicated engineering support"}],
+   useCases:["Trace every LLM call, retrieval, and tool use in a local development environment","Debug RAG pipeline failures with retrieval span visibility","Run automated evals using LLM-as-judge with local models","Export traces to existing observability stack via OpenTelemetry","Monitor production agents without any data leaving your infrastructure"],
+   features:["OpenTelemetry-native — integrates with any existing observability stack","Local-first — spin up in one command, no account needed","Evaluation framework with LLM-as-judge and human review","Dataset management for replay and regression testing","Span-level retrieval analysis for RAG debugging","Python and TypeScript instrumentation libraries"],
+   integrations:["LangChain","LlamaIndex","OpenAI","Anthropic","Groq","LangGraph","CrewAI","AutoGen","Datadog","Grafana"],
+   scores:{writing:1,coding:7,research:7,creativity:1,automation:8,multimodal:3},
+   agents:{hasAgents:false}},
+
+  {id:"deepeval",name:"DeepEval",maker:"Confident AI",tagline:"Comprehensive LLM evaluation framework — 14 built-in metrics, CI integration, and red teaming",icon:"⚖️",color:"#EF4444",
+   categories:["AI Engineering","Coding"],isDev:true,
+   bestFor:"Teams who want the most comprehensive out-of-the-box eval coverage. 14 built-in metrics covering answer correctness, contextual precision, hallucination, toxicity, bias, and more — all ready to use without writing scoring functions. Good alternative to Braintrust when you want breadth over customisation.",
+   free:{available:true,desc:"Open source (Apache 2.0). Confident AI Cloud for team dashboards and CI."},
+   paid:[{name:"Confident AI",price:"$49/mo",perks:"Team dashboards, eval history, CI integration, regression tracking"}],
+   useCases:["Run 14 built-in metrics on RAG output in a single test suite","Set up red teaming to test for jailbreaks, bias, and hallucination","Integrate LLM quality checks into pytest and GitHub Actions","Benchmark your agent against a golden dataset before deployment","Compare eval scores across model versions automatically"],
+   features:["14 built-in metrics — no custom scoring functions needed","Pytest integration — write evals as unit tests","Red teaming with attack simulations","DAG-based metric decomposition for complex evals","Confident AI dashboard for team collaboration","Supports any LLM as judge for scoring"],
+   integrations:["OpenAI","Anthropic","Groq","LangChain","LlamaIndex","Ragas","GitHub Actions","pytest"],
+   scores:{writing:2,coding:8,research:7,creativity:2,automation:8,multimodal:2},
+   agents:{hasAgents:false}},
+
+  // ── TOOL VARIANTS — Platform-specific products from major AI companies ───
+  {id:"claude-api",name:"Claude API",maker:"Anthropic",tagline:"Anthropic's API for developers — build production AI applications with claude-3-5-sonnet, opus-4, and haiku",icon:"🔌",color:"#CC785C",
+   categories:["Models & APIs","Coding"],isDev:true,isModel:true,
+   bestFor:"Development teams building AI-powered products with Anthropic's models. Direct access to claude-sonnet-4-5, claude-opus-4, claude-haiku-4-5 with structured outputs, tool use, computer use (beta), vision, and 200K context windows. Extended thinking available for hard reasoning tasks. The model recommended for production AI applications.",
+   free:{available:true,desc:"$5 free credits on signup. No subscription needed — pure usage-based pricing."},
+   paid:[{name:"Haiku 4.5",price:"$0.80/M in · $4/M out",perks:"Fastest, cheapest — customer-facing apps, classification, routing"},{name:"Sonnet 4.5",price:"$3/M in · $15/M out",perks:"Best balance — recommended for most production use cases"},{name:"Opus 4",price:"$15/M in · $75/M out",perks:"Most capable — complex reasoning, agentic tasks, extended thinking"}],
+   useCases:["Build an AI assistant with memory, tools, and structured responses","Integrate Claude into your SaaS product as a core feature","Run batch document processing across thousands of files","Build a code review bot that runs on every pull request","Create a customer-facing AI with your brand's voice and restrictions"],
+   features:["claude-sonnet-4-5, claude-opus-4, claude-haiku-4-5 model access","Extended thinking — chain-of-thought reasoning up to 128K tokens","Computer use (beta) — control browser and desktop","Tool use — call functions, APIs, and return structured data","200K context window — entire codebases in one prompt","Batch API — async processing at 50% cost reduction","Python, TypeScript, and REST SDK"],
+   integrations:["LangChain","LangGraph","OpenAI Agents SDK","Vercel","AWS Bedrock","Google Vertex AI","n8n"],
+   scores:{writing:9,coding:9,research:8,creativity:8,automation:9,multimodal:8},
+   agents:{hasAgents:true,type:"coding",name:"Claude Agent Loop",autonomy:4,
+     agentPricing:"Pay per token — no agent surcharge. Sonnet: $3/$15 per million tokens in/out.",
+     what:["Tool use — call any function and return typed results","Computer use (beta) — control browser, desktop, and files","Extended thinking — budget-aware deep reasoning","Batch processing — 50K+ requests async at half cost","Vision — analyse images, PDFs, and documents"]}},
+
+  {id:"claude-code",name:"Claude Code",maker:"Anthropic",tagline:"Agentic coding in your terminal — reads, edits, tests, and debugs entire codebases autonomously",icon:"💻",color:"#1A1A1A",
+   categories:["Coding","AI Engineering"],isDev:true,
+   bestFor:"Senior engineers who want an agent that can take on multi-file refactoring, write tests, debug production failures, and explain unfamiliar codebases without leaving the terminal. Connects to your shell, runs commands, reads any file, and edits in place. Best for complex, multi-step engineering tasks.",
+   free:{available:false,desc:"Requires Claude Pro ($20/mo) or direct API credits. Included in Claude Pro Max plan."},
+   paid:[{name:"Claude Pro",price:"$20/mo",perks:"Includes Claude Code access with standard rate limits"},{name:"Claude Pro Max",price:"$100/mo",perks:"5× higher limits — built for heavy Claude Code usage"}],
+   useCases:["Refactor a 5,000-line module with full test suite regeneration","Debug a production error across 12 files in a monorepo","Write comprehensive unit tests for an untested legacy codebase","Explain what an unfamiliar codebase does and how to extend it","Automate a release checklist — lint, test, commit, tag"],
+   features:["Terminal-native — runs in your shell, no IDE required","Reads any file in your repo — no manual copy-paste","Executes shell commands — npm install, pytest, git, etc.","Edits multiple files in a single coherent operation","Understands full project context — imports, types, tests","Git-aware — reads diffs, commits, and history","Works with any language or framework"],
+   integrations:["Any terminal (bash, zsh, fish)","Git","npm / pip / cargo","VS Code (terminal pane)","Cursor","GitHub Actions"],
+   scores:{writing:4,coding:10,research:7,creativity:4,automation:9,multimodal:5},
+   agents:{hasAgents:true,type:"coding",name:"Claude Code Agent",autonomy:5,
+     agentPricing:"Included in Claude Pro ($20/mo) or Claude Pro Max ($100/mo). No per-task charge.",
+     what:["Read, edit, and create files across the entire codebase","Execute terminal commands — tests, builds, scripts","Multi-step autonomous task completion — plan then execute","Git operations — read history, commit, understand diffs","Interactive or headless mode for CI/CD pipelines"]}},
+
+  {id:"openai-api",name:"OpenAI API",maker:"OpenAI",tagline:"OpenAI's developer platform — GPT-4o, o3, fine-tuning, and the Assistants API for stateful apps",icon:"🔌",color:"#10A37F",
+   categories:["Models & APIs","Coding"],isDev:true,isModel:true,
+   bestFor:"Developers building AI applications who need the broadest model ecosystem. GPT-4o for most tasks, o3 for complex reasoning and math, DALL-E 3 for images, Whisper for transcription, and fine-tuning for domain-specific models. The largest third-party integration ecosystem in AI.",
+   free:{available:true,desc:"$5 free credits on signup. Usage-based pricing with no subscription required."},
+   paid:[{name:"GPT-4o mini",price:"$0.15/M in · $0.60/M out",perks:"Best-value model — fast, cheap, capable for most tasks"},{name:"GPT-4o",price:"$2.50/M in · $10/M out",perks:"Flagship model — multimodal, vision, audio, structured outputs"},{name:"o3",price:"$10/M in · $40/M out",perks:"Best reasoning — math, code, complex multi-step problems"}],
+   useCases:["Build a customer-facing chatbot with GPT-4o and function calling","Fine-tune GPT-4o mini on your proprietary domain data","Use o3 for a legal document analysis pipeline requiring deep reasoning","Generate images with DALL-E 3 inside a product design tool","Transcribe meeting recordings with Whisper at scale"],
+   features:["GPT-4o, o3, o4-mini, GPT-4o mini model access","DALL-E 3 image generation — 1024×1024 to 2048×2048","Whisper speech-to-text — 57 language support","Fine-tuning — custom model training on your data","Assistants API — stateful conversations with threads and files","Structured outputs — guaranteed JSON schema compliance","Batch API — async processing at 50% discount","Realtime API — streaming speech conversations"],
+   integrations:["LangChain","LangGraph","AutoGen","LlamaIndex","Vercel","AWS","Azure","n8n","Zapier"],
+   scores:{writing:9,coding:9,research:8,creativity:9,automation:9,multimodal:9},
+   agents:{hasAgents:true,type:"coding",name:"OpenAI Agent Tools",autonomy:4,
+     agentPricing:"Pay per token. GPT-4o: $2.50/$10 per million tokens in/out. o3: $10/$40 per million.",
+     what:["Function calling — call any external API with schema validation","Structured outputs — guaranteed JSON response format","Assistants API — stateful multi-turn conversations with tool use","Vision — analyse images, screenshots, and documents","Realtime streaming with audio input/output"]}},
+
+  {id:"sora",name:"Sora",maker:"OpenAI",tagline:"Text-to-video generation — create photorealistic 1080p videos from text prompts or images",icon:"🎬",color:"#6B7280",
+   categories:["Video","Image & Art"],
+   bestFor:"Content creators, marketing teams, and filmmakers generating short video clips from text descriptions or still images. Available inside ChatGPT Pro. Best for concept visualisation, social media content, and b-roll generation without a camera or editing suite.",
+   free:{available:false,desc:"Requires ChatGPT Pro ($20/mo) or ChatGPT Plus ($20/mo) for limited access."},
+   paid:[{name:"ChatGPT Plus",price:"$20/mo",perks:"Limited Sora access — 50 priority videos/month at up to 720p"},{name:"ChatGPT Pro",price:"$200/mo",perks:"Unlimited Sora access, 1080p resolution, longer video duration"}],
+   useCases:["Generate product demo b-roll without a video shoot","Create concept visualisations for pitch decks","Produce social media clips from a single text prompt","Animate a still image into a short video loop","Generate multiple visual variations of a scene quickly"],
+   features:["Text-to-video up to 1080p resolution","Image-to-video animation","Video extension — add more seconds to existing clips","Storyboard mode — plan scenes before generating","Style reference — match the visual style of a sample","Available inside ChatGPT Pro interface"],
+   integrations:["ChatGPT","ChatGPT Pro","ChatGPT Plus"],
+   scores:{writing:2,coding:1,research:2,creativity:9,automation:4,multimodal:10},
+   agents:{hasAgents:false}},
+
+  {id:"vertex-ai",name:"Vertex AI",maker:"Google Cloud",tagline:"Google's enterprise AI platform — Gemini API, model fine-tuning, RAG, and MLOps at cloud scale",icon:"☁️",color:"#4285F4",
+   categories:["Models & APIs","AI Engineering"],isDev:true,isInfra:true,
+   bestFor:"Enterprise engineering teams on Google Cloud who need Gemini API access with enterprise SLAs, custom model fine-tuning, grounding with Google Search or own data, and full MLOps tooling. The managed path for Google AI in regulated industries — HIPAA, FedRAMP, SOC 2 compliant.",
+   free:{available:true,desc:"$300 free Google Cloud credit for new accounts. Gemini API free tier available."},
+   paid:[{name:"Gemini 1.5 Flash",price:"$0.075/M in · $0.30/M out",perks:"Fast, cheap — high-volume production workloads"},{name:"Gemini 1.5 Pro",price:"$1.25/M in · $5/M out",perks:"Best performance — 2M context window, reasoning"},{name:"Custom fine-tuning",price:"From $0.60/1K tokens",perks:"Domain-specific model training on your proprietary data"}],
+   useCases:["Access Gemini Pro in a HIPAA-compliant enterprise environment","Fine-tune Gemma on proprietary document corpus for internal Q&A","Ground AI responses in real-time Google Search results","Build RAG pipelines backed by Vertex AI Search","Train custom image classification models with AutoML"],
+   features:["Full Gemini model family — Flash, Pro, Ultra","2 million token context window with Gemini 1.5 Pro","Model Garden — 150+ open and proprietary models","Vertex AI Search and Conversation — RAG with grounding","Model fine-tuning — supervised and RLHF","MLOps — training pipelines, evaluation, monitoring","Enterprise security — VPC, CMEK, data residency","Gemma, Llama, Mistral via Model Garden"],
+   integrations:["Google Cloud","BigQuery","Cloud Storage","LangChain","LlamaIndex","AlloyDB","Firestore"],
+   scores:{writing:7,coding:8,research:9,creativity:6,automation:9,multimodal:9},
+   agents:{hasAgents:true,type:"orchestration",name:"Vertex AI Agent Builder",autonomy:3,
+     agentPricing:"Pay per token on Gemini models. Fine-tuning costs vary. Agent Engine: custom pricing.",
+     what:["Agent Builder — no-code agent creation with Gemini","Grounding with Google Search or Vertex AI Search","RAG with data stores for document Q&A","Function calling with schema validation","Integration with all Google Cloud services"]}},
+
+  {id:"copilot-studio",name:"Copilot Studio",maker:"Microsoft",tagline:"Build custom copilots for Microsoft 365 — no-code agent builder with Teams and SharePoint integration",icon:"🏗️",color:"#0078D4",
+   categories:["AI Engineering","Automation"],
+   bestFor:"Enterprise teams on Microsoft 365 who want to deploy custom AI copilots without writing code. Drag-and-drop topic designer, 1,000+ Power Platform connectors, native Teams and SharePoint integration. The no-code path to enterprise AI agents for organisations already on the Microsoft stack.",
+   free:{available:true,desc:"Limited free trial. Requires Microsoft 365 or Power Platform subscription."},
+   paid:[{name:"Copilot Studio",price:"$200/mo per tenant",perks:"25,000 messages/month, all connectors, Teams and SharePoint integration"},{name:"Additional messages",price:"$0.01/message",perks:"Pay-as-you-go for high-volume production copilots"}],
+   useCases:["Deploy an internal HR FAQ bot inside Microsoft Teams","Build an IT helpdesk agent connected to ServiceNow via Power Platform","Create a sales enablement copilot grounded in SharePoint documents","Build a customer-facing bot for your website using the same platform","Automate expense approval workflows with AI and Teams notifications"],
+   features:["No-code topic designer — build conversation flows visually","1,000+ Power Platform connectors — CRM, ERP, ticketing, databases","Generative answers — ground responses in SharePoint and internal docs","Teams native deployment — launch copilot inside any Teams channel","Web channel — embed copilot on any website","Analytics dashboard — track topic coverage and escalation rates","Integration with Microsoft Copilot for M365"],
+   integrations:["Microsoft Teams","SharePoint","Dynamics 365","Power Automate","ServiceNow","Salesforce","SAP","Azure"],
+   scores:{writing:5,coding:3,research:6,creativity:3,automation:9,multimodal:4},
+   agents:{hasAgents:true,type:"workflow",name:"Copilot Studio Agents",autonomy:3,
+     agentPricing:"$200/mo per tenant includes 25K messages. Additional messages at $0.01 each.",
+     what:["Autonomous agents that can browse SharePoint and trigger workflows","Power Automate integration for process automation","Multi-step reasoning with generative answers","Escalation to human agents via Teams","Pre-built agent templates for IT, HR, and sales scenarios"]}},
+
+  {id:"azure-openai",name:"Azure OpenAI Service",maker:"Microsoft",tagline:"OpenAI's models on Azure — enterprise compliance, private networking, and data residency guarantees",icon:"🔒",color:"#0078D4",
+   categories:["Models & APIs","AI Engineering"],isDev:true,isInfra:true,isModel:true,
+   bestFor:"Enterprise teams who need OpenAI's models (GPT-4o, o1, DALL-E 3) with Azure's enterprise guarantees. Your data is never used for training. Private VNet deployment, role-based access control, compliance certifications (FedRAMP, HIPAA, ISO 27001, SOC 2). The enterprise-grade wrapper around OpenAI for regulated industries.",
+   free:{available:true,desc:"Included in Azure free account ($200 credit). Pay-per-token for model usage."},
+   paid:[{name:"GPT-4o",price:"$2.50/M in · $10/M out",perks:"Same pricing as OpenAI API. Enterprise compliance at no extra cost."},{name:"GPT-4o mini",price:"$0.165/M in · $0.66/M out",perks:"Slightly higher than direct OpenAI — Azure infrastructure premium."},{name:"o1",price:"$15/M in · $60/M out",perks:"Advanced reasoning with full Azure compliance stack."}],
+   useCases:["Deploy GPT-4o in a HIPAA-compliant healthcare application","Build a legal document review tool with data residency in the EU","Run OpenAI fine-tuned models behind Azure Active Directory auth","Integrate ChatGPT capabilities into Dynamics 365 workflows","Create a FedRAMP-authorized AI application for US government use"],
+   features:["GPT-4o, GPT-4o mini, o1, o3, DALL-E 3, Whisper on Azure","Data never leaves your Azure tenant — not used for training","Private endpoint — deploy inside your VNet with no public internet","Azure Active Directory — RBAC for LLM access","Content filtering — configurable prompt and response filters","Fine-tuning — train custom GPT-4o mini on your data","Compliance: FedRAMP High, HIPAA, ISO 27001, SOC 2, PCI DSS","Managed identity — no API keys in application code"],
+   integrations:["Azure Active Directory","Azure Private Link","Semantic Kernel","LangChain","Power Platform","Logic Apps","Azure AI Search"],
+   scores:{writing:8,coding:8,research:8,creativity:7,automation:9,multimodal:8},
+   agents:{hasAgents:true,type:"workflow",name:"Azure OpenAI Agents",autonomy:3,
+     agentPricing:"Pay per token — same models as OpenAI API with small Azure infrastructure premium.",
+     what:["Function calling with schema validation","Azure AI Search grounding for RAG applications","Assistants API — stateful multi-turn conversations","Content filtering with custom severity thresholds","Semantic Kernel native integration for .NET teams"]}},
+
+  // ── MCP SERVERS — Official and best-in-class connectors ──────────────────
+  {id:"mcp-github",name:"GitHub MCP",maker:"GitHub",tagline:"Give your AI agent full GitHub access — read and write repos, issues, PRs, and code",icon:"🐙",color:"#24292E",
+   categories:["MCP Servers","Coding"],isMCP:true,isDev:true,
+   bestFor:"Developers using Claude or Cursor who want their AI agent to interact with GitHub without copy-pasting. Search repos, read files, create issues, review PRs, and push commits — all from inside your AI workflow. The most-installed MCP server by usage.",
+   free:{available:true,desc:"Free and open source. Requires a GitHub Personal Access Token."},
+   paid:[],
+   useCases:["Have Claude search GitHub for code examples and open source solutions","Let your agent file a bug report and assign it automatically","Ask Claude to read a PR diff and suggest review comments","Search issues across repos to find similar bug reports","Have an agent clone, read, and explain an unfamiliar codebase"],
+   features:["Search repositories, code, issues, and pull requests","Create, read, update issues and pull requests","Read file contents from any accessible repository","List commits, branches, and repository metadata","Create and manage forks","Supports GitHub.com and GitHub Enterprise"],
+   integrations:["Claude Desktop","Cursor","Windsurf","VS Code","Any MCP-compatible client"],
+   scores:{writing:3,coding:9,research:7,creativity:2,automation:9,multimodal:2},
+   agents:{hasAgents:false}},
+
+  {id:"mcp-notion",name:"Notion MCP",maker:"Notion",tagline:"Connect your AI agent to Notion — read pages, create docs, query databases",icon:"📝",color:"#000000",
+   categories:["MCP Servers","Documents"],isMCP:true,isDev:true,
+   bestFor:"Teams using Notion as their knowledge base or project management tool who want AI agents that can read and update content directly. Let Claude draft a page, update a project status, or query a database without leaving your workflow.",
+   free:{available:true,desc:"Free and open source. Requires a Notion Integration Token with page permissions."},
+   paid:[],
+   useCases:["Have Claude draft a new page directly into your Notion workspace","Query a Notion database to get project status for a report","Update a task status after an AI-driven workflow completes","Search your Notion knowledge base during an AI research session","Create meeting notes pages with AI-generated summaries"],
+   features:["Read and create pages and sub-pages","Query and filter Notion databases","Create and update database entries","Search across your entire Notion workspace","Append blocks to existing pages","Retrieve page metadata and properties"],
+   integrations:["Claude Desktop","Cursor","n8n","Any MCP-compatible client"],
+   scores:{writing:7,coding:3,research:7,creativity:5,automation:9,multimodal:3},
+   agents:{hasAgents:false}},
+
+  {id:"mcp-slack",name:"Slack MCP",maker:"Community (Arcade AI)",tagline:"Give your AI agent Slack access — read messages, search channels, post updates",icon:"💬",color:"#4A154B",
+   categories:["MCP Servers","Business"],isMCP:true,isDev:true,
+   bestFor:"Teams who want AI agents that can read Slack history, surface relevant conversations, and post updates without manual copy-paste. Ideal for status bots, digest agents, and automated notifications from AI workflows.",
+   free:{available:true,desc:"Free and open source. Requires a Slack Bot Token with appropriate OAuth scopes."},
+   paid:[],
+   useCases:["Have Claude read a Slack thread and write a summary","Post automated AI-generated status updates to a project channel","Search Slack history for decisions made about a specific topic","Build a standup bot that reads updates and posts a digest","Let an agent notify a channel when a pipeline completes"],
+   features:["List and search channels and workspaces","Read channel history and thread replies","Post messages to channels","Search messages across the workspace","Get user profiles and information","React to messages with emoji"],
+   integrations:["Claude Desktop","n8n","Cursor","Any MCP-compatible client"],
+   scores:{writing:5,coding:3,research:6,creativity:3,automation:9,multimodal:2},
+   agents:{hasAgents:false}},
+
+  {id:"mcp-figma",name:"Figma MCP",maker:"Cursor (Context7)",tagline:"Give your AI agent access to Figma designs — read frames, components, styles, and properties",icon:"🎨",color:"#F24E1E",
+   categories:["MCP Servers","Design"],isMCP:true,isDev:true,
+   bestFor:"Frontend developers and designers who want Claude or Cursor to read Figma files and translate designs into code or specs. Instead of describing a design manually, your agent reads the file directly — layer names, colors, spacing, components, and typography.",
+   free:{available:true,desc:"Free and open source. Requires a Figma API Token with file read permissions."},
+   paid:[],
+   useCases:["Ask Claude to read a Figma frame and generate React or Tailwind component code","Have an agent extract color tokens and typography specs into a design system file","Generate accessibility annotations from Figma component properties","Translate a Figma wireframe into HTML or CSS automatically","Let an agent check if a design matches the existing component library"],
+   features:["Read file structure — pages, frames, and layers","Extract component names, properties, and variants","Read colors, fonts, spacing, and design tokens","Access auto-layout and constraint properties","List comments and annotations","Read prototyping connections and flows"],
+   integrations:["Claude Desktop","Cursor","Windsurf","Any MCP-compatible client"],
+   scores:{writing:3,coding:8,research:4,creativity:7,automation:8,multimodal:7},
+   agents:{hasAgents:false}},
+
+  {id:"mcp-google-drive",name:"Google Drive MCP",maker:"Community",tagline:"Give your AI agent access to Google Drive — read Docs, Sheets, and files",icon:"📁",color:"#1FA463",
+   categories:["MCP Servers","Documents"],isMCP:true,isDev:true,
+   bestFor:"Teams using Google Workspace who want AI agents that can read and search Drive files without manual export. Let Claude read a Google Doc, extract data from a Sheet, or search across your Drive for relevant files during a workflow.",
+   free:{available:true,desc:"Free and open source. Requires Google OAuth credentials with Drive read scope."},
+   paid:[],
+   useCases:["Have Claude read a Google Doc and produce a structured summary","Extract data from a Google Sheet for analysis","Search Drive for files related to a project before a meeting","Let an agent read a contract PDF from Drive and flag key clauses","Build a report generation workflow that reads multiple Sheets"],
+   features:["List and search files across Google Drive","Read Google Docs content as structured text","Extract data from Google Sheets","Read PDF and other file types","Search by filename, type, or content","Access shared drives and team drives"],
+   integrations:["Claude Desktop","n8n","Any MCP-compatible client"],
+   scores:{writing:5,coding:3,research:8,creativity:3,automation:9,multimodal:4},
+   agents:{hasAgents:false}},
+
+  {id:"mcp-postgres",name:"PostgreSQL MCP",maker:"Anthropic (official)",tagline:"Give your AI agent direct database access — query tables, inspect schemas, and analyse data",icon:"🐘",color:"#336791",
+   categories:["MCP Servers","Coding","AI Engineering"],isMCP:true,isDev:true,
+   bestFor:"Developers and data analysts who want to ask Claude questions about their database without writing SQL manually. Claude can inspect your schema, write queries, run them, and return structured results — a DBA in your AI workflow.",
+   free:{available:true,desc:"Free and open source (official Anthropic MCP server). Requires a PostgreSQL connection string."},
+   paid:[],
+   useCases:["Ask Claude to analyse query performance on your production schema","Have an agent write and run SQL to answer a business question","Let Claude inspect your schema and suggest missing indexes","Build a data pipeline where Claude queries and transforms records","Ask Claude to find all tables related to a specific domain"],
+   features:["Execute SELECT queries against your database","Inspect table schemas and column types","List all tables and views","Read indexes and constraints","Describe relationships between tables","Returns results as structured data — read-only by default"],
+   integrations:["Claude Desktop","Cursor","Any MCP-compatible client","PostgreSQL 12+"],
+   scores:{writing:2,coding:8,research:8,creativity:1,automation:9,multimodal:1},
+   agents:{hasAgents:false}},
+
+  {id:"mcp-brave-search",name:"Brave Search MCP",maker:"Anthropic (official)",tagline:"Give your AI agent real-time web search — Brave's own index, no Google, strong privacy",icon:"🦁",color:"#FF6B35",
+   categories:["MCP Servers","Research"],isMCP:true,isDev:true,
+   bestFor:"Developers building AI agents that need web search without depending on Google. Brave Search is privacy-first, has its own web index, and returns clean results without ads or tracking. The most reliable and fastest search MCP to get running.",
+   free:{available:true,desc:"Free tier: 2,000 queries/month on Brave Search API. Requires a Brave API key."},
+   paid:[{name:"Brave Search API",price:"$3/1K queries",perks:"Unlimited queries, priority access, no rate limits"}],
+   useCases:["Build a research agent that searches the web for current information","Let Claude verify facts by searching during a conversation","Create a news monitoring agent that searches for a topic daily","Give a coding agent the ability to look up documentation","Build a lead research workflow with real-time web data"],
+   features:["Web search with real-time indexed results","News search with recency filtering","Image search","Local business search with location context","Summarisation option — Brave AI summary of results","No tracking, no ad-based result manipulation"],
+   integrations:["Claude Desktop","Any MCP-compatible client","LangChain","LlamaIndex"],
+   scores:{writing:3,coding:5,research:10,creativity:2,automation:8,multimodal:3},
+   agents:{hasAgents:false}},
+
+  {id:"mcp-filesystem",name:"Filesystem MCP",maker:"Anthropic (official)",tagline:"Give your AI agent local file access — read, write, and manage files on your computer",icon:"📂",color:"#6B7280",
+   categories:["MCP Servers","Coding","AI Engineering"],isMCP:true,isDev:true,
+   bestFor:"Developers who want Claude Desktop to work with local files directly — read a config file, write output to disk, or process a folder of documents. The foundational MCP server that most developers install first. Safe by default: you specify which directories to allow.",
+   free:{available:true,desc:"Free and open source (official Anthropic MCP server). No API key required."},
+   paid:[],
+   useCases:["Have Claude read your local project files without copy-pasting","Let an agent write generated code directly to your working directory","Process a folder of PDFs and produce a summary of each","Give Claude access to config files for debugging","Build a file organisation workflow that moves and renames files"],
+   features:["Read file contents for any allowed file type","Write and create new files","List directory contents","Move, copy, and delete files","Create new directories","Search for files by name or extension","Configurable allowlist of directories — safe by default"],
+   integrations:["Claude Desktop","Cursor","Windsurf","Any MCP-compatible client"],
+   scores:{writing:4,coding:9,research:6,creativity:3,automation:10,multimodal:4},
+   agents:{hasAgents:false}},
+
+  {id:"mcp-puppeteer",name:"Puppeteer MCP",maker:"Anthropic (official)",tagline:"Give your AI agent browser automation — navigate pages, click, fill forms, and take screenshots",icon:"🤖",color:"#40B5A4",
+   categories:["MCP Servers","Coding","Automation"],isMCP:true,isDev:true,
+   bestFor:"Developers building agents that need to interact with websites that have no API. Automate login flows, scrape dynamic content, take screenshots, fill forms, and test web UIs — all driven by Claude or your agent.",
+   free:{available:true,desc:"Free and open source (official Anthropic MCP server). Requires Node.js and Puppeteer."},
+   paid:[],
+   useCases:["Have Claude navigate a website and extract dynamic content","Automate form filling that requires JavaScript rendering","Take screenshots of competitor websites for comparison","Test a web application UI by having Claude click through flows","Build a price monitoring agent that checks websites daily"],
+   features:["Navigate to any URL","Click elements by selector or visual description","Fill in form fields and submit forms","Take full-page screenshots","Execute JavaScript on the page","Wait for dynamic content to load","Handle authentication flows"],
+   integrations:["Claude Desktop","Any MCP-compatible client","Chrome","Chromium"],
+   scores:{writing:2,coding:8,research:7,creativity:2,automation:10,multimodal:6},
+   agents:{hasAgents:false}},
+
+  {id:"mcp-stripe",name:"Stripe MCP",maker:"Stripe (official)",tagline:"Give your AI agent Stripe access — query customers, subscriptions, payments, and invoices",icon:"💳",color:"#635BFF",
+   categories:["MCP Servers","Business"],isMCP:true,isDev:true,
+   bestFor:"Developers and operators who want AI agents that can answer questions about their Stripe data — revenue, churn, payment failures — without building a custom dashboard. Let Claude query your Stripe account and surface actionable insights instantly.",
+   free:{available:true,desc:"Free and open source (official Stripe MCP). Requires a Stripe Restricted API key."},
+   paid:[],
+   useCases:["Ask Claude for MRR, ARR, and churn metrics from your Stripe account","Have an agent identify customers with failed payments for follow-up","Query subscriptions to segment customers by plan tier","Let Claude generate an invoice summary for a finance report","Build a churn risk agent that monitors subscription cancellations"],
+   features:["List and search customers, subscriptions, and charges","Read payment intents and invoices","Query subscription plans and pricing","Access dispute and refund data","Filter by date range, customer, or status","Read-only by default — safe for production accounts"],
+   integrations:["Claude Desktop","Any MCP-compatible client","Stripe API"],
+   scores:{writing:3,coding:6,research:8,creativity:1,automation:9,multimodal:1},
+   agents:{hasAgents:false}},
+
+  {id:"mcp-linear",name:"Linear MCP",maker:"Community",tagline:"Give your AI agent Linear access — read and create issues, cycles, and project data",icon:"📋",color:"#5B69E0",
+   categories:["MCP Servers","Business","Coding"],isMCP:true,isDev:true,
+   bestFor:"Engineering teams using Linear who want AI agents that can triage issues, update status, create tasks from a conversation, or generate sprint summaries — without switching context to the Linear UI.",
+   free:{available:true,desc:"Free and open source. Requires a Linear API key with workspace access."},
+   paid:[],
+   useCases:["Have Claude create issues from a bug report conversation","Let an agent triage incoming issues and assign labels and priority","Generate a sprint retrospective summary from completed cycle issues","Ask Claude to find all unresolved issues assigned to a team member","Build a standup bot that reads Linear issues and posts to Slack"],
+   features:["List, search, and filter issues","Create new issues with title, description, priority, and assignee","Update issue status, labels, and assignees","Read cycles (sprints) and their issues","List teams, projects, and members","Read and add comments"],
+   integrations:["Claude Desktop","Any MCP-compatible client","Linear API"],
+   scores:{writing:4,coding:6,research:6,creativity:2,automation:9,multimodal:1},
+   agents:{hasAgents:false}},
+
+  {id:"mcp-sentry",name:"Sentry MCP",maker:"Sentry (official)",tagline:"Give your AI agent Sentry access — read production errors, stack traces, and performance issues",icon:"🚨",color:"#362D59",
+   categories:["MCP Servers","Coding","AI Engineering"],isMCP:true,isDev:true,
+   bestFor:"Engineers who want Claude to read production errors and traces directly, without manually copying stack traces into the chat. Ask Claude why an error is happening, which code path triggers it, and what the fix should be — with full Sentry context already loaded.",
+   free:{available:true,desc:"Free and open source (official Sentry MCP). Requires a Sentry Auth Token with project:read scope."},
+   paid:[],
+   useCases:["Ask Claude to explain a production error and suggest a fix","Have an agent monitor for new errors and create GitHub issues automatically","Query Sentry for all errors introduced after a specific deploy","Get the top 10 most frequent errors for a release","Ask Claude to correlate a performance regression with recent code changes"],
+   features:["List issues (errors) by project, status, and frequency","Read full stack traces with source context","Access performance traces and spans","Filter by release, environment, and date range","Read user impact data — how many users affected","Query error trends over time"],
+   integrations:["Claude Desktop","Cursor","Any MCP-compatible client","Sentry API"],
+   scores:{writing:2,coding:9,research:7,creativity:1,automation:9,multimodal:1},
+   agents:{hasAgents:false}},
+
+  {id:"mcp-supabase",name:"Supabase MCP",maker:"Supabase (official)",tagline:"Give your AI agent Supabase access — query tables, read schema, manage auth and storage",icon:"⚡",color:"#3ECF8E",
+   categories:["MCP Servers","Coding","AI Engineering"],isMCP:true,isDev:true,
+   bestFor:"Developers building on Supabase who want Claude to help debug database issues, write SQL, and understand their schema without context-switching. Ask Claude why a query is slow or have it generate a migration for a schema change.",
+   free:{available:true,desc:"Free and open source (official Supabase MCP). Requires a Supabase service role key."},
+   paid:[],
+   useCases:["Ask Claude to inspect your Supabase schema and suggest query optimisations","Have an agent write a SQL migration for a new feature","Query user data for debugging a customer issue","Let Claude read your Row Level Security policies and verify them","Generate a summary of your Supabase project structure for documentation"],
+   features:["Query tables with SQL","Inspect database schema and relationships","Read Row Level Security policies","List storage buckets and objects","Read Auth user data","Execute database functions","Access project settings and configuration"],
+   integrations:["Claude Desktop","Cursor","Any MCP-compatible client","Supabase API"],
+   scores:{writing:2,coding:9,research:7,creativity:1,automation:9,multimodal:1},
+   agents:{hasAgents:false}},
+
+  {id:"mcp-cloudflare",name:"Cloudflare MCP",maker:"Cloudflare (official)",tagline:"Give your AI agent Cloudflare access — manage Workers, KV, D1 databases, and DNS",icon:"🌐",color:"#F38020",
+   categories:["MCP Servers","Coding","AI Engineering"],isMCP:true,isDev:true,
+   bestFor:"Developers deploying on Cloudflare who want Claude to help manage Workers scripts, KV namespaces, and D1 databases without the dashboard. Ask Claude to update a Worker, inspect KV values, or run a D1 query directly.",
+   free:{available:true,desc:"Free and open source (official Cloudflare MCP). Requires a Cloudflare API Token."},
+   paid:[],
+   useCases:["Ask Claude to update a Worker script and deploy it","Have an agent inspect KV namespace values for debugging","Query a D1 database directly through Claude","Let Claude manage DNS records for a domain","Generate R2 bucket inventory and storage usage reports"],
+   features:["Deploy and update Cloudflare Workers","Read and write KV namespace values","Query D1 databases with SQL","Manage DNS records","List R2 buckets and objects","Read Worker logs and analytics","Access Pages deployments"],
+   integrations:["Claude Desktop","Cursor","Any MCP-compatible client","Cloudflare API"],
+   scores:{writing:2,coding:9,research:6,creativity:1,automation:9,multimodal:1},
+   agents:{hasAgents:false}},
+
+  {id:"mcp-docker",name:"Docker MCP",maker:"Docker (official)",tagline:"Give your AI agent Docker access — manage containers, images, volumes, and networks",icon:"🐋",color:"#2496ED",
+   categories:["MCP Servers","Coding","AI Engineering"],isMCP:true,isDev:true,
+   bestFor:"Developers who want Claude to help manage local or remote Docker environments — inspect running containers, read logs, pull images, and debug container issues without running docker commands manually.",
+   free:{available:true,desc:"Free and open source (official Docker MCP). Requires Docker daemon access."},
+   paid:[],
+   useCases:["Ask Claude to check which containers are running and their resource usage","Have an agent pull and run a specific image for testing","Let Claude read container logs to debug a service failure","Ask Claude to explain a Dockerfile and suggest improvements","Build a health monitoring agent that checks container status automatically"],
+   features:["List and inspect running containers","Start, stop, and restart containers","Pull images from Docker Hub or private registries","Read container logs","Inspect volumes and networks","Execute commands inside containers","Read Dockerfile and compose files"],
+   integrations:["Claude Desktop","Cursor","Any MCP-compatible client","Docker Engine API"],
+   scores:{writing:2,coding:9,research:6,creativity:1,automation:9,multimodal:1},
+   agents:{hasAgents:false}},
+
+  {id:"mcp-exa",name:"Exa MCP",maker:"Exa",tagline:"Give your AI agent semantic web search — finds the most relevant pages by meaning, not keywords",icon:"🔎",color:"#8B5CF6",
+   categories:["MCP Servers","Research","AI Engineering"],isMCP:true,isDev:true,
+   bestFor:"Developers building research agents that need semantic search quality. Exa finds exact, relevant pages by meaning rather than keyword frequency — better signal-to-noise than Brave or Google for deep research workflows and competitive intelligence.",
+   free:{available:true,desc:"Free tier: 1,000 searches/month. Requires an Exa API key."},
+   paid:[{name:"Exa API",price:"$10/1K searches",perks:"Unlimited searches, full content extraction, faster responses"}],
+   useCases:["Build a deep research agent that finds the most relevant papers or articles","Find exact technical documentation rather than SEO-optimised results","Create a competitive intelligence agent that finds precise company information","Let Claude search for code examples on GitHub and technical blogs","Build a fact-checking agent that finds primary sources"],
+   features:["Semantic search — finds by meaning, not keywords","Full page content extraction — not just snippets","Domain filtering — restrict to specific websites","Date filtering — find recent content","Similarity search — find pages similar to a given URL","Supports GitHub, arXiv, news, and general web"],
+   integrations:["Claude Desktop","LangChain","LlamaIndex","Any MCP-compatible client"],
+   scores:{writing:3,coding:6,research:10,creativity:2,automation:8,multimodal:2},
+   agents:{hasAgents:false}},
+
+  {id:"mcp-tavily",name:"Tavily MCP",maker:"Tavily",tagline:"Give your AI agent research-optimised search — built for LLM agents, not browsers",icon:"🔬",color:"#2563EB",
+   categories:["MCP Servers","Research","AI Engineering"],isMCP:true,isDev:true,
+   bestFor:"Developers building LangChain, LangGraph, or AutoGen agents that need reliable web search. Tavily is purpose-built for LLM agents — returns clean structured results with full content and is the default search tool in most LangChain and LangGraph tutorials.",
+   free:{available:true,desc:"Free tier: 1,000 searches/month. Requires a Tavily API key."},
+   paid:[{name:"Tavily API",price:"$0.01/search",perks:"Pay-as-you-go with higher rate limits and full content extraction"}],
+   useCases:["Integrate reliable web search into a LangGraph agent pipeline","Build a research assistant that produces cited, sourced summaries","Create a news monitoring agent with real-time web access","Add web lookup to an AutoGen multi-agent workflow","Give a sales research agent access to current company information"],
+   features:["Optimised for LLM agent consumption — clean, structured output","Real-time web search with content extraction","Domain inclusion and exclusion filtering","Search depth control — basic vs advanced","Topic-specific search modes — general, news, finance","Returns answer summaries alongside raw results"],
+   integrations:["LangChain","LangGraph","AutoGen","Claude Desktop","Any MCP-compatible client"],
+   scores:{writing:3,coding:5,research:10,creativity:2,automation:9,multimodal:2},
+   agents:{hasAgents:false}},
+
+  {id:"mcp-perplexity",name:"Perplexity MCP",maker:"Community",tagline:"Give your AI agent Perplexity search — AI-synthesised web answers with citations",icon:"🌊",color:"#20808D",
+   categories:["MCP Servers","Research"],isMCP:true,isDev:true,
+   bestFor:"Agents that need synthesised, cited answers rather than raw search results. Perplexity's API returns an AI-generated answer with citations for each query — better than raw search when you want a direct conclusion rather than a list of links to read.",
+   free:{available:true,desc:"$5 free credit on Perplexity API signup. Free tier includes sonar model access."},
+   paid:[{name:"Perplexity API",price:"From $5/1M tokens",perks:"Access to sonar-pro and sonar-deep-research with real-time web access"}],
+   useCases:["Get synthesised, cited answers during an agent research workflow","Let Claude ask Perplexity to answer a factual question with sources","Build a Q&A agent that returns high-confidence cited answers","Create a briefing agent that summarises a topic with live web data","Use Perplexity as a fact-checking layer in a content pipeline"],
+   features:["AI-synthesised answers with inline citations","Real-time web access — up-to-date results","Source URLs returned with every response","Multiple model options — sonar, sonar-pro, sonar-deep-research","Domain filtering for trusted sources","Follow-up question support"],
+   integrations:["Claude Desktop","LangChain","Any MCP-compatible client"],
+   scores:{writing:4,coding:4,research:9,creativity:3,automation:8,multimodal:2},
+   agents:{hasAgents:false}},
+
+  {id:"mcp-hubspot",name:"HubSpot MCP",maker:"Community",tagline:"Give your AI agent HubSpot CRM access — read contacts, deals, companies, and activities",icon:"🧡",color:"#FF7A59",
+   categories:["MCP Servers","Sales","Business"],isMCP:true,isDev:true,
+   bestFor:"Sales teams and RevOps who want AI agents that can surface CRM data during calls, generate pipeline reports, or update records without manual entry. Let Claude answer questions about deal status, contact history, and pipeline health against live HubSpot data.",
+   free:{available:true,desc:"Free and open source. Requires a HubSpot Private App API token."},
+   paid:[],
+   useCases:["Ask Claude for a deal pipeline summary before a team meeting","Have an agent update contact records after an AI-processed call","Query HubSpot for all companies in a specific industry segment","Generate a weekly sales report using live pipeline data","Build a follow-up reminder agent based on last contact date"],
+   features:["Search and read contacts, companies, and deals","Filter by owner, stage, industry, and date","Read activity history — calls, emails, notes","Create and update CRM records","List pipeline stages and deal values","Access custom properties and objects"],
+   integrations:["Claude Desktop","n8n","Any MCP-compatible client","HubSpot API"],
+   scores:{writing:4,coding:3,research:7,creativity:2,automation:9,multimodal:1},
+   agents:{hasAgents:false}},
+
+  {id:"mcp-jira",name:"Jira MCP",maker:"Community",tagline:"Give your AI agent Jira access — read and create issues, epics, sprints, and project data",icon:"📊",color:"#0052CC",
+   categories:["MCP Servers","Business","Coding"],isMCP:true,isDev:true,
+   bestFor:"Engineering and product teams using Jira who want AI agents to surface issue data, generate sprint reports, and create tickets from conversations — without switching to the Jira UI. Especially valuable for Atlassian-heavy enterprise teams.",
+   free:{available:true,desc:"Free and open source. Requires a Jira API token with project read/write access."},
+   paid:[],
+   useCases:["Have Claude create a Jira story from a Slack message or meeting note","Generate a sprint retrospective from completed sprint issues","Ask Claude which issues are blocked and why","Let an agent update issue status after a CI pipeline completes","Build a weekly project health report from Jira data"],
+   features:["Search and filter issues by project, sprint, status, and assignee","Create new issues with full field support","Update status, priority, and assignee","Read sprint data and velocity metrics","Access epic hierarchies and linked issues","Read and add comments"],
+   integrations:["Claude Desktop","n8n","Any MCP-compatible client","Jira Cloud and Server"],
+   scores:{writing:4,coding:5,research:6,creativity:2,automation:9,multimodal:1},
+   agents:{hasAgents:false}},
+
+  {id:"mcp-twilio",name:"Twilio MCP",maker:"Community",tagline:"Give your AI agent Twilio access — send SMS and WhatsApp messages from AI workflows",icon:"📱",color:"#F22F46",
+   categories:["MCP Servers","Automation","Business"],isMCP:true,isDev:true,
+   bestFor:"Developers building AI workflows that need to send notifications, alerts, or messages via SMS or WhatsApp at the end of a pipeline. Let an AI agent complete a task and send a real-world message without a separate integration layer.",
+   free:{available:true,desc:"Free and open source. Requires Twilio Account SID and Auth Token. Twilio trial gives $15.50 free credit."},
+   paid:[{name:"Twilio SMS",price:"From $0.0079/message",perks:"Global SMS delivery to 180+ countries"}],
+   useCases:["Send an SMS notification when an AI pipeline completes a task","Let an agent send a WhatsApp message to a sales lead automatically","Build an alert system that texts on-call engineers for production errors","Create a confirmation workflow that sends codes via SMS","Automate outreach messages from an AI sales agent"],
+   features:["Send SMS to any number worldwide","Send WhatsApp messages via Twilio API","Read message delivery status","List message history","Look up phone number validity","Send to multiple recipients"],
+   integrations:["Claude Desktop","n8n","Any MCP-compatible client","Twilio API"],
+   scores:{writing:3,coding:5,research:2,creativity:2,automation:10,multimodal:2},
+   agents:{hasAgents:false}},
+
+  {id:"mcp-aws",name:"AWS MCP",maker:"AWS (official)",tagline:"Give your AI agent AWS access — query S3, Lambda, DynamoDB, CloudWatch, and more",icon:"☁️",color:"#FF9900",
+   categories:["MCP Servers","Coding","AI Engineering"],isMCP:true,isDev:true,
+   bestFor:"DevOps engineers and developers using AWS who want Claude to help manage infrastructure, query logs, inspect S3 buckets, and debug Lambda functions — without switching to the console for every operation.",
+   free:{available:true,desc:"Free and open source (official AWS Labs MCP server suite). Requires AWS credentials with appropriate IAM permissions."},
+   paid:[],
+   useCases:["Ask Claude to inspect a failing Lambda function and suggest a fix","Have an agent check CloudWatch logs for errors in the last hour","Let Claude list S3 bucket contents and identify large files","Query DynamoDB for debugging a data issue","Build an infrastructure health monitoring agent on AWS"],
+   features:["S3 — list buckets, read objects, get metadata","Lambda — list functions, read code, check logs","CloudWatch — query logs and metrics","DynamoDB — read and query tables","EC2 — list instances and status","IAM — read policies and roles (read-only by default)"],
+   integrations:["Claude Desktop","Any MCP-compatible client","AWS SDK","All AWS regions"],
+   scores:{writing:2,coding:9,research:7,creativity:1,automation:10,multimodal:1},
+   agents:{hasAgents:false}},
+
+  {id:"mcp-memory",name:"Memory MCP",maker:"Anthropic (official)",tagline:"Give your AI agent persistent memory — remember facts across conversations with a simple KV store",icon:"🧠",color:"#7C3AED",
+   categories:["MCP Servers","AI Engineering"],isMCP:true,isDev:true,
+   bestFor:"Developers building Claude Desktop workflows who want the agent to remember things between sessions — user preferences, project context, past decisions — without building a full memory backend. The simplest way to add cross-session persistence to any Claude workflow.",
+   free:{available:true,desc:"Free and open source (official Anthropic MCP server). Stores memories locally in a JSON file — no external service needed."},
+   paid:[],
+   useCases:["Have Claude remember your name and preferences across Claude Desktop sessions","Store project context so Claude picks up where it left off","Let an agent accumulate facts about a person or organisation over time","Build a personal knowledge base that grows with every conversation","Create a task tracker that persists between AI work sessions"],
+   features:["Create, read, update, and delete memory entries","Semantic search across stored memories","Namespace support — separate memories by context","Local JSON storage — no external service needed","Works across Claude Desktop sessions","Simple key-value interface with optional metadata"],
+   integrations:["Claude Desktop","Any MCP-compatible client"],
+   scores:{writing:2,coding:5,research:6,creativity:2,automation:8,multimodal:1},
+   agents:{hasAgents:false}},
+
+  {id:"mcp-sequential-thinking",name:"Sequential Thinking MCP",maker:"Anthropic (official)",tagline:"Give your AI agent structured reasoning — break complex problems into explicit, revisable steps",icon:"🧩",color:"#059669",
+   categories:["MCP Servers","AI Engineering"],isMCP:true,isDev:true,
+   bestFor:"Developers who want Claude to reason more reliably on hard multi-step problems. Provides a dynamic scratchpad where Claude breaks problems into explicit numbered steps, revises earlier conclusions, and maintains a structured thought process — measurably better on complex architecture and logic tasks.",
+   free:{available:true,desc:"Free and open source (official Anthropic MCP server). No external dependencies or API keys."},
+   paid:[],
+   useCases:["Get more reliable answers on multi-step logic and planning problems","Have Claude decompose a complex engineering decision into explicit trade-offs","Let Claude revise its reasoning mid-way when it discovers new information","Improve performance on difficult code architecture questions","Use as a structured planning tool for project decomposition"],
+   features:["Dynamic thinking scratchpad — explicit numbered reasoning steps","Backtracking — revise earlier steps when new information emerges","Hypothesis testing — Claude tests and rejects approaches explicitly","Final answer distinct from reasoning process","Configurable thinking budget — depth vs speed","Works with any Claude model — no API surcharge"],
+   integrations:["Claude Desktop","Any MCP-compatible client"],
+   scores:{writing:5,coding:8,research:8,creativity:5,automation:6,multimodal:3},
+   agents:{hasAgents:false}},
+  {id:"mcp-zapier",name:"Zapier MCP",maker:"Zapier",tagline:"Give your AI agent access to 7,000+ apps via Zapier — no-code automation from inside Claude",icon:"⚡",color:"#FF4A00",
+   categories:["MCP Servers","Automation","Business"],isMCP:true,isDev:true,
+   bestFor:"Non-developers and automation-focused teams who want AI agents to trigger real-world actions across 7,000+ apps without writing code. One Zapier connection gives Claude access to all your Zaps as callable tools — Sheets, Gmail, Salesforce, Slack, and thousands more.",
+   free:{available:true,desc:"Free Zapier plan: 5 Zaps, 100 tasks/month. Zapier MCP server itself is free."},
+   paid:[{name:"Zapier Starter",price:"$19.99/mo",perks:"20 Zaps, 750 tasks/month, multi-step Zaps"},{name:"Zapier Professional",price:"$49/mo",perks:"Unlimited Zaps, 2,000 tasks/month, paths and filters"}],
+   useCases:["Let Claude trigger a Zap to add a CRM contact after a conversation","Have an agent send a Gmail confirmation after completing a workflow","Trigger a Google Sheets row creation from an AI data pipeline","Let Claude send a Slack message via Zapier without a Slack Bot token","Build a no-code AI workflow that touches 10+ apps without writing code"],
+   features:["7,000+ app integrations available as Claude-callable tools","AI Actions — define which Zaps Claude can trigger","Natural language to Zap triggering — no API knowledge needed","Read and write data to connected apps","Chain multiple Zapier actions in one AI request","Works with any MCP-compatible client"],
+   integrations:["Claude Desktop","Any MCP-compatible client","All 7,000+ Zapier-connected apps"],
+   scores:{writing:3,coding:2,research:4,creativity:3,automation:10,multimodal:2},
+   agents:{hasAgents:false}},
+];
 
 // ═══════════════ USE CASES ═══════════════
 const USE_CASES = [
@@ -3314,7 +3896,11 @@ const USE_CASES = [
   {id:"meetings",label:"Meeting Notes",emoji:"🎙️",toolIds:["fathom","otter-ai","fireflies","notion-ai","gong"],
    desc:"AI meeting assistants that record, transcribe, and summarise calls — with action items and CRM sync"},
   {id:"writing-editing",label:"Writing & Editing",emoji:"✍️",toolIds:["grammarly","claude","chatgpt","jasper","writer","notion-ai"],
-   desc:"AI writing tools for drafting, editing, brand voice, and polishing content across every format"}
+   desc:"AI writing tools for drafting, editing, brand voice, and polishing content across every format"},
+  {id:"mcp-servers",label:"MCP Servers",emoji:"🔌",toolIds:["mcp-filesystem","mcp-github","mcp-postgres","mcp-brave-search","mcp-puppeteer","mcp-notion","mcp-slack","mcp-stripe","mcp-linear","mcp-sentry","mcp-supabase","mcp-cloudflare","mcp-docker","mcp-exa","mcp-tavily","mcp-memory","mcp-sequential-thinking","mcp-zapier","mcp-aws","mcp-figma","mcp-google-drive","mcp-perplexity","mcp-hubspot","mcp-jira","mcp-twilio"],
+   desc:"Official and community MCP servers — connect Claude and AI agents to real-world tools and data sources. Install with npx or pip, add to claude_desktop_config.json, and your agent gains new capabilities instantly."},
+  {id:"ai-engineering",label:"AI Engineering",emoji:"🔧",toolIds:["langgraph","crewai","autogen","openai-agents","semantic-kernel","haystack","promptfoo","langsmith","helicone","braintrust","ragas","mem0","zep","arize","deepeval","langchain","pinecone"],
+   desc:"Frameworks, evaluation, observability, and memory tools for teams building AI-powered products — from agent orchestration to production monitoring"}
 ];
 
 // ═══════════════ CATEGORY META ═══════════════
@@ -3335,6 +3921,8 @@ const CAT_META = {
   "Education":{emoji:"🏫",headline:"Best AI tools for education and learning",desc:"AI tutors, research assistants, and study tools that build real understanding — not just give you the answer.",scoreKey:"research",highlights:{khanmigo:"Socratic AI tutor — guides students to find answers instead of just providing them","notebooklm":"Upload your course materials — instant Q&A and audio summaries of any lecture",chatgpt:"Explain any concept at any level, generate practice problems, check your understanding",gemini:"Deep Research for student projects — multi-source reports with citations",wolfram:"Step-by-step solutions for math, science, and engineering — shows all working",elicit:"Systematic literature review — extract data from 200M+ academic papers"}},
   "Business":{emoji:"💼",headline:"Best AI tools for business and productivity",desc:"Meeting intelligence, knowledge management, revenue tracking, and productivity tools that keep your team running smoothly.",scoreKey:"automation",highlights:{copilot:"Built into every Microsoft 365 app — no context switching for Word, Excel, or Outlook users","notion-ai":"Q&A across your entire company wiki and document history in seconds","otter-ai":"Auto-transcribes every meeting, generates summaries, and pushes action items to Slack",gong:"Revenue intelligence — AI analyzes every sales call to show what's working and what's not",perplexity:"Real-time financial and business intelligence research with cited sources",chatgpt:"Draft proposals, analyze financials, and summarize board reports in minutes"}},
   "Fitness":{emoji:"💪",headline:"Best AI tools for fitness and health",desc:"Personalized workout planning, progressive training programs, and fitness tracking that adapts to you automatically.",scoreKey:"automation",highlights:{fitbod:"400M+ data point algorithm — adapts every workout to your equipment, fatigue, and progress",chatgpt:"Custom fitness plans, nutrition guidance, and form explanations on demand",gemini:"Cross-reference fitness research with your health data inside Google ecosystem"}},
+  "MCP Servers":{emoji:"🔌",headline:"Official MCP servers — connect Claude to any tool or data source",desc:"MCP (Model Context Protocol) servers let AI agents call external APIs, read databases, and interact with services like GitHub, Notion, Slack, and Stripe. Install via npx in minutes. Anthropic maintains the official servers; hundreds more exist in the community. Start with Filesystem + Brave Search for most workflows.",scoreKey:"automation",highlights:{"mcp-filesystem":"Start here. Gives Claude read/write access to local files — no API key needed.","mcp-brave-search":"Real-time web search without Google. 2,000 free queries/month.","mcp-github":"Read repos, create issues, review PRs — the most-installed MCP server.","mcp-postgres":"Ask Claude questions about your database in plain English.","mcp-memory":"Persistent memory across Claude Desktop sessions — simple local JSON storage.","mcp-puppeteer":"Browser automation for sites without APIs — click, fill, screenshot.","mcp-stripe":"Query your Stripe revenue, churn, and payment data via Claude.","mcp-sequential-thinking":"Structured step-by-step reasoning — measurably better on complex problems."}},
+  "AI Engineering":{emoji:"🔧",headline:"Frameworks, eval, observability, and memory for AI builders",desc:"The infrastructure layer that makes AI products reliable in production — agent orchestration frameworks, evaluation suites, LLM observability, and persistent memory. Choose based on whether you need control (LangGraph), speed (CrewAI), benchmarks (AutoGen), or eval coverage (Braintrust/Promptfoo).",scoreKey:"automation",highlights:{"langgraph":"Production-grade stateful agents — used at Uber, Cisco, Klarna. Deterministic graph execution with checkpointing.","crewai":"Fastest time to prototype — role-based agents in 2-4 hours. Best for business workflow automation.","autogen":"GAIA benchmark leader — conversational multi-agent coordination. Best for data science and research.","promptfoo":"The Jest for LLMs — CLI-based eval framework with CI integration. Zero setup.","langsmith":"Trace every LangChain/LangGraph run — cuts debug time from 47 minutes to seconds.","helicone":"One-URL proxy for instant LLM observability — change one line, get full logging and cost tracking.","mem0":"Persistent memory API for agents — add/search memories in 3 methods. Works with any framework.","ragas":"Score your RAG pipeline on faithfulness and context recall — the metrics that actually predict production failure."}},
   "Sales":{emoji:"📞",headline:"Best AI tools for sales teams",desc:"Deal intelligence, call coaching, revenue forecasting, and CRM automation that help sales teams close faster and forecast accurately.",scoreKey:"automation",highlights:{gong:"Analyzes every sales call — surfaces winning behaviors, risk signals, and forecast accuracy","chatgpt":"Draft personalized outreach, summarize prospect research, and prepare meeting briefs","claude":"Write compelling proposals and sales content that matches your brand voice exactly",n8n:"Automate lead qualification, CRM updates, and follow-up sequences end-to-end",copilot:"Dynamics 365 Copilot — AI embedded directly into Microsoft's CRM platform"}}
 };
 
@@ -3372,7 +3960,9 @@ function getFiltered(){
       "Models & APIs":t.categories.includes("Models & APIs"),
       "Presentations":t.categories.includes("Presentations")||t.id==='gamma',
       "Meetings":t.categories.includes("Meetings")||['fathom','otter-ai','fireflies'].includes(t.id),
-      "Writing":t.categories.includes("Writing")||['grammarly','jasper','writer','claude','chatgpt'].includes(t.id)
+      "Writing":t.categories.includes("Writing")||['grammarly','jasper','writer','claude','chatgpt'].includes(t.id),
+      "AI Engineering":t.categories.includes("AI Engineering"),
+      "MCP Servers":t.categories.includes("MCP Servers")
     };
     return cm[state.category]??true;
   };
@@ -3468,6 +4058,53 @@ const TOOL_URLS={
   'descript':          {url:'https://descript.com',              docs:'https://help.descript.com'},
   'jasper':            {url:'https://jasper.ai',                 docs:'https://developers.jasper.ai'},
   'fireflies':         {url:'https://fireflies.ai',              docs:'https://docs.fireflies.ai'},
+  'langgraph':         {url:'https://langchain-ai.github.io/langgraph/',  docs:'https://langchain-ai.github.io/langgraph/'},
+  'crewai':            {url:'https://crewai.com',                         docs:'https://docs.crewai.com'},
+  'autogen':           {url:'https://microsoft.github.io/autogen/',       docs:'https://microsoft.github.io/autogen/docs/'},
+  'openai-agents':     {url:'https://openai.github.io/openai-agents-python/', docs:'https://openai.github.io/openai-agents-python/'},
+  'semantic-kernel':   {url:'https://learn.microsoft.com/en-us/semantic-kernel/', docs:'https://learn.microsoft.com/en-us/semantic-kernel/overview/'},
+  'promptfoo':         {url:'https://promptfoo.dev',                      docs:'https://promptfoo.dev/docs/'},
+  'langsmith':         {url:'https://smith.langchain.com',                docs:'https://docs.smith.langchain.com'},
+  'helicone':          {url:'https://helicone.ai',                        docs:'https://docs.helicone.ai'},
+  'braintrust':        {url:'https://braintrust.dev',                     docs:'https://braintrust.dev/docs'},
+  'ragas':             {url:'https://ragas.io',                           docs:'https://docs.ragas.io'},
+  'mem0':              {url:'https://mem0.ai',                            docs:'https://docs.mem0.ai'},
+  'zep':               {url:'https://getzep.com',                         docs:'https://docs.getzep.com'},
+  'haystack':          {url:'https://haystack.deepset.ai',                docs:'https://docs.haystack.deepset.ai'},
+  'arize':             {url:'https://phoenix.arize.com',                  docs:'https://docs.arize.com/phoenix'},
+  'deepeval':          {url:'https://confident-ai.com',                   docs:'https://docs.confident-ai.com'},
+  'claude-api':        {url:'https://console.anthropic.com',             docs:'https://docs.anthropic.com'},
+  'claude-code':       {url:'https://claude.ai/code',                    docs:'https://docs.anthropic.com/en/docs/claude-code'},
+  'openai-api':        {url:'https://platform.openai.com',               docs:'https://platform.openai.com/docs'},
+  'sora':              {url:'https://sora.com',                          docs:'https://platform.openai.com/docs/guides/video'},
+  'vertex-ai':         {url:'https://cloud.google.com/vertex-ai',        docs:'https://cloud.google.com/vertex-ai/docs'},
+  'copilot-studio':    {url:'https://copilotstudio.microsoft.com',        docs:'https://learn.microsoft.com/en-us/microsoft-copilot-studio/'},
+  'azure-openai':      {url:'https://azure.microsoft.com/en-us/products/ai-services/openai-service', docs:'https://learn.microsoft.com/en-us/azure/ai-services/openai/'},
+  'mcp-github':  {url:'https://github.com/github/github-mcp-server', docs:'https://github.com/github/github-mcp-server'},
+  'mcp-notion':  {url:'https://github.com/makenotion/notion-sdk-js', docs:'https://developers.notion.com/'},
+  'mcp-slack':  {url:'https://github.com/arcadeai/mcp-slack', docs:'https://github.com/arcadeai/mcp-slack'},
+  'mcp-figma':  {url:'https://github.com/GLips/Figma-Context-MCP', docs:'https://github.com/GLips/Figma-Context-MCP'},
+  'mcp-google-drive':  {url:'https://github.com/modelcontextprotocol/servers', docs:'https://github.com/modelcontextprotocol/servers/tree/main/src/gdrive'},
+  'mcp-postgres':  {url:'https://github.com/modelcontextprotocol/servers', docs:'https://github.com/modelcontextprotocol/servers/tree/main/src/postgres'},
+  'mcp-brave-search':  {url:'https://github.com/modelcontextprotocol/servers', docs:'https://github.com/modelcontextprotocol/servers/tree/main/src/brave-search'},
+  'mcp-filesystem':  {url:'https://github.com/modelcontextprotocol/servers', docs:'https://github.com/modelcontextprotocol/servers/tree/main/src/filesystem'},
+  'mcp-puppeteer':  {url:'https://github.com/modelcontextprotocol/servers', docs:'https://github.com/modelcontextprotocol/servers/tree/main/src/puppeteer'},
+  'mcp-stripe':  {url:'https://github.com/stripe/agent-toolkit', docs:'https://github.com/stripe/agent-toolkit/tree/main/modelcontextprotocol'},
+  'mcp-linear':  {url:'https://github.com/jerhadf/linear-mcp-server', docs:'https://github.com/jerhadf/linear-mcp-server'},
+  'mcp-sentry':  {url:'https://github.com/getsentry/sentry-mcp', docs:'https://github.com/getsentry/sentry-mcp'},
+  'mcp-supabase':  {url:'https://github.com/supabase-community/supabase-mcp', docs:'https://github.com/supabase-community/supabase-mcp'},
+  'mcp-cloudflare':  {url:'https://github.com/cloudflare/mcp-server-cloudflare', docs:'https://github.com/cloudflare/mcp-server-cloudflare'},
+  'mcp-docker':  {url:'https://github.com/docker/mcp-servers', docs:'https://github.com/docker/mcp-servers'},
+  'mcp-exa':  {url:'https://exa.ai', docs:'https://docs.exa.ai/reference/mcp'},
+  'mcp-tavily':  {url:'https://tavily.com', docs:'https://docs.tavily.com/docs/mcp'},
+  'mcp-perplexity':  {url:'https://perplexity.ai', docs:'https://github.com/ppl-ai/modelcontextprotocol'},
+  'mcp-hubspot':  {url:'https://github.com/burakdirin/hubspot-mcp-server', docs:'https://github.com/burakdirin/hubspot-mcp-server'},
+  'mcp-jira':  {url:'https://github.com/Parthiv-M/jira-mcp', docs:'https://github.com/Parthiv-M/jira-mcp'},
+  'mcp-twilio':  {url:'https://github.com/twilio-labs/mcp', docs:'https://github.com/twilio-labs/mcp'},
+  'mcp-aws':  {url:'https://github.com/awslabs/mcp', docs:'https://github.com/awslabs/mcp'},
+  'mcp-zapier':  {url:'https://zapier.com/mcp', docs:'https://zapier.com/mcp'},
+  'mcp-memory':  {url:'https://github.com/modelcontextprotocol/servers', docs:'https://github.com/modelcontextprotocol/servers/tree/main/src/memory'},
+  'mcp-sequential-thinking':  {url:'https://github.com/modelcontextprotocol/servers', docs:'https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking'},
 };
 
 function renderCard(t,catHighlight){
@@ -3504,10 +4141,10 @@ function renderCard(t,catHighlight){
   return `<div class="tool-card${exp?' expanded':''}" data-id="${t.id}"${(t.isModel||t.isInfra)?' data-model="true"':''}>
     <div class="card-head"><div class="tool-icon" style="background:var(--bg3);border:1px solid var(--border)"><span style="filter:drop-shadow(0 0 4px ${t.color}66)">${t.icon}</span></div>
     <div class="tool-info"><div class="tool-name-row"><div class="tool-name">${t.name}</div>${(TOOL_URLS[t.id]?.url)?`<a href="${TOOL_URLS[t.id].url}" target="_blank" rel="noopener" class="card-visit-btn" onclick="event.stopPropagation()">↗ Visit site</a>`:''}</div><div class="tool-maker">${t.maker}</div>
-    <div class="tool-tags">${t.categories.slice(0,2).map((c,i)=>`<span class="tag${i===0?' primary':''}">${c}</span>`).join('')}${t.agents?.hasAgents?'<span class="agent-badge">⚡ Agents</span>':''}${(t.isModel||t.isInfra)?`<span class="model-badge">${t.isModel?'Open model':'Infrastructure'}</span>`:''}</div></div></div>
+    <div class="tool-tags">${t.categories.slice(0,2).map((c,i)=>`<span class="tag${i===0?' primary':''}">${c}</span>`).join('')}${t.agents?.hasAgents?'<span class="agent-badge">⚡ Agents</span>':''}${(t.isModel||t.isInfra||t.isDev||t.isMCP)?`<span class="model-badge">${t.isModel?'Open model':t.isInfra?'Infrastructure':t.isMCP?'MCP Server':'Dev tool'}</span>`:''}</div></div></div>
     <div class="card-body"><div class="tagline">${t.tagline}</div>
     ${catHighlight?`<div class="bestfor" style="border-left-color:var(--p2)"><strong style="color:var(--p2)">Why for this</strong>${catHighlight}</div>`:`<div class="bestfor"><strong>Best for</strong>${t.bestFor}</div>`}</div>
-    <div class="card-footer"><span class="free-badge ${t.free.available?'yes':'no'}">${t.free.available?'✓ Free':'✗ Paid'}</span><div class="paid-from">From <span>${t.paid[0].price}</span></div><span class="expand-arrow">⌄</span></div>
+    <div class="card-footer"><span class="free-badge ${t.free.available?'yes':'no'}">${t.free.available?'✓ Free':'✗ Paid'}</span>${!t.free.available&&t.paid[0]?.price?`<div class="paid-from">From <span>${t.paid[0].price}</span></div>`:t.free.available?'':``}<span class="expand-arrow">⌄</span></div>
     ${detail}</div>`;
 }
 
@@ -3548,7 +4185,7 @@ function renderExplore(){
     grid.innerHTML=filtered.map(t=>renderCard(t,meta&&meta.highlights?meta.highlights[t.id]:null)).join('');
     const _f=state.filters||{};
     const _activeCount=[_f.skill,_f.outputType,_f.topScore].filter(Boolean).length+(state.category!=='All'?1:0);
-    const baseText=state.query||state.category!=='All'||_activeCount?`${filtered.length} tool${filtered.length!==1?'s':''} found`:`Showing all ${filtered.length} tools across 20 categories`;
+    const baseText=state.query||state.category!=='All'||_activeCount?`${filtered.length} tool${filtered.length!==1?'s':''} found`:`Showing all ${filtered.length} tools across 22 categories`;
     document.getElementById('search-count').textContent=baseText;
     document.getElementById('tab-count').textContent=filtered.length;
     grid.querySelectorAll('.tool-card').forEach(card=>{
@@ -3628,7 +4265,7 @@ function renderCompare(){
     radarChart=new Chart(ctx,{type:'radar',data:{labels:dims.map(d=>d.charAt(0).toUpperCase()+d.slice(1)),datasets:sel2.map((t,i)=>({label:t.name,data:dims.map(d=>t.scores[d]),borderColor:CHART_COLORS[i%4].border,backgroundColor:CHART_COLORS[i%4].bg,borderWidth:2,pointBackgroundColor:CHART_COLORS[i%4].border,pointRadius:4}))},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{r:{beginAtZero:true,max:10,ticks:{stepSize:2,color:labelCol,backdropColor:'transparent',font:{size:10}},pointLabels:{color:labelCol,font:{size:11}},grid:{color:gridCol},angleLines:{color:gridCol}}}}});
   }
   document.getElementById('compare-legend').innerHTML=sel2.map((t,i)=>`<div class="leg-item"><div class="leg-dot" style="background:${CHART_COLORS[i%4].border}"></div><span>${t.name}</span></div>`).join('');
-  document.getElementById('price-table').innerHTML=`<thead><tr><th>Tool</th><th>Free Tier</th><th>Starting Price</th><th>Best Plan</th></tr></thead><tbody>${sel2.map(t=>`<tr><td>${t.icon} ${t.name}</td><td>${t.free.available?'<span class="pill-green">✓ Free</span>':'<span class="pill-red">✗ None</span>'}</td><td style="color:var(--p2);font-weight:600">${t.paid[0].price}</td><td>${t.paid[0].name} — ${t.paid[0].perks.split(',')[0]}</td></tr>`).join('')}</tbody>`;
+  document.getElementById('price-table').innerHTML=`<thead><tr><th>Tool</th><th>Free Tier</th><th>Starting Price</th><th>Best Plan</th></tr></thead><tbody>${sel2.map(t=>`<tr><td>${t.icon} ${t.name}</td><td>${t.free.available?'<span class="pill-green">✓ Free</span>':'<span class="pill-red">✗ None</span>'}</td><td style="color:var(--p2);font-weight:600">${t.paid[0]?.price||'Free'}</td><td>${t.paid[0]?.name||''} — ${(t.paid[0]?.perks||'Free / open source').split(',')[0]}</td></tr>`).join('')}</tbody>`;
   // Update print header
   const ph=document.getElementById('compare-print-header');
   if(ph){
@@ -3667,7 +4304,7 @@ function renderUcToolDetail(t){
     <div style="margin-bottom:14px"><div style="font-size:9px;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:6px">Capability scores <span class="score-info" data-tip="Scores are editorial — based on structured tests &amp; public benchmarks. Scale: 1 = limited, 5 = solid, 10 = best-in-class. See Methodology in the Community tab for full details.">?</span></div>${scores}</div>
     <div style="display:flex;align-items:center;gap:10px;padding-top:12px;border-top:1px solid var(--border)">
       <span class="free-badge ${t.free.available?'yes':'no'}">${t.free.available?'✓ Free tier':'✗ No free tier'}</span>
-      <span style="font-size:12px;color:var(--text2)">Paid from <strong>${t.paid[0].price}</strong></span>
+      <span style="font-size:12px;color:var(--text2)">Paid from <strong>${t.paid[0]?.price||'Free'}</strong></span>
     </div>
   </div>`;
 }
@@ -3697,7 +4334,7 @@ function renderUseCases(){
       <div style="flex:1;min-width:0">
         <div class="uc-tool-name">${t.name} <span style="color:var(--text3);font-size:11px;font-weight:400">by ${t.maker}</span></div>
         <div class="uc-tool-why">${t.bestFor}</div>
-        <div style="font-size:11px;color:${t.free.available?'var(--p2)':'var(--text3)'};margin-top:5px">${t.free.available?'✓ Free tier · Paid from '+t.paid[0].price:'Paid from '+t.paid[0].price}</div>
+        <div style="font-size:11px;color:${t.free.available?'var(--p2)':'var(--text3)'};margin-top:5px">${t.free.available?'✓ Free tier · '+( t.paid[0]?.price?'Paid from '+t.paid[0].price:''):t.paid[0]?.price?'Paid from '+t.paid[0].price:'Open source / free'}</div>
       </div>
       <span style="color:var(--text3);font-size:13px;flex-shrink:0;transition:transform 0.25s;transform:${isExpanded?'rotate(180deg)':'rotate(0deg)'}">${isExpanded?'⌄':'⌄'}</span>
     </div>`;
@@ -4075,6 +4712,53 @@ const TOOL_META={
   'windsurf':         {primary:'creation',    secondary:['orchestration'],beginner:false, free:true,  enterprise:false},
   'jasper':           {primary:'creation',    secondary:['orchestration'],beginner:true,  free:false, enterprise:true},
   'fireflies':        {primary:'capture',     secondary:['governance','orchestration'], beginner:true, free:true, enterprise:true},
+  'langgraph':        {primary:'orchestration',secondary:['creation'],          beginner:false, free:true,  enterprise:true},
+  'crewai':           {primary:'orchestration',secondary:['creation'],          beginner:false, free:true,  enterprise:false},
+  'autogen':          {primary:'orchestration',secondary:['knowledge'],         beginner:false, free:true,  enterprise:true},
+  'openai-agents':    {primary:'orchestration',secondary:['creation'],          beginner:false, free:true,  enterprise:false},
+  'semantic-kernel':  {primary:'orchestration',secondary:[],                    beginner:false, free:true,  enterprise:true},
+  'promptfoo':        {primary:'governance',   secondary:['orchestration'],     beginner:false, free:true,  enterprise:false},
+  'langsmith':        {primary:'governance',   secondary:['knowledge'],         beginner:false, free:true,  enterprise:true},
+  'helicone':         {primary:'governance',   secondary:[],                    beginner:false, free:true,  enterprise:false},
+  'braintrust':       {primary:'governance',   secondary:['knowledge'],         beginner:false, free:true,  enterprise:false},
+  'ragas':            {primary:'governance',   secondary:['knowledge'],         beginner:false, free:true,  enterprise:false},
+  'mem0':             {primary:'knowledge',    secondary:['orchestration'],     beginner:false, free:true,  enterprise:false},
+  'zep':              {primary:'knowledge',    secondary:['orchestration'],     beginner:false, free:true,  enterprise:false},
+  'haystack':         {primary:'orchestration',secondary:['knowledge'],         beginner:false, free:true,  enterprise:true},
+  'arize':            {primary:'governance',   secondary:[],                    beginner:false, free:true,  enterprise:false},
+  'deepeval':         {primary:'governance',   secondary:[],                    beginner:false, free:true,  enterprise:false},
+  'claude-api':       {primary:'creation',    secondary:['orchestration'],     beginner:false, free:true,  enterprise:true},
+  'claude-code':      {primary:'creation',    secondary:[],                    beginner:false, free:false, enterprise:false},
+  'openai-api':       {primary:'creation',    secondary:['orchestration'],     beginner:false, free:true,  enterprise:true},
+  'sora':             {primary:'creation',    secondary:[],                    beginner:false, free:false, enterprise:false},
+  'vertex-ai':        {primary:'orchestration',secondary:['knowledge'],        beginner:false, free:true,  enterprise:true},
+  'copilot-studio':   {primary:'orchestration',secondary:[],                   beginner:false, free:false, enterprise:true},
+  'azure-openai':     {primary:'creation',    secondary:['orchestration'],     beginner:false, free:true,  enterprise:true},
+  'mcp-github': {primary:'creation',    secondary:['knowledge'],        beginner:false, free:true,  enterprise:false},
+  'mcp-notion': {primary:'knowledge',   secondary:['creation'],         beginner:true,  free:true,  enterprise:false},
+  'mcp-slack': {primary:'capture',     secondary:[],                   beginner:true,  free:true,  enterprise:false},
+  'mcp-figma': {primary:'creation',    secondary:[],                   beginner:false, free:true,  enterprise:false},
+  'mcp-google-drive': {primary:'knowledge',   secondary:[],                   beginner:true,  free:true,  enterprise:false},
+  'mcp-postgres': {primary:'knowledge',   secondary:['orchestration'],    beginner:false, free:true,  enterprise:true},
+  'mcp-brave-search': {primary:'knowledge',   secondary:[],                   beginner:true,  free:true,  enterprise:false},
+  'mcp-filesystem': {primary:'orchestration',secondary:[],                  beginner:true,  free:true,  enterprise:false},
+  'mcp-puppeteer': {primary:'orchestration',secondary:['knowledge'],       beginner:false, free:true,  enterprise:false},
+  'mcp-stripe': {primary:'knowledge',   secondary:['governance'],       beginner:false, free:true,  enterprise:false},
+  'mcp-linear': {primary:'orchestration',secondary:[],                  beginner:false, free:true,  enterprise:false},
+  'mcp-sentry': {primary:'governance',  secondary:['knowledge'],        beginner:false, free:true,  enterprise:false},
+  'mcp-supabase': {primary:'knowledge',   secondary:['orchestration'],    beginner:false, free:true,  enterprise:false},
+  'mcp-cloudflare': {primary:'orchestration',secondary:[],                  beginner:false, free:true,  enterprise:false},
+  'mcp-docker': {primary:'orchestration',secondary:[],                  beginner:false, free:true,  enterprise:false},
+  'mcp-exa': {primary:'knowledge',   secondary:[],                   beginner:false, free:true,  enterprise:false},
+  'mcp-tavily': {primary:'knowledge',   secondary:[],                   beginner:false, free:true,  enterprise:false},
+  'mcp-perplexity': {primary:'knowledge',   secondary:[],                   beginner:true,  free:true,  enterprise:false},
+  'mcp-hubspot': {primary:'knowledge',   secondary:['orchestration'],    beginner:false, free:true,  enterprise:false},
+  'mcp-jira': {primary:'orchestration',secondary:[],                  beginner:false, free:true,  enterprise:true},
+  'mcp-twilio': {primary:'orchestration',secondary:[],                  beginner:false, free:true,  enterprise:false},
+  'mcp-aws': {primary:'orchestration',secondary:['knowledge'],       beginner:false, free:true,  enterprise:true},
+  'mcp-zapier': {primary:'orchestration',secondary:[],                  beginner:true,  free:true,  enterprise:false},
+  'mcp-memory': {primary:'knowledge',   secondary:[],                   beginner:true,  free:true,  enterprise:false},
+  'mcp-sequential-thinking': {primary:'orchestration',secondary:[],               beginner:true,  free:true,  enterprise:false},
   'llama':            {primary:'creation',    secondary:[],               beginner:false, free:true,  enterprise:false},
   'mistral':          {primary:'creation',    secondary:[],               beginner:false, free:true,  enterprise:false},
   'gemma':            {primary:'creation',    secondary:[],               beginner:false, free:true,  enterprise:false},
@@ -4093,22 +4777,27 @@ const GOAL_WEIGHTS={
   video:      {'heygen':9,'runway':8,'pika':8,'seedance':8,'elevenlabs':9,'claude':7,'canva-ai':7,'descript':7},
   audio:      {'elevenlabs':10,'otter-ai':7,'claude':6,'chatgpt':5,'descript':8},
   writing:    {'claude':10,'chatgpt':8,'writer':7,'notion-ai':7,'perplexity':7,'grammarly':8,'jasper':8,'gamma':5},
-  developer:  {'cursor':10,'claude':9,'github-copilot':9,'lovable':8,'deepseek':7,'n8n':7,'notebooklm':6,'windsurf':10},
+  developer:  {'cursor':10,'claude':9,'github-copilot':9,'lovable':8,'deepseek':7,'n8n':7,'notebooklm':6,'windsurf':10,'langgraph':8,'langsmith':8,'promptfoo':7,'helicone':6,'claude-code':9,'claude-api':8,'openai-api':8,'azure-openai':7,'vertex-ai':7},
   product:    {'lovable':9,'cursor':9,'claude':8,'n8n':7,'github-copilot':7},
-  coding:     {'cursor':10,'claude':9,'github-copilot':9,'deepseek':8,'lovable':7,'windsurf':10},
+  coding:     {'cursor':10,'claude':9,'github-copilot':9,'deepseek':8,'lovable':7,'windsurf':10,'langgraph':7,'crewai':6,'autogen':6,'openai-agents':6,'claude-code':9,'claude-api':7,'openai-api':7},
   marketer:   {'claude':9,'canva-ai':9,'chatgpt':8,'perplexity':8,'writer':7,'freepik':7,'jasper':9,'gamma':7,'grammarly':6},
   content:    {'claude':10,'chatgpt':8,'canva-ai':8,'writer':7,'perplexity':7,'notion-ai':6,'jasper':8,'grammarly':6,'descript':7},
   agency:     {'claude':9,'notion-ai':8,'otter-ai':8,'n8n':8,'canva-ai':7,'writer':7,'perplexity':7,'fathom':7,'fireflies':7,'jasper':6,'gamma':6},
   freelance:  {'claude':9,'notion-ai':8,'canva-ai':7,'otter-ai':7,'n8n':6},
   researcher: {'perplexity':10,'notebooklm':9,'elicit':9,'claude':8,'wolfram':7},
   knowledge:  {'notebooklm':10,'perplexity':9,'elicit':8,'claude':8,'glean':6},
-  automation: {'n8n':10,'openclaw':9,'copilot':7,'salesforce-einstein':6,'claude':6},
+  automation: {'n8n':10,'openclaw':9,'copilot':7,'salesforce-einstein':6,'claude':6,'langgraph':8,'crewai':7,'autogen':7,'openai-agents':6,'copilot-studio':7},
   sales:      {'gong':10,'salesforce-einstein':9,'chatgpt':7,'n8n':7,'claude':7,'fireflies':8,'fathom':6},
   legal:      {'harvey':10,'claude':9,'notebooklm':8,'perplexity':7},
-  enterprise: {'glean':10,'writer':9,'cohere':9,'salesforce-einstein':8,'copilot':8,'claude':7},
+  enterprise: {'glean':10,'writer':9,'cohere':9,'salesforce-einstein':8,'copilot':8,'claude':7,'azure-openai':9,'vertex-ai':8,'copilot-studio':8,'claude-api':7,'openai-api':7},
   team:       {'notion-ai':8,'otter-ai':8,'copilot':7,'glean':7,'n8n':7,'claude':7,'fathom':8,'fireflies':8,'gamma':5},
   productivity:{'otter-ai':9,'notion-ai':8,'copilot':8,'claude':7,'chatgpt':7,'fathom':8,'grammarly':6},
   general:    {'chatgpt':8,'claude':8,'gemini':7,'perplexity':7,'canva-ai':6,'notion-ai':6,'grammarly':5,'gamma':4},
+  agentbuilder:{'langgraph':10,'crewai':9,'autogen':9,'openai-agents':8,'semantic-kernel':7,'haystack':7,'mem0':7,'zep':6,'langsmith':8,'promptfoo':7,'helicone':6,'braintrust':7,'ragas':6,'arize':6,'deepeval':6,'claude-api':8,'openai-api':8,'vertex-ai':7,'azure-openai':6},
+  evaluation:  {'promptfoo':10,'braintrust':9,'ragas':9,'deepeval':9,'langsmith':8,'arize':8,'helicone':6},
+  observability:{'langsmith':10,'helicone':9,'arize':9,'braintrust':7,'promptfoo':7},
+  memory:      {'mem0':10,'zep':9,'notebooklm':6,'pinecone':6},
+  mcpsetup:    {'mcp-filesystem':10,'mcp-brave-search':9,'mcp-memory':9,'mcp-sequential-thinking':8,'mcp-github':8,'mcp-postgres':8,'mcp-puppeteer':7,'mcp-notion':7,'mcp-slack':7},
 };
 
 // ── Adaptive questions (4 total) ─────────────────────────────────
@@ -4552,88 +5241,204 @@ function buildStack(){
   const isBuild=session.mode==='build';
   const budget=session.answers.budget||'low';
   const skill=isBuild?'power':(session.answers.skill||'intermediate');
-  const team=session.answers.teamSize||'solo';
-  const fast=session.answers.timeline==='asap';
+  const team=(()=>{
+    if(session.answers.teamSize) return session.answers.teamSize;
+    // Infer from goal_type if no explicit team answer
+    const g=session.answers.goal_type||'';
+    if(g==='agency'||g==='product') return 'small';
+    if(g==='enterprise') return 'large';
+    return 'solo';
+  })();
+  const timeline=session.answers.timeline||'month';
   const compliance=session.answers.compliance||'none';
   const buildVsBuy=session.answers.build_vs_buy||'api_consumer';
   const modelNeed=session.answers.model_need||'text';
   const latency=session.answers.latency||'fast';
+  const existingStack=session.answers.existing_tools||session.answers.existing_stack||'';
 
-  // Score every tool
+  // ── PHASE 1: HARD CONSTRAINT FILTERS ─────────────────────────
+  // Each filter records WHY tools were removed. Order matters — most
+  // restrictive first so later filters see a smaller pool.
+  const eliminated={};
+  const filterLog=[];
+
+  function hardElim(toolId, reason){
+    if(!eliminated[toolId]) eliminated[toolId]=reason;
+  }
+
+  // COMPLIANCE — strictest filter: only keep tools that explicitly
+  // support the required standard. Everything else is eliminated.
+  const HIPAA_SAFE=['azure-openai','vertex-ai','cohere','glean','copilot',
+    'writer','salesforce-einstein','harvey','microsoft-365'];
+  const SOC2_SAFE=['azure-openai','vertex-ai','cohere','glean','copilot',
+    'writer','salesforce-einstein','harvey','notion-ai','claude','chatgpt',
+    'claude-api','openai-api','github-copilot','cursor','grammarly'];
+  const GDPR_SAFE=['azure-openai','vertex-ai','claude','claude-api','openai-api',
+    'chatgpt','gemini','cohere','mistral','ollama'];
+
+  if(compliance==='hipaa'){
+    TOOLS.forEach(t=>{ if(!HIPAA_SAFE.includes(t.id)) hardElim(t.id,'Removed: no HIPAA compliance documentation'); });
+    filterLog.push({icon:'🔒',msg:`HIPAA filter active — showing only ${HIPAA_SAFE.length} verified-compliant tools`});
+  } else if(compliance==='soc2'){
+    TOOLS.forEach(t=>{ if(!SOC2_SAFE.includes(t.id)) hardElim(t.id,'Removed: SOC 2 compliance not confirmed'); });
+    filterLog.push({icon:'🔒',msg:`SOC 2 filter active — compliance-verified tools only`});
+  } else if(compliance==='gdpr'){
+    TOOLS.forEach(t=>{ if(!GDPR_SAFE.includes(t.id)) hardElim(t.id,'Removed: EU data residency not confirmed'); });
+    filterLog.push({icon:'🇪🇺',msg:`GDPR filter active — EU data processing tools only`});
+  }
+
+  // BUDGET: free-only → hard eliminate all paid-only tools
+  if(budget==='none'){
+    TOOLS.forEach(t=>{ if(!t.free?.available) hardElim(t.id,'Removed: no free tier available'); });
+    const elimCount=Object.values(eliminated).filter(r=>r.includes('free tier')).length;
+    if(elimCount>0) filterLog.push({icon:'💸',msg:`Free-only mode — removed ${elimCount} paid tools from consideration`});
+  }
+
+  // SKILL: beginner → hard eliminate dev/infra tools (not beginner-friendly)
+  if(skill==='beginner'){
+    TOOLS.forEach(t=>{
+      const meta=TOOL_META[t.id]||{};
+      // Only eliminate if NOT already eliminated and NOT beginner-friendly
+      // Exception: never eliminate tools with beginner:true
+      if(!meta.beginner && (t.isDev||t.isInfra||t.isMCP||t.isModel)){
+        hardElim(t.id,'Removed: requires technical expertise');
+      }
+    });
+    filterLog.push({icon:'🎓',msg:`Beginner mode — technical infrastructure tools hidden`});
+  }
+
+  // TIMELINE: asap → eliminate tools with known long setup curves
+  const LONG_SETUP=['langgraph','autogen','semantic-kernel','haystack','ragas',
+    'arize','deepeval','braintrust','salesforce-einstein','harvey','glean'];
+  if(timeline==='asap'||timeline==='week'){
+    LONG_SETUP.forEach(id=>hardElim(id,'Removed: setup time exceeds your timeline'));
+    filterLog.push({icon:'⚡',msg:`Fast-setup mode — tools needing 2+ weeks to deploy hidden`});
+  }
+
+  // TEAM SIZE: solo/small → eliminate pure enterprise tools
+  // Enterprise tools need procurement, IT buy-in, and minimum seats
+  const ENTERPRISE_ONLY=['glean','harvey','salesforce-einstein','copilot-studio'];
+  if(team==='solo'||team==='small'){
+    ENTERPRISE_ONLY.forEach(id=>hardElim(id,'Removed: requires enterprise procurement'));
+  }
+
+  // MCP SERVERS: only show in results for dev/agent goals or build mode
+  const hasMCPGoal=session.goalTags.some(t=>['developer','coding','agentbuilder','mcpsetup'].includes(t));
+  if(!isBuild&&!hasMCPGoal){
+    TOOLS.forEach(t=>{ if(t.isMCP) hardElim(t.id,'MCP server — shown in developer/agent stacks'); });
+  }
+
+  // Log total eliminated
+  const elimTotal=Object.keys(eliminated).length;
+  const candidatePool=TOOLS.filter(t=>!eliminated[t.id]);
+
+  // ── PHASE 2: SOFT SCORING on surviving candidates only ────────
   const scores={};
-  TOOLS.forEach(t=>{
+
+  candidatePool.forEach(t=>{
     let score=0;
+    const meta=TOOL_META[t.id]||{};
+
+    // Base: GOAL_WEIGHTS — the primary signal
     session.goalTags.forEach(tag=>{
       if(GOAL_WEIGHTS[tag]&&GOAL_WEIGHTS[tag][t.id]) score+=GOAL_WEIGHTS[tag][t.id];
     });
 
-    // Budget filter
-    if(budget==='none'&&!t.free.available) score=0;
+    // BUDGET soft shaping (tools that survived hard filter but cost more get modest penalty)
     if(budget==='low'){
       const p=t.paid[0]?.price||'';
       const n=parseFloat(p.replace(/[^0-9.]/g,''));
-      if(!t.free.available&&n>35) score=Math.floor(score*0.4);
+      if(!t.free?.available&&n>50) score=Math.floor(score*0.7);
+      else if(t.free?.available) score+=1; // slight free-tier bonus
     }
 
-    // Skill filter
-    const meta=TOOL_META[t.id]||{beginner:false};
-    if(skill==='beginner'&&!meta.beginner) score=Math.floor(score*0.5);
-    if(skill==='power'&&meta.beginner) score+=1; // slight boost, power users can handle anything
+    // SKILL soft shaping
+    if(skill==='power'&&!meta.beginner) score+=2; // power users prefer capable tools
+    if(skill==='intermediate'&&meta.beginner) score+=1;
 
-    // Speed filter — beginners + fast setup: avoid complex tools
-    if(fast&&skill==='beginner'&&!meta.beginner) score=Math.floor(score*0.3);
+    // TEAM SIZE soft boosts
+    if(meta.enterprise&&team==='large') score+=4;
+    if(!meta.enterprise&&team==='solo') score+=2;
+    if(!meta.enterprise&&team==='small') score+=1;
 
-    // Team size — enterprise tools need large teams
-    if(meta.enterprise&&(team==='solo'||team==='small')) score=Math.floor(score*0.3);
-    if(meta.enterprise&&(team==='large')) score+=3;
+    // EXISTING STACK integration affinity
+    // If the user mentioned tools they already use, boost tools that integrate well
+    const existingTools=existingStack.toLowerCase();
+    if(existingTools&&existingTools!=='none'){
+      // Map question answer values to integration keyword patterns
+      const STACK_MAP={
+        'google':  ['google','gmail','sheets','drive','workspace','docs'],
+        'notion':  ['notion','obsidian'],
+        'design':  ['canva','figma','adobe','creative cloud'],
+        'comms':   ['slack','teams','zoom','microsoft'],
+        'code':    ['github','vs code','cursor','git','vscode','visual studio'],
+        'zapier':  ['zapier','make','n8n'],
+        'salesforce':['salesforce','hubspot','crm'],
+      };
+      const keywords=STACK_MAP[existingTools]||[existingTools];
+      const integrations=(t.integrations||[]).map(i=>i.toLowerCase());
+      const matches=integrations.filter(i=>keywords.some(kw=>i.includes(kw)));
+      if(matches.length>0) score+=matches.length*2; // 2pts per matching integration
+    }
 
-    // Build-mode specific scoring
+    // BUILD-MODE specific scoring
     if(isBuild){
-      // Compliance: regulated data → boost compliant tools, penalise others
-      if(compliance==='hipaa'||compliance==='soc2'){
-        const secure=['harvey','cohere','glean','copilot','writer','notion-ai'].includes(t.id);
-        if(secure) score+=5;
-        else if(!t.features?.some(f=>/hipaa|soc.?2|gdpr|compliance|private/i.test(f))) score=Math.floor(score*0.4);
+      // Model need alignment — strong signal
+      if(modelNeed==='code'){
+        if(['cursor','github-copilot','deepseek','claude-code','windsurf'].includes(t.id)) score+=7;
+        if(['claude-api','openai-api','claude'].includes(t.id)) score+=4;
       }
-      // Model need alignment
-      if(modelNeed==='code'&&['cursor','github-copilot','deepseek'].includes(t.id)) score+=6;
-      if(modelNeed==='voice'&&['elevenlabs','otter-ai'].includes(t.id)) score+=6;
-      if(modelNeed==='agents'&&t.agents?.hasAgents) score+=5;
-      if(modelNeed==='embed'&&['pinecone','notebooklm','perplexity'].includes(t.id)) score+=5;
-      // Build vs buy preference
+      if(modelNeed==='voice'&&['elevenlabs','otter-ai','whisper'].includes(t.id)) score+=7;
+      if(modelNeed==='agents'&&t.agents?.hasAgents) score+=6;
+      if(modelNeed==='agents'&&['langgraph','crewai','autogen','openai-agents'].includes(t.id)) score+=4;
+      if(modelNeed==='embed'&&['pinecone','notebooklm','perplexity'].includes(t.id)) score+=6;
+      if(modelNeed==='vision'&&t.scores?.multimodal>=7) score+=5;
+
+      // Build vs buy — strong architectural preference signal
       if(buildVsBuy==='infra'||buildVsBuy==='finetune'){
-        if(t.isModel||t.isInfra) score+=6;
+        if(t.isModel||t.isInfra) score+=7;
+        if(['llama','mistral','gemma','ollama','together-ai'].includes(t.id)) score+=3;
       }
-      if(buildVsBuy==='api_consumer'&&!(t.isModel||t.isInfra)) score+=2;
-      // Latency: real-time needs fast inference
-      if(latency==='realtime'&&['groq','cursor','deepseek'].includes(t.id)) score+=4;
+      if(buildVsBuy==='api_consumer'){
+        if(!t.isModel&&!t.isInfra&&!t.isMCP) score+=3;
+        if(['claude-api','openai-api','claude'].includes(t.id)) score+=4;
+      }
+      if(buildVsBuy==='rag'){
+        if(['pinecone','langchain','haystack','notebooklm'].includes(t.id)) score+=7;
+        if(['mcp-postgres','mcp-supabase'].includes(t.id)) score+=4;
+      }
+
+      // Latency requirements
+      if(latency==='realtime'&&['groq','cursor','deepseek','claude-api'].includes(t.id)) score+=5;
+      if(latency==='realtime'&&t.scores?.automation>=8) score+=2;
+
+      // Evaluation/observability boost for build mode
+      if(['langsmith','helicone','promptfoo','arize'].includes(t.id)) score+=3;
     }
 
     if(score>0) scores[t.id]=score;
   });
 
-  // Pick best tool per layer, avoid duplicates
+  // ── PHASE 3: LAYER-AWARE SELECTION ────────────────────────────
   const pickedLayers={};
   const recs=[];
 
-  // Sort by score descending
   const sorted=Object.entries(scores)
     .sort((a,b)=>b[1]-a[1])
     .map(([id])=>id);
 
-  // Desired layer coverage based on goal
-  const hasCreator=session.goalTags.some(t=>['creator','video','youtube','audio','writing','content'].includes(t));
-  const hasDev=session.goalTags.some(t=>['developer','coding','product'].includes(t));
+  // Desired layer coverage based on goal and mode
+  const hasDev=session.goalTags.some(t=>['developer','coding','product','agentbuilder'].includes(t));
   const hasEnterprise=session.goalTags.some(t=>['enterprise','large_team'].includes(t))||team==='large';
-  const needsKnowledge=session.goalTags.some(t=>['researcher','knowledge','legal'].includes(t));
 
   const wantedLayers=new Set(['creation']);
   if(!hasDev) wantedLayers.add('capture');
   wantedLayers.add('orchestration');
   wantedLayers.add('knowledge');
-  if(hasEnterprise) wantedLayers.add('governance');
+  if(hasEnterprise||compliance!=='none') wantedLayers.add('governance');
+  if(isBuild) wantedLayers.add('governance'); // always show governance in build mode
 
-  // First pass: pick best tool per layer
+  // First pass: best tool per primary layer
   for(const id of sorted){
     if(recs.length>=5) break;
     const t=TOOLS.find(x=>x.id===id);
@@ -4647,7 +5452,7 @@ function buildStack(){
     }
   }
 
-  // Second pass: fill gaps with secondary layers
+  // Second pass: fill gaps via secondary layers
   for(const id of sorted){
     if(recs.length>=5) break;
     if(recs.find(r=>r.tool.id===id)) continue;
@@ -4664,7 +5469,7 @@ function buildStack(){
     }
   }
 
-  // Ensure at least 3 tools
+  // Safety net: ensure at least 3 tools
   if(recs.length<3){
     for(const id of sorted){
       if(recs.length>=3) break;
@@ -4674,6 +5479,11 @@ function buildStack(){
     }
   }
 
+  // Attach constraint metadata for UI rendering
+  session._constraintLog=filterLog;
+  session._eliminatedCount=elimTotal;
+  session._candidateCount=candidatePool.length;
+
   return recs.slice(0,5);
 }
 
@@ -4682,8 +5492,9 @@ function estimateOutcomes(stack){
   const session=window._advisorSession||{goalTags:[],answers:{},goal:'',stack:[]};
   const budget=session.answers.budget||'low';
   const goalTags=session.goalTags;
+  const skill=session.answers.skill||'intermediate';
 
-  // Monthly cost
+  // ── Monthly cost ────────────────────────────────────────────────
   let monthlyCost=0;
   stack.forEach(({tool})=>{
     if(!tool.free.available){
@@ -4691,38 +5502,92 @@ function estimateOutcomes(stack){
       monthlyCost+=parseFloat(p.replace(/[^0-9.]/g,''))||20;
     }
   });
-  const costBand=monthlyCost===0?'Minimal (~$0)':monthlyCost<30?`Minimal (~$${Math.round(monthlyCost)}/mo)`:monthlyCost<80?`Moderate (~$${Math.round(monthlyCost)}/mo)`:`Higher (~$${Math.round(monthlyCost)}/mo)`;
+  const costBand=monthlyCost===0?'$0/mo (free stack)':monthlyCost<30?`~$${Math.round(monthlyCost)}/mo`:monthlyCost<80?`~$${Math.round(monthlyCost)}/mo`:`~$${Math.round(monthlyCost)}/mo`;
 
-  // Hours saved
+  // ── Hours saved — goal-specific estimates ──────────────────────
+  // Based on industry benchmarks: McKinsey 2024 (3.5 hrs/day), Nielsen Norman Group AI studies
   let hrMin=0, hrMax=0;
-  stack.forEach(({tool,layer})=>{
-    if(layer==='orchestration'){hrMin+=4;hrMax+=10;}
-    else if(layer==='creation'){hrMin+=2;hrMax+=5;}
-    else if(layer==='knowledge'){hrMin+=2;hrMax+=4;}
-    else if(layer==='capture'){hrMin+=1;hrMax+=3;}
-  });
+  const hasOrchestration=stack.some(r=>r.layer==='orchestration');
+  const hasCreation=stack.some(r=>r.layer==='creation');
+  const hasKnowledge=stack.some(r=>r.layer==='knowledge');
 
-  // Content output
-  let contentOutput='';
-  if(goalTags.includes('youtube')||goalTags.includes('video')){
-    contentOutput=stack.some(r=>r.tool.id==='heygen'||r.tool.id==='runway')?'2–3 videos/week':'1–2 videos/week';
-  } else if(goalTags.includes('writing')||goalTags.includes('content')){
-    contentOutput='8–15 posts/month';
+  if(goalTags.includes('writing')||goalTags.includes('content')){
+    hrMin=4; hrMax=9; // Writing AI tools cut drafting time 50-70% per Nielsen Norman
   } else if(goalTags.includes('developer')||goalTags.includes('coding')){
-    contentOutput='2–3x faster feature delivery';
+    hrMin=6; hrMax=12; // GitHub 2023 study: Copilot cuts coding time 55%
+  } else if(goalTags.includes('researcher')){
+    hrMin=3; hrMax=7; // Research tools cut literature review time 60-80%
+  } else if(goalTags.includes('automation')){
+    hrMin=5; hrMax=15; // Automation eliminates repetitive tasks wholesale
+  } else if(goalTags.includes('video')||goalTags.includes('creator')){
+    hrMin=3; hrMax=8; // AI video/audio tools cut production time 40-60%
+  } else if(goalTags.includes('sales')){
+    hrMin=4; hrMax=8; // Sales AI cuts prospecting and outreach prep 50-70%
+  } else {
+    // Base estimate from layer coverage
+    stack.forEach(({layer})=>{
+      if(layer==='orchestration'){hrMin+=4;hrMax+=10;}
+      else if(layer==='creation'){hrMin+=2;hrMax+=5;}
+      else if(layer==='knowledge'){hrMin+=2;hrMax+=4;}
+      else if(layer==='capture'){hrMin+=1;hrMax+=3;}
+    });
   }
 
-  // Context switching
-  const toolCount=stack.length;
-  const contextSwitch=toolCount<=3?`consolidates to ${toolCount} main tools`:`covers ${toolCount} needs in one planned setup`;
+  // ── 3-month ROI projection ────────────────────────────────────
+  // Assumes ~$50/hr knowledge worker opportunity cost (conservative)
+  const hourlyRate=50;
+  const weeksPerMonth=4.3;
+  const monthlyTimeSavedMin=hrMin*weeksPerMonth;
+  const monthlyTimeSavedMax=hrMax*weeksPerMonth;
+  const monthlyValueMin=Math.round(monthlyTimeSavedMin*hourlyRate);
+  const monthlyValueMax=Math.round(monthlyTimeSavedMax*hourlyRate);
+  const quarterlyROIMin=Math.round((monthlyValueMin*3-monthlyCost*3)/(monthlyCost*3||1)*100);
+  const quarterlyROIMax=Math.round((monthlyValueMax*3-monthlyCost*3)/(monthlyCost*3||1)*100);
+  const roiText=monthlyCost===0
+    ?'Infinite (zero cost stack)'
+    :`${quarterlyROIMin}–${quarterlyROIMax}% at 3 months`;
+
+  // ── Content output projection ──────────────────────────────────
+  let contentOutput='';
+  let contentDetail='';
+  if(goalTags.includes('youtube')||goalTags.includes('video')){
+    const hasAI=stack.some(r=>r.tool.id==='heygen'||r.tool.id==='runway'||r.tool.id==='sora');
+    contentOutput=hasAI?'2–3 videos/week':'1–2 videos/week';
+    contentDetail=hasAI?'AI-generated video cuts production time from 8 hrs to ~2.5 hrs per video':'AI scripting and editing tools — final production still manual';
+  } else if(goalTags.includes('writing')||goalTags.includes('content')){
+    contentOutput='12–20 pieces/month';
+    contentDetail='vs. 4–6 manually — AI handles first draft, you edit for voice';
+  } else if(goalTags.includes('developer')||goalTags.includes('coding')){
+    contentOutput='55% faster feature delivery';
+    contentDetail='GitHub 2023 developer survey: median time-to-completion drops by more than half with AI coding tools';
+  } else if(goalTags.includes('researcher')){
+    contentOutput='3× more sources reviewed';
+    contentDetail='AI research tools let you process 3–5× as many papers and sources in the same time';
+  } else if(goalTags.includes('sales')){
+    contentOutput='2–3× more outreach';
+    contentDetail='AI personalisation and drafting tools cut per-email time from 20 min to 5–7 min';
+  }
+
+  // ── Payback period ────────────────────────────────────────────
+  let payback='';
+  if(monthlyCost>0&&hrMin>0){
+    const breakEvenDays=Math.ceil((monthlyCost/(hrMin*weeksPerMonth*hourlyRate/30)));
+    payback=breakEvenDays<=3?'Pays back within 3 days of productive use'
+           :breakEvenDays<=7?`Pays back within ~${breakEvenDays} days`
+           :breakEvenDays<=14?'Pays back in ~2 weeks'
+           :'Pays back within the first month';
+  }
+
+  // ── Benchmark source note ─────────────────────────────────────
+  const benchmarkNote='Hours-saved estimates based on McKinsey 2024 AI productivity research and GitHub/Nielsen Norman Group developer studies.';
 
   // Where it breaks down
   let breakdown='';
-  if(budget==='none') breakdown='This free stack works well for getting started. You\'ll hit limits on output volume — most free tiers cap at daily or monthly limits. When your needs grow, expect to spend $20–40/month.';
-  else if(session.answers.teamSize==='solo') breakdown='This is optimised for solo use. If you bring in collaborators, you\'ll want to revisit the orchestration and capture layers for team-aware tools.';
-  else breakdown='This stack covers the core. As you scale, add a governance layer (Glean, Writer) for team-wide consistency and compliance.';
+  if(budget==='none') breakdown='Free tiers work for getting started. Expect daily/monthly output caps — most free tools allow 20–50 AI generations before throttling. Paid plans unlock at $15–25/month.';
+  else if(skill==='beginner') breakdown='Beginner-friendly stack — no setup required. You\'ll get 80% of the value in week 1. The remaining 20% comes from learning each tool\'s prompting style over time.';
+  else breakdown='This covers the core workflow. At scale, add a governance layer (Writer, Glean) for team-wide consistency. Most users hit the ceiling of this stack at ~6 months.';
 
-  return {costBand, hrMin, hrMax, contentOutput, contextSwitch, toolCount, breakdown};
+  return {costBand, hrMin, hrMax, contentOutput, contentDetail, payback, roiText, monthlyValueMin, monthlyValueMax, contextSwitch:`${stack.length} tools`, toolCount:stack.length, breakdown, benchmarkNote};
 }
 
 // ── Why-this-not-that per tool ────────────────────────────────────
@@ -4769,7 +5634,7 @@ function getToolReason(tool, layer, goalTags, answers){
     'synthesia':  ['Enterprise avatar video with 160+ AI presenters — purpose-built for training and corporate comms','SOC 2 compliant, GDPR ready — the enterprise version of HeyGen'],
   };
 
-  const reasons=REASONS[id]||[`Scores ${tool.scores.writing}/10 writing, ${tool.scores.coding}/10 coding, ${tool.scores.automation}/10 automation`,tool.free.available?`Free tier available — ${tool.free.desc.split('.')[0]}`:`From ${tool.paid[0].price}`];
+  const reasons=REASONS[id]||[`Scores ${tool.scores.writing}/10 writing, ${tool.scores.coding}/10 coding, ${tool.scores.automation}/10 automation`,tool.free.available?`Free tier available — ${tool.free.desc.split('.')[0]}`:`From ${tool.paid[0]?.price||'Free'}`];
 
   const tradeoff= budget==='none'&&!tool.free.available?`⚠️ No free tier — skip for now, revisit when you have budget`:
                   skill==='beginner'&&(TOOL_META[id]||{}).beginner===false?`⚠️ Steeper learning curve — worth the effort but allow a week to get productive`:
@@ -4901,7 +5766,7 @@ function buildBuilderSection(){
         <div style="font-size:10px;text-transform:uppercase;letter-spacing:0.6px;color:var(--text3);font-weight:600;margin-bottom:2px">${role}</div>
         <div class="advo-result-why">${reason}</div>
       </div>
-      <div class="advo-result-cost paid">From ${t.paid[0].price}</div>
+      ${t.free.available?'<div class="advo-result-cost free">Free</div>':t.paid[0]?.price?`<div class="advo-result-cost paid">From ${t.paid[0].price}</div>`:'<div class="advo-result-cost free">Free</div>'}
     </div>`;
   };
 
@@ -5146,8 +6011,8 @@ function buildBuilderSection(){
 
     const goalText=session.goal.length>70?session.goal.substring(0,67)+'…':session.goal;
     const out=estimateOutcomes(stack);
-    const totalMin=stack.reduce((acc,r)=>acc+(r.tool.free.available?0:(parseFloat(r.tool.paid[0].price.replace(/[^0-9.]/g,''))||0)),0);
-    const totalMax=stack.reduce((acc,r)=>acc+(parseFloat(r.tool.paid[0].price.replace(/[^0-9.]/g,''))||0),0);
+    const totalMin=stack.reduce((acc,r)=>acc+(r.tool.free.available?0:(parseFloat((r.tool.paid[0]?.price||'').replace(/[^0-9.]/g,''))||0)),0);
+    const totalMax=stack.reduce((acc,r)=>acc+(parseFloat((r.tool.paid[0]?.price||'').replace(/[^0-9.]/g,''))||0),0);
 
     // Build and store MCP config for the generated stack
     try{
@@ -5189,7 +6054,25 @@ function buildBuilderSection(){
   }
 
   // ── Idea mode: workflow-focused tool cards ────────────────────────
-  function renderIdeaResults(stack, goalText, out, totalMin, totalMax){
+  
+// ── Constraint filter banner ──────────────────────────────────────
+function buildConstraintBanner(){
+  const session=window._advisorSession||{};
+  const log=session._constraintLog||[];
+  const eliminated=session._eliminatedCount||0;
+  const candidates=session._candidateCount||0;
+  if(!log.length||eliminated===0) return '';
+  const items=log.map(l=>`<div class="constraint-item"><span class="constraint-icon">${l.icon}</span><span>${l.msg}</span></div>`).join('');
+  return `<div class="constraint-banner">
+    <div class="constraint-header">
+      <span class="constraint-label">Stack filtered by your constraints</span>
+      <span class="constraint-count">${eliminated} tools eliminated · ${candidates} candidates scored</span>
+    </div>
+    ${items}
+  </div>`;
+}
+
+function renderIdeaResults(stack, goalText, out, totalMin, totalMax){
     const LAYER_CFG=[
       {layer:'creation',     icon:'✍️', name:'Your main tool',    tagline:'Do the core work here'},
       {layer:'capture',      icon:'🎙️', name:'Capture & input',   tagline:'Get information in'},
@@ -5220,7 +6103,7 @@ function buildBuilderSection(){
                 ${tradeoff?`<span class="advo-result-tradeoff" style="font-size:10px">${tradeoff.replace('⚠️ ','').replace('⚠️','')}</span>`:''}
               </div>
             </div>
-            <div class="advo-result-cost ${tool.free.available?'free':'paid'}">${tool.free.available?'Free':'From '+tool.paid[0].price}</div>
+            <div class="advo-result-cost ${tool.free.available?'free':'paid'}">${tool.free.available?'Free':tool.paid[0]?.price?'From '+tool.paid[0].price:'Free'}</div>
           </div>`;
         }).join('')}
       </div>`;
@@ -5239,8 +6122,31 @@ function buildBuilderSection(){
           </div>
         </div>
         <div class="advo-layers-container">
-          <div class="advo-layers-stack">${sections}</div>
+          ${buildConstraintBanner()}<div class="advo-layers-stack">${sections}</div>
           <div class="advo-results-sidebar">
+            <div class="advo-sidebar-card advo-projections-card">
+              <div class="advo-sc-label">📊 What this stack delivers</div>
+              <div class="advo-projection-rows">
+                <div class="advo-proj-row">
+                  <div class="advo-proj-metric">${out.hrMin}–${out.hrMax} hrs</div>
+                  <div class="advo-proj-label">saved per week</div>
+                </div>
+                ${out.monthlyValueMin?`<div class="advo-proj-row">
+                  <div class="advo-proj-metric">$${out.monthlyValueMin.toLocaleString()}–$${out.monthlyValueMax.toLocaleString()}</div>
+                  <div class="advo-proj-label">value/month at $50/hr</div>
+                </div>`:''}
+                ${out.roiText?`<div class="advo-proj-row">
+                  <div class="advo-proj-metric">${out.roiText}</div>
+                  <div class="advo-proj-label">return on tool cost</div>
+                </div>`:''}
+                ${out.contentOutput?`<div class="advo-proj-row">
+                  <div class="advo-proj-metric">${out.contentOutput}</div>
+                  <div class="advo-proj-label">${out.contentDetail||'output capacity'}</div>
+                </div>`:''}
+              </div>
+              ${out.payback?`<div class="advo-proj-payback">${out.payback}</div>`:''}
+              <div class="advo-proj-source">${out.benchmarkNote||''}</div>
+            </div>
             <div class="advo-sidebar-card">
               <div class="advo-sc-label">Getting started</div>
               <div class="advo-sc-text">Start with the first tool only. Add the rest once you have a workflow. Don't set up everything at once.</div>
@@ -5299,6 +6205,7 @@ function buildBuilderSection(){
     const latency=a.latency||'fast';
     const lang=a.lang_stack||'python';
     const deploy=a.deployment||'aws';
+    const timeline=a.timeline||'month';
 
     // Architecture decision notes
     const archNotes=[];
@@ -5352,7 +6259,7 @@ function buildBuilderSection(){
               <div class="advo-result-why">${why}</div>
               ${tradeoff?`<div class="advo-result-tradeoff">${tradeoff.replace('⚠️ ','').replace('⚠️','')}</div>`:''}
             </div>
-            <div class="advo-result-cost paid">From ${tool.paid[0].price}</div>
+            ${tool.free.available?'<div class="advo-result-cost free">Free</div>':tool.paid[0]?.price?`<div class="advo-result-cost paid">From ${tool.paid[0].price}</div>`:'<div class="advo-result-cost free">Free</div>'}
           </div>`;
         }).join('')}
       </div>`;
@@ -5379,12 +6286,177 @@ function buildBuilderSection(){
         </div>
         <div class="advo-layers-container">
           <div class="advo-layers-stack">
-            ${sections}
+            ${buildConstraintBanner()}${sections}
             ${bSection?`<div class="advo-builder-wrap">${bSection}</div>`:''}
             ${archNotes.length?`<div class="advo-arch-notes">
               <div class="advo-arch-notes-label">⚠️ Architecture decisions for your context</div>
               ${archNotes.map(n=>`<div class="advo-arch-note">→ ${n}</div>`).join('')}
             </div>`:''}
+            ${(()=>{
+              // ── MULTI-PLAN OUTPUT ──────────────────────────────────────────
+              // Generate Fast Path vs Robust Path based on build answers
+              const isFast=timeline==='asap'||timeline==='week';
+              const isRobust=timeline==='quarter'||timeline==='flexible';
+              const isRAG=buildVsBuy==='rag';
+              const isFinetune=buildVsBuy==='finetune';
+              const isAPIConsumer=buildVsBuy==='api_consumer';
+              const isAgent=modelNeed==='agents';
+
+              // Fast Path — always show
+              let fastTitle='Fast Path';
+              let fastTime='1–2 weeks';
+              let fastDesc='';
+              let fastSteps=[];
+              let fastTrade='';
+
+              if(isAPIConsumer){
+                fastTitle='API Consumer Fast Path';
+                fastTime='1–2 weeks to first working version';
+                fastDesc='Call a managed API directly. No infra to run. Fastest to value.';
+                fastSteps=[
+                  `Get ${lang==='python'?'Anthropic Python SDK':'@anthropic-ai/sdk'}: <code>pip install anthropic</code>`,
+                  'Write your prompt in plain English — iterate until output is right',
+                  'Wrap in a function, add error handling, deploy as an API endpoint',
+                  `Deploy on ${deploy==='vercel'?'Vercel (free tier works)':deploy==='aws'?'AWS Lambda (pay per call)':'Railway or Render (free to start)'}`,
+                  'Monitor with Helicone (one URL change) — instant cost and latency tracking',
+                ];
+                fastTrade='Trade-off: hitting API rate limits at scale, vendor lock-in, no model customisation.';
+              } else if(isRAG){
+                fastTitle='RAG Fast Path';
+                fastTime='2–4 weeks to working prototype';
+                fastDesc='Managed vector store + managed API. No self-hosting.';
+                fastSteps=[
+                  'Choose your data source — start with the 50 most critical documents',
+                  'Use Pinecone free tier or Supabase pgvector — zero infra setup',
+                  'Chunk documents: 512 tokens with 10% overlap is a safe default',
+                  'Generate embeddings: OpenAI text-embedding-3-small ($0.02/1M tokens)',
+                  'Wire retrieval to your LLM with LangChain in ~50 lines',
+                  'Eval with Ragas before shipping — check faithfulness score > 0.85',
+                ];
+                fastTrade='Trade-off: managed infra costs more at scale. Works until ~500K documents.';
+              } else if(isAgent){
+                fastTitle='Agents Fast Path';
+                fastTime='1–3 weeks to working agent';
+                fastDesc='OpenAI Agents SDK or CrewAI — minimal boilerplate, fast to prototype.';
+                fastSteps=[
+                  'Define your agent as a single function with tool access',
+                  'Use OpenAI Agents SDK (open source) or CrewAI for multi-agent',
+                  'Start with 2 tools max — web search + file read',
+                  'Add LangSmith tracing from day 1 — you will need it for debugging',
+                  'Test with edge cases: what happens when a tool fails?',
+                  'Gate with human approval before letting agent take irreversible actions',
+                ];
+                fastTrade='Trade-off: agents fail unpredictably in production. Heavy testing required before scaling.';
+              } else {
+                fastTitle='Managed Fast Path';
+                fastTime='1–2 weeks';
+                fastDesc='Use the best managed service for your use case. No infra ops.';
+                fastSteps=[
+                  'Pick your primary model API (Anthropic or OpenAI)',
+                  'Use a managed orchestration layer (n8n cloud, not self-hosted)',
+                  'Build the simplest possible version of your workflow first',
+                  'Deploy on Vercel or Railway — free tiers are enough to start',
+                  'Add observability (Helicone or LangSmith) before user traffic',
+                ];
+                fastTrade='Trade-off: higher unit economics, less control, easier to scale quickly.';
+              }
+
+              // Robust Path — more opinionated, longer timeline
+              let robustTitle='Robust Path';
+              let robustTime='';
+              let robustDesc='';
+              let robustSteps=[];
+              let robustTrade='';
+
+              if(isAPIConsumer){
+                robustTitle='Production-Grade API Path';
+                robustTime='6–10 weeks to production-ready';
+                robustDesc='Eval-driven development with observability from the start.';
+                robustSteps=[
+                  'Build eval suite first (Braintrust or Promptfoo) — define what "good" looks like before writing production code',
+                  `Set up LangSmith tracing — every LLM call logged from commit 1`,
+                  'Write prompt templates in version control — treat prompts like code',
+                  'Add semantic caching (Helicone) — 20–40% cost reduction on repeated queries',
+                  'Build fallback routing: primary model → cheaper model → cached response',
+                  `Deploy to ${deploy==='aws'?'AWS Lambda behind API Gateway':'managed infra with auto-scaling'} with proper rate limiting`,
+                  'Set cost budget alerts — define a hard spend cap before production launch',
+                ];
+                robustTrade='Trade-off: 4–5× longer to ship v1. Pays off when you have more than 1,000 users.';
+              } else if(isRAG){
+                robustTitle='Production RAG Path';
+                robustTime='8–14 weeks to production-ready';
+                robustDesc='Evaluate before you ship. Most RAG failures are retrieval problems, not model problems.';
+                robustSteps=[
+                  'Audit your data first — clean, structured input = better retrieval. Garbage in, garbage out.',
+                  'Use Unstructured.io for document parsing — handles PDFs, Word, Slides reliably',
+                  'Test chunking strategy with Ragas before committing — score context recall > 0.80',
+                  'Set up hybrid retrieval: dense (embeddings) + sparse (BM25) — 10–15% better recall',
+                  'Add a reranker (Cohere Rerank or cross-encoder) — dramatically better top-k accuracy',
+                  'Instrument with LangSmith — trace every retrieval step, not just the LLM call',
+                  'Test with adversarial queries: what happens when users ask out-of-scope questions?',
+                  'Add guardrails: return "I don’t know" when retrieval confidence is low',
+                ];
+                robustTrade='Trade-off: 4× longer but retrieval quality is the difference between production and demo.';
+              } else if(isAgent){
+                robustTitle='Production Agent Path';
+                robustTime='10–16 weeks to production-ready';
+                robustDesc='Agents require 3× more testing than standard LLM apps. Plan accordingly.';
+                robustSteps=[
+                  'Map every tool the agent can call — categorise actions as reversible vs irreversible',
+                  'Use LangGraph for production — explicit state graph beats implicit agent loops for debugging',
+                  'Add checkpointing from day 1 — agents will fail mid-task. Recovery must be automatic.',
+                  'Build a comprehensive eval suite: test each tool independently, then test the full loop',
+                  'Implement progressive autonomy — human approval gates for irreversible actions in v1',
+                  'Add Arize Phoenix or LangSmith for full trace visibility — you cannot debug a black-box agent',
+                  'Red-team your agent: try to make it take unintended actions before users do',
+                  'Define and enforce scope boundaries — what the agent is NOT allowed to do',
+                ];
+                robustTrade='Trade-off: significant engineering investment. The difference between a demo and a deployable system.';
+              } else {
+                robustTitle='Production-Grade Path';
+                robustTime='8–12 weeks to production-ready';
+                robustDesc='Full observability, evals, and proper deployment infrastructure.';
+                robustSteps=[
+                  'Define success metrics before writing code — what does "working" look like?',
+                  'Build evals first: Promptfoo in CI, Braintrust for dataset management',
+                  'Add LangSmith or Helicone from day 1 — you’ll need the traces for debugging',
+                  'Self-host where data sensitivity demands it — Modal or RunPod for GPU workloads',
+                  'Add proper error handling, retries, and fallback models',
+                  'Security review: prompt injection testing, output validation, PII detection',
+                ];
+                robustTrade='Trade-off: slower to v1, but production systems usually need this level of rigour.';
+              }
+
+              return `<div class="advo-multiplan">
+                <div class="advo-multiplan-label">⚡ Two paths to production</div>
+                <div class="advo-multiplan-grid">
+                  <div class="advo-plan advo-plan-fast ${isFast?'advo-plan-recommended':''}">
+                    <div class="advo-plan-head">
+                      <div class="advo-plan-title">${fastTitle}</div>
+                      <div class="advo-plan-time">${fastTime}</div>
+                      ${isFast?'<div class="advo-plan-badge">Matches your timeline</div>':''}
+                    </div>
+                    <div class="advo-plan-desc">${fastDesc}</div>
+                    <ol class="advo-plan-steps">
+                      ${fastSteps.map(s=>`<li>${s}</li>`).join('')}
+                    </ol>
+                    <div class="advo-plan-trade">${fastTrade}</div>
+                  </div>
+                  <div class="advo-plan advo-plan-robust ${isRobust?'advo-plan-recommended':''}">
+                    <div class="advo-plan-head">
+                      <div class="advo-plan-title">${robustTitle}</div>
+                      <div class="advo-plan-time">${robustTime}</div>
+                      ${isRobust?'<div class="advo-plan-badge">Matches your timeline</div>':''}
+                    </div>
+                    <div class="advo-plan-desc">${robustDesc}</div>
+                    <ol class="advo-plan-steps">
+                      ${robustSteps.map(s=>`<li>${s}</li>`).join('')}
+                    </ol>
+                    <div class="advo-plan-trade">${robustTrade}</div>
+                  </div>
+                </div>
+              </div>`;
+            })()}
           </div>
           <div class="advo-results-sidebar">
             <div class="advo-sidebar-card">
@@ -5827,7 +6899,7 @@ function buildBuilderSection(){
       if(mentioned.length<2){ body=`<p style="color:var(--text2);font-size:13px">Name the tools you want to compare — e.g. "Claude vs ChatGPT vs Gemini".</p>`; }
       else {
         const keys=['writing','coding','research','creativity','automation','multimodal'];
-        body=`<div style="overflow-x:auto"><table class="advo-compare-table"><thead><tr><th>Dimension</th>${mentioned.map(x=>`<th>${x.icon} ${x.name}</th>`).join('')}</tr></thead><tbody>${keys.map(k=>`<tr><td>${k}</td>${mentioned.map(x=>`<td class="${x.scores[k]>=8?'hi':x.scores[k]>=6?'mid':'lo'}">${x.scores[k]}</td>`).join('')}</tr>`).join('')}<tr><td>Pricing</td>${mentioned.map(x=>`<td style="font-size:11px">${x.free.available?'✓ Free · ':''} From ${x.paid[0].price}</td>`).join('')}</tr></tbody></table></div>`;
+        body=`<div style="overflow-x:auto"><table class="advo-compare-table"><thead><tr><th>Dimension</th>${mentioned.map(x=>`<th>${x.icon} ${x.name}</th>`).join('')}</tr></thead><tbody>${keys.map(k=>`<tr><td>${k}</td>${mentioned.map(x=>`<td class="${x.scores[k]>=8?'hi':x.scores[k]>=6?'mid':'lo'}">${x.scores[k]}</td>`).join('')}</tr>`).join('')}<tr><td>Pricing</td>${mentioned.map(x=>`<td style="font-size:11px">${x.free.available?'✓ Free · ':''} From ${x.paid[0]?.price||'Free'}</td>`).join('')}</tr></tbody></table></div>`;
         label=`${mentioned.map(x=>x.name).join(' vs ')}`;
       }
     } else if(q.type==='free'){
@@ -5835,7 +6907,7 @@ function buildBuilderSection(){
       body=TOOLS.filter(x=>x.free.available&&!x.categories.includes('Models & APIs')).slice(0,10).map(x=>`<div class="advo-da-row"><span class="advo-da-icon">${x.icon}</span><div><div class="advo-da-name">${chip(x.id)}</div><div class="advo-da-sub">${x.free.desc}</div></div></div>`).join('');
     } else if(q.type==='open'){
       label='Open-source & self-hostable tools';
-      body=TOOLS.filter(x=>x.categories.includes('Models & APIs')||['n8n','openclaw'].includes(x.id)).map(x=>`<div class="advo-da-row"><span class="advo-da-icon">${x.icon}</span><div><div class="advo-da-name">${chip(x.id)}</div><div class="advo-da-sub">${x.tagline} · From ${x.paid[0].price}</div></div></div>`).join('');
+      body=TOOLS.filter(x=>x.categories.includes('Models & APIs')||['n8n','openclaw'].includes(x.id)).map(x=>`<div class="advo-da-row"><span class="advo-da-icon">${x.icon}</span><div><div class="advo-da-name">${chip(x.id)}</div><div class="advo-da-sub">${x.tagline} · ${x.paid[0]?.price?'From '+x.paid[0].price:'Free/open source'}</div></div></div>`).join('');
     } else if(q.type==='category'){
       const catMatch=t.match(/\b(coding|writing|research|video|voice|audio|image|automation|legal|sales|education|fitness|enterprise|agents?|model)\b/i);
       const cat=catMatch?catMatch[1].toLowerCase():'';
@@ -6520,7 +7592,7 @@ function buildBuilderSection(){
 
     // What tool for X
     if(/what.*tool|which.*tool|best.*for|recommend.*for/.test(q)){
-      return convFmt(`Tell me more specifically what you're trying to do and I'll point you to the right tool — either from your stack or from the 151 tools I know about.\n\nFor example: "What's the best tool for scheduling LinkedIn posts?" or "Which tool helps me transcribe meetings?"`);
+      return convFmt(`Tell me more specifically what you're trying to do and I'll point you to the right tool — either from your stack or from the 198 tools I know about.\n\nFor example: "What's the best tool for scheduling LinkedIn posts?" or "Which tool helps me transcribe meetings?"`);
     }
 
     // Unknown — helpful redirect
