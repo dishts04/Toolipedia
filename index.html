@@ -4132,6 +4132,10 @@ const TOOL_URLS={
   'mcp-sequential-thinking':  {url:'https://github.com/modelcontextprotocol/servers', docs:'https://github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking'},
 };
 
+// ── IDs with Deep Profiles — checked at render time ─────────────────
+const DP_IDS=new Set(['claude','chatgpt','gemini','cursor','github-copilot','perplexity',
+  'n8n','midjourney','elevenlabs','notebooklm','canva-ai','lovable','heygen','runway','notion-ai']);
+
 function renderCard(t,catHighlight){
   const exp=state.expandedId===t.id;
   const scoreKeys=["writing","coding","research","creativity","automation","multimodal"];
@@ -4161,7 +4165,7 @@ function renderCard(t,catHighlight){
   <div style="margin-top:16px"><h4 style="font-size:9px;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:6px">Capability scores <span class="score-info" data-tip="Scores are editorial — based on structured tests &amp; public benchmarks. Scale: 1 = limited, 5 = solid, 10 = best-in-class. See Methodology in the Community tab for full details.">?</span></h4>${scores}</div>
   <div style="margin-top:16px"><h4 style="font-size:9px;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);font-weight:700;margin-bottom:8px">Paid plans</h4>
   <div class="plans-list">${t.paid.map(p=>`<div class="plan-item"><div><div class="plan-name">${p.name}</div><div class="plan-price">${p.price}</div></div><div class="plan-perks">${p.perks}</div></div>`).join('')}</div></div>
-  ${agentSection}${visitSiteHTML(t.id)}${(function(){var dp=null;try{dp=DEEP_PROFILES[t.id];}catch(e){}return dp?'<button class="dp-profile-btn" onclick="openDeepProfile(\''+t.id+'\')">📖 Deep Profile</button>':'';}())}</div>`;
+  ${agentSection}${(()=>{try{var u=TOOL_URLS[t.id];return u&&u.docs?'<div class="visit-site-row"><a href="'+u.docs+'" target="_blank" rel="noopener" class="visit-docs-btn">📄 Docs</a></div>':'';}catch(e){return '';}})()}${(DP_IDS.has(t.id)?'<button class="dp-profile-btn" onclick="openDeepProfile(\''+t.id+'\')">📖 Deep Profile</button>':'')}</div>`;
 
   return `<div class="tool-card${exp?' expanded':''}" data-id="${t.id}"${(t.isModel||t.isInfra)?' data-model="true"':''}>
     <div class="card-head"><div class="tool-icon" style="background:var(--bg3);border:1px solid var(--border)"><span style="filter:drop-shadow(0 0 4px ${t.color}66)">${t.icon}</span></div>
@@ -5010,6 +5014,7 @@ const DEEP_PROFILES={
     vs:[{name:'Coda AI',edge:'Notion AI\'s workspace breadth and template ecosystem are larger; Coda AI has stronger formula/automation capabilities for data-heavy docs'},{name:'Claude',edge:'Notion AI lives inside your existing workflow and can access your notes; Claude\'s reasoning and writing quality are significantly deeper for standalone tasks'}]
   }
 };
+window.DEEP_PROFILES=DEEP_PROFILES;
 
 // ── Visit Site helper ─────────────────────────────────────────────
 function visitSiteHTML(id){
@@ -7184,7 +7189,7 @@ function renderIdeaResults(stack, goalText, out, totalMin, totalMax){
   // ── Deep Profile modal ──────────────────────────────────────────
   window.openDeepProfile=function(id){
     var dp=null;
-    try{dp=DEEP_PROFILES[id];}catch(e){}
+    try{dp=(window.DEEP_PROFILES||{})[id];}catch(e){}
     if(!dp) return;
     var tool=null;
     try{tool=TOOLS.find(function(t){return t.id===id;});}catch(e){}
