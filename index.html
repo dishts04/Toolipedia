@@ -2165,6 +2165,105 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
 .advo-plan-steps li { font-size:11.5px; color:var(--text2); line-height:1.5; }
 .advo-plan-steps code { font-size:10.5px; background:var(--bg3); padding:1px 5px; border-radius:3px; font-family:monospace; color:var(--p1); }
 .advo-plan-trade { font-size:11px; color:var(--text3); font-style:italic; padding-top:6px; border-top:1px solid var(--border); line-height:1.4; }
+/* ── TOOL COMBO CARD ─────────────────────────────────────────────── */
+.combo-hero-card{background:linear-gradient(135deg,rgba(212,130,74,0.07),rgba(93,184,138,0.05));border:1px solid rgba(212,130,74,0.28);border-radius:var(--radius-lg);padding:20px 24px;margin-bottom:24px}
+.combo-hero-top{display:flex;align-items:flex-start;gap:14px;margin-bottom:4px;flex-wrap:wrap}
+.combo-hero-icons{font-size:26px;display:flex;align-items:center;gap:4px;line-height:1}
+.combo-hero-plus{font-size:16px;color:var(--p1);font-weight:800;margin:0 2px}
+.combo-hero-title{font-family:var(--ff-head);font-size:21px;font-weight:700;color:var(--text);line-height:1.2}
+.combo-hero-tagline{font-size:12px;color:var(--text3);font-style:italic;margin-top:3px}
+.combo-hero-bestfor{font-size:12px;color:var(--p2);font-weight:600;margin:8px 0 12px}
+.combo-hero-label{font-size:10px;text-transform:uppercase;letter-spacing:0.7px;color:var(--text3);font-weight:700;margin-bottom:7px}
+.combo-hero-what{margin:0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:5px;margin-bottom:14px}
+.combo-hero-what li{font-size:12.5px;color:var(--text2);padding-left:18px;position:relative;line-height:1.45}
+.combo-hero-what li::before{content:'→';position:absolute;left:0;color:var(--p1);font-weight:700;font-size:11px}
+.combo-hero-workflow{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-sm);padding:10px 14px;font-size:12px;color:var(--text2);line-height:1.5;margin-top:4px}
+.combo-hero-workflow strong{color:var(--p1)}
+.combo-hero-dynamic{font-size:13px;color:var(--text2);line-height:1.6;margin-bottom:12px}
+.combo-hero-badge{display:inline-flex;align-items:center;gap:5px;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.6px;color:var(--p1);background:rgba(212,130,74,0.1);border:1px solid rgba(212,130,74,0.25);border-radius:12px;padding:3px 10px;margin-bottom:10px}
+html.light .combo-hero-card{background:linear-gradient(135deg,rgba(212,130,74,0.06),rgba(93,184,138,0.04));border-color:rgba(212,130,74,0.3)}
+html.light .combo-hero-workflow{background:#f6f5f0}
+/* ── STACK COMBOS (advisor results) ─────────────────────────────── */
+.advo-combos-section{background:linear-gradient(135deg,rgba(212,130,74,0.06),rgba(93,184,138,0.04));border:1px solid rgba(212,130,74,0.22);border-radius:var(--radius-lg);padding:14px 16px;display:flex;flex-direction:column;gap:10px}
+.advo-combos-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:2px}
+.advo-combos-icon{font-size:15px}
+.advo-combos-label{font-size:11px;text-transform:uppercase;letter-spacing:0.7px;font-weight:700;color:var(--p1)}
+.advo-combos-sub{font-size:11px;color:var(--text3);margin-left:auto;font-style:italic}
+.advo-combo-card{background:var(--bg3);border:1px solid var(--border);border-radius:var(--radius-md);padding:12px 14px;display:flex;flex-direction:column;gap:6px}
+.advo-combo-head{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.advo-combo-icons{display:flex;align-items:center;gap:2px}
+.advo-combo-title{font-size:13px;font-weight:700;color:var(--text);font-family:var(--ff-head)}
+.advo-combo-badge{margin-left:auto;font-size:10px;font-weight:600;color:var(--p2);background:rgba(93,184,138,0.1);border:1px solid rgba(93,184,138,0.2);border-radius:10px;padding:2px 8px;white-space:nowrap}
+.advo-combo-tagline{font-size:11.5px;color:var(--text3);font-style:italic}
+.advo-combo-what{margin:0;padding-left:0;list-style:none;display:flex;flex-direction:column;gap:4px}
+.advo-combo-what li{font-size:11.5px;color:var(--text2);padding-left:14px;position:relative;line-height:1.4}
+.advo-combo-what li::before{content:'→';position:absolute;left:0;color:var(--p1);font-weight:700;font-size:10px}
+.advo-combo-workflow{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-sm);padding:8px 12px;font-size:11px;color:var(--text2);line-height:1.5;margin-top:2px}
+.advo-combo-workflow strong{color:var(--p1)}
+html.light .advo-combos-section{background:linear-gradient(135deg,rgba(212,130,74,0.05),rgba(93,184,138,0.03))}
+html.light .advo-combo-card{background:#f9f8f4}
+html.light .advo-combo-workflow{background:#f0efea}
+
+/* ── COMBOS TAB ─────────────────────────────────────────────── */
+.combos-header{padding:20px 0 4px}
+.combos-headline{font-size:22px;font-weight:800;color:var(--text1);margin-bottom:4px}
+.combos-sub{font-size:13px;color:var(--text2);margin-bottom:18px}
+.combos-filter-bar{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:20px}
+.combo-filter-pill{font-size:11px;font-weight:600;padding:4px 12px;border-radius:20px;border:1px solid var(--border);background:var(--bg2);color:var(--text2);cursor:pointer;transition:all .15s}
+.combo-filter-pill:hover{border-color:var(--p1);color:var(--p1)}
+.combo-filter-pill.active{background:var(--p1);border-color:var(--p1);color:#fff}
+.combos-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px}
+.combo-ex-card{background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-lg);padding:18px 20px;transition:border-color .15s,box-shadow .15s}
+.combo-ex-card:hover{border-color:var(--p1);box-shadow:0 4px 24px rgba(93,184,138,0.12)}
+.combo-ex-head{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.combo-ex-icons{display:flex;align-items:center;gap:4px;font-size:18px}
+.combo-ex-plus{font-size:11px;font-weight:800;color:var(--p1);margin:0 2px}
+.combo-ex-title{font-size:13px;font-weight:700;color:var(--text1);flex:1;min-width:0}
+.combo-ex-count{font-size:10px;font-weight:600;background:rgba(93,184,138,0.12);color:var(--p1);border-radius:10px;padding:2px 8px;flex-shrink:0}
+.combo-ex-tagline{font-size:11px;color:var(--text3);margin-bottom:10px;font-style:italic}
+.combo-ex-what{list-style:none;padding:0;margin:0 0 10px 0;display:flex;flex-direction:column;gap:4px}
+.combo-ex-what li{font-size:11px;color:var(--text2);padding-left:14px;position:relative;line-height:1.4}
+.combo-ex-what li::before{content:'→';position:absolute;left:0;color:var(--p1);font-weight:700;font-size:10px}
+.combo-ex-workflow{font-size:10px;color:var(--text2);background:var(--bg3);border-radius:6px;padding:7px 10px;line-height:1.5;border-left:2px solid var(--p1)}
+.combo-ex-workflow strong{color:var(--text1)}
+.combo-ex-cta{display:flex;gap:8px;margin-top:12px}
+.combo-ex-search-btn{font-size:11px;font-weight:600;padding:5px 12px;border-radius:8px;border:1px solid var(--p1);background:transparent;color:var(--p1);cursor:pointer;transition:all .15s}
+.combo-ex-search-btn:hover{background:var(--p1);color:#fff}
+.combos-empty{text-align:center;padding:60px 20px;color:var(--text3);font-size:13px}
+html.light .combo-ex-card{background:#f9f8f4}
+html.light .combo-ex-workflow{background:#f0efea}
+
+/* ── TOOL FAMILY BANNER ─────────────────────────────────────── */
+.family-banner{background:linear-gradient(135deg,rgba(93,184,138,0.08),rgba(95,133,219,0.06));border:1px solid rgba(93,184,138,0.3);border-radius:var(--radius-lg);padding:20px 24px;margin-bottom:24px}
+.family-banner-head{display:flex;align-items:center;gap:10px;margin-bottom:12px}
+.family-banner-emoji{font-size:22px}
+.family-banner-title{font-size:15px;font-weight:700;color:var(--text1)}
+.family-banner-maker{font-size:11px;color:var(--text3);font-weight:500;margin-left:auto;background:var(--bg3);border-radius:20px;padding:2px 8px}
+.family-banner-desc{font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:14px}
+.family-variants{display:flex;flex-direction:column;gap:8px}
+.family-variant-row{display:flex;align-items:flex-start;gap:12px;background:var(--bg2);border:1px solid var(--border);border-radius:var(--radius-md);padding:10px 14px;cursor:pointer;transition:border-color .15s,background .15s}
+.family-variant-row:hover{border-color:var(--p1);background:var(--bg3)}
+.family-variant-icon{font-size:18px;flex-shrink:0;margin-top:1px}
+.family-variant-body{flex:1;min-width:0}
+.family-variant-label{font-size:12px;font-weight:700;color:var(--text1);margin-bottom:2px}
+.family-variant-use{font-size:11px;color:var(--text2);line-height:1.4}
+.family-variant-who{font-size:10px;font-weight:600;color:var(--p1);background:rgba(93,184,138,0.12);border-radius:10px;padding:1px 7px;flex-shrink:0;margin-top:3px;align-self:flex-start}
+html.light .family-banner{background:linear-gradient(135deg,rgba(93,184,138,0.06),rgba(95,133,219,0.04));border-color:rgba(93,184,138,0.25)}
+html.light .family-variant-row{background:#f9f8f4}
+
+/* ── VARIANT PILLS IN CARD DETAIL ──────────────────────────── */
+.card-variants-section{margin-top:14px;padding-top:12px;border-top:1px solid var(--border)}
+.card-variants-label{font-size:9px;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);font-weight:700;margin-bottom:8px}
+.card-variants-pills{display:flex;flex-wrap:wrap;gap:6px}
+.card-variant-pill{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--text2);background:var(--bg3);border:1px solid var(--border);border-radius:20px;padding:3px 10px;cursor:pointer;transition:border-color .15s,color .15s}
+.card-variant-pill:hover{border-color:var(--p1);color:var(--p1)}
+.card-variant-pill .cvp-icon{font-size:13px}
+.card-variant-pill .cvp-active{border-color:var(--p1);background:rgba(93,184,138,0.1);color:var(--p1)}
+
+/* ── ADVISOR VARIANT HINT ───────────────────────────────────── */
+.advo-variant-hint{display:flex;align-items:center;gap:6px;margin-top:4px;padding:4px 8px;background:rgba(93,184,138,0.08);border-radius:6px;border-left:2px solid var(--p1)}
+.advo-variant-hint-text{font-size:10px;color:var(--p1);font-weight:600}
+.advo-variant-hint-sub{font-size:10px;color:var(--text3)}
 </style>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-MFTBWFGLLE"></script>
@@ -2331,6 +2430,7 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
 <div class="toolbar">
   <div class="tabs">
     <button class="tab-btn active" data-tab="explore">🧭 Explore <span class="badge" id="tab-count">100</span></button>
+    <button class="tab-btn" data-tab="combos">⚡ Combos</button>
     <button class="tab-btn" data-tab="compare">📊 Compare</button>
     <button class="tab-btn" data-tab="usecases">🎯 Use Cases</button>
   </div>
@@ -2345,6 +2445,10 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
 <div class="panel active" id="panel-explore">
   <div class="tools-grid" id="tools-grid"></div>
   <div id="no-results" style="display:none"></div>
+</div>
+
+<div class="panel" id="panel-combos">
+  <div id="combos-root"></div>
 </div>
 
 <div class="panel" id="panel-compare">
@@ -3968,6 +4072,10 @@ function toolOutputType(t){
 function getFiltered(){
   const q=state.query.toLowerCase().trim();
   const f=state.filters||{};
+  // Detect tool combo queries ("claude + obsidian", "claude and n8n", etc.)
+  state.comboMatch=detectCombo(q)||null;
+  // Detect family brand queries ("anthropic", "openai", "microsoft", etc.)
+  state.familyMatch=(!state.comboMatch)?detectFamily(q):null;
 
   const catFilter=t=>{
     const cm={
@@ -3984,8 +4092,7 @@ function getFiltered(){
       "Meetings":t.categories.includes("Meetings")||['fathom','otter-ai','fireflies'].includes(t.id),
       "Writing":t.categories.includes("Writing")||['grammarly','jasper','writer','claude','chatgpt'].includes(t.id),
       "AI Engineering":t.categories.includes("AI Engineering"),
-      "MCP Servers":t.categories.includes("MCP Servers"),
-      "Presentations":t.categories.includes("Presentations")
+      "MCP Servers":t.categories.includes("MCP Servers")
     };
     return cm[state.category]??true;
   };
@@ -4136,6 +4243,322 @@ const TOOL_URLS={
 const DP_IDS=new Set(['claude','chatgpt','gemini','cursor','github-copilot','perplexity',
   'n8n','midjourney','elevenlabs','notebooklm','canva-ai','lovable','heygen','runway','notion-ai']);
 
+// ═══════════════ TOOL FAMILIES ═══════════════
+// Groups tool variants by maker brand — shown when user searches a brand name or any variant
+const TOOL_FAMILIES={
+  anthropic:{
+    name:'Anthropic',emoji:'🔶',
+    label:'The Claude family',
+    desc:'Anthropic builds Claude — but Claude comes in three distinct products for three different users. Knowing which one you need saves a lot of confusion.',
+    tools:['claude','claude-code','claude-api'],
+    aliases:['anthropic','claude'],
+    variants:{
+      'claude':{label:'Claude.ai Chat',icon:'💬',who:'Everyone',use:'Conversational AI — writing, research, analysis, brainstorming, document Q&A. Start here if you\'re not a developer.'},
+      'claude-code':{label:'Claude Code',icon:'⌨️',who:'Developers',use:'Terminal-native coding agent — autonomous multi-file edits, git, debugging. Run it where you write code.'},
+      'claude-api':{label:'Claude API',icon:'🔌',who:'Builders & companies',use:'Build products powered by Claude. Full programmatic access — use it to embed Claude in your own app or workflow.'},
+    }
+  },
+  openai:{
+    name:'OpenAI',emoji:'🟢',
+    label:'The OpenAI family',
+    desc:'OpenAI has multiple products that serve very different purposes — ChatGPT for end users, the API for builders, and Sora for video generation.',
+    tools:['chatgpt','openai-api','sora'],
+    aliases:['openai','chatgpt','gpt'],
+    variants:{
+      'chatgpt':{label:'ChatGPT',icon:'💬',who:'Everyone',use:'Conversational AI — writing, coding help, browsing, image generation with DALL·E. The flagship consumer product.'},
+      'openai-api':{label:'OpenAI API',icon:'🔌',who:'Builders & companies',use:'Programmatic access to GPT-4o, o1, and other models. Build AI-powered products, fine-tune, batch process.'},
+      'sora':{label:'Sora',icon:'🎬',who:'Creators & filmmakers',use:'Text-to-video generation. Describe a scene, get a cinematic video clip up to 20 seconds long.'},
+    }
+  },
+  google:{
+    name:'Google',emoji:'🔵',
+    label:'The Google AI family',
+    desc:'Google\'s AI products span everyday use (Gemini), deep document research (NotebookLM), and enterprise cloud (Vertex AI).',
+    tools:['gemini','notebooklm','vertex-ai'],
+    aliases:['google','gemini','deepmind'],
+    variants:{
+      'gemini':{label:'Gemini',icon:'✨',who:'Everyone',use:'Google\'s main AI assistant — chat, analysis, coding, multimodal tasks. Integrated into Gmail, Docs, and Search.'},
+      'notebooklm':{label:'NotebookLM',icon:'📓',who:'Researchers, students, analysts',use:'Upload your own documents — NotebookLM answers only from them. Zero hallucination for your private sources.'},
+      'vertex-ai':{label:'Vertex AI',icon:'☁️',who:'Enterprise ML teams',use:'Google Cloud\'s managed AI platform. Deploy Gemini and other models with enterprise security, scaling, and MLOps.'},
+    }
+  },
+  microsoft:{
+    name:'Microsoft',emoji:'🪟',
+    label:'The Microsoft AI family',
+    desc:'Microsoft has the broadest AI family — a consumer assistant (Copilot), a dev coding tool (GitHub Copilot), a low-code bot builder (Copilot Studio), and Azure infrastructure.',
+    tools:['copilot','github-copilot','copilot-studio','azure-openai'],
+    aliases:['microsoft','copilot','bing'],
+    variants:{
+      'copilot':{label:'Microsoft Copilot',icon:'🪟',who:'Office 365 users',use:'AI embedded in Word, Excel, PowerPoint, Teams, and Outlook. Summarize meetings, draft emails, generate slides.'},
+      'github-copilot':{label:'GitHub Copilot',icon:'🐙',who:'Developers',use:'In-editor AI coding assistant — autocomplete, inline chat, code review. Works in VS Code, JetBrains, and more.'},
+      'copilot-studio':{label:'Copilot Studio',icon:'🏗️',who:'Business teams & IT',use:'Build custom AI copilots and agents without deep coding. Connect to enterprise data, create approval flows.'},
+      'azure-openai':{label:'Azure OpenAI',icon:'☁️',who:'Enterprise architects',use:'OpenAI models (GPT-4o, o1) hosted in Azure with enterprise compliance — data residency, RBAC, private networking.'},
+    }
+  },
+  langchain:{
+    name:'LangChain',emoji:'🦜',
+    label:'The LangChain family',
+    desc:'LangChain is an ecosystem, not a single tool — three products for three stages of building AI apps: construction, orchestration, and observability.',
+    tools:['langchain','langgraph','langsmith'],
+    aliases:['langchain'],
+    variants:{
+      'langchain':{label:'LangChain',icon:'🔗',who:'AI developers',use:'Framework for building LLM-powered apps — chains, retrieval-augmented generation (RAG), memory, agents.'},
+      'langgraph':{label:'LangGraph',icon:'🕸️',who:'AI engineers building agents',use:'Build stateful, multi-agent workflows as graphs. Handles complex loops, branching, and human-in-the-loop steps.'},
+      'langsmith':{label:'LangSmith',icon:'🔭',who:'Teams shipping AI to production',use:'Observability and testing for LLM apps — trace every call, run eval datasets, catch regressions before prod.'},
+    }
+  },
+};
+
+// ═══════════════ TOOL COMBINATIONS ═══════════════
+// Research-verified pairings (2, 3, and 4 tools) — sources: Reddit, n8n templates, XDA Developers, HN
+// Each combo: tools[] can have 2–4 IDs; all must be present in TOOLS array
+const TOOL_COMBOS=[
+  // ── 2-TOOL COMBOS ────────────────────────────────────────────────
+  // Perplexity + NotebookLM: most cited 2-tool research workflow across 6+ independent articles
+  {tools:['perplexity','notebooklm'],title:'Perplexity + NotebookLM',tagline:'Live web research meets zero-hallucination document synthesis',bestFor:'Researchers, students, and analysts who need both real-time citations and deep document Q&A',what:['Perplexity surfaces cited current sources → paste those URLs into NotebookLM as a new notebook','NotebookLM solves Perplexity\'s limit of 10 curated sources — upload everything Perplexity finds','Ask NotebookLM to generate a briefing doc or mind map from all your Perplexity-sourced material','Perplexity tracks live news on a topic; NotebookLM synthesizes your private reports on the same topic','Research pipeline: Perplexity discovers → NotebookLM synthesizes → audio overview for commute'],workflow:'<strong>Workflow:</strong> Perplexity → Sources tab → copy all URLs → new NotebookLM notebook → paste URLs → NotebookLM ingests → Q&A + audio overview. Covers everything without hallucination.'},
+  // Cursor + Claude Code: highest Reddit consensus for dual-tool dev setup
+  {tools:['cursor','claude-code'],title:'Cursor + Claude Code',tagline:'In-editor pair programming + powerful terminal and multi-file agent',bestFor:'Developers who want fast inline completions in the editor and a powerful agent for complex multi-file tasks',what:['Cursor handles daily in-editor coding with inline autocomplete and chat for the file you\'re in','Claude Code takes over for tasks touching 10+ files, architectural refactors, and git automation','Debug complex multi-service issues in Claude Code; apply targeted fixes in Cursor\'s inline editor','Claude Code for planning and spec-writing before you open Cursor — architecture first, code second','Run Claude Code in the terminal while Cursor stays open — they work in parallel on the same codebase'],workflow:'<strong>Workflow:</strong> Use Cursor for single-file work and quick iterations. Switch to Claude Code (terminal) for anything requiring whole-repo context, cross-file refactors, or autonomous multi-step tasks.'},
+  // ElevenLabs + HeyGen: official partnership, natively integrated
+  {tools:['elevenlabs','heygen'],title:'ElevenLabs + HeyGen',tagline:'Your voice, your face, any language, at scale',bestFor:'Content creators and L&D teams producing video at scale across multiple languages',what:['Clone your voice in ElevenLabs; sync it to your HeyGen avatar for authentic multilingual video','Translate your entire video catalogue into 30+ languages — ElevenLabs voice + HeyGen lip-sync','Full production pipeline: write script → ElevenLabs audio → HeyGen avatar video → ready to publish','Build anonymous YouTube channels or faceless brand content without ever appearing on camera','Create personalized sales/outreach videos: one script, 100 customized avatar videos via HeyGen API'],workflow:'<strong>Workflow:</strong> Write script → ElevenLabs Voice Studio (clone or generate) → export audio → HeyGen avatar video → lip-sync renders automatically. HeyGen natively integrates ElevenLabs in AI Studio.'},
+  // Claude + n8n: automation orchestration — architect + runtime
+  {tools:['claude','n8n'],title:'Claude + n8n',tagline:'Intelligence that actually does things',bestFor:'Anyone who wants to automate complex, judgment-heavy workflows without writing much code',what:['Claude as the AI reasoning layer inside n8n — not just text generation but decision-making','New CRM lead → n8n triggers Claude to write personalized outreach → Gmail sends it automatically','Customer support ticket → Claude classifies intent and tone → n8n routes or auto-responds','Research brief in Airtable → n8n triggers Claude to draft → posts to Notion + Slack via n8n','Aggregate AI costs: n8n routes simple queries to cheaper models, complex ones to Claude — 60% cost reduction'],workflow:'<strong>Workflow:</strong> n8n HTTP node → Anthropic API → Claude responds with structured JSON → n8n routes output to the right system. Or use n8n\'s built-in Claude node — no API key setup needed.'},
+  // Claude + Cursor: spec first, code second
+  {tools:['claude','cursor'],title:'Claude + Cursor',tagline:'Spec it with Claude, build it in Cursor',bestFor:'Developers who want deliberate architecture before AI-assisted implementation',what:['Write full specs, PRDs, and architecture decisions in Claude; paste as Cursor context before coding','Debug complex logic in Claude\'s 200K context window; apply the fix in Cursor\'s inline editor','Use Claude to review entire diffs before committing — paste git diff, get a rigorous second opinion','Claude writes the test cases and edge case analysis; Cursor implements them file by file','"GPT-4 is quick and clever, Claude is deliberate" — use both: ChatGPT for brainstorm, Claude for depth, Cursor for execution'],workflow:'<strong>Workflow:</strong> 30 min in Claude planning architecture → export spec as markdown → drag into Cursor as @file context → Cursor builds → paste complex bugs back to Claude for root cause analysis.'},
+  // NotebookLM + Claude: research + synthesis powerhouse
+  {tools:['notebooklm','claude'],title:'NotebookLM + Claude',tagline:'Grounded research meets deep synthesis',bestFor:'Researchers and analysts who need zero-hallucination sourcing AND deep analytical writing',what:['Upload your corpus to NotebookLM for cited Q&A → paste key excerpts into Claude for synthesis','NotebookLM answers "what do my sources say" → Claude answers "what does this mean strategically"','Generate NotebookLM audio overviews → feed transcript to Claude → full written report in 20 minutes','Competitive analysis: NotebookLM reads competitor docs, Claude writes the strategic brief','Legal research: NotebookLM finds clauses across 50 contracts, Claude drafts the recommendation'],workflow:'<strong>Workflow:</strong> Upload docs to NotebookLM → ask focused questions → copy cited answers → paste into Claude with "synthesize this into a 1,000-word brief" → edit and publish.'},
+  // Perplexity + Claude: research then reason
+  {tools:['perplexity','claude'],title:'Perplexity + Claude',tagline:'Research the live web, reason over the facts',bestFor:'Analysts and writers who need both real-time cited data and deep synthesis in the same workflow',what:['Perplexity gathers cited current sources → paste raw findings into Claude for synthesis and writing','Perplexity for "what is happening now", Claude for "what does this mean and what should we do"','Competitive landscape research with Perplexity → strategic analysis and implications with Claude','Perplexity surfaces the latest academic papers → Claude explains, connects, and argues with ideas','Fact-check Claude\'s output with Perplexity — a fast loop for accuracy on current events'],workflow:'<strong>Workflow:</strong> Perplexity search → copy answer + sources → paste into Claude: "Based on this research, write a 500-word analysis with recommendations." Perplexity provides recency; Claude provides depth.'},
+  // n8n + Notion AI: automatic knowledge base
+  {tools:['n8n','notion-ai'],title:'n8n + Notion AI',tagline:'Data flows in automatically, knowledge comes out on demand',bestFor:'Teams who want Notion as the operational hub with information from all systems flowing in',what:['Auto-create Notion pages from form submissions, emails, CRM updates, or support tickets via n8n','New GitHub issue → n8n → AI summary created → Notion project page updated automatically','n8n syncs data from 400+ apps into Notion; Notion AI lets you ask questions across all of it','Content calendar: n8n watches RSS feeds → creates Notion pages with tags for relevant articles','Full pipeline: new support ticket → n8n → Claude summarizes → creates tagged Notion page with owner assigned'],workflow:'<strong>Workflow:</strong> n8n handles the plumbing (webhooks, API calls, data transformation). Notion AI handles Q&A on the data you pump in. Together: automatic knowledge management without manual copy-paste.'},
+  // Midjourney + Canva AI: image gen + design production
+  {tools:['midjourney','canva-ai'],title:'Midjourney + Canva AI',tagline:'Generate stunning images, produce finished designs at scale',bestFor:'Marketers and designers who need high-quality visuals shipped across every channel fast',what:['Generate hero images and concepts in Midjourney → import into Canva for branded layouts and text','One Midjourney image → Canva Magic Resize → 20 platform-sized assets in minutes','Midjourney for creative vision; Canva Magic Studio for production-ready ad variations','Build a brand visual library in Midjourney → apply consistently via Canva brand kit across all assets','Product mockup backgrounds in Midjourney → product photos + copy overlaid in Canva → done'],workflow:'<strong>Workflow:</strong> Midjourney produces the raw creative. Canva adds text, brand elements, and resizes for every channel. One image becomes a full campaign set in under 30 minutes.'},
+  // Otter AI + Notion AI: meeting intelligence into knowledge
+  {tools:['otter-ai','notion-ai'],title:'Otter AI + Notion AI',tagline:'Capture every meeting, remember everything decided',bestFor:'Teams who want meeting intelligence flowing directly into their knowledge base automatically',what:['Otter transcribes meetings live with speaker identification → paste summary into Notion → Notion AI answers future questions about past meetings','Extract action items from Otter with owners → create Notion database tasks with due dates automatically','Build a searchable company meeting archive: Otter generates content, Notion AI retrieves on demand','Track who committed to what across every meeting — Otter speaker ID + Notion properties = accountability','Meeting notes auto-attached to project pages keep context exactly where the work lives'],workflow:'<strong>Workflow:</strong> Otter Auto Join → meeting ends → share AI summary → paste into Notion project page → use Notion AI to query across all past meetings by topic, decision, or person.'},
+  // Descript + Claude: content repurposing pipeline
+  {tools:['descript','claude'],title:'Claude + Descript',tagline:'Script it smart, record it clean, repurpose everything',bestFor:'Podcast hosts, video creators, and content teams who script before recording',what:['Write scripts in Claude with proper structure → record in Descript → AI transcript auto-generated','Use Claude to turn Descript transcripts into blog posts, newsletters, and social clips in one pass','Generate episode outlines in Claude, flesh them out in Descript\'s teleprompter view while recording','Claude writes the intro/outro scripts; Descript handles overdubs when you mis-speak','Monthly content machine: one recorded session → Descript transcript → Claude repurposes into 10 pieces'],workflow:'<strong>Workflow:</strong> Claude writes script → Descript records + transcribes → Descript edits via transcript → export audio/video → paste transcript back to Claude → "turn this into a LinkedIn post, newsletter, and tweet thread."'},
+  // Claude + Grammarly: depth then polish
+  {tools:['claude','grammarly'],title:'Claude + Grammarly',tagline:'Write with depth, publish with confidence',bestFor:'Writers and professionals who want both creative substance and flawless polish before sending',what:['Draft in Claude for ideas, argument structure, and substance; Grammarly for clarity and tone in final review','Grammarly\'s tone detector shows you how your Claude draft reads to the recipient before you send it','Use Claude for emails, proposals, and reports; run through Grammarly before every client-facing send','Claude rewrites → Grammarly corrects → you publish. The two never overlap — Claude creates, Grammarly refines','Grammarly\'s plagiarism check on Claude outputs adds an extra layer before academic or client submissions'],workflow:'<strong>Workflow:</strong> Claude handles ideation and structure. Grammarly handles correctness and readability. Install the Grammarly browser extension — the overlay appears automatically when you draft in claude.ai.'},
+  // Runway + ElevenLabs: full video production
+  {tools:['runway','elevenlabs'],title:'Runway + ElevenLabs',tagline:'AI video with AI voice — the complete production stack',bestFor:'Video creators who want to produce cinematic content without a full production crew',what:['Generate cinematic video scenes in Runway Gen-3 → add professional AI narration via ElevenLabs','Create documentary-style content: Runway generates visuals, ElevenLabs handles the voiceover track','30-second Runway clip + ElevenLabs voice = polished social ad ready in under an hour','Build explainer videos without on-camera talent — Runway for visuals, ElevenLabs for voice in any accent','Multi-language video: one Runway clip → ElevenLabs voiceover dubbed into 30 languages'],workflow:'<strong>Workflow:</strong> Write script → Runway generates video scenes → ElevenLabs records narration → sync audio to video in any editor → publish. Full production cycle in an afternoon.'},
+  // Lovable + Claude: spec then build
+  {tools:['lovable','claude'],title:'Claude + Lovable',tagline:'Architect with Claude, build with Lovable',bestFor:'Non-technical founders who want to go from idea to working product without guessing at prompts',what:['Design product architecture, user flows, and data model with Claude → paste as Lovable prompt for accurate builds','Debug Lovable-generated code with Claude: paste the component, Claude explains the bug, you paste back the fix','Use Claude to write detailed feature specs → dramatically better Lovable output than vague descriptions','Claude reviews Lovable\'s generated code for security issues before you go live with real users','Plan Supabase schema and RLS policies with Claude → implement in Lovable\'s Supabase integration'],workflow:'<strong>Workflow:</strong> Claude = the architect. Lovable = the builder. Spend 30 min with Claude on a precise spec before touching Lovable. Better input → dramatically cleaner builds → fewer regeneration loops.'},
+  // LangChain + Pinecone + Claude: production RAG
+  {tools:['langchain','pinecone','claude'],title:'LangChain + Pinecone + Claude',tagline:'The standard production RAG stack',bestFor:'Developers building grounded AI applications that answer from private documents at scale',what:['LangChain handles document chunking, embedding generation, and retrieval orchestration','Pinecone stores and searches vector embeddings at low latency — scales to billions of documents','Claude generates grounded answers from the retrieved context — best for long, precise responses','Full RAG pipeline: ingest docs → embed → store in Pinecone → retrieve on query → Claude generates','Add LangSmith for tracing every retrieval and generation step in production'],workflow:'<strong>Workflow:</strong> LangChain ingests + chunks documents → generates embeddings → stores in Pinecone → at query time, retrieves top-k chunks → builds prompt → Claude answers. Standard stack used in production at scale.'},
+  // ── 3-TOOL COMBOS ────────────────────────────────────────────────
+  // Perplexity + NotebookLM + Claude: the full research-to-deliverable pipeline
+  {tools:['perplexity','notebooklm','claude'],title:'Perplexity + NotebookLM + Claude',tagline:'Discover → ground → deliver. The full research pipeline.',bestFor:'Analysts, consultants, and researchers who need a repeatable workflow from raw discovery to polished deliverable',what:['Perplexity discovers and cites current sources → NotebookLM synthesizes your private corpus → Claude writes the deliverable','Three distinct roles: Perplexity = live web, NotebookLM = your documents, Claude = reasoning and writing','Research cycle: Perplexity finds the current state → NotebookLM provides depth → Claude produces the report','Competitor intelligence: Perplexity tracks live news, NotebookLM reads their docs, Claude writes your response strategy','Academic research: Perplexity finds papers → NotebookLM Q&A across all of them → Claude writes the literature review'],workflow:'<strong>Workflow:</strong> Perplexity (live web research + citations) → export sources → NotebookLM (private document synthesis) → Q&A output → Claude (strategic analysis + writing). Three tools, zero hallucination, one polished output.'},
+  // ChatGPT + Claude + Perplexity: the most cited 3-tool writing stack on Reddit
+  {tools:['chatgpt','claude','perplexity'],title:'ChatGPT + Claude + Perplexity',tagline:'Brainstorm, write deep, fact-check — the full writing workflow',bestFor:'Writers, content teams, and analysts who want speed, depth, and accuracy in one repeatable process',what:['ChatGPT for rapid brainstorming and ideation (fast + creative) → Claude for long-form drafting (deep + precise) → Perplexity for fact verification before publishing','ChatGPT simulates reader objections and weak points → Claude addresses them in structural rewrites','The most-cited 3-tool content stack on Reddit: "ChatGPT is quick and clever, Claude is deliberate, Perplexity keeps you honest"','Use each for its strength: ChatGPT for speed, Claude for 100k+ word reasoning, Perplexity for citations','Research-to-publish in one session: Perplexity gathers facts → Claude drafts → ChatGPT suggests punchy edits'],workflow:'<strong>Workflow:</strong> Start in Perplexity (what do we know?), move to Claude (write the draft), end with ChatGPT (punch it up) + Perplexity again (fact-check). Each tool has one job.'},
+  // n8n + Claude + Notion AI: full content automation
+  {tools:['n8n','claude','notion-ai'],title:'n8n + Claude + Notion AI',tagline:'Automatic intelligence that writes, stores, and retrieves itself',bestFor:'Content teams and solo creators who want a fully automated research-to-publication pipeline',what:['Airtable/form brief → n8n triggers → Claude drafts → n8n posts to Notion → Notion AI answers questions on it','n8n watches RSS feeds → Claude evaluates relevance → creates Notion pages with AI summaries automatically','Social content pipeline: n8n detects trending topic → Claude writes platform-specific posts → schedules via n8n','Support ticket → n8n → Claude classifies and drafts reply → Notion AI checks past solutions → n8n sends response','10+ hours/week saved: content creation, research, distribution, and knowledge management all automated'],workflow:'<strong>Workflow:</strong> n8n = the runtime (triggers, routing, scheduling). Claude = the brain (reasoning, writing, classification). Notion AI = the memory (search, Q&A on everything stored). Set up once, runs forever.'},
+  // ElevenLabs + HeyGen + n8n: video outreach automation
+  {tools:['elevenlabs','heygen','n8n'],title:'ElevenLabs + HeyGen + n8n',tagline:'Personalized AI video outreach at any scale',bestFor:'Sales teams and agencies who want to send personalized video messages to hundreds of prospects automatically',what:['n8n pulls prospect data from CRM → ElevenLabs generates personalized voice → HeyGen creates avatar video → n8n sends via email/LinkedIn','One script template + variable names → 500 personalized avatar videos, each with the prospect\'s name and context','Used in verified n8n workflow template #11326 with thousands of downloads for sales outreach','Onboarding videos: new user signs up → n8n triggers → personalized welcome video created and delivered instantly','Agency workflow: client brief → n8n orchestrates → ElevenLabs VO + HeyGen video → delivered in <5 minutes'],workflow:'<strong>Workflow:</strong> n8n triggers on CRM event → passes prospect data to ElevenLabs API (voice gen) → ElevenLabs audio → HeyGen API (avatar video with lip-sync) → n8n sends via outreach platform. Verified production workflow.'},
+  // Cursor + GitHub Copilot + Claude: full developer stack
+  {tools:['cursor','github-copilot','claude'],title:'Cursor + GitHub Copilot + Claude',tagline:'Three AI layers for every phase of the development cycle',bestFor:'Developers who want AI coverage across the editor, the GitHub workflow, and complex reasoning tasks',what:['Cursor for deep in-editor chat and multi-file context, Copilot for fast inline autocomplete, Claude for architecture and review','Copilot in GitHub.com reviews PRs and suggests changes; Cursor implements them with full repo context; Claude explains the tradeoffs','Three tiers: Claude (thinking) → Cursor (building) → Copilot (typing). Each handles what it\'s best at','GitHub Copilot Workspace for feature planning → Cursor for execution → Claude for code review and security audit','Most developers pick Cursor OR Copilot as primary; adding Claude for code review adds a layer neither can replace'],workflow:'<strong>Workflow:</strong> Claude writes the architectural spec → Cursor builds the feature → Copilot fills inline completions → Copilot reviews the PR on GitHub → Claude signs off on security and patterns.'},
+  // Midjourney + Runway + Claude: visual content creation
+  {tools:['midjourney','runway','claude'],title:'Claude + Midjourney + Runway',tagline:'Concept → image → motion. The visual content creator stack.',bestFor:'Designers and content agencies producing high-end visual and video content at scale',what:['Claude generates detailed image prompts and storyboards → Midjourney produces the images → Runway animates them','One campaign concept from Claude becomes 20 Midjourney stills becomes 5 Runway video clips → full campaign in a day','Claude reviews Midjourney outputs and writes revised prompts for second passes — AI feedback loop','Documentary-style videos: Claude scripts the narrative, Midjourney creates all visual assets, Runway adds motion','Design agencies fulfilling video requests in hours vs days: Claude = creative director, Midjourney = photographer, Runway = motion designer'],workflow:'<strong>Workflow:</strong> Claude writes a detailed visual brief + 10 image prompts → run in Midjourney → select best frames → feed into Runway Gen-3 for video animation → Claude writes the caption and social copy.'},
+  // n8n + ElevenLabs + Claude: AI podcast / audio automation
+  {tools:['n8n','elevenlabs','claude'],title:'n8n + Claude + ElevenLabs',tagline:'Automated AI audio content at scale',bestFor:'Newsletters, media companies, and content teams who want audio versions of their content automatically',what:['Article published → n8n triggers → Claude rewrites for conversational audio format → ElevenLabs narrates → published to podcast feed','Weekly newsletter → n8n → Claude converts to audio script → ElevenLabs generates mp3 → n8n posts to RSS','Customer support knowledge base → Claude rewrites as audio answers → ElevenLabs voices them → auto-served to users','n8n monitors for new product updates → Claude writes audio announcement → ElevenLabs records → sent to subscribers','Multilingual audio: n8n triggers → Claude translates → ElevenLabs generates native-accent audio for each market'],workflow:'<strong>Workflow:</strong> n8n webhook (new content) → Claude API (rewrite for audio) → ElevenLabs API (text-to-speech) → n8n uploads mp3 to hosting → RSS feed updated. Fully automated audio publishing.'},
+  // LangChain + Pinecone + LangSmith: production RAG with observability
+  {tools:['langchain','pinecone','langsmith'],title:'LangChain + Pinecone + LangSmith',tagline:'Production RAG stack with full observability',bestFor:'Teams shipping RAG applications to production who need to debug, trace, and improve retrieval quality',what:['LangChain orchestrates the entire RAG pipeline; Pinecone handles vector search; LangSmith traces every run','LangSmith cuts RAG debugging time from 47 minutes to seconds — every retrieval and generation is traced','Identify exactly which chunks Pinecone retrieved and why Claude gave a wrong answer — full root cause in one click','LangSmith\'s playground lets you replay any failed query with different retrieval params without redeploying','Monitor retrieval quality over time: track what percentage of queries are pulling relevant vs irrelevant chunks'],workflow:'<strong>Workflow:</strong> Wrap your LangChain chain with LangSmith tracing (one environment variable). Every Pinecone retrieval + Claude generation gets logged. Debug failures in the LangSmith UI, not by reading logs.'},
+  // ── 4-TOOL COMBOS ────────────────────────────────────────────────
+  // The most-cited 4-tool writing pipeline from Reddit
+  {tools:['chatgpt','claude','perplexity','grammarly'],title:'ChatGPT + Claude + Perplexity + Grammarly',tagline:'The complete AI writing pipeline — from idea to published',bestFor:'Content professionals and writers who want a structured, repeatable process from brainstorm to error-free publish',what:['ChatGPT brainstorms ideas and angles → Claude drafts the long-form content → Perplexity fact-checks with citations → Grammarly polishes before publish','Verified on Reddit: "This 4-step workflow has eliminated every major writing problem I had" — 1,500+ upvotes across threads','Academic research version: Perplexity finds sources → ChatGPT outlines → Claude writes the draft → Grammarly polishes → reduces research papers from 20+ hours to 8-10 hours','Each tool earns its place: ChatGPT = speed + creativity, Claude = depth + length, Perplexity = accuracy, Grammarly = correctness','Marketing content version: brief in ChatGPT → long copy in Claude → fact verified with Perplexity → tone-checked with Grammarly'],workflow:'<strong>Workflow:</strong> Perplexity (research + cite) → ChatGPT (outline + angle) → Claude (write the draft) → Grammarly (final proof). Each step is 15-30 minutes. Four tools, one polished article.'},
+  // Faceless YouTube automation: OpenAI/Claude + ElevenLabs + Runway + n8n
+  {tools:['claude','elevenlabs','runway','n8n'],title:'Claude + ElevenLabs + Runway + n8n',tagline:'The faceless YouTube automation stack — script to published video',bestFor:'Solo creators and media companies producing high-volume video content without on-camera talent',what:['Claude writes the video script → ElevenLabs narrates it → Runway generates video scenes → n8n automates publish to YouTube','Verified n8n workflow template #8290 with thousands of downloads: "Automate faceless shorts from script to social media"','Produce 10 YouTube videos per week with this stack — one person, zero filming, fully automated pipeline','n8n orchestrates the whole pipeline: triggers, passes data between APIs, handles uploads and scheduling','Scale to multiple channels: n8n runs parallel pipelines, Claude generates unique scripts per niche, ElevenLabs + Runway produce each video'],workflow:'<strong>Workflow:</strong> n8n trigger (schedule or topic list) → Claude API (write script) → ElevenLabs API (narration audio) → Runway API (video generation) → n8n uploads to YouTube via YouTube Data API. Runs unattended.'},
+  // Full content automation pipeline
+  {tools:['n8n','claude','notion-ai','perplexity'],title:'n8n + Claude + Perplexity + Notion AI',tagline:'Fully automated research-to-knowledge pipeline',bestFor:'Content teams who want research, writing, storage, and retrieval all automated end-to-end',what:['Perplexity researches the topic with live citations → Claude drafts the content → n8n posts to Notion → Notion AI answers questions on it forever','SEO content pipeline: n8n triggers weekly → Perplexity finds trending keywords → Claude writes articles → n8n publishes to WordPress and stores in Notion','Competitive monitoring: n8n runs daily → Perplexity tracks competitor news → Claude analyzes implications → Notion AI surfaces relevant past research','Knowledge base that builds itself: new information enters via Perplexity and Claude, n8n stores it, Notion AI makes it retrievable','50+ pieces of content weekly at 70% cost reduction — verified n8n use case with Perplexity + Claude routing'],workflow:'<strong>Workflow:</strong> n8n (scheduled trigger) → Perplexity API (research + cite) → Claude API (write + structure) → n8n (post to Notion) → Notion AI (Q&A interface). Fully automated from topic to published and searchable.'},
+  // Production AI app stack
+  {tools:['langchain','pinecone','claude','langsmith'],title:'LangChain + Pinecone + Claude + LangSmith',tagline:'Production RAG with full tracing and observability',bestFor:'Engineering teams building and maintaining AI applications that need to work reliably at scale',what:['LangChain orchestrates the pipeline, Pinecone handles vector search, Claude generates answers, LangSmith traces every run','Full observability: trace exactly which chunks Pinecone retrieved, what prompt Claude received, and why it gave any specific answer','LangSmith reduces RAG debugging from 47-minute log dives to one-click root cause — teams report 90% faster iteration','Monitor answer quality over time: track faithfulness scores, retrieval relevance, and cost per query all in LangSmith','Production-ready: LangChain handles retries and fallbacks, Pinecone handles scale, LangSmith alerts on quality degradation'],workflow:'<strong>Workflow:</strong> LangChain RAG chain (ingestion + retrieval) + Pinecone (vector store) + Claude (generation) → wrap with LangSmith (LANGCHAIN_TRACING_V2=true, one env var) → every run fully traced and debuggable in the LangSmith dashboard.'}
+];
+
+// ── Combo detection: parse search query for "tool1 + tool2 + tool3" patterns ─
+function detectCombo(q){
+  if(!q||q.length<4) return null;
+  const norm=q.toLowerCase().replace(/['']/g,'');
+  const parts=norm.split(/\s*[\+&]\s*|\s+(?:and|with|vs|versus)\s+/).map(s=>s.trim()).filter(Boolean);
+  if(parts.length<2||parts.length>4) return null;
+  const findId=term=>{
+    const exact=TOOLS.find(t=>t.name.toLowerCase()===term||t.id===term);
+    if(exact) return exact.id;
+    const partial=TOOLS.find(t=>t.name.toLowerCase().startsWith(term)||term.startsWith(t.name.toLowerCase().split(' ')[0]));
+    return partial?partial.id:null;
+  };
+  const ids=parts.map(findId).filter(Boolean);
+  const uniqueIds=[...new Set(ids)];
+  if(uniqueIds.length<2) return null;
+  // Find best curated match: prefer combos that match ALL query tools; fall back to largest subset
+  const scored=TOOL_COMBOS.map(c=>{
+    const matched=uniqueIds.filter(id=>c.tools.includes(id)).length;
+    const coverage=matched/c.tools.length; // % of combo tools covered by query
+    return{c,matched,coverage};
+  }).filter(x=>x.matched>=2).sort((a,b)=>b.matched-a.matched||b.coverage-a.coverage||b.c.tools.length-a.c.tools.length);
+  if(scored.length) return scored[0].c;
+  // Dynamic fallback for any uncurated pair
+  const toolObjs=uniqueIds.map(id=>TOOLS.find(t=>t.id===id)).filter(Boolean);
+  if(toolObjs.length>=2){
+    const sharedInts=toolObjs[0].integrations.filter(i=>toolObjs.slice(1).some(t=>t.integrations.includes(i)));
+    return{tools:uniqueIds,title:toolObjs.map(t=>t.name).join(' + '),dynamic:true,toolObjs,sharedInts};
+  }
+  return null;
+}
+
+// ── Given stack tool IDs, find ALL combos where every combo tool is in the stack ─
+function getStackCombos(stackIds){
+  const set=new Set(stackIds);
+  return TOOL_COMBOS.filter(c=>c.tools.every(id=>set.has(id))).sort((a,b)=>b.tools.length-a.tools.length);
+}
+
+// ── Render combo hero card (search results) — supports 2-4 tools ─────
+function renderComboCard(combo){
+  if(!combo) return '';
+  if(combo.dynamic){
+    const {toolObjs,sharedInts}=combo;
+    const icons=toolObjs.map(t=>`<span>${t.icon}</span>`).join(`<span class="combo-hero-plus">+</span>`);
+    return `<div class="combo-hero-card">
+      <div class="combo-hero-badge">⚡ Tool Combination</div>
+      <div class="combo-hero-top">
+        <div class="combo-hero-icons">${icons}</div>
+        <div><div class="combo-hero-title">${toolObjs.map(t=>t.name).join(' + ')}</div><div class="combo-hero-tagline">${toolObjs.map(t=>t.categories[0]).join(' · ')}</div></div>
+      </div>
+      <div class="combo-hero-dynamic">
+        These tools cover complementary layers of an AI workflow.
+        ${sharedInts&&sharedInts.length?`Both integrate with: <strong>${sharedInts.slice(0,4).join(', ')}</strong>.`:''}
+        Use the AI Stack Advisor to see if they appear together in a recommended stack for your goal.
+      </div>
+    </div>`;
+  }
+  const icons=(()=>{try{return combo.tools.map(id=>{const t=TOOLS.find(x=>x.id===id);return t?`<span>${t.icon}</span>`:''}).join(`<span class="combo-hero-plus">+</span>`);}catch(e){return '';}})();
+  const toolCount=combo.tools.length;
+  return `<div class="combo-hero-card">
+    <div class="combo-hero-badge">⚡ ${toolCount}-Tool Combination</div>
+    <div class="combo-hero-top">
+      <div class="combo-hero-icons">${icons}</div>
+      <div><div class="combo-hero-title">${combo.title}</div><div class="combo-hero-tagline">${combo.tagline||''}</div></div>
+    </div>
+    ${combo.bestFor?`<div class="combo-hero-bestfor">Best for: ${combo.bestFor}</div>`:''}
+    <div class="combo-hero-label">What you can build with this combo</div>
+    <ul class="combo-hero-what">${(combo.what||[]).map(w=>`<li>${w}</li>`).join('')}</ul>
+    ${combo.workflow?`<div class="combo-hero-workflow">${combo.workflow}</div>`:''}
+  </div>`;
+}
+
+// ── Render stack combos section (advisor results) ─────────────────────
+function renderStackCombos(stackIds){
+  const combos=getStackCombos(stackIds);
+  if(!combos.length) return '';
+  const cards=combos.map(c=>{
+    const icons=(()=>{try{return c.tools.map(id=>{const t=TOOLS.find(x=>x.id===id);return t?`<span style="font-size:16px">${t.icon}</span>`:''}).join(`<span style="color:var(--p1);font-weight:800;font-size:12px;margin:0 2px">+</span>`);}catch(e){return '';}})();
+    return `<div class="advo-combo-card">
+      <div class="advo-combo-head">
+        <div class="advo-combo-icons">${icons}</div>
+        <div class="advo-combo-title">${c.title}</div>
+        <div class="advo-combo-badge">${c.tools.length} tools</div>
+      </div>
+      <div class="advo-combo-tagline">${c.tagline||''}</div>
+      <ul class="advo-combo-what">${(c.what||[]).slice(0,3).map(w=>`<li>${w}</li>`).join('')}</ul>
+      ${c.workflow?`<div class="advo-combo-workflow">${c.workflow}</div>`:''}
+    </div>`;
+  }).join('');
+  return `<div class="advo-combos-section">
+    <div class="advo-combos-head">
+      <span class="advo-combos-icon">⚡</span>
+      <span class="advo-combos-label">Power combos in your stack</span>
+      <span class="advo-combos-sub">These tools are used together by people doing exactly what you're building</span>
+    </div>
+    ${cards}
+  </div>`;
+}
+
+// ── Detect if a search query matches a tool family brand name ────────
+function detectFamily(q){
+  if(!q||q.length<3) return null;
+  const norm=q.toLowerCase().trim();
+  // Must be a short brand query (not a combo or sentence)
+  if(norm.split(/\s+/).length>3) return null;
+  var found=null;
+  Object.keys(TOOL_FAMILIES).forEach(function(key){
+    var fam=TOOL_FAMILIES[key];
+    if(fam.aliases.some(function(a){return norm===a||norm.startsWith(a+' ')||a.startsWith(norm);})){
+      found=key;
+    }
+  });
+  return found;
+}
+
+// ── Render the family banner for the explore view ────────────────────
+function renderFamilyBanner(familyKey){
+  var fam=TOOL_FAMILIES[familyKey];
+  if(!fam) return '';
+  var rows=fam.tools.map(function(id){
+    var v=fam.variants[id];
+    if(!v) return '';
+    var t=TOOLS.find(function(x){return x.id===id;});
+    return '<div class="family-variant-row" onclick="searchTool(\''+id+'\')">'
+      +'<div class="family-variant-icon">'+v.icon+'</div>'
+      +'<div class="family-variant-body">'
+      +'<div class="family-variant-label">'+v.label+'</div>'
+      +'<div class="family-variant-use">'+v.use+'</div>'
+      +'</div>'
+      +'<div class="family-variant-who">'+v.who+'</div>'
+      +'</div>';
+  }).join('');
+  return '<div class="family-banner">'
+    +'<div class="family-banner-head">'
+    +'<span class="family-banner-emoji">'+fam.emoji+'</span>'
+    +'<span class="family-banner-title">'+fam.label+'</span>'
+    +'<span class="family-banner-maker">By '+fam.name+'</span>'
+    +'</div>'
+    +'<div class="family-banner-desc">'+fam.desc+'</div>'
+    +'<div class="family-variants">'+rows+'</div>'
+    +'</div>';
+}
+
+// ── Jump directly to a tool card: clear search, expand, scroll ───────
+window.searchTool=function searchTool(id){
+  var t=TOOLS.find(function(x){return x.id===id;});
+  if(!t) return;
+  // Clear search so the card is in the grid
+  var inp=document.getElementById('search-input');
+  if(inp){inp.value='';}
+  state.query='';
+  state.category='All';
+  state.familyMatch=null;
+  state.comboMatch=null;
+  // Pre-open this card
+  state.expandedId=id;
+  renderExplore();
+  // Scroll to it after render
+  requestAnimationFrame(function(){
+    var card=document.querySelector('.tool-card[data-id="'+id+'"]');
+    if(card){
+      // Force-show the detail panel (CSS hides it by default; click handler shows it)
+      var det=card.querySelector('.tool-detail');
+      if(det){det.style.display='block';}
+      var arr=card.querySelector('.expand-arrow');
+      if(arr){arr.style.transform='rotate(180deg)';arr.style.color='var(--p1)';}
+      // Scroll card into view
+      var stickyBar=document.getElementById('sticky-search');
+      var headerH=(document.querySelector('header')||{offsetHeight:56}).offsetHeight
+        +((stickyBar&&stickyBar.classList.contains('visible'))?stickyBar.offsetHeight:0)+40;
+      var cardTop=card.getBoundingClientRect().top+window.scrollY-headerH;
+      window.scrollTo({top:cardTop,behavior:'smooth'});
+    }
+  });
+}
+
+// ── Return a variant hint for a tool in advisor results ──────────────
+function getVariantHint(toolId){
+  var hint=null;
+  Object.keys(TOOL_FAMILIES).forEach(function(key){
+    var fam=TOOL_FAMILIES[key];
+    if(fam.tools.indexOf(toolId)>=0 && fam.variants[toolId]){
+      hint={familyName:fam.name,variantLabel:fam.variants[toolId].label,variantWho:fam.variants[toolId].who};
+    }
+  });
+  return hint;
+}
+
 function renderCard(t,catHighlight){
   const exp=state.expandedId===t.id;
   const scoreKeys=["writing","coding","research","creativity","automation","multimodal"];
@@ -4165,7 +4588,9 @@ function renderCard(t,catHighlight){
   <div style="margin-top:16px"><h4 style="font-size:9px;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);font-weight:700;margin-bottom:8px;display:flex;align-items:center;gap:6px">Capability scores <span class="score-info" data-tip="Scores are editorial — based on structured tests &amp; public benchmarks. Scale: 1 = limited, 5 = solid, 10 = best-in-class. See Methodology in the Community tab for full details.">?</span></h4>${scores}</div>
   <div style="margin-top:16px"><h4 style="font-size:9px;text-transform:uppercase;letter-spacing:0.9px;color:var(--text3);font-weight:700;margin-bottom:8px">Paid plans</h4>
   <div class="plans-list">${t.paid.map(p=>`<div class="plan-item"><div><div class="plan-name">${p.name}</div><div class="plan-price">${p.price}</div></div><div class="plan-perks">${p.perks}</div></div>`).join('')}</div></div>
-  ${agentSection}${(()=>{try{var u=TOOL_URLS[t.id];return u&&u.docs?'<div class="visit-site-row"><a href="'+u.docs+'" target="_blank" rel="noopener" class="visit-docs-btn">📄 Docs</a></div>':'';}catch(e){return '';}})()}${(DP_IDS.has(t.id)?'<button class="dp-profile-btn" onclick="openDeepProfile(\''+t.id+'\')">📖 Deep Profile</button>':'')}</div>`;
+  ${agentSection}${(()=>{try{var u=TOOL_URLS[t.id];return u&&u.docs?'<div class="visit-site-row"><a href="'+u.docs+'" target="_blank" rel="noopener" class="visit-docs-btn">📄 Docs</a></div>':'';}catch(e){return '';}})()}${(DP_IDS.has(t.id)?'<button class="dp-profile-btn" onclick="openDeepProfile(\''+t.id+'\')">📖 Deep Profile</button>':'')}
+  ${(()=>{try{var famKey=Object.keys(TOOL_FAMILIES).find(function(k){return TOOL_FAMILIES[k].tools.indexOf(t.id)>=0;});if(!famKey)return '';var fam=TOOL_FAMILIES[famKey];var siblings=fam.tools.filter(function(id){return id!==t.id;});if(!siblings.length)return '';var pills=siblings.map(function(id){var v=fam.variants[id];var st=TOOLS.find(function(x){return x.id===id;});if(!v||!st)return '';return '<span class="card-variant-pill" onclick="event.stopPropagation();searchTool(\''+id+'\')"><span class="cvp-icon">'+v.icon+'</span>'+v.label+'</span>';}).join('');return '<div class="card-variants-section"><div class="card-variants-label">Also from '+fam.name+'</div><div class="card-variants-pills">'+pills+'</div></div>';}catch(e){return '';}})()}
+  </div>`;
 
   return `<div class="tool-card${exp?' expanded':''}" data-id="${t.id}"${(t.isModel||t.isInfra)?' data-model="true"':''}>
     <div class="card-head"><div class="tool-icon" style="background:var(--bg3);border:1px solid var(--border)"><span style="filter:drop-shadow(0 0 4px ${t.color}66)">${t.icon}</span></div>
@@ -4190,7 +4615,11 @@ function renderExplore(){
   // Cat hero banner
   let hero=document.getElementById('cat-hero');
   if(!hero){hero=document.createElement('div');hero.id='cat-hero';grid.parentNode.insertBefore(hero,grid);}
-  if(meta){
+  if(state.comboMatch){
+    hero.innerHTML=renderComboCard(state.comboMatch);
+  } else if(state.familyMatch){
+    hero.innerHTML=renderFamilyBanner(state.familyMatch);
+  } else if(meta){
     filtered.sort((a,b)=>(b.scores[meta.scoreKey]||0)-(a.scores[meta.scoreKey]||0));
     hero.innerHTML=`<div class="cat-hero-card"><div class="cat-hero-meta"><span>${meta.emoji}</span><span>Ranked by ${meta.scoreKey} score</span><span style="color:var(--text3);font-weight:500">· ${filtered.length} tool${filtered.length!==1?'s':''}</span></div><h2>${meta.headline}</h2><p>${meta.desc}</p></div>`;
   } else {hero.innerHTML='';}
@@ -4403,7 +4832,91 @@ function switchTab(tab){
   if(tab==='compare')renderCompare();
   if(tab==='usecases')renderUseCases();
   if(tab==='explore')renderExplore();
+  if(tab==='combos')renderCombosTab();
 }
+
+// ── Combo category tags — each combo gets auto-tagged for filtering ─
+const COMBO_TAGS=(function(){
+  var map={};
+  var rules=[
+    {tag:'Content Creation', ids:['midjourney','canva-ai','runway','elevenlabs','heygen','descript','grammarly','jasper','writer','notion-ai']},
+    {tag:'Development',     ids:['cursor','claude-code','github-copilot','lovable','langchain','langsmith','langgraph','pinecone','mcp-github']},
+    {tag:'Research',        ids:['perplexity','notebooklm','elicit','consensus','wolfram']},
+    {tag:'Automation',      ids:['n8n','zapier','make','claude','openai-api']},
+    {tag:'Video & Voice',   ids:['elevenlabs','heygen','runway','descript','otter-ai']},
+    {tag:'AI Engineering',  ids:['langchain','langsmith','langgraph','pinecone','openai-api','claude-api','vertex-ai']},
+  ];
+  TOOL_COMBOS.forEach(function(c){
+    var tags=[];
+    rules.forEach(function(r){
+      if(c.tools.some(function(id){return r.ids.indexOf(id)>=0;})) tags.push(r.tag);
+    });
+    map[c.title]=tags.length?tags:['General'];
+  });
+  return map;
+})();
+
+function renderCombosTab(){
+  var root=document.getElementById('combos-root');
+  if(!root) return;
+
+  var activeFilter=root.dataset.filter||'All';
+
+  var filters=['All','Content Creation','Development','Research','Automation','Video & Voice','AI Engineering'];
+  var filterPills=filters.map(function(f){
+    return '<button class="combo-filter-pill'+(activeFilter===f?' active':'')
+      +'" onclick="setCombosFilter(\''+f+'\')">'+(f==='All'?'All combos ('+TOOL_COMBOS.length+')':f)+'</button>';
+  }).join('');
+
+  var filtered=activeFilter==='All'?TOOL_COMBOS:TOOL_COMBOS.filter(function(c){
+    var tags=COMBO_TAGS[c.title]||['General'];
+    return tags.indexOf(activeFilter)>=0;
+  });
+
+  var cards=filtered.map(function(c){
+    var icons=(function(){
+      try{return c.tools.map(function(id){var t=TOOLS.find(function(x){return x.id===id;});return t?t.icon:'';}).join('<span class="combo-ex-plus">+</span>');}catch(e){return '';}
+    })();
+    var searchQ=c.tools.map(function(id){var t=TOOLS.find(function(x){return x.id===id;});return t?t.name:id;}).join(' + ');
+    var tags=(COMBO_TAGS[c.title]||['General']).map(function(t){return '<span style="font-size:9px;font-weight:600;color:var(--text3);background:var(--bg3);border-radius:8px;padding:1px 7px;margin-right:4px">'+t+'</span>';}).join('');
+    return '<div class="combo-ex-card">'
+      +'<div class="combo-ex-head">'
+      +'<div class="combo-ex-icons">'+icons+'</div>'
+      +'<div class="combo-ex-title">'+c.title+'</div>'
+      +'<div class="combo-ex-count">'+c.tools.length+' tools</div>'
+      +'</div>'
+      +(c.tagline?'<div class="combo-ex-tagline">'+c.tagline+'</div>':'')
+      +'<div style="margin-bottom:8px">'+tags+'</div>'
+      +(c.what&&c.what.length?'<ul class="combo-ex-what">'+c.what.slice(0,3).map(function(w){return '<li>'+w+'</li>';}).join('')+'</ul>':'')
+      +(c.workflow?'<div class="combo-ex-workflow">'+c.workflow+'</div>':'')
+      +'<div class="combo-ex-cta">'
+      +'<button class="combo-ex-search-btn" onclick="combosSearchFor(\''+encodeURIComponent(searchQ)+'\')">🔍 Explore tools</button>'
+      +'</div>'
+      +'</div>';
+  }).join('');
+
+  root.innerHTML='<div class="combos-header">'
+    +'<div class="combos-headline">⚡ Tool Combination Explorer</div>'
+    +'<div class="combos-sub">'+TOOL_COMBOS.length+' research-verified combinations — sorted by real-world usage across Reddit, HN, and workflow communities</div>'
+    +'<div class="combos-filter-bar">'+filterPills+'</div>'
+    +'</div>'
+    +(filtered.length?'<div class="combos-grid">'+cards+'</div>':'<div class="combos-empty">No combos in this category yet.</div>');
+}
+
+window.setCombosFilter=function(f){
+  var root=document.getElementById('combos-root');
+  if(root) root.dataset.filter=f;
+  renderCombosTab();
+};
+
+window.combosSearchFor=function(encoded){
+  var q=decodeURIComponent(encoded);
+  var inp=document.getElementById('search-input');
+  if(inp) inp.value=q;
+  state.query=q.toLowerCase();
+  state.familyMatch=null;
+  switchTab('explore');
+};
 
 // ═══════════════ EVENT LISTENERS ═══════════════
 document.getElementById('search-input').addEventListener('input',e=>{state.query=e.target.value;if(state.activeTab!=='explore')switchTab('explore');renderExplore();});
@@ -6129,10 +6642,12 @@ function renderIdeaResults(stack, goalText, out, totalMin, totalMax){
         ${tools.map(({tool})=>{
           const {why,tradeoff}=getToolReason(tool,ls.layer,session.goalTags,session.answers);
           const learnTime=TOOL_META[tool.id]?.beginner?'⭐ Easy to start':'⭐⭐ Some setup';
+          const vHint=(()=>{try{const h=getVariantHint(tool.id);return h?`<div class="advo-variant-hint"><span class="advo-variant-hint-text">${h.variantLabel}</span><span class="advo-variant-hint-sub">· for ${h.variantWho}</span></div>`:''}catch(e){return '';}})();
           return `<div class="advo-result-tool">
             <div class="advo-result-icon">${tool.icon}</div>
             <div class="advo-result-body">
               <div class="advo-result-name">${chip(tool.id)}</div>
+              ${vHint}
               <div class="advo-result-why">${why}</div>
               <div class="advo-idea-meta">
                 <span class="advo-learn-time">${learnTime}</span>
@@ -6158,7 +6673,7 @@ function renderIdeaResults(stack, goalText, out, totalMin, totalMax){
           </div>
         </div>
         <div class="advo-layers-container">
-          <div class="advo-layers-stack">${buildConstraintBanner()}${sections}</div>
+          <div class="advo-layers-stack">${buildConstraintBanner()}${sections}${renderStackCombos(stack.map(r=>r.tool.id))}</div>
           <div class="advo-results-sidebar">
             <div class="advo-sidebar-card advo-projections-card">
               <div class="advo-sc-label">📊 What this stack delivers</div>
@@ -6288,10 +6803,12 @@ function renderIdeaResults(stack, goalText, out, totalMin, totalMax){
         </div>
         ${tools.map(({tool})=>{
           const {why,tradeoff}=getToolReason(tool,ls.layer,session.goalTags,session.answers);
+          const vHint=(()=>{try{const h=getVariantHint(tool.id);return h?`<div class="advo-variant-hint"><span class="advo-variant-hint-text">${h.variantLabel}</span><span class="advo-variant-hint-sub">· for ${h.variantWho}</span></div>`:''}catch(e){return '';}})();
           return `<div class="advo-result-tool">
             <div class="advo-result-icon">${tool.icon}</div>
             <div class="advo-result-body">
               <div class="advo-result-name">${chip(tool.id)}</div>
+              ${vHint}
               <div class="advo-result-why">${why}</div>
               ${tradeoff?`<div class="advo-result-tradeoff">${tradeoff.replace('⚠️ ','').replace('⚠️','')}</div>`:''}
             </div>
@@ -6322,7 +6839,7 @@ function renderIdeaResults(stack, goalText, out, totalMin, totalMax){
         </div>
         <div class="advo-layers-container">
           <div class="advo-layers-stack">
-            ${buildConstraintBanner()}${sections}
+            ${buildConstraintBanner()}${sections}${renderStackCombos(stack.map(r=>r.tool.id))}
             ${bSection?`<div class="advo-builder-wrap">${bSection}</div>`:''}
             ${archNotes.length?`<div class="advo-arch-notes">
               <div class="advo-arch-notes-label">⚠️ Architecture decisions for your context</div>
