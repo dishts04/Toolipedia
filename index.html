@@ -278,6 +278,61 @@ body.wiki-mode main,body.wiki-mode footer{visibility:hidden}
   font-size:11px;color:var(--text3);text-align:center;
   margin-top:8px;min-height:18px;font-weight:400;
 }
+/* ── Combo search suggestion hint ─────────────────────────────── */
+.combo-hint{
+  display:none;text-align:center;margin-top:6px;
+  font-size:12px;color:var(--text3);animation:fadeIn 0.2s ease;
+}
+.combo-hint-link{
+  color:var(--p1);cursor:pointer;font-weight:600;
+  background:none;border:none;padding:0;font-size:12px;
+  font-family:var(--ff-body);text-decoration:underline;text-underline-offset:2px;
+}
+.combo-hint-link:hover{color:var(--p4)}
+
+/* ── ENTERPRISE MATRIX ────────────────────────────────────────────── */
+.em-wrap{padding:0 0 40px}
+.em-filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px;align-items:center}
+.em-filter-pill{
+  padding:5px 14px;border-radius:20px;font-size:12px;font-weight:600;cursor:pointer;
+  border:1.5px solid var(--border1);background:var(--bg2);color:var(--text2);
+  transition:all .15s;font-family:var(--ff-body);
+}
+.em-filter-pill.active,.em-filter-pill:hover{background:var(--p1);color:#fff;border-color:var(--p1)}
+.em-filter-label{font-size:11px;color:var(--text3);font-weight:600;letter-spacing:.05em;text-transform:uppercase;margin-right:4px}
+.em-table-wrap{overflow-x:auto;border-radius:12px;border:1px solid var(--border1)}
+.em-table{width:100%;border-collapse:collapse;font-size:13px}
+.em-table thead th{
+  padding:10px 12px;font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;
+  color:var(--text3);background:var(--bg2);border-bottom:1px solid var(--border1);
+  white-space:nowrap;text-align:center;position:sticky;top:0;z-index:2;
+}
+.em-table thead th:first-child{text-align:left;min-width:180px}
+.em-table thead th:last-child{text-align:center}
+.em-table tbody tr{border-bottom:1px solid var(--border1);cursor:pointer;transition:background .1s}
+.em-table tbody tr:hover{background:var(--bg2)}
+.em-table tbody tr:last-child{border-bottom:none}
+.em-table td{padding:9px 12px;text-align:center;vertical-align:middle}
+.em-table td:first-child{text-align:left}
+.em-tool-cell{display:flex;align-items:center;gap:8px}
+.em-tool-icon{font-size:16px;width:22px;text-align:center;flex-shrink:0}
+.em-tool-name{font-weight:600;color:var(--text1);font-size:13px}
+.em-tool-maker{font-size:10px;color:var(--text3);margin-top:1px}
+.em-yes{color:#22c55e;font-size:15px;font-weight:700}
+.em-no{color:var(--border1);font-size:14px}
+.em-partial{color:#f59e0b;font-size:13px;font-weight:600}
+.em-score{
+  display:inline-flex;align-items:center;justify-content:center;
+  width:36px;height:22px;border-radius:11px;font-size:11px;font-weight:700;
+}
+.em-score-6,.em-score-5{background:rgba(34,197,94,.15);color:#16a34a}
+.em-score-4,.em-score-3{background:rgba(245,158,11,.12);color:#b45309}
+.em-score-2,.em-score-1,.em-score-0{background:var(--bg3);color:var(--text3)}
+html.light .em-yes{color:#16a34a}
+html.light .em-no{color:#d1d5db}
+.em-legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;font-size:11px;color:var(--text3)}
+.em-legend-item{display:flex;align-items:center;gap:5px}
+.em-count-bar{font-size:12px;color:var(--text3);margin-bottom:10px}
 
 /* ── STICKY SEARCH ────────────────────────────────────────────────── */
 .sticky-search{
@@ -2295,12 +2350,12 @@ html.light .family-variant-row{background:#f9f8f4}
       <span class="icon-moon">🌙</span>
       <span class="icon-sun">☀️</span>
     </button>
-    <div class="header-badge">100 Tools · April 2026</div>
+    <div class="header-badge">105 Tools · April 2026</div>
   </div>
 </header>
 
 <section class="hero">
-  <div class="hero-label">100 tools · Curated &amp; scored</div>
+  <div class="hero-label">105 tools · Curated &amp; scored</div>
   <h1>The right AI stack<br>for <em>what you actually do.</em></h1>
   <p class="hero-tagline">You know your goal. <strong>We know the tools.</strong></p>
   <div class="advisor-cta">
@@ -2309,7 +2364,7 @@ html.light .family-variant-row{background:#f9f8f4}
       Find my stack
     </button>
     <span class="advisor-or">or</span>
-    <button class="advisor-browse-btn" id="hero-browse-btn">Browse all 100 tools ↓</button>
+    <button class="advisor-browse-btn" id="hero-browse-btn">Browse all 105 tools ↓</button>
   </div>
   <div class="search-wrap">
     <div class="search-glow"></div>
@@ -2320,6 +2375,7 @@ html.light .family-variant-row{background:#f9f8f4}
     </div>
   </div>
   <div class="search-count" id="search-count">Showing all 51 tools across 20 categories</div>
+  <div class="combo-hint" id="combo-hint"></div>
 </section>
 
 <!-- Pillars band — 3-second orientation for new visitors -->
@@ -2333,7 +2389,7 @@ html.light .family-variant-row{background:#f9f8f4}
     </div>
   </div>
   <div class="ticker-stat-line">
-    <div class="ticker-stat"><div class="ticker-stat-dot"></div>100 tools · updated weekly</div>
+    <div class="ticker-stat"><div class="ticker-stat-dot"></div>105 tools · updated weekly</div>
     <span class="ticker-stat-sep">·</span>
     <div class="ticker-stat">scored across 6 dimensions</div>
     <span class="ticker-stat-sep">·</span>
@@ -2433,6 +2489,7 @@ html.light .family-variant-row{background:#f9f8f4}
     <button class="tab-btn" data-tab="combos">⚡ Combos</button>
     <button class="tab-btn" data-tab="compare">📊 Compare</button>
     <button class="tab-btn" data-tab="usecases">🎯 Use Cases</button>
+    <button class="tab-btn" data-tab="enterprise">🔒 Enterprise</button>
   </div>
   <button class="filter-toggle-btn" id="filter-toggle-btn" onclick="toggleFilterPanel()">
     <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2"><line x1="4" y1="6" x2="20" y2="6"/><line x1="7" y1="12" x2="17" y2="12"/><line x1="10" y1="18" x2="14" y2="18"/></svg>
@@ -2468,6 +2525,10 @@ html.light .family-variant-row{background:#f9f8f4}
   <p style="font-size:13px;color:var(--text2);margin-bottom:18px">Pick what you want to do — we'll show the best tools and explain exactly why.</p>
   <div class="uc-cats-grid" id="uc-cats-grid"></div>
   <div id="uc-results"></div>
+</div>
+
+<div class="panel" id="panel-enterprise">
+  <div class="em-wrap" id="em-root"></div>
 </div>
 
 </main>
@@ -2613,7 +2674,7 @@ html.light .family-variant-row{background:#f9f8f4}
 
         <h3>What Toolipedia is</h3>
         <p style="margin-bottom:10px">Toolipedia is a curated, independent directory of AI tools. It is not a product review site, not an affiliate marketplace, and not a lead generation tool for vendors. No tool pays to be listed. No tool pays for a higher score or a better description. The directory exists for one reason: to help people find the right AI tool for what they're actually trying to do.</p>
-        <p>The current directory covers 100 tools across 23 categories. It is maintained by a single editor and supported by community submissions that go through an editorial review before going live.</p>
+        <p>The current directory covers 105 tools across 23 categories. It is maintained by a single editor and supported by community submissions that go through an editorial review before going live.</p>
 
         <h3 style="margin-top:22px">How we choose tools</h3>
         <p style="margin-bottom:8px">A tool qualifies for inclusion if it meets all four criteria:</p>
@@ -2663,7 +2724,7 @@ html.light .family-variant-row{background:#f9f8f4}
         <p style="margin-bottom:8px">The directory runs on a rolling review schedule:</p>
         <ul>
           <li><strong>Monthly</strong> — pricing and free tier details for the top 10 most-visited tools</li>
-          <li><strong>Quarterly</strong> — full pricing audit across all 100 tools; score recalibration for any tool that has shipped a major model or feature update</li>
+          <li><strong>Quarterly</strong> — full pricing audit across all 105 tools; score recalibration for any tool that has shipped a major model or feature update</li>
           <li><strong>As needed</strong> — immediate update when a tool announces a significant change (new model release, pricing restructure, feature removal)</li>
           <li><strong>Community-triggered</strong> — any verified correction submitted through the community queue is reviewed within two weeks</li>
         </ul>
@@ -2938,6 +2999,75 @@ const TOOLS = [
    integrations:["Supabase","GitHub","Stripe","Vercel","Custom APIs","Figma imports"],
    scores:{writing:3,coding:8,research:2,creativity:7,automation:6,multimodal:3}},
 
+  {id:"devin",name:"Devin",maker:"Cognition AI",
+  tagline:"The first AI software engineer — autonomously plans, codes, tests, and ships full features end-to-end",
+  icon:"🧠",color:"#6366F1",
+  categories:["Coding","Agents"],
+  bestFor:"Engineering teams who want to delegate entire features, not just autocomplete. Devin takes a GitHub issue or plain English brief, spins up its own shell and browser, writes code, runs tests, fixes failures, and opens a pull request — without a human in the loop. Best for well-scoped isolated tasks: bug fixes, new endpoints, test coverage, greenfield modules.",
+  free:{available:false,desc:"No free tier. Teams plan required."},
+  paid:[
+    {name:"Teams",price:"$500/mo",perks:"250 ACUs, full autonomy, GitHub integration, Slack notifications"},
+    {name:"Enterprise",price:"Custom",perks:"Unlimited ACUs, SSO, audit logs, private deployment, SLA"}
+  ],
+  useCases:[
+    "Assign a GitHub issue and get a pull request back with tests passing",
+    "Delegate bug fixes to run overnight while engineers focus on architecture",
+    "Generate test coverage for legacy code without manual effort",
+    "Build a new API endpoint from a plain English specification",
+    "Run parallel agents on multiple isolated tasks simultaneously"
+  ],
+  features:[
+    "Full autonomous coding loop: plan → write → test → fix → PR",
+    "Own sandboxed shell and browser environment per task",
+    "GitHub integration — reads issues, opens PRs, responds to review comments",
+    "Slack integration — real-time task status updates",
+    "SWE-bench Verified: 49.8% — highest of any agent at launch",
+    "Parallel task execution — multiple Devin sessions simultaneously",
+    "Knowledge base — learns your codebase conventions over time"
+  ],
+  integrations:["GitHub","GitLab","Slack","Jira","Linear","VS Code","API"],
+  scores:{writing:4,coding:10,research:5,creativity:5,automation:9,multimodal:4},
+  agents:{hasAgents:true,type:"coding",name:"Devin Autonomous Engineer",autonomy:5,
+    agentPricing:"$500/mo Teams plan includes 250 ACUs. Each task uses 1-10 ACUs.",
+    what:[
+      "Plans entire features from a GitHub issue or natural language brief",
+      "Writes, runs, and fixes code in its own sandboxed environment",
+      "Opens pull requests and responds to reviewer comments autonomously",
+      "Runs parallel tasks — multiple Devins working simultaneously",
+      "Learns codebase conventions via knowledge base over time"
+    ]
+  }},
+
+  {id:"v0",name:"v0",maker:"Vercel",
+  tagline:"Generate production-ready React and Tailwind UI components from a text description",
+  icon:"▲",color:"#000000",
+  categories:["Coding","Design"],
+  bestFor:"Frontend developers who want to go from idea to working React component in seconds. Describe a UI — a data table, a login form, a dashboard layout — and v0 generates clean production-ready code using Tailwind CSS and shadcn/ui that copies directly into your project. Sits between GitHub Copilot (too granular) and Lovable (full app builder) — v0 is specifically for UI component generation.",
+  free:{available:true,desc:"Free tier: limited daily generations. No credit card required."},
+  paid:[
+    {name:"Premium",price:"$20/mo",perks:"Unlimited generations, private projects, priority queue, all models"},
+    {name:"Team",price:"$30/user/mo",perks:"Shared projects, team collaboration, admin controls"}
+  ],
+  useCases:[
+    "Generate a complete dashboard UI from a one-sentence description",
+    "Build a data table with sorting and filtering without writing boilerplate",
+    "Create a landing page component library with consistent styling",
+    "Prototype UI ideas in seconds before committing to implementation",
+    "Convert a Figma screenshot into working React and Tailwind code"
+  ],
+  features:[
+    "Generates React + Tailwind CSS + shadcn/ui components",
+    "Copy-paste ready — no framework changes needed",
+    "Image-to-UI: upload a screenshot, get working code back",
+    "Iterative refinement via plain English follow-up messages",
+    "Real-time preview alongside generated code",
+    "Multi-framework output: Next.js, Remix, Vite supported",
+    "Built by Vercel — deploys directly to Vercel platform"
+  ],
+  integrations:["Next.js","Remix","Vite","Vercel","GitHub","Figma","shadcn/ui"],
+  scores:{writing:3,coding:9,research:2,creativity:8,automation:5,multimodal:6},
+  agents:{hasAgents:false}},
+
   {id:"heygen",name:"HeyGen",maker:"HeyGen Inc.",tagline:"AI avatar videos — talking head without a camera",icon:"🎭",color:"#7C3AED",
    categories:["Video","Creative","Voice & Audio"],
    bestFor:"Marketing teams and educators creating professional talking-head videos at scale without filming",
@@ -2987,6 +3117,37 @@ const TOOLS = [
    features:["Pika 2.2 model — best for stylized visuals","Text-to-video and image-to-video","Pikaffects (unique transformation effects)","Video extension and outpainting","Sound effects generation","Scene-consistent character video","16:9, 9:16, 1:1 formats"],
    integrations:["API access","Discord bot","Web interface"],
    scores:{writing:0,coding:0,research:0,creativity:9,automation:4,multimodal:8}},
+
+  {id:"luma",name:"Luma Dream Machine",maker:"Luma AI",
+  tagline:"Cinematic AI video with motion realism and physics — text or image to video",
+  icon:"🌙",color:"#8B5CF6",
+  categories:["Video","Animation","Creative"],
+  bestFor:"Creators and filmmakers who want cinematic motion quality without Runway's complexity or Pika's stylized look. Luma's Ray3 model specialises in realistic physics, natural camera movement, and motion consistency. Also used professionally for digital twins and 3D asset creation.",
+  free:{available:true,desc:"Free tier: limited generations per day with watermark."},
+  paid:[
+    {name:"Standard",price:"$9.99/mo",perks:"120 generations/mo, no watermark, 720p"},
+    {name:"Plus",price:"$29.99/mo",perks:"400 generations/mo, priority queue, 4K upscaling"},
+    {name:"Pro",price:"$99.99/mo",perks:"2000 generations/mo, API access, commercial licence"}
+  ],
+  useCases:[
+    "Generate cinematic B-roll with realistic physics and natural camera movement",
+    "Animate a still product image into a smooth motion video clip",
+    "Create social media reels with consistent motion and lighting",
+    "Build digital twin visualisations of real-world spaces or assets",
+    "Prototype film sequences before committing to production"
+  ],
+  features:[
+    "Ray3 model — reasoning-based physics simulation for realistic motion",
+    "Text-to-video and image-to-video generation",
+    "Cinematic camera movements: dolly, arc, crane, tracking shots",
+    "4K upscaling on Plus and Pro plans",
+    "Motion consistency across frames — fewer artifacts than most competitors",
+    "Digital twin and 3D asset creation alongside video generation",
+    "Free tier available — no credit card required"
+  ],
+  integrations:["API (Pro)","Adobe Premiere","After Effects","DaVinci Resolve"],
+  scores:{writing:0,coding:0,research:0,creativity:9,automation:4,multimodal:9},
+  agents:{hasAgents:false}},
 
   {id:"seedance",name:"Seedance 2.0",maker:"ByteDance",tagline:"Multi-reference AI video with native audio and beat-sync — free via CapCut",icon:"🎬",color:"#1DB954",
    categories:["Video","Creative","Animation"],
@@ -3128,6 +3289,44 @@ const TOOLS = [
    agents:{hasAgents:true,type:"personal",name:"OpenClaw Personal Agent",autonomy:5,
      agentPricing:"Free and open-source (MIT). API costs: $0–$150/mo depending on model and usage. Local Ollama models = near zero.",
      what:["Acts autonomously via WhatsApp, Telegram, Slack, Discord","100+ extensible skills (email, calendar, code, web)","Model-agnostic: Claude, GPT, Gemini, or local Ollama","Runs 24/7 on your own machine as a Node.js service","250K+ GitHub stars — fastest growing open-source agent"]}},
+  {id:"manus",name:"Manus AI",maker:"Butterfly Effect AI",
+  tagline:"Fully autonomous cloud agent — give it a goal, come back to finished work",
+  icon:"🤖",color:"#6366F1",
+  categories:["Agents","Automation","General AI"],
+  bestFor:"Teams and individuals who want a true autonomous agent that handles multi-step tasks end-to-end without supervision. Give Manus a high-level goal — research a market, build a report, analyse data, plan a trip — and it plans the steps, browses the web, runs code, and delivers finished output. Runs in the cloud so tasks continue even when your device is offline. Best for complex knowledge work that currently takes hours of manual effort.",
+  free:{available:false,desc:"No free tier. Invite-only beta with paid plans."},
+  paid:[
+    {name:"Starter",price:"~$39/mo",perks:"Basic task allocation, standard queue"},
+    {name:"Pro",price:"~$99/mo",perks:"Priority queue, longer tasks, more parallel agents"}
+  ],
+  useCases:[
+    "Tell Manus to research a market and return a structured competitive analysis report",
+    "Assign a full data analysis task — it browses, pulls data, runs code, and delivers results",
+    "Automate multi-step research workflows that currently take 3-4 hours manually",
+    "Plan complex itineraries or logistics tasks with live web data",
+    "Delegate repetitive knowledge work to run overnight with no supervision"
+  ],
+  features:[
+    "GAIA benchmark: 86.5% Level 1, 70.1% Level 2 — beats OpenAI Deep Research",
+    "Multi-agent architecture: Planner and Executor agents work in coordination",
+    "Asynchronous cloud execution — tasks run without your device being on",
+    "Browses the web, reads files, writes code, and manages outputs autonomously",
+    "Average task completion under 4 minutes for standard workflows",
+    "Powered by Claude (Anthropic), Qwen (Alibaba), and proprietary models",
+    "Handles text, images, and code — genuinely multimodal task execution"
+  ],
+  integrations:["Web browsers","Code execution","File management","APIs"],
+  scores:{writing:6,coding:7,research:8,creativity:5,automation:10,multimodal:7},
+  agents:{hasAgents:true,type:"personal",name:"Manus Autonomous Agent",autonomy:5,
+    agentPricing:"Included in paid plans. No per-task charge.",
+    what:[
+      "Accepts a high-level goal and breaks it into subtasks automatically",
+      "Browses the web, runs code, manages files without human prompting",
+      "Runs asynchronously in the cloud — continue working or go offline",
+      "Multi-agent: Planner coordinates Executor agents in parallel",
+      "GAIA benchmark leader — outperforms OpenAI Deep Research on multi-step tasks"
+    ]
+  }},
   {id:"glean",name:"Glean",maker:"Glean",tagline:"Enterprise AI search — find anything across all your company's apps instantly",icon:"🔎",color:"#4A90D9",
    categories:["Business","Research","Documents","Automation"],
    bestFor:"Enterprise teams drowning in scattered knowledge — Glean connects Slack, Google Drive, Confluence, Salesforce, Jira and 100+ more tools into one searchable layer so every employee can find what they need in seconds",
@@ -3287,15 +3486,32 @@ const TOOLS = [
    integrations:["NVIDIA NIM","Hugging Face","LangChain","NVIDIA AI Enterprise","TensorRT-LLM"],
    scores:{writing:5,coding:6,research:8,creativity:4,automation:8,multimodal:4}},
 
-  {id:"gemma",name:"Gemma 3",maker:"Google DeepMind",tagline:"Google's lightweight open model — runs on a single GPU or laptop",icon:"💎",color:"#4285F4",
+  {id:"gemma",name:"Gemma 4",maker:"Google DeepMind",tagline:"Google's most capable open model — frontier reasoning and coding that runs on a single GPU, now under Apache 2.0",icon:"💎",color:"#4285F4",
    categories:["Models & APIs"],isModel:true,
-   bestFor:"Developers who need a capable model that runs locally on modest hardware — Gemma 3 27B fits on a single consumer GPU and outperforms many models its size for coding and instruction-following",
+   bestFor:"Developers who need frontier-quality reasoning and coding locally without vendor lock-in. Gemma 4's 31B model ranks #3 globally on LMArena among open models and scores 89.2% on AIME math — matching models 20x its size. Apache 2.0 licence means no MAU caps, no acceptable-use restrictions, full commercial freedom. Runs on a single H100 or consumer RTX 4090.",
    free:{available:true,desc:"Fully open weights — download free from Hugging Face or Kaggle. Run via Ollama at zero cost."},
-   paid:[{name:"Google AI API",price:"Free (rate-limited)",perks:"Gemma 3 via Google AI Studio"},{name:"Vertex AI",price:"Pay per token (varies)",perks:"Enterprise SLAs and Google Cloud integration"}],
-   useCases:["Run a capable AI model with no internet dependency","Power on-device or edge AI applications","Prototype locally before moving to a larger hosted model","Fine-tune on your own domain dataset","Build privacy-first apps where data can't leave the device"],
-   features:["27B, 12B, 4B, and 1B variants","128K context window","Runs on a single H100 or consumer RTX 4090","Multilingual support","Gemma Scope for model interpretability"],
+   paid:[{name:"Google AI API",price:"Free (rate-limited)",perks:"Gemma 4 via Google AI Studio"},{name:"Vertex AI",price:"Pay per token (varies)",perks:"Enterprise SLAs and Google Cloud integration"}],
+   useCases:[
+     "Run frontier-quality reasoning locally with no API cost or data leaving your machine",
+     "Use the 26B MoE variant for fast inference at near-31B quality with 4B active parameters",
+     "Fine-tune on proprietary domain data under Apache 2.0 with no licence restrictions",
+     "Build on-device audio and speech applications with the E2B/E4B edge variants",
+     "Process video up to 60 seconds natively without an external vision model",
+     "Replace closed API calls with a local Gemma 4 instance for privacy-sensitive workloads"
+   ],
+   features:[
+     "31B dense and 26B MoE variants — MoE activates only 3.8B parameters for fast inference",
+     "Apache 2.0 licence — full commercial freedom, no monthly active user limits",
+     "Natively multimodal: text, image, audio (30s), and video (60s) across all sizes",
+     "Extended thinking mode — up to 4,000 tokens of reasoning before answering",
+     "AIME 2026 math: 89.2% (up from 20.8% on Gemma 3)",
+     "LMArena ELO ~1452 — #3 globally among open-weight models",
+     "Agentic tool use benchmark: 86.4% (up from 6.6% on Gemma 3)",
+     "E2B and E4B edge variants run on-device with no cloud call",
+     "140+ language support, knowledge cutoff January 2025"
+   ],
    integrations:["Ollama","Hugging Face","Google AI Studio","Vertex AI","LangChain","Keras"],
-   scores:{writing:7,coding:7,research:6,creativity:6,automation:7,multimodal:6}},
+   scores:{writing:7,coding:9,research:7,creativity:6,automation:9,multimodal:8}},
 
   {id:"groq",name:"Groq",maker:"Groq Inc",tagline:"Fastest LLM inference available — 300+ tokens/sec on Llama and Mixtral",icon:"🚀",color:"#F55036",
    categories:["Models & APIs"],isModel:false,isInfra:true,
@@ -3346,6 +3562,45 @@ const TOOLS = [
    features:["Modular chains and agents","50+ LLM integrations (OpenAI, Anthropic, local models)","LangGraph for stateful multi-actor applications","LangSmith for tracing and evaluation","LCEL (LangChain Expression Language) for composition"],
    integrations:["OpenAI","Anthropic","Llama","Mistral","Pinecone","Supabase","Groq","Together AI","n8n"],
    scores:{writing:3,coding:9,research:7,creativity:3,automation:10,multimodal:6}},
+
+  {id:"llamaindex",name:"LlamaIndex",maker:"LlamaIndex Inc",
+  tagline:"The data framework for connecting LLMs to your data — RAG, agents, and structured retrieval",
+  icon:"🦙",color:"#7C3AED",
+  categories:["AI Engineering","Coding"],
+  bestFor:"Developers building RAG pipelines and data-connected AI applications who want a higher-level abstraction than raw LangChain. LlamaIndex handles the full data ingestion pipeline — loaders for 160+ data sources, chunking, indexing, retrieval, and response synthesis. The standard pairing with LangChain: LlamaIndex for data and retrieval, LangChain for chains and orchestration.",
+  free:{available:true,desc:"Open source (MIT). LlamaCloud managed service has a free tier."},
+  paid:[
+    {name:"LlamaCloud",price:"$0.30/1K pages",perks:"Managed parsing, indexing, and retrieval — no infra to run"},
+    {name:"Enterprise",price:"Custom",perks:"Dedicated support, SLA, private deployment"}
+  ],
+  useCases:[
+    "Build a RAG pipeline over your company documents in under 50 lines of code",
+    "Connect an LLM to a SQL database and let it query with natural language",
+    "Index 160+ data sources: PDFs, Notion, Slack, Google Drive, databases",
+    "Build a multi-document agent that reasons across your entire knowledge base",
+    "Parse and structure complex PDFs including tables, charts, and images"
+  ],
+  features:[
+    "160+ data loaders — PDFs, Notion, Slack, GitHub, databases, APIs",
+    "LlamaParse — best-in-class PDF and document parsing for RAG",
+    "Query engines: vector, keyword, knowledge graph, SQL",
+    "Agent framework built on top of retrieval — plan and act over your data",
+    "Workflow orchestration for multi-step RAG pipelines",
+    "Observability via LlamaTrace (OpenTelemetry-based)",
+    "TypeScript and Python SDKs — same API, both production-ready"
+  ],
+  integrations:["OpenAI","Anthropic","LangChain","Pinecone","Weaviate","ChromaDB","PostgreSQL","Notion","Slack","GitHub","Hugging Face"],
+  scores:{writing:2,coding:8,research:9,creativity:2,automation:8,multimodal:5},
+  agents:{hasAgents:true,type:"knowledge",name:"LlamaIndex Agents",autonomy:3,
+    agentPricing:"Open source: free. LlamaCloud: $0.30/1K pages parsed.",
+    what:[
+      "ReAct and OpenAI function-calling agent patterns built in",
+      "Agents that query and reason across multiple data sources",
+      "Tool use: SQL queries, vector search, API calls in one agent",
+      "Multi-document reasoning with source attribution",
+      "LlamaCloud for managed serverless RAG pipelines"
+    ]
+  }},
 
   {id:"gamma",name:"Gamma",maker:"Gamma",tagline:"Turn a prompt into a polished deck, doc, or webpage in seconds",icon:"✦",color:"#6366F1",
    categories:["Presentations","Business","Writing"],
@@ -4123,6 +4378,11 @@ function getFiltered(){
 
   const allFilters=t=>catFilter(t)&&skillFilter(t)&&outputFilter(t)&&scoreFilter(t);
 
+  // When a combo is matched, return exactly the combo's tools (fixes "Explore tools" showing 0 results)
+  if(state.comboMatch&&state.comboMatch.tools&&state.comboMatch.tools.length){
+    return state.comboMatch.tools.map(id=>TOOLS.find(t=>t.id===id)).filter(Boolean);
+  }
+
   if(!q) return TOOLS.filter(allFilters);
   // Name-priority search
   const nameMatches=TOOLS.filter(t=>t.name.toLowerCase().includes(q)||t.maker.toLowerCase()===q);
@@ -4149,6 +4409,8 @@ const TOOL_URLS={
   'cursor':            {url:'https://cursor.com',                docs:'https://docs.cursor.com'},
   'github-copilot':    {url:'https://github.com/features/copilot', docs:'https://docs.github.com/en/copilot'},
   'lovable':           {url:'https://lovable.dev',               docs:'https://docs.lovable.dev'},
+  'devin':             {url:'https://devin.ai',                  docs:'https://docs.devin.ai'},
+  'v0':                {url:'https://v0.dev',                    docs:'https://v0.dev/docs'},
   'windsurf':          {url:'https://codeium.com/windsurf',      docs:'https://docs.codeium.com'},
   'otter-ai':          {url:'https://otter.ai',                  docs:'https://help.otter.ai'},
   'notion-ai':         {url:'https://notion.so',                 docs:'https://developers.notion.com'},
@@ -4158,6 +4420,7 @@ const TOOL_URLS={
   'midjourney':        {url:'https://midjourney.com',            docs:'https://docs.midjourney.com'},
   'runway':            {url:'https://runwayml.com',              docs:'https://docs.dev.runwayml.com'},
   'pika':              {url:'https://pika.art',                  docs:'https://pika.art/api'},
+  'luma':              {url:'https://lumalabs.ai/dream-machine', docs:'https://docs.lumalabs.ai'},
   'seedance':          {url:'https://www.capcut.com',            docs:'https://www.capcut.com/tools/ai-video-generator'},
   'heygen':            {url:'https://heygen.com',                docs:'https://docs.heygen.com'},
   'synthesia':         {url:'https://synthesia.io',              docs:'https://docs.synthesia.io'},
@@ -4173,15 +4436,17 @@ const TOOL_URLS={
   'khanmigo':          {url:'https://khanacademy.org/khanmigo',  docs:'https://support.khanacademy.com'},
   'fitbod':            {url:'https://fitbod.me',                 docs:'https://help.fitbod.me'},
   'openclaw':          {url:'https://openclaw.ai',               docs:'https://github.com/steipete/openclaw'},
+  'manus':             {url:'https://manus.im',                  docs:'https://manus.im'},
   'llama':             {url:'https://llama.com',                 docs:'https://llama.meta.com/docs/'},
   'mistral':           {url:'https://mistral.ai',                docs:'https://docs.mistral.ai'},
-  'gemma':             {url:'https://ai.google.dev',             docs:'https://ai.google.dev/gemma/docs'},
+  'gemma':             {url:'https://ai.google.dev/gemma',       docs:'https://ai.google.dev/gemma/docs/gemma4'},
   'nemotron':          {url:'https://developer.nvidia.com/nemotron', docs:'https://docs.nvidia.com/nemo-framework'},
   'groq':              {url:'https://groq.com',                  docs:'https://console.groq.com/docs'},
   'together-ai':       {url:'https://together.ai',               docs:'https://docs.together.ai'},
   'ollama':            {url:'https://ollama.com',                docs:'https://github.com/ollama/ollama'},
   'pinecone':          {url:'https://pinecone.io',               docs:'https://docs.pinecone.io'},
   'langchain':         {url:'https://langchain.com',             docs:'https://python.langchain.com/docs'},
+  'llamaindex':        {url:'https://llamaindex.ai',             docs:'https://docs.llamaindex.ai'},
   'gamma':             {url:'https://gamma.app',                 docs:'https://help.gamma.app'},
   'fathom':            {url:'https://fathom.video',              docs:'https://help.fathom.video'},
   'grammarly':         {url:'https://grammarly.com',             docs:'https://developer.grammarly.com'},
@@ -4241,7 +4506,9 @@ const TOOL_URLS={
 
 // ── IDs with Deep Profiles — checked at render time ─────────────────
 const DP_IDS=new Set(['claude','chatgpt','gemini','cursor','github-copilot','perplexity',
-  'n8n','midjourney','elevenlabs','notebooklm','canva-ai','lovable','heygen','runway','notion-ai']);
+  'n8n','midjourney','elevenlabs','notebooklm','canva-ai','lovable','heygen','runway','notion-ai',
+  'langchain','langsmith','pinecone','grammarly','descript','otter-ai','llamaindex','devin','v0','luma',
+  'deepseek','grok','manus','linkedin-ai','gamma']);
 
 // ═══════════════ TOOL FAMILIES ═══════════════
 // Groups tool variants by maker brand — shown when user searches a brand name or any variant
@@ -4369,7 +4636,54 @@ const TOOL_COMBOS=[
   // Full content automation pipeline
   {tools:['n8n','claude','notion-ai','perplexity'],title:'n8n + Claude + Perplexity + Notion AI',tagline:'Fully automated research-to-knowledge pipeline',bestFor:'Content teams who want research, writing, storage, and retrieval all automated end-to-end',what:['Perplexity researches the topic with live citations → Claude drafts the content → n8n posts to Notion → Notion AI answers questions on it forever','SEO content pipeline: n8n triggers weekly → Perplexity finds trending keywords → Claude writes articles → n8n publishes to WordPress and stores in Notion','Competitive monitoring: n8n runs daily → Perplexity tracks competitor news → Claude analyzes implications → Notion AI surfaces relevant past research','Knowledge base that builds itself: new information enters via Perplexity and Claude, n8n stores it, Notion AI makes it retrievable','50+ pieces of content weekly at 70% cost reduction — verified n8n use case with Perplexity + Claude routing'],workflow:'<strong>Workflow:</strong> n8n (scheduled trigger) → Perplexity API (research + cite) → Claude API (write + structure) → n8n (post to Notion) → Notion AI (Q&A interface). Fully automated from topic to published and searchable.'},
   // Production AI app stack
-  {tools:['langchain','pinecone','claude','langsmith'],title:'LangChain + Pinecone + Claude + LangSmith',tagline:'Production RAG with full tracing and observability',bestFor:'Engineering teams building and maintaining AI applications that need to work reliably at scale',what:['LangChain orchestrates the pipeline, Pinecone handles vector search, Claude generates answers, LangSmith traces every run','Full observability: trace exactly which chunks Pinecone retrieved, what prompt Claude received, and why it gave any specific answer','LangSmith reduces RAG debugging from 47-minute log dives to one-click root cause — teams report 90% faster iteration','Monitor answer quality over time: track faithfulness scores, retrieval relevance, and cost per query all in LangSmith','Production-ready: LangChain handles retries and fallbacks, Pinecone handles scale, LangSmith alerts on quality degradation'],workflow:'<strong>Workflow:</strong> LangChain RAG chain (ingestion + retrieval) + Pinecone (vector store) + Claude (generation) → wrap with LangSmith (LANGCHAIN_TRACING_V2=true, one env var) → every run fully traced and debuggable in the LangSmith dashboard.'}
+  {tools:['langchain','pinecone','claude','langsmith'],title:'LangChain + Pinecone + Claude + LangSmith',tagline:'Production RAG with full tracing and observability',bestFor:'Engineering teams building and maintaining AI applications that need to work reliably at scale',what:['LangChain orchestrates the pipeline, Pinecone handles vector search, Claude generates answers, LangSmith traces every run','Full observability: trace exactly which chunks Pinecone retrieved, what prompt Claude received, and why it gave any specific answer','LangSmith reduces RAG debugging from 47-minute log dives to one-click root cause — teams report 90% faster iteration','Monitor answer quality over time: track faithfulness scores, retrieval relevance, and cost per query all in LangSmith','Production-ready: LangChain handles retries and fallbacks, Pinecone handles scale, LangSmith alerts on quality degradation'],workflow:'<strong>Workflow:</strong> LangChain RAG chain (ingestion + retrieval) + Pinecone (vector store) + Claude (generation) → wrap with LangSmith (LANGCHAIN_TRACING_V2=true, one env var) → every run fully traced and debuggable in the LangSmith dashboard.'},
+
+  // ── NEW COMBOS ───────────────────────────────────────────────────
+  {tools:['claude','obsidian-ai'],title:'Claude + Obsidian',tagline:'Think with Claude, remember everything in Obsidian',bestFor:'Researchers, writers, and knowledge workers building a permanent second brain alongside AI',what:['Claude generates insights and summaries → paste into Obsidian as permanent, linked notes','Daily research loop: Perplexity or Claude finds new information → structured into Obsidian with backlinks → knowledge compounds over months','Use Claude to extract key claims from long documents → store in Obsidian with source links → never re-research the same topic','Ask Claude to help you identify connections between notes you have — copy its synthesis into a new Obsidian note','Writers use Claude for drafting inside Obsidian via the Smart Connections plugin: all your notes as context for every generation'],workflow:'<strong>Workflow:</strong> Research session → Claude synthesises key insights → copy structured output into Obsidian → add backlinks to related notes → repeat daily. Your Obsidian vault becomes the long-term memory Claude cannot provide natively.'},
+
+  {tools:['chatgpt','n8n'],title:'ChatGPT + n8n',tagline:'Connect ChatGPT to every tool in your business with zero code',bestFor:'Operations and marketing teams automating repetitive tasks that involve both writing and data movement',what:['n8n triggers on any event (form, email, CRM update) → sends data to ChatGPT API → posts result to Slack, email, Airtable, or anywhere','Auto-respond to support emails: n8n monitors inbox → ChatGPT writes a personalised reply → n8n sends it → ticket closed','Lead qualification: new HubSpot contact → n8n → ChatGPT scores and categorises → updates CRM → notifies sales rep','Content multiplication: publish one blog post → n8n fires → ChatGPT rewrites for Twitter, LinkedIn, email digest — all automatically','Weekly report generation: n8n pulls data from 5 sources → ChatGPT writes the narrative → emails to team every Monday morning'],workflow:'<strong>Workflow:</strong> n8n workflow → HTTP node calls ChatGPT API with your prompt template and live data → n8n routes the response to Slack, email, Notion, HubSpot, or wherever it needs to land. One workflow handles the trigger, the AI, and the delivery.'},
+
+  {tools:['cursor','lovable'],title:'Cursor + Lovable',tagline:'Design and build full-stack apps with AI at every layer',bestFor:'Indie hackers and small teams who want to move from prototype to production-ready app as fast as possible',what:['Lovable generates the initial React app and UI from a plain-English description — fully functional in minutes','Cursor opens the Lovable output and handles all complex logic, database integration, and production hardening','Lovable for the visible: UI components, layouts, forms. Cursor for the invisible: auth, APIs, edge cases, tests','Non-technical founders use Lovable to create a working prototype for user testing before any developer writes a line','Cursor\'s full codebase awareness lets it refactor and extend Lovable-generated code safely — understanding what Lovable built and why'],workflow:'<strong>Workflow:</strong> Describe the app in Lovable → get a working React/Supabase prototype in 20 minutes → sync to GitHub → open in Cursor → use Cursor Agent to add auth, business logic, error handling, and tests → deploy. Prototype to production in a day.'},
+
+  {tools:['perplexity','elicit'],title:'Perplexity + Elicit',tagline:'Real-time web research plus deep academic literature review',bestFor:'Researchers, analysts, and writers who need both current web intelligence and peer-reviewed evidence',what:['Perplexity for current events, market data, and recent news with citations — Elicit for peer-reviewed literature and systematic evidence','Research question in Elicit → find the best 20 academic papers → use Perplexity to find what has happened in the field in the last 6 months','Elicit extracts structured data from papers (sample size, methods, outcomes) → Perplexity adds market context → combine for a full brief','Investment research: Perplexity for recent earnings, news, and analyst coverage → Elicit for academic research on the sector or technology','Healthcare researchers combine Elicit (clinical trials and meta-analyses) with Perplexity (current treatment guidelines and news) in one workflow'],workflow:'<strong>Workflow:</strong> Start with Elicit to map the academic evidence base (2+ hours saved vs manual lit search) → use Perplexity to layer in current developments and non-academic sources → combine both output sets into Claude for synthesis and final write-up.'},
+
+  {tools:['n8n','langchain'],title:'n8n + LangChain',tagline:'Visual automation meets programmatic AI — the best of both worlds',bestFor:'Developers who want the power of LangChain agents but the visual orchestration and 400+ integrations of n8n',what:['n8n\'s LangChain nodes give you chains, agents, and memory with a drag-and-drop UI — no custom server required','Build a LangChain RAG agent in n8n: PDF loader node → text splitter → embeddings → vector store → LLM chain, all visual','n8n handles all the triggers, scheduling, and integrations; LangChain handles the AI reasoning and memory','Multi-agent workflows: n8n routes tasks to different LangChain agents based on content type or complexity','Deploy a full LangChain application without writing a web server — n8n exposes webhooks and handles auth'],workflow:'<strong>Workflow:</strong> n8n webhook trigger → LangChain Agent node (with memory and tools) → n8n routes the agent output to Slack, Airtable, email, or a database. Full AI agent capabilities inside a visual workflow builder with 400+ native integrations.'},
+
+  {tools:['claude','langsmith'],title:'Claude + LangSmith',tagline:'Build and debug Claude-powered applications with full observability',bestFor:'Developers shipping Claude-based applications who need to trace, evaluate, and improve outputs systematically',what:['Every Claude API call is traced in LangSmith — see the exact prompt sent, tokens used, latency, and the full output','LangSmith\'s prompt playground lets you A/B test Claude prompts against each other with real production inputs','Regression testing: run a test suite against any Claude prompt change before deploying — catch quality drops automatically','LangSmith datasets let you capture failing Claude outputs and replay them when you update your prompt or switch models','Monitor production Claude usage across cost, latency, and quality in one dashboard — alerts when any metric degrades'],workflow:'<strong>Workflow:</strong> Add LANGCHAIN_TRACING_V2=true + LANGSMITH_API_KEY to your Claude app (works even without LangChain) → every prompt + response is logged → use LangSmith Playground to iterate on prompts → run evaluations before each deploy.'},
+
+  {tools:['gemini','notebooklm','google-workspace'],title:'Gemini + NotebookLM + Google Drive',tagline:'The complete Google AI stack for teams already in Workspace',bestFor:'Teams who live in Google Workspace and want AI across every document, meeting, and research workflow without switching tools',what:['Gemini in Gmail drafts replies, Gemini in Docs rewrites and summarises, Gemini in Sheets analyses data — all in tools you already use','NotebookLM ingests your Drive files, meeting transcripts, and research docs → grounded Q&A with source citations, no hallucinations','Weekly workflow: Gemini takes notes in Meet → saves to Drive → NotebookLM answers questions on what was decided in any meeting','Gemini Deep Research generates a structured report → save to Drive → NotebookLM makes it permanently searchable with citations','Data pipeline: Sheets data → Gemini writes the narrative → Slides generates the presentation — entire business review automated'],workflow:'<strong>Workflow:</strong> All documents live in Google Drive → NotebookLM indexes them for grounded Q&A → Gemini handles creation and editing across Gmail, Docs, Sheets, Slides, and Meet. One integrated AI layer across your entire Workspace, all from Google.'},
+
+  {tools:['copilot','github-copilot'],title:'Microsoft Copilot + GitHub Copilot',tagline:'AI in every Microsoft product — from your IDE to your inbox',bestFor:'Developers and knowledge workers fully inside the Microsoft ecosystem who want seamless AI across all tools',what:['GitHub Copilot handles code: inline completions, PR reviews, and the Copilot Workspace for feature planning','Microsoft Copilot handles everything else: Word, Excel, PowerPoint, Outlook, Teams — all with the same underlying AI','Copilot in Teams writes meeting summaries and action items → sent to Outlook → GitHub Copilot implements the technical tasks','Power Automate + Copilot Studio: build no-code agents that connect your IDE workflow to your business processes','Enterprise advantage: both tools share the same Microsoft security and compliance layer — one IT approval covers both'],workflow:'<strong>Workflow:</strong> GitHub Copilot inside VS Code for all code work → Microsoft Copilot in M365 for all business work. When a meeting decision requires code, Copilot creates the spec in Teams → GitHub Copilot implements it. One vendor, one security review, full AI coverage.'},
+
+  {tools:['v0','cursor'],title:'v0 + Cursor',tagline:'Design the UI in v0, build the product in Cursor',bestFor:'Frontend developers who want to skip UI boilerplate and spend their Cursor time on logic, not layout',what:['v0 generates production-ready React + Tailwind + shadcn components in seconds — copy directly into your Cursor project','Use v0 for every new component: describe the UI, copy the code, let Cursor handle the integration and state management','Stop writing boilerplate: v0 handles the visual layer, Cursor handles everything that requires understanding the codebase','Iterate faster: v0 tries 3 visual approaches in 30 seconds — pick the best one, drop it into Cursor, done','From Figma to code: paste a screenshot into v0 to get the React component → Cursor connects it to your data and logic'],workflow:'<strong>Workflow:</strong> New feature needed → describe the UI in v0 → copy the component code → paste into Cursor → use Cursor Agent to wire up state, API calls, and tests. v0 handles the first 40% (visual structure), Cursor handles the last 60% (real logic).'},
+
+  {tools:['devin','github-copilot'],title:'Devin + GitHub Copilot',tagline:'Autonomous feature development meets real-time code assistance',bestFor:'Engineering teams who want to delegate entire features to Devin while keeping GitHub Copilot for day-to-day developer productivity',what:['Devin handles large, well-scoped tasks autonomously: bug fixes, new endpoints, test coverage, greenfield modules','GitHub Copilot handles the continuous flow: inline completions, PR reviews, and quick suggestions as developers type','Assign a GitHub issue to Devin for autonomous work → review its PR with GitHub Copilot\'s review suggestions → merge','Parallel workflow: Devin works on a feature branch overnight → developers use Copilot to work on other tasks during the day','GitHub Copilot Workspace for planning and scaffolding → Devin for autonomous implementation → Copilot for review and polish'],workflow:'<strong>Workflow:</strong> Triage backlog → assign well-scoped issues to Devin → Devin opens PRs autonomously → team uses GitHub Copilot to review, comment, and request changes → Devin iterates until merge. Teams report 2-3x throughput on routine engineering work.'},
+
+  {tools:['llamaindex','pinecone'],title:'LlamaIndex + Pinecone',tagline:'The go-to RAG stack for production document search',bestFor:'Developers building document Q&A, knowledge bases, or semantic search systems that need to work at production scale',what:['LlamaIndex handles ingestion, chunking, and query orchestration — Pinecone handles vector storage and similarity search at scale','LlamaParse (part of LlamaIndex) extracts text from complex PDFs with tables and images better than any other parser','Build a RAG system over 100,000 documents: LlamaIndex processes and chunks them, Pinecone stores and searches at millisecond latency','LlamaIndex\'s query engines go beyond simple RAG: knowledge graph queries, SQL joins, and hybrid search all supported','LlamaCloud (managed LlamaIndex) + Pinecone = serverless RAG with no infrastructure to manage'],workflow:'<strong>Workflow:</strong> LlamaIndex document loaders ingest your files → LlamaParse extracts clean text → LlamaIndex chunks and embeds → Pinecone stores the vectors → LlamaIndex query engine handles retrieval → send results to your LLM. Full RAG pipeline in under 50 lines.'},
+
+  {tools:['manus','claude'],title:'Manus + Claude',tagline:'Autonomous research execution meets deep analytical reasoning',bestFor:'Analysts and researchers who want Manus to gather and organise data while Claude does the nuanced interpretation',what:['Manus autonomously browses, pulls data, and assembles structured research reports → Claude analyses, interprets, and writes the final output','Competitive analysis workflow: assign Manus to gather competitor pricing, features, and news → Claude synthesises the strategic implications','Due diligence pipeline: Manus collects all public data on a target company → Claude writes the analyst report with nuanced judgment','Manus handles the time-consuming data collection (3-4 hours of manual work) → Claude provides the expert-level analysis in minutes','Research at scale: Manus runs 5 parallel research tasks → Claude synthesises all outputs into a single coherent briefing'],workflow:'<strong>Workflow:</strong> Write a research brief → assign data collection to Manus (runs asynchronously, offline) → Manus delivers a structured data dump → paste into Claude with an analysis prompt → Claude writes the final report with judgment, caveats, and recommendations.'},
+
+  {tools:['heygen','elevenlabs'],title:'HeyGen + ElevenLabs',tagline:'The complete AI video presenter stack — custom avatar, custom voice',bestFor:'Marketers and creators who want fully branded AI video with their own voice and likeness',what:['Clone your voice in ElevenLabs (2-minute sample) → use it in HeyGen as the narration for your AI avatar videos','Localise video at scale: ElevenLabs translates and re-voices in 29 languages → HeyGen lip-syncs the avatar to match','Sales teams create personalised outreach videos: HeyGen avatar + ElevenLabs cloned rep voice → sent at scale via CRM','Training videos: record the script once in ElevenLabs → use HeyGen to create infinite variations without re-recording','One source of truth: update the ElevenLabs voice model and all future HeyGen videos automatically sound the same'],workflow:'<strong>Workflow:</strong> Write script → ElevenLabs generates narration audio with cloned voice → upload audio to HeyGen → sync to avatar → export video. For multilingual: ElevenLabs translates + re-voices → HeyGen generates lip-synced version for each language. Full video studio without a camera.'},
+
+  {tools:['midjourney','canva-ai'],title:'Midjourney + Canva AI',tagline:'Generate stunning hero images in Midjourney, finish and publish in Canva',bestFor:'Marketers and designers who need high-quality custom images at scale without a full design workflow',what:['Midjourney generates the high-quality hero or background image → Canva AI handles all the text, layout, and brand elements','Best of both worlds: Midjourney\'s unmatched image quality + Canva\'s templates, brand kit, and instant publish to every format','Marketing campaign: Midjourney creates 10 campaign images → Canva resizes and adds copy for Instagram, LinkedIn, Twitter, display ads','Canva\'s Magic Edit removes watermarks and adjusts Midjourney images directly inside Canva — no Photoshop needed','Teams: designer handles Midjourney prompts, marketer handles Canva layout — parallel workflow, 5x faster than traditional design'],workflow:'<strong>Workflow:</strong> Write detailed Midjourney prompt → generate 4 variants → upscale the best → download → import to Canva → add text overlay, brand colors, and logo → export in all required formats. Campaign assets in 30 minutes, not 3 hours.'},
+
+  {tools:['perplexity','notebooklm'],title:'Perplexity + NotebookLM',tagline:'Research the web, then master your own documents',bestFor:'Researchers and analysts who need both live web intelligence and deep expertise over their own document library',what:['Perplexity for anything that requires live or current information; NotebookLM for anything that requires your own files','Research workflow: Perplexity finds current information with citations → save the key pages → upload to NotebookLM → query across everything','NotebookLM is 100% grounded in what you upload — no hallucinations. Perplexity is real-time but less controlled — use each for what it\'s best at','Academic: Perplexity for recent papers and news → NotebookLM builds a deep understanding of your core 20-30 source documents','Legal research: Perplexity for recent case law and commentary → NotebookLM for deep analysis of the case files and contracts you\'ve uploaded'],workflow:'<strong>Workflow:</strong> Perplexity research session → save best sources as PDFs or paste key text → upload to NotebookLM → NotebookLM creates audio overview and FAQ automatically → query your personal knowledge base. Two tools, zero overlap, full coverage.'},
+
+  {tools:['claude','n8n','airtable'],title:'Claude + n8n + Airtable',tagline:'AI-powered data enrichment and workflow automation',bestFor:'Operations teams who want to enrich, classify, and act on data in Airtable using AI without writing code',what:['New Airtable record triggers n8n → Claude enriches, classifies, or scores it → result written back to Airtable automatically','Lead scoring: new CRM contact → n8n → Claude analyses company description and assigns ICP score → score written to Airtable field','Content tagging: new article in Airtable → n8n → Claude generates tags, summary, and category → fields populated automatically','n8n + Claude processes 1,000 Airtable rows overnight — tasks that would take a human a full week done by morning','Customer feedback triage: new Typeform response → n8n → Claude classifies sentiment and urgency → Airtable updated → Slack notification sent'],workflow:'<strong>Workflow:</strong> Airtable record created/updated → n8n webhook trigger → build prompt from Airtable field values → Claude API call → n8n writes response back to Airtable fields. No code, fully automated data enrichment at any scale.'},
+
+  {tools:['chatgpt','canva-ai'],title:'ChatGPT + Canva AI',tagline:'AI-written copy meets AI-designed visuals — the marketer\'s stack',bestFor:'Marketers, social media managers, and small business owners who produce content across many formats every week',what:['ChatGPT writes the copy: captions, headlines, email subject lines, ad text, blog posts — all in your brand voice','Canva AI generates and edits the visual: image generation, Magic Write for on-canvas text, background removal, and resize for every format','One brief → ChatGPT writes 10 social captions → Canva AI generates matching visuals → scheduled in Buffer. 30 minutes for a week of content','ChatGPT\'s custom GPT memory means it learns your brand voice and produces consistent copy every time','Canva Brand Kit + ChatGPT system prompt: give both tools the same brand guidelines and they produce consistent assets at scale'],workflow:'<strong>Workflow:</strong> Monthly content calendar → ChatGPT generates all copy variations → Canva AI creates all visual assets using your brand kit → export from Canva in all required sizes → schedule. One person can produce enterprise-level content volume.'},
+
+  {tools:['cursor','devin'],title:'Cursor + Devin',tagline:'AI-assisted coding plus fully autonomous feature delivery',bestFor:'Engineering teams who want Cursor for interactive development and Devin for overnight autonomous task execution',what:['Cursor for active development: you\'re in the loop, exploring, building features that require real-time iteration and judgment','Devin for asynchronous tasks: assign bug fixes, test suites, and well-scoped features to run while your team focuses elsewhere','Cursor\'s Arena Mode to explore options → pick the best approach → assign the full implementation to Devin as a task brief','Use Cursor to review Devin\'s PRs: Cursor understands the full codebase context so reviews are fast and informed','Parallel sprint execution: team uses Cursor for core product work, Devin handles the backlog of tech debt and routine tasks'],workflow:'<strong>Workflow:</strong> Sprint planning → assign complex, creative tasks to developers with Cursor → assign well-scoped, routine tasks to Devin → Devin opens PRs overnight → team reviews in Cursor with full codebase context → merge. Effective engineering capacity doubles.'},
+
+  {tools:['luma','runway'],title:'Luma Dream Machine + Runway',tagline:'Best-in-class physics meets best-in-class visual effects',bestFor:'Video creators and studios who want to combine Luma\'s realistic motion with Runway\'s advanced editing and effects',what:['Luma Ray3 for realistic physics and natural camera motion — Runway Gen-3 for creative style transfer and effects','Generate the base video in Luma for realistic motion → import to Runway for colour grading, style transfer, and inpainting','Luma handles the hard problem (physics-accurate motion) → Runway handles the creative problem (visual effects and polish)','VFX workflow: Luma generates the realistic base footage → Runway adds fire, water, destruction effects that are hard to prompt from scratch','Social content: Luma for product animations with realistic physics → Runway to add brand-consistent colour treatment and motion graphics'],workflow:'<strong>Workflow:</strong> Script the shot → generate base video in Luma Dream Machine (realistic physics, camera movement) → download → import to Runway → apply style transfer or add specific visual effects → export. Two-step video pipeline that covers both realism and creativity.'},
+
+  {tools:['grammarly','claude','jasper'],title:'Grammarly + Claude + Jasper',tagline:'The professional content team in three tools',bestFor:'Content teams and agencies producing high volumes of brand-consistent, error-free content across multiple channels',what:['Jasper for brand-aligned content generation with tone-of-voice control — Claude for depth, nuance, and long-form — Grammarly for error-free final output','Jasper\'s Brand Voice learns your company\'s style; Claude adds depth and research; Grammarly catches every grammar and style issue','Blog workflow: Jasper writes the first draft in your brand voice → Claude expands with research and nuance → Grammarly polishes → publish','Agency workflow: Jasper produces client-specific drafts quickly → Claude handles complex briefs that need reasoning → Grammarly is the final gate','Each tool has a distinct job: Jasper = brand alignment, Claude = intelligence and depth, Grammarly = correctness. Zero overlap.'],workflow:'<strong>Workflow:</strong> Brief → Jasper (on-brand first draft, fast) → Claude (deepen, research, restructure) → Grammarly (grammar, clarity, style check) → publish. Agencies use this to produce 10x content volume without quality loss.'},
+
+  {tools:['claude','perplexity','notebooklm'],title:'Claude + Perplexity + NotebookLM',tagline:'The complete AI research and writing system',bestFor:'Researchers, analysts, consultants, and writers who need the most thorough research-to-output pipeline available',what:['Three-source research: Perplexity for live web, NotebookLM for your own documents, Claude for synthesis and writing','No hallucinations: Perplexity cites sources, NotebookLM is grounded in uploads, Claude is given verified input — accuracy at every step','Consulting report workflow: Perplexity gathers market data → NotebookLM processes client documents → Claude writes the deliverable','PhD-level research: Elicit for papers + Perplexity for current news + NotebookLM for your notes + Claude for the thesis','The stack that eliminates every major research failure: missing current info (Perplexity), hallucinating (NotebookLM), shallow writing (Claude)'],workflow:'<strong>Workflow:</strong> Research phase: Perplexity (live sources) + NotebookLM (your uploaded documents) → collect verified facts and citations → Writing phase: feed everything to Claude with a structured prompt → Claude writes the full output. The most reliable AI research pipeline available.'},
+
+  {tools:['n8n','heygen','elevenlabs'],title:'n8n + HeyGen + ElevenLabs',tagline:'Fully automated personalised video at scale',bestFor:'Sales teams, e-learning creators, and marketing agencies who need to produce hundreds of personalised videos automatically',what:['n8n reads a CRM or spreadsheet row → triggers ElevenLabs to generate personalised narration → HeyGen renders the avatar video → n8n delivers it','Personalised sales videos at scale: one n8n workflow produces a unique HeyGen video for every prospect with their name and company','E-learning automation: n8n reads a course outline → ElevenLabs narrates each module → HeyGen creates presenter videos → n8n publishes to LMS','Update a product video once in ElevenLabs and HeyGen → n8n automatically re-publishes the updated version everywhere it was distributed','Multi-language campaigns: n8n triggers language-specific ElevenLabs voices + HeyGen localised avatar for each market — all automated'],workflow:'<strong>Workflow:</strong> n8n trigger (CRM record, schedule, or spreadsheet row) → ElevenLabs API (personalised narration with dynamic text) → HeyGen API (render avatar video with audio) → n8n delivers via email, CRM, LMS, or YouTube. One workflow, hundreds of unique videos.'},
+
+  {tools:['claude','github-copilot'],title:'Claude + GitHub Copilot',tagline:'Deep reasoning for architecture, real-time assistance for coding',bestFor:'Developers who want the best of both: Claude\'s superior reasoning for complex decisions and Copilot\'s seamless IDE integration for daily coding',what:['Claude for architecture, code review, security audit, and anything that needs deep multi-file reasoning','GitHub Copilot for inline autocomplete, quick completions, and IDE-native chat — always there as you type','Pre-build: use Claude to design the architecture, define interfaces, and write the technical spec','Build: switch to Copilot for the actual implementation — fast completions, test generation, and docstrings','Post-build: paste the final code back to Claude for security review, refactoring suggestions, and documentation'],workflow:'<strong>Workflow:</strong> Claude (architecture + spec) → GitHub Copilot (implementation in IDE) → Claude (code review + security audit) → ship. Each tool does what it does best: Claude thinks deeply, Copilot keeps your hands on the keyboard.'}
 ];
 
 // ── Combo detection: parse search query for "tool1 + tool2 + tool3" patterns ─
@@ -4767,6 +5081,98 @@ function renderUcToolDetail(t){
   </div>`;
 }
 
+function renderEnterpriseMatrix(){
+  var root=document.getElementById('em-root');
+  if(!root) return;
+  var activeFilter=root.dataset.filter||'all';
+
+  // Build enriched rows from ENTERPRISE_MATRIX + TOOLS
+  var rows=[];
+  TOOLS.forEach(function(t){
+    var flags=ENTERPRISE_MATRIX[t.id];
+    if(!flags) return;
+    var score=flags.reduce(function(s,v){return s+v;},0);
+    rows.push({t:t,flags:flags,score:score});
+  });
+
+  // Apply filter
+  var filtered=rows.filter(function(r){
+    if(activeFilter==='all') return true;
+    if(activeFilter==='enterprise') return r.score>=4;
+    if(activeFilter==='hipaa') return r.flags[1]===1;
+    if(activeFilter==='soc2') return r.flags[0]===1;
+    if(activeFilter==='gdpr') return r.flags[2]===1;
+    if(activeFilter==='sso') return r.flags[3]===1;
+    return true;
+  });
+
+  // Sort: score desc, then name asc
+  filtered.sort(function(a,b){
+    if(b.score!==a.score) return b.score-a.score;
+    return a.t.name.localeCompare(b.t.name);
+  });
+
+  var filters=[
+    {id:'all',   label:'All Tools ('+rows.length+')'},
+    {id:'enterprise', label:'Enterprise Ready'},
+    {id:'soc2',  label:'SOC 2'},
+    {id:'hipaa', label:'HIPAA'},
+    {id:'gdpr',  label:'GDPR'},
+    {id:'sso',   label:'SSO'},
+  ];
+
+  var filterPills=filters.map(function(f){
+    return '<button class="em-filter-pill'+(activeFilter===f.id?' active':'')
+      +'" onclick="setEmFilter(\''+f.id+'\')">'+f.label+'</button>';
+  }).join('');
+
+  var colHeaders=EM_COLS.map(function(c){
+    return '<th>'+c+'</th>';
+  }).join('');
+
+  var tableRows=filtered.map(function(r){
+    var cells=r.flags.map(function(v,i){
+      if(v===1) return '<td><span class="em-yes">✓</span></td>';
+      // Special: HIPAA/residency via self-hosting counts as partial for open-source tools
+      return '<td><span class="em-no">—</span></td>';
+    }).join('');
+    var scoreClass='em-score em-score-'+r.score;
+    return '<tr onclick="openToolWiki(\''+r.t.id+'\')">'
+      +'<td><div class="em-tool-cell">'
+      +'<span class="em-tool-icon">'+r.t.icon+'</span>'
+      +'<div><div class="em-tool-name">'+r.t.name+'</div>'
+      +'<div class="em-tool-maker">'+r.t.maker+'</div></div>'
+      +'</div></td>'
+      +cells
+      +'<td><span class="'+scoreClass+'">'+r.score+'/6</span></td>'
+      +'</tr>';
+  }).join('');
+
+  root.dataset.filter=activeFilter;
+  root.innerHTML=
+    '<div class="em-filter-bar">'
+    +'<span class="em-filter-label">Filter:</span>'
+    +filterPills
+    +'</div>'
+    +'<div class="em-count-bar">Showing <strong>'+filtered.length+'</strong> tools</div>'
+    +'<div class="em-table-wrap">'
+    +'<table class="em-table">'
+    +'<thead><tr><th>Tool</th>'+colHeaders+'<th>Score</th></tr></thead>'
+    +'<tbody>'+tableRows+'</tbody>'
+    +'</table>'
+    +'</div>'
+    +'<div class="em-legend">'
+    +'<div class="em-legend-item"><span class="em-yes">✓</span> Confirmed support</div>'
+    +'<div class="em-legend-item"><span class="em-no">—</span> Not available / not confirmed</div>'
+    +'<div class="em-legend-item" style="color:var(--text3);font-style:italic">Sources: vendor trust pages &amp; security docs (2025). Click any row to view full tool profile.</div>'
+    +'</div>';
+}
+
+window.setEmFilter=function(f){
+  var root=document.getElementById('em-root');
+  if(root){root.dataset.filter=f;renderEnterpriseMatrix();}
+};
+
 function renderUseCases(){
   document.getElementById('uc-cats-grid').innerHTML=USE_CASES.map(uc=>`<div class="uc-cat-card${state.activeUseCase===uc.id?' active':''}" data-ucid="${uc.id}"><span class="uc-emoji">${uc.emoji}</span><div class="uc-label">${uc.label}</div><div class="uc-count">${uc.toolIds.length} tools</div></div>`).join('');
   document.querySelectorAll('.uc-cat-card').forEach(c=>c.addEventListener('click',()=>{
@@ -4833,6 +5239,7 @@ function switchTab(tab){
   if(tab==='usecases')renderUseCases();
   if(tab==='explore')renderExplore();
   if(tab==='combos')renderCombosTab();
+  if(tab==='enterprise')renderEnterpriseMatrix();
 }
 
 // ── Combo category tags — each combo gets auto-tagged for filtering ─
@@ -4918,15 +5325,50 @@ window.combosSearchFor=function(encoded){
   switchTab('explore');
 };
 
+// ═══════════════ COMBO HINT ═══════════════
+function updateComboHint(raw){
+  var hint=document.getElementById('combo-hint');
+  if(!hint) return;
+  var q=(raw||'').toLowerCase().trim();
+  if(!q||q.length<2){hint.style.display='none';hint.innerHTML='';return;}
+
+  // Find up to 3 combos whose tool names partially match the query
+  var matches=TOOL_COMBOS.filter(function(c){
+    return c.tools.some(function(id){
+      var t=TOOLS.find(function(x){return x.id===id;});
+      return t&&(t.name.toLowerCase().includes(q)||t.id.toLowerCase().includes(q));
+    });
+  }).slice(0,3);
+
+  if(!matches.length){hint.style.display='none';hint.innerHTML='';return;}
+
+  var links=matches.map(function(c){
+    var searchQ=c.tools.map(function(id){
+      var t=TOOLS.find(function(x){return x.id===id;});return t?t.name:id;
+    }).join(' + ');
+    return '<button class="combo-hint-link" onclick="combosSearchFor(\''+encodeURIComponent(searchQ)+'\')">'+c.title+'</button>';
+  }).join('<span style="color:var(--text3);margin:0 4px">·</span>');
+
+  hint.innerHTML='⚡ Did you mean a combo? '+links;
+  hint.style.display='block';
+}
+
 // ═══════════════ EVENT LISTENERS ═══════════════
-document.getElementById('search-input').addEventListener('input',e=>{state.query=e.target.value;if(state.activeTab!=='explore')switchTab('explore');renderExplore();});
+document.getElementById('search-input').addEventListener('input',e=>{
+  state.query=e.target.value;
+  if(state.activeTab!=='explore')switchTab('explore');
+  renderExplore();
+  updateComboHint(state.query);
+});
 document.getElementById('search-input').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();searchEnterAction();}});
 
 // Sticky search mirrors main search
 document.getElementById('sticky-search-input').addEventListener('input',e=>{
   state.query=e.target.value;
   document.getElementById('search-input').value=e.target.value;
-  if(state.activeTab!=='explore')switchTab('explore');renderExplore();
+  if(state.activeTab!=='explore')switchTab('explore');
+  renderExplore();
+  updateComboHint(state.query);
 });
 document.getElementById('sticky-search-input').addEventListener('keydown',e=>{if(e.key==='Enter'){e.preventDefault();searchEnterAction();}});
 
@@ -4978,6 +5420,7 @@ window.clearAllFilters=function(){
   if(state.activeTab!=='explore') switchTab('explore');
   renderExplore();
   updateFilterUI();
+  updateComboHint('');
 };
 
 // Category chips inside panel
@@ -5313,33 +5756,38 @@ const TOOL_META={
   'pinecone':         {primary:'knowledge',   secondary:[],               beginner:false, free:true,  enterprise:true},
   'langchain':        {primary:'orchestration',secondary:['creation','knowledge'], beginner:false, free:true, enterprise:false},
   'deepseek':         {primary:'creation',    secondary:[],               beginner:false, free:true,  enterprise:false},
+  'manus':            {primary:'orchestration',secondary:['knowledge'],   beginner:true,  free:false, enterprise:false},
+  'luma':             {primary:'creation',    secondary:[],               beginner:true,  free:true,  enterprise:false},
+  'devin':            {primary:'creation',    secondary:['orchestration'],beginner:false, free:false, enterprise:true},
+  'v0':               {primary:'creation',    secondary:[],               beginner:true,  free:true,  enterprise:false},
+  'llamaindex':       {primary:'knowledge',   secondary:['orchestration'],beginner:false, free:true,  enterprise:false},
 };
 
 // ── Goal → tool relevance weights ────────────────────────────────
 const GOAL_WEIGHTS={
-  youtube:    {'claude':9,'heygen':10,'elevenlabs':9,'canva-ai':8,'perplexity':7,'n8n':6,'otter-ai':5,'seedance':8,'descript':8,'grammarly':4},
-  video:      {'heygen':9,'runway':8,'pika':8,'seedance':8,'elevenlabs':9,'claude':7,'canva-ai':7,'descript':7},
+  youtube:    {'claude':9,'heygen':10,'elevenlabs':9,'canva-ai':8,'perplexity':7,'n8n':6,'otter-ai':5,'seedance':8,'descript':8,'grammarly':4,'luma':7},
+  video:      {'heygen':9,'runway':8,'pika':8,'seedance':8,'elevenlabs':9,'claude':7,'canva-ai':7,'descript':7,'luma':8},
   audio:      {'elevenlabs':10,'otter-ai':7,'claude':6,'chatgpt':5,'descript':8},
   writing:    {'claude':10,'chatgpt':8,'writer':7,'notion-ai':7,'perplexity':7,'grammarly':8,'jasper':8,'gamma':5},
-  developer:  {'cursor':10,'claude':9,'github-copilot':9,'lovable':8,'deepseek':7,'n8n':7,'notebooklm':6,'windsurf':10,'langgraph':8,'langsmith':8,'promptfoo':7,'helicone':6,'claude-code':9,'claude-api':8,'openai-api':8,'azure-openai':7,'vertex-ai':7},
-  product:    {'lovable':9,'cursor':9,'claude':8,'n8n':7,'github-copilot':7},
-  coding:     {'cursor':10,'claude':9,'github-copilot':9,'deepseek':8,'lovable':7,'windsurf':10,'langgraph':7,'crewai':6,'autogen':6,'openai-agents':6,'claude-code':9,'claude-api':7,'openai-api':7},
-  marketer:   {'claude':9,'canva-ai':9,'chatgpt':8,'perplexity':8,'writer':7,'freepik':7,'jasper':9,'gamma':7,'grammarly':6},
-  content:    {'claude':10,'chatgpt':8,'canva-ai':8,'writer':7,'perplexity':7,'notion-ai':6,'jasper':8,'grammarly':6,'descript':7},
+  developer:  {'cursor':10,'claude':9,'github-copilot':9,'lovable':8,'deepseek':7,'n8n':7,'notebooklm':6,'windsurf':10,'langgraph':8,'langsmith':8,'promptfoo':7,'helicone':6,'claude-code':9,'claude-api':8,'openai-api':8,'azure-openai':7,'vertex-ai':7,'devin':9,'v0':8,'llamaindex':8},
+  product:    {'lovable':9,'cursor':9,'claude':8,'n8n':7,'github-copilot':7,'devin':7,'v0':8},
+  coding:     {'cursor':10,'claude':9,'github-copilot':9,'deepseek':8,'lovable':7,'windsurf':10,'langgraph':7,'crewai':6,'autogen':6,'openai-agents':6,'claude-code':9,'claude-api':7,'openai-api':7,'gemma':8,'devin':9,'v0':7,'llamaindex':7},
+  marketer:   {'claude':9,'canva-ai':9,'chatgpt':8,'perplexity':8,'writer':7,'freepik':7,'jasper':9,'gamma':7,'grammarly':6,'v0':5},
+  content:    {'claude':10,'chatgpt':8,'canva-ai':8,'writer':7,'perplexity':7,'notion-ai':6,'jasper':8,'grammarly':6,'descript':7,'luma':6,'v0':5},
   agency:     {'claude':9,'notion-ai':8,'otter-ai':8,'n8n':8,'canva-ai':7,'writer':7,'perplexity':7,'fathom':7,'fireflies':7,'jasper':6,'gamma':6},
   freelance:  {'claude':9,'notion-ai':8,'canva-ai':7,'otter-ai':7,'n8n':6},
-  researcher: {'perplexity':10,'notebooklm':9,'elicit':9,'claude':8,'wolfram':7},
-  knowledge:  {'notebooklm':10,'perplexity':9,'elicit':8,'claude':8,'glean':6,'julius-ai':7,'datawrapper':5},
-  automation: {'n8n':10,'openclaw':9,'copilot':7,'salesforce-einstein':6,'claude':6,'langgraph':8,'crewai':7,'autogen':7,'openai-agents':6,'copilot-studio':7},
+  researcher: {'perplexity':10,'notebooklm':9,'elicit':9,'claude':8,'wolfram':7,'manus':7,'llamaindex':6},
+  knowledge:  {'notebooklm':10,'perplexity':9,'elicit':8,'claude':8,'glean':6,'julius-ai':7,'datawrapper':5,'llamaindex':8},
+  automation: {'n8n':10,'openclaw':9,'copilot':7,'salesforce-einstein':6,'claude':6,'langgraph':8,'crewai':7,'autogen':7,'openai-agents':6,'copilot-studio':7,'manus':9,'devin':7},
   sales:      {'gong':10,'salesforce-einstein':9,'chatgpt':7,'n8n':7,'claude':7,'fireflies':8,'fathom':6},
   legal:      {'harvey':10,'claude':9,'notebooklm':8,'perplexity':7},
   enterprise: {'glean':10,'writer':9,'cohere':9,'salesforce-einstein':8,'copilot':8,'claude':7,'azure-openai':9,'vertex-ai':8,'copilot-studio':8,'claude-api':7,'openai-api':7},
   team:       {'notion-ai':8,'otter-ai':8,'copilot':7,'glean':7,'n8n':7,'claude':7,'fathom':8,'fireflies':8,'gamma':5},
   productivity:{'otter-ai':9,'notion-ai':8,'copilot':8,'claude':7,'chatgpt':7,'fathom':8,'grammarly':6},
-  general:    {'chatgpt':8,'claude':8,'gemini':7,'perplexity':7,'canva-ai':6,'notion-ai':6,'grammarly':5,'gamma':4},
+  general:    {'chatgpt':8,'claude':8,'gemini':7,'perplexity':7,'canva-ai':6,'notion-ai':6,'grammarly':5,'gamma':4,'manus':6},
   presentations:{'gamma':10,'julius-ai':8,'datawrapper':8,'canva-ai':7,'claude':6,'chatgpt':6,'copilot':7,'notebooklm':5},
   dataanalysis: {'julius-ai':10,'claude':8,'chatgpt':7,'notebooklm':7,'perplexity':6,'wolfram':7,'datawrapper':6,'n8n':5},
-  agentbuilder:{'langgraph':10,'crewai':9,'autogen':9,'openai-agents':8,'semantic-kernel':7,'haystack':7,'mem0':7,'zep':6,'langsmith':8,'promptfoo':7,'helicone':6,'braintrust':7,'ragas':6,'arize':6,'deepeval':6,'claude-api':8,'openai-api':8,'vertex-ai':7,'azure-openai':6},
+  agentbuilder:{'langgraph':10,'crewai':9,'autogen':9,'openai-agents':8,'semantic-kernel':7,'haystack':7,'mem0':7,'zep':6,'langsmith':8,'promptfoo':7,'helicone':6,'braintrust':7,'ragas':6,'arize':6,'deepeval':6,'claude-api':8,'openai-api':8,'vertex-ai':7,'azure-openai':6,'llamaindex':9},
   evaluation:  {'promptfoo':10,'braintrust':9,'ragas':9,'deepeval':9,'langsmith':8,'arize':8,'helicone':6},
   observability:{'langsmith':10,'helicone':9,'arize':9,'braintrust':7,'promptfoo':7},
   memory:      {'mem0':10,'zep':9,'notebooklm':6,'pinecone':6},
@@ -5348,6 +5796,118 @@ const GOAL_WEIGHTS={
 
 // ── Adaptive questions (4 total) ─────────────────────────────────
 
+
+// ── Enterprise Compliance Matrix ──────────────────────────────────
+// [soc2, hipaa, gdpr, sso, audit_logs, data_residency]  1=yes 0=no
+// Sources: vendor trust pages, BAA docs, security whitepapers (2025)
+const ENTERPRISE_MATRIX={
+  'chatgpt':                [1,1,1,1,1,0],
+  'claude':                 [1,0,1,1,1,0],
+  'gemini':                 [1,1,1,1,1,1],
+  'perplexity':             [0,0,1,1,0,0],
+  'grok':                   [0,0,0,0,0,0],
+  'copilot':                [1,1,1,1,1,1],
+  'midjourney':             [0,0,1,0,0,0],
+  'cursor':                 [1,0,1,1,0,0],
+  'github-copilot':         [1,1,1,1,1,0],
+  'notebooklm':             [1,1,1,1,1,1],
+  'elevenlabs':             [0,0,1,0,0,0],
+  'runway':                 [0,0,1,0,0,0],
+  'n8n':                    [1,1,1,1,1,1],
+  'deepseek':               [0,0,0,0,0,0],
+  'lovable':                [0,0,1,0,0,0],
+  'devin':                  [1,0,1,1,1,0],
+  'v0':                     [0,0,1,0,0,0],
+  'heygen':                 [0,0,1,0,0,0],
+  'freepik':                [0,0,1,0,0,0],
+  'adobe-firefly':          [1,0,1,1,1,0],
+  'canva-ai':               [1,0,1,1,0,0],
+  'pika':                   [0,0,1,0,0,0],
+  'luma':                   [0,0,1,0,0,0],
+  'seedance':               [0,0,0,0,0,0],
+  'synthesia':              [1,0,1,1,1,0],
+  'harvey':                 [1,1,1,1,1,1],
+  'notion-ai':              [1,1,1,1,1,0],
+  'otter-ai':               [1,1,1,1,1,0],
+  'wolfram':                [0,0,1,0,0,0],
+  'elicit':                 [0,0,1,0,0,0],
+  'fitbod':                 [0,0,1,0,0,0],
+  'khanmigo':               [0,0,1,0,0,0],
+  'gong':                   [1,0,1,1,1,0],
+  'openclaw':               [0,0,1,0,0,1],
+  'manus':                  [0,0,0,0,0,0],
+  'glean':                  [1,1,1,1,1,1],
+  'writer':                 [1,1,1,1,1,1],
+  'cohere':                 [1,1,1,1,1,1],
+  'salesforce-einstein':    [1,1,1,1,1,1],
+  'llama':                  [1,1,1,0,0,1],
+  'mistral':                [0,0,1,0,0,1],
+  'nemotron':               [0,0,1,0,0,1],
+  'gemma':                  [0,0,1,0,0,1],
+  'groq':                   [1,0,1,1,0,0],
+  'together-ai':            [1,1,1,1,1,1],
+  'ollama':                 [0,1,1,0,0,1],
+  'pinecone':               [1,0,1,1,1,1],
+  'langchain':              [0,0,1,0,0,1],
+  'llamaindex':             [0,0,1,0,0,1],
+  'gamma':                  [0,0,1,0,0,0],
+  'fathom':                 [1,0,1,0,0,0],
+  'grammarly':              [1,0,1,1,1,0],
+  'descript':               [0,0,1,0,0,0],
+  'windsurf':               [1,0,1,1,0,0],
+  'jasper':                 [1,0,1,1,1,0],
+  'fireflies':              [1,1,1,1,1,0],
+  'langgraph':              [0,0,1,0,0,1],
+  'crewai':                 [0,0,1,0,0,1],
+  'autogen':                [0,0,1,0,0,1],
+  'openai-agents':          [1,1,1,1,1,0],
+  'semantic-kernel':        [1,1,1,1,1,1],
+  'promptfoo':              [0,0,1,0,0,1],
+  'langsmith':              [1,0,1,1,1,0],
+  'helicone':               [0,0,1,0,0,1],
+  'braintrust':             [1,0,1,1,1,0],
+  'ragas':                  [0,0,1,0,0,1],
+  'mem0':                   [0,0,1,0,0,1],
+  'zep':                    [0,0,1,0,0,1],
+  'haystack':               [0,0,1,0,0,1],
+  'arize':                  [1,0,1,1,1,1],
+  'deepeval':               [0,0,1,0,0,1],
+  'claude-api':             [1,1,1,0,1,0],
+  'claude-code':            [1,0,1,0,0,0],
+  'openai-api':             [1,1,1,0,1,0],
+  'sora':                   [1,1,1,1,1,0],
+  'vertex-ai':              [1,1,1,1,1,1],
+  'copilot-studio':         [1,1,1,1,1,1],
+  'azure-openai':           [1,1,1,1,1,1],
+  'mcp-github':             [1,0,1,1,1,0],
+  'mcp-notion':             [1,1,1,1,1,0],
+  'mcp-slack':              [1,1,1,1,1,0],
+  'mcp-figma':              [1,0,1,1,1,0],
+  'mcp-google-drive':       [1,1,1,1,1,1],
+  'mcp-postgres':           [0,1,1,0,1,1],
+  'mcp-brave-search':       [0,0,1,0,0,0],
+  'mcp-filesystem':         [0,1,1,0,0,1],
+  'mcp-puppeteer':          [0,0,1,0,0,1],
+  'mcp-stripe':             [1,0,1,1,1,0],
+  'mcp-linear':             [1,0,1,1,1,0],
+  'mcp-sentry':             [1,0,1,1,1,0],
+  'mcp-supabase':           [1,0,1,1,1,1],
+  'mcp-cloudflare':         [1,0,1,1,1,1],
+  'mcp-docker':             [0,1,1,0,0,1],
+  'mcp-exa':                [0,0,1,0,0,0],
+  'mcp-tavily':             [0,0,1,0,0,0],
+  'mcp-perplexity':         [0,0,1,0,0,0],
+  'mcp-hubspot':            [1,0,1,1,1,0],
+  'mcp-jira':               [1,0,1,1,1,1],
+  'mcp-twilio':             [1,1,1,1,1,1],
+  'mcp-aws':                [1,1,1,1,1,1],
+  'mcp-memory':             [0,0,1,0,0,1],
+  'mcp-sequential-thinking':[0,0,1,0,0,1],
+  'mcp-zapier':             [1,1,1,1,1,0],
+  'julius-ai':              [0,0,1,0,0,0],
+  'datawrapper':            [0,0,1,0,0,1],
+};
+const EM_COLS=['SOC 2','HIPAA','GDPR','SSO','Audit Logs','Data Residency'];
 
 // ── MCP Server configs — tools with published MCP servers ─────────
 const MCP_CONFIGS={
@@ -5525,6 +6085,123 @@ const DEEP_PROFILES={
     pitfalls:['Q&A quality degrades with a messy, poorly organized workspace — AI is only as good as the structure of your existing notes','Notion AI is an add-on at $8/user/mo on top of the base plan — the full cost for a team on Business plan is $24/user/mo ($16 + $8)','AI-generated content in Notion can confidently fabricate citations if asked questions outside the workspace — it does not have access to external knowledge'],
     powerTip:'Create a "Master Context" page listing your current projects, team roles, and active priorities. Reference it in Notion AI prompts with "@" to ground every generation in your specific situation — this dramatically improves relevance.',
     vs:[{name:'Coda AI',edge:'Notion AI\'s workspace breadth and template ecosystem are larger; Coda AI has stronger formula/automation capabilities for data-heavy docs'},{name:'Claude',edge:'Notion AI lives inside your existing workflow and can access your notes; Claude\'s reasoning and writing quality are significantly deeper for standalone tasks'}]
+  },
+  'langchain':{
+    verdict:'LangChain is the most widely adopted framework for building LLM applications, but its breadth is also its trap. The abstraction layer that makes quick prototypes easy becomes a liability when you need to debug production failures. Use it for well-trodden patterns — RAG, agents, chains — and avoid wrapping it around simple API calls that don\'t need the overhead.',
+    whoFor:'Python and TypeScript developers building multi-step LLM applications: RAG pipelines, tool-using agents, document processing systems, and anything that chains multiple model calls with memory.',
+    notFor:'Teams making simple one-shot API calls — the abstraction adds complexity without value. Also not ideal for teams who need strict control over every token and prompt — LangChain\'s abstractions can obscure what\'s actually being sent to the model.',
+    idealWorkflow:['Start with LangChain Expression Language (LCEL) for composing chains — it\'s far more transparent than older chain classes','Use LangSmith from day one: LANGCHAIN_TRACING_V2=true catches production issues in development','Build your retriever independently of your chain so you can swap vector stores without rewriting your logic','Pin your LangChain version — the library changes frequently and minor version bumps can break production pipelines'],
+    pitfalls:['LangChain\'s abstractions can hide what prompt is actually sent to the model — use LangSmith to see the real request','The library evolves fast; code written 6 months ago may use deprecated patterns that still work but will break in future versions','Agent loops can spiral into infinite tool calls without careful guardrails — always set max_iterations and a fallback'],
+    powerTip:'Use LangChain\'s LCEL pipe syntax (chain = prompt | model | parser) for new code instead of the older LLMChain class — it\'s composable, debuggable, and streams natively.',
+    vs:[{name:'LlamaIndex',edge:'LangChain is broader (chains, agents, memory); LlamaIndex is deeper on data ingestion and retrieval — most production RAG systems use both'},{name:'Raw API',edge:'LangChain saves significant boilerplate for complex multi-step tasks; for single API calls the overhead is rarely worth it'}]
+  },
+  'langsmith':{
+    verdict:'LangSmith is the single most valuable addition to any LLM application once it moves beyond a demo. The ability to trace every prompt, see exactly what went into a model call, and replay failures in a playground cuts debugging time from hours to minutes. It works with any LangChain code and increasingly with non-LangChain code via the REST API.',
+    whoFor:'Any developer running a LangChain or LLM application in production who needs to debug failures, improve prompt quality, and monitor costs over time.',
+    notFor:'Pure prototypers who haven\'t shipped yet — the value is disproportionate in production. Also not needed if you\'re making a handful of one-off API calls with no retry or evaluation needs.',
+    idealWorkflow:['Set LANGCHAIN_TRACING_V2=true and LANGSMITH_API_KEY before writing any other application code — it\'s one line and immediately captures every run','Create a dataset from your production failures: every time a user reports a bad output, capture that trace as a test case','Run evaluations in CI: before deploying a prompt change, LangSmith evaluates it against your dataset and blocks deploys that regress quality','Use the Playground to iterate on prompts with real production inputs — far faster than editing code and re-running scripts'],
+    pitfalls:['Traces contain your actual prompts and user inputs — review your data retention and privacy settings before enabling in production','The free tier logs 5,000 traces/month; high-volume applications will hit paid tiers quickly','LangSmith evaluators use LLM-as-judge scoring which introduces its own variability — always validate evaluator quality on a sample'],
+    powerTip:'Tag your traces with user_id and session_id metadata from the start. When a user reports a bad output, you can find their exact trace in seconds and see precisely what the model received.',
+    vs:[{name:'Helicone',edge:'LangSmith integrates natively with LangChain and has the best agent tracing; Helicone is model-provider agnostic and simpler to set up for non-LangChain code'},{name:'Braintrust',edge:'LangSmith has broader adoption and LangChain integration; Braintrust has stronger evaluation and dataset management for teams focused on systematic quality improvement'}]
+  },
+  'pinecone':{
+    verdict:'Pinecone pioneered managed vector databases and remains the default choice for teams who want production-grade semantic search without infrastructure work. Its hosted service handles replication, scaling, and ANNS index management invisibly. The main criticism — cost — is real: at scale, self-hosted alternatives like Weaviate or Qdrant can be 5-10x cheaper.',
+    whoFor:'Teams building RAG applications, semantic search, or recommendation systems who want a fully managed vector store with no infrastructure overhead and a simple API.',
+    notFor:'Teams with large datasets and cost sensitivity — Pinecone\'s per-vector pricing adds up fast. Also not the right choice if you need to store complex structured data alongside vectors; purpose-built alternatives handle hybrid search better.',
+    idealWorkflow:['Use namespaces to isolate data by tenant, environment, or document type within a single index — avoids the cost of multiple indexes','Store metadata alongside vectors and use metadata filters at query time to narrow results before scoring — dramatically improves precision','Use the hybrid search (sparse + dense) option for keyword-heavy domains where pure semantic search misses exact matches','Monitor query latency and recall in the Pinecone console; if recall drops, consider re-indexing with a better embedding model'],
+    pitfalls:['Pinecone\'s free tier is a starter pod with limited storage and QPS — real workloads will need a paid plan quickly','Deleting vectors is slow compared to insertion — design your update strategy around upserts, not delete-and-reinsert patterns','Pinecone doesn\'t store your original documents — you need a separate document store (Postgres, S3) to retrieve source text from vector search results'],
+    powerTip:'Always store the chunk_id, document_id, and a short preview_text in Pinecone metadata alongside your vectors. This lets you return meaningful snippets to users from the vector search alone, before fetching the full document from your main store.',
+    vs:[{name:'Weaviate',edge:'Pinecone is simpler to operate and has faster managed setup; Weaviate is open-source, supports hybrid search natively, and is cheaper at scale'},{name:'ChromaDB',edge:'Pinecone scales to billions of vectors with enterprise SLA; Chroma is ideal for local development and small-to-medium datasets where managed infrastructure is unnecessary'}]
+  },
+  'grammarly':{
+    verdict:'Grammarly is the most reliable grammar and style checker available and has earned its position as the final gate for professional writing. Its browser extension is genuinely invisible — it corrects as you type across every web surface. The jump from Basic to Premium ($12/mo) is justified only if you write professionally or extensively; casual writers get 90% of the value for free.',
+    whoFor:'Anyone who writes professionally — marketers, executives, students, content teams, ESL writers, and anyone who wants a second set of eyes before sending important communications.',
+    notFor:'Teams who need original content generation or long-form drafting — Grammarly corrects and improves what you\'ve written, it doesn\'t generate from scratch. For generation, pair it with Claude or ChatGPT.',
+    idealWorkflow:['Install the browser extension and enable it everywhere — Google Docs, Gmail, LinkedIn, Notion, Slack. Set and forget','Set your personal writing goals (audience, formality, tone) in Grammarly so suggestions match your voice and purpose','Use the Performance Score as a weekly metric — track it on your most important document types to see if your writing is improving','Paste long documents into the Grammarly Editor (not just browser extension) for full document-level suggestions on structure and clarity'],
+    pitfalls:['Grammarly\'s suggestions are prescriptive — accepting all of them produces correct but generic prose. Use it as input, not as automatic fixes','The tone detector flags confident, direct writing as "aggressive" — calibrate your trust on tone suggestions','Grammarly has read access to everything you type in the browser — review your data sharing settings and use Business or Enterprise for sensitive documents'],
+    powerTip:'Turn off Grammarly\'s autocorrect for your first draft and only enable it for the revision pass. Writing with correction turned on fragments your flow and makes you second-guess phrasing before ideas are complete.',
+    vs:[{name:'ProWritingAid',edge:'Grammarly has a better browser extension and faster real-time suggestions; ProWritingAid has deeper style and structure reports for long-form writers'},{name:'Hemingway Editor',edge:'Grammarly is comprehensive for grammar and tone; Hemingway is narrowly focused on readability and sentence simplicity — many writers use both'}]
+  },
+  'descript':{
+    verdict:'Descript collapsed a complex post-production workflow into a text editor. Editing a transcript is genuinely faster than scrubbing a timeline for cuts, filler word removal, and clip organisation. The Overdub voice cloning and Studio Sound noise removal are legitimately production-quality. The main limitation is rendering speed on long-form content — it can be slow.',
+    whoFor:'Podcasters, video creators, and educators who produce long-form audio or video content and want to edit it as fast as editing a document rather than scrubbing a traditional timeline.',
+    notFor:'Professional video editors doing colour grading, multi-camera editing, or complex visual effects — Descript is a publishing tool, not a professional NLE. Use DaVinci Resolve or Premiere for that work.',
+    idealWorkflow:['Record directly in Descript or import from Zoom/Riverside — automatic transcription starts immediately','Remove filler words ("um", "uh", "like") in one click via the Edit → Remove Filler Words menu — this alone saves 20-30 minutes per hour of content','Use Scenes to segment long recordings into logical sections before making cuts','Export the cleaned transcript to Claude or Notion for show notes, chapter markers, and social captions — one recording generates a week of content'],
+    pitfalls:['Overdub voice clone requires 10+ minutes of clean training audio — poor training audio produces a noticeably synthetic-sounding result','The text-based editor can desync from the media if you\'re doing heavy cut-and-rearrange work — always preview the final timeline before exporting','Descript\'s export quality is good but not broadcast-grade — for professional podcast distribution, export to Audacity or Adobe Audition for final mastering'],
+    powerTip:'After recording, use the "Remove Silence" function with a 0.5s minimum silence threshold before doing any transcript editing. It eliminates dead air automatically and reduces your raw transcript length by 15-20%, making every subsequent edit faster.',
+    vs:[{name:'Adobe Podcast',edge:'Descript is more feature-complete for video and has better publishing workflows; Adobe Podcast\'s Enhance Speech audio cleanup is arguably the best in the market'},{name:'Riverside.fm',edge:'Riverside is better for high-quality remote recording with separate tracks; Descript is better for editing and publishing the recorded content'}]
+  },
+  'otter-ai':{
+    verdict:'Otter is the best automatic meeting transcription tool for teams who live in Zoom, Google Meet, or Microsoft Teams. Its AI-generated meeting summaries and action item extraction are genuinely accurate when audio quality is good, and the integration that automatically joins and transcribes scheduled meetings is a significant time saver for busy teams.',
+    whoFor:'Teams and individuals who attend 5+ meetings per week and need reliable transcripts, automated summaries, and searchable meeting history. Especially valuable for distributed teams across time zones.',
+    notFor:'Users in highly regulated industries (legal, healthcare) without the Business or Enterprise plan — Otter stores transcripts on its servers and requires careful data handling. Also not ideal for highly technical or jargon-heavy meetings where transcription accuracy can drop.',
+    idealWorkflow:['Connect Otter to your Google or Outlook calendar — it will automatically join and transcribe every meeting without you needing to remember to start it','Use Action Items extraction after each meeting and push the list to your task manager via Zapier or native integrations','Build a Channels library: create a channel per project so all related meeting transcripts are searchable together','Enable the conversation summary email — receive a 5-bullet summary of every meeting directly in your inbox within minutes of it ending'],
+    pitfalls:['Transcription accuracy drops significantly with heavy accents, fast speech, or poor microphone quality — a $50 USB mic makes a bigger difference than any Otter setting','Otter\'s free plan limits you to 300 minutes/month and 30 minutes per conversation — a single long planning session will hit the cap','Meeting transcripts contain sensitive business information — review who has access to shared channels and workspaces before inviting the whole company'],
+    powerTip:'Use Otter\'s "Ask Otter" AI chat after a meeting to extract specific information from the transcript — "What budget figures were mentioned?" or "Summarise the objections raised" — rather than reading the full transcript.',
+    vs:[{name:'Fathom',edge:'Fathom is free for unlimited recordings and has cleaner Zoom integration; Otter has broader meeting platform support and a longer history of transcript quality'},{name:'Fireflies.ai',edge:'Otter has a better mobile app and individual-use experience; Fireflies has stronger CRM integrations and team analytics for sales teams'}]
+  },
+  'llamaindex':{
+    verdict:'LlamaIndex is the sharpest tool for the specific job of connecting LLMs to data. Its document loaders, parsing pipeline, and retrieval abstractions are more mature than LangChain\'s for pure RAG use cases. LlamaParse is the best off-the-shelf PDF parser for complex documents with tables and figures. The standard production pattern: LlamaIndex for data, LangChain for orchestration.',
+    whoFor:'Developers building production RAG systems who need reliable document ingestion from 160+ sources, high-quality parsing, and flexible retrieval strategies beyond simple vector search.',
+    notFor:'Teams who just need a basic chatbot or simple single-turn completions — LlamaIndex\'s value is in its data pipeline depth, which is overkill for tasks that don\'t involve complex document retrieval.',
+    idealWorkflow:['Start with LlamaParse for any PDF ingestion — it extracts tables and figures that standard PDF parsers miss, which are exactly the data that naive RAG systems fail on','Use SimpleDirectoryReader for bulk ingestion of mixed file types — it auto-detects formats and applies the right loader','Build a VectorStoreIndex for semantic search and a SummaryIndex for full-document Q&A — use a RouterQueryEngine to send queries to the right index based on intent','Enable LlamaTrace observability from day one — it\'s the LlamaIndex equivalent of LangSmith and catches retrieval failures in development'],
+    pitfalls:['LlamaIndex version 0.10 was a major breaking rewrite of the API — check the version in every tutorial or StackOverflow answer you reference','LlamaParse is a paid service above free tier (300 pages/day free) — budget for it if your use case involves high-volume document processing','Retrieval quality depends heavily on chunk size and overlap settings; the defaults work for simple prose but fail on technical documents — always evaluate retrieval separately from generation'],
+    powerTip:'Use LlamaIndex\'s HyDE (Hypothetical Document Embeddings) retriever for question-answering over technical content — it generates a hypothetical answer to the query and uses that for embedding search, which dramatically improves retrieval recall on complex questions.',
+    vs:[{name:'LangChain',edge:'LlamaIndex has deeper and more reliable data ingestion and retrieval; LangChain has broader agent and chain orchestration capabilities — most serious RAG applications use both'},{name:'Haystack',edge:'LlamaIndex has a richer ecosystem of data loaders and is more actively developed; Haystack has a stronger focus on production NLP pipelines and enterprise deployments'}]
+  },
+  'devin':{
+    verdict:'Devin is the most capable autonomous coding agent available, but its $500/month price tag makes it a team tool rather than an individual one. The SWE-bench score and real-world PR quality are genuinely impressive on well-scoped tasks. The critical constraint: Devin works best on isolated, clearly-specified work. Vague tasks, cross-cutting changes, or tasks requiring product judgment will produce mediocre PRs that cost more time to review than they saved.',
+    whoFor:'Engineering teams with a meaningful backlog of well-scoped, isolated tasks — bug fixes, test coverage, greenfield modules, dependency upgrades — who want to increase throughput without adding headcount.',
+    notFor:'Individual developers at $500/month. Also not suitable for tasks requiring product judgment, deep architectural understanding of a complex existing codebase, or significant back-and-forth iteration with stakeholders.',
+    idealWorkflow:['Write Devin task briefs like you\'re writing a ticket for a new contractor: include the acceptance criteria, the files likely involved, and what tests should pass','Assign tasks that can be completed without asking clarifying questions — if you\'d need to answer 5 questions to explain it to a human engineer, Devin will either guess wrong or stall','Review Devin\'s PRs with the same rigour as you\'d review a junior engineer\'s work — check edge cases, test coverage, and security implications','Use the Knowledge Base to document your codebase conventions, coding standards, and architectural patterns — Devin reads this before starting each task'],
+    pitfalls:['Devin can confidently produce a PR that passes its own tests but misses integration-level failures that only appear in your full test suite — always run CI before merging','Task scope creep is a cost problem: a task that spirals from 2 to 15 ACUs quickly exceeds what a human would have spent','Devin doesn\'t know what it doesn\'t know — it won\'t flag when a task requires a business decision, it will just make one. Review PRs for implicit product choices.'],
+    powerTip:'Invest 30 minutes writing a detailed DEVIN.md file for each repository: include architecture overview, naming conventions, test patterns, and common gotchas. Teams who do this report 40-50% fewer revision cycles on Devin\'s PRs.',
+    vs:[{name:'Cursor Agent',edge:'Cursor is interactive and better for tasks requiring iteration and judgment; Devin is better for fully autonomous execution of well-scoped tasks you don\'t want to supervise'},{name:'GitHub Copilot Workspace',edge:'Copilot Workspace is tightly integrated into GitHub\'s PR workflow and cheaper; Devin has significantly higher autonomy and can handle longer-running multi-step tasks'}]
+  },
+  'v0':{
+    verdict:'v0 is the most useful specialised AI tool for frontend developers. The quality of generated React and Tailwind code is production-ready in a way that general-purpose models rarely achieve — components that copy directly into a real project without significant cleanup. Its value is specifically in UI component generation; it does not replace a full-stack tool like Lovable or Cursor for building complete applications.',
+    whoFor:'Frontend and full-stack developers who want to eliminate UI boilerplate. Also useful for non-technical founders and designers who want to prototype UI in code without a developer.',
+    notFor:'Users who need a complete application with backend, auth, and database — use Lovable or Cursor for that. v0 generates UI components, not full systems.',
+    idealWorkflow:['Be specific in your prompt: name the component type, describe the data shape, and mention any interaction behaviours — "a sortable data table for invoice records with status badges and a row action dropdown" produces far better results than "a data table"','Iterate in the v0 chat — ask for layout, colour, or interaction changes in plain English rather than editing the code directly','Once the component is right, copy the code into your project and use Cursor to wire up real data, state management, and API calls','Use v0\'s image-to-UI feature for any existing designs — paste a screenshot of a Figma frame or a competitor\'s UI and it generates the React component'],
+    pitfalls:['v0 generates components using shadcn/ui and Radix UI primitives — if your project uses a different component library, there will be friction adapting the output','Complex state logic and business rules still need to be written by a developer; v0 handles the visual layer, not the application logic','Generated component names are generic (Card, DataTable) — rename them to match your project\'s naming conventions before integrating'],
+    powerTip:'Upload your brand\'s colour palette as a screenshot and describe your design system in the first message of a new v0 session. All subsequent generations in that conversation will use your brand colours and visual style consistently.',
+    vs:[{name:'Lovable',edge:'v0 generates individual components with better code quality; Lovable generates complete applications including backend and auth — different use cases'},{name:'Cursor',edge:'v0 generates UI faster from a description; Cursor understands your existing codebase and integrates generated code with real application logic'}]
+  },
+  'luma':{
+    verdict:'Luma Dream Machine\'s Ray3 model has the best physics simulation of any consumer video generation tool — water, fabric, smoke, and camera movement behave in ways that Gen-3 Alpha and Pika don\'t reliably achieve. The free tier is genuinely usable, and the $9.99 entry plan gives enough generations for regular creative work. The gap with Runway is closing fast; for realistic motion specifically, Luma is now competitive or ahead.',
+    whoFor:'Video creators, filmmakers, and marketers who need realistic motion and natural camera movement — product demos, B-roll, social content, and digital twin visualisations.',
+    notFor:'Users who need complex visual effects, style transfer, or multi-layer compositing — Runway has more post-processing tools. Luma is the best at realistic generation; it\'s not a full VFX platform.',
+    idealWorkflow:['Use image-to-video rather than text-to-video when you need consistency — start with a Midjourney or Firefly image of your exact subject, then animate it','Specify camera movement explicitly in your prompt: "slow dolly forward", "orbiting arc shot", "handheld tracking" — Ray3 responds very precisely to camera direction language','Generate 3-4 variations of each scene at standard resolution, then upscale only the best to 4K on the Plus plan','For product demos, photograph the product on a neutral background, generate motion in Luma, then use Runway for any background replacement or brand colour work'],
+    pitfalls:['Ray3 sometimes adds unwanted camera drift on prompts that don\'t specify movement — add "static camera" or "locked off shot" when you want no movement','Luma\'s free tier watermark is embedded in the video, not just an overlay — it cannot be removed in post without visual artefacts; upgrade before client work','Text in scenes is unreliable — Luma, like all video generators, struggles with legible text on signs, screens, and overlays'],
+    powerTip:'For the most realistic motion, describe the physics of the movement rather than the aesthetic: "steam rising from a coffee cup with slow natural convection" produces better results than "realistic steam animation".',
+    vs:[{name:'Runway',edge:'Luma Ray3 has better physics and natural motion; Runway Gen-3 has more creative style control and better VFX tools for post-processing'},{name:'Pika',edge:'Luma produces more realistic motion at higher quality; Pika is faster to iterate and better for stylised, animated-look content'}]
+  },
+  'deepseek':{
+    verdict:'DeepSeek R1 and V3 deliver frontier-model quality at 75-90% lower cost than OpenAI equivalents — a genuine structural advantage for high-volume API applications. R1\'s chain-of-thought reasoning is competitive with o1 on coding and maths benchmarks. The open-source weights are the most significant data point: teams who self-host avoid both the cost and the data-sharing concerns.',
+    whoFor:'Developers building cost-sensitive API applications, teams who need to self-host for data privacy, and researchers exploring open-source frontier model architecture.',
+    notFor:'Non-technical users who need a polished interface — DeepSeek\'s value is in the API and open weights, not the chat UI. Also not suitable for enterprise teams with strict US data residency requirements, as DeepSeek is a Chinese company.',
+    idealWorkflow:['Use V3 for general text and coding tasks via the API as a drop-in replacement for GPT-4o — the OpenAI-compatible endpoint requires minimal code changes','Switch to R1 for tasks involving multi-step reasoning, maths, and complex code generation — its thinking tokens add latency but produce meaningfully better output','Self-host using vLLM on a 2× A100 or H100 setup for complete data control and zero per-token API cost at scale','Use DeepSeek in n8n or LangChain as your cost-optimised model for high-volume workflow steps where GPT-4o quality is unnecessary'],
+    pitfalls:['DeepSeek\'s servers have experienced capacity constraints and downtime during high-demand periods — build fallback to another provider for production applications','R1\'s extended thinking is billed at a higher token rate than V3 — use V3 for tasks that don\'t need deep reasoning to control cost','Data sent to the DeepSeek API is processed on servers in China — evaluate carefully for any application involving personal data, proprietary code, or regulated information'],
+    powerTip:'Use DeepSeek V3 as the default model in your pipeline and route only the complex reasoning tasks (code generation, multi-step analysis) to R1 — this captures 80% of R1\'s quality at 20% of its cost.',
+    vs:[{name:'GPT-4o',edge:'DeepSeek is 75-90% cheaper per token with comparable quality; GPT-4o has a more mature API platform, better uptime, and a larger plugin ecosystem'},{name:'Llama 3',edge:'DeepSeek R1 outperforms Llama 3 on reasoning benchmarks; Llama 3 has a larger community, more fine-tuned variants, and Meta\'s commercial licence terms which some enterprises prefer'}]
+  },
+  'grok':{
+    verdict:'Grok\'s primary differentiation is real-time X/Twitter data — no other frontier model has this. If your work involves social intelligence, trend monitoring, or current events, Grok offers something genuinely unavailable elsewhere. Outside of real-time data, Grok 3 is a strong general-purpose model, but the X subscription requirement and the SuperGrok pricing make it less compelling as a primary AI assistant compared to Claude or ChatGPT.',
+    whoFor:'Social media strategists, marketers, journalists, PR teams, and anyone whose work requires understanding what\'s trending or what people are saying right now on X.',
+    notFor:'Users who don\'t have an X account or whose work doesn\'t intersect with social media intelligence. Also not ideal as a primary coding or long-document assistant — Claude and Cursor are stronger for those tasks.',
+    idealWorkflow:['Use Grok\'s real-time X data for trend monitoring before any content campaign — search what your audience is discussing before writing a single word','Enable DeepSearch for research tasks that need live web + X synthesis — it combines real-time social signals with web search in a way no other model offers','Use Think mode for reasoning tasks that require step-by-step analysis — Grok 3\'s Think is competitive with other frontier models\' extended thinking modes','Set up a SuperGrok recurring prompt to monitor brand mentions, competitor activity, or industry keywords across X on a scheduled basis'],
+    pitfalls:['Grok\'s real-time data is exclusively from X — this is powerful for social intelligence but misses news sites, Reddit, LinkedIn, and the broader web that Perplexity covers','The hallucination rate, while lower than older models, is still present — always verify specific claims with citations, especially for recent events','Access to the best Grok features requires either an X Premium ($8/mo) or SuperGrok ($30/mo) subscription on top of any other AI subscriptions'],
+    powerTip:'Use Grok\'s Aurora image generation inside X posts to create on-brand visuals for trending topics in real time — the integration between social context and image generation creates a content velocity advantage that standalone image tools can\'t match.',
+    vs:[{name:'Perplexity',edge:'Grok has real-time X/Twitter data; Perplexity covers the broader web with better source citation and is more reliable for general research'},{name:'ChatGPT',edge:'ChatGPT has a broader plugin and integration ecosystem; Grok has exclusive X data and Aurora image generation for social-native workflows'}]
+  },
+  'manus':{
+    verdict:'Manus is the most capable fully autonomous cloud agent available in 2025. Its GAIA benchmark scores — 86.5% on Level 1, 70.1% on Level 2 — represent a meaningful step beyond what OpenAI Deep Research and comparable tools achieve on multi-step tasks. The genuine differentiator is asynchronous cloud execution: you assign a task, go do other work, and come back to a finished deliverable. The limitation is the invite-only access and pricing that targets teams, not individuals.',
+    whoFor:'Knowledge workers and teams who have high-value, multi-step research or analysis tasks that currently take 3-5 hours of manual work. Most effective for competitive intelligence, market research, due diligence, and structured data collection.',
+    notFor:'Simple tasks — Manus\'s overhead is not justified for anything that takes a human less than 30 minutes. Also not suitable for tasks requiring real-time interaction, subjective judgment, or access to authenticated internal systems.',
+    idealWorkflow:['Write Manus task briefs at the level of a detailed consultant brief, not a chat prompt — specify the deliverable format, the sources to prioritise, the depth required, and any constraints','Use Manus for the data collection and initial structuring phase, then pass its output to Claude for analysis, interpretation, and final writing','Batch similar tasks: instead of assigning 5 separate company research tasks one by one, write one Manus task covering all 5 companies','Review Manus outputs critically — it is thorough and well-organised, but it can overweight sources it found easily and underweight harder-to-find information'],
+    pitfalls:['Manus can produce confident-sounding reports that miss key information not easily findable via web browsing — always verify critical facts independently','Task completion time varies widely (2 minutes to 45+ minutes) depending on complexity — don\'t assign Manus tasks when you need immediate results','Manus currently has limited access to authenticated systems — it cannot log into your CRM, internal databases, or paid research platforms during a task'],
+    powerTip:'End every Manus task brief with "Format the output as a structured report with an executive summary, key findings table, and sources section." This produces outputs that can be sent directly to stakeholders without reformatting.',
+    vs:[{name:'Perplexity Deep Research',edge:'Manus is more autonomous and handles longer-running tasks with more complex tool use; Perplexity Deep Research is faster and better for single-question web synthesis'},{name:'Claude',edge:'Manus autonomously collects and organises data from the web; Claude provides deeper analytical reasoning and writing quality — they complement each other well'}]
   }
 };
 window.DEEP_PROFILES=DEEP_PROFILES;
@@ -5966,6 +6643,22 @@ function buildStack(){
     }
 
     if(score>0) scores[t.id]=score;
+  });
+
+  // ── COMBO AFFINITY PASS ───────────────────────────────────────
+  // After initial scoring, boost tools that pair well (via TOOL_COMBOS)
+  // with the top-scoring candidates. Rewards known synergistic pairings.
+  var sortedForCombo=Object.entries(scores).sort(function(a,b){return b[1]-a[1];}).map(function(e){return e[0];});
+  var topComboSeeds=sortedForCombo.slice(0,3);
+  topComboSeeds.forEach(function(seedId){
+    TOOL_COMBOS.forEach(function(combo){
+      if(combo.tools.indexOf(seedId)<0) return;
+      combo.tools.forEach(function(partnerId){
+        if(partnerId===seedId) return;
+        if(eliminated[partnerId]) return;
+        if(scores[partnerId]) scores[partnerId]+=2;
+      });
+    });
   });
 
   // ── PHASE 3: LAYER-AWARE SELECTION ────────────────────────────
