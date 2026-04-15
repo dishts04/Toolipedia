@@ -334,6 +334,117 @@ html.light .em-no{color:#d1d5db}
 .em-legend-item{display:flex;align-items:center;gap:5px}
 .em-count-bar{font-size:12px;color:var(--text3);margin-bottom:10px}
 
+/* ── STEP 4: ACTION PLAN ─────────────────────────────────────────── */
+.advo-step4-wrap{padding:32px 40px 60px;max-width:780px}
+.advo-step4-eyebrow{font-size:11px;text-transform:uppercase;letter-spacing:1px;color:var(--p1);font-weight:600;margin-bottom:8px}
+.advo-step4-title{font-family:var(--ff-head);font-size:clamp(22px,3vw,34px);font-weight:700;color:var(--text);line-height:1.15;letter-spacing:-0.5px;margin-bottom:6px}
+.advo-step4-goal{font-size:13px;color:var(--text3);margin-bottom:32px;font-style:italic}
+.advo-week-block{margin-bottom:28px}
+.advo-week-label{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--p1);margin-bottom:12px}
+.advo-week-theme{font-size:15px;font-weight:700;color:var(--text);margin-bottom:14px}
+.advo-tool-row{
+  display:flex;align-items:flex-start;gap:14px;
+  background:var(--bg2);border:1.5px solid var(--border1);
+  border-radius:10px;padding:14px 16px;margin-bottom:10px;
+}
+.advo-tool-row-icon{font-size:22px;flex-shrink:0;margin-top:1px}
+.advo-tool-row-body{flex:1;min-width:0}
+.advo-tool-row-name{font-size:13px;font-weight:700;color:var(--text);margin-bottom:3px}
+.advo-tool-row-task{font-size:13px;color:var(--text2);line-height:1.5}
+.advo-trial-btn{
+  flex-shrink:0;padding:6px 14px;border-radius:20px;font-size:11px;font-weight:700;
+  border:1.5px solid var(--p1);color:var(--p1);background:transparent;
+  cursor:pointer;white-space:nowrap;font-family:var(--ff-body);
+  transition:all .15s;text-decoration:none;display:inline-flex;align-items:center;
+}
+.advo-trial-btn:hover{background:var(--p1);color:#fff}
+.advo-checkpoint{
+  display:flex;align-items:flex-start;gap:8px;
+  background:rgba(34,197,94,.07);border:1px solid rgba(34,197,94,.18);
+  border-radius:8px;padding:10px 14px;margin-top:4px;margin-bottom:6px;
+  font-size:12px;color:var(--text2);line-height:1.5;
+}
+.advo-checkpoint-icon{color:#22c55e;font-weight:700;flex-shrink:0;margin-top:1px}
+.advo-ready-when{
+  margin-top:28px;padding:18px 20px;
+  background:rgba(212,130,74,.07);border:1.5px solid rgba(212,130,74,.2);
+  border-radius:12px;
+}
+.advo-ready-label{font-size:11px;text-transform:uppercase;letter-spacing:.07em;font-weight:700;color:var(--p1);margin-bottom:6px}
+.advo-ready-text{font-size:14px;font-weight:600;color:var(--text);line-height:1.5}
+.advo-step4-actions{display:flex;gap:12px;margin-top:28px;flex-wrap:wrap;align-items:center}
+.advo-pdf-btn{
+  padding:10px 20px;border-radius:8px;font-size:13px;font-weight:600;
+  background:var(--p1);color:#fff;border:none;cursor:pointer;
+  font-family:var(--ff-body);transition:background .15s;
+}
+.advo-pdf-btn:hover{background:var(--p4)}
+.advo-inferred-strip{
+  background:rgba(212,130,74,.06);border:1px solid rgba(212,130,74,.15);
+  border-radius:10px;padding:10px 14px;margin-bottom:20px;
+  font-size:12px;color:var(--text2);line-height:1.6;
+}
+.advo-inferred-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:var(--p1);margin-bottom:6px}
+.advo-inferred-pills{display:flex;flex-wrap:wrap;gap:6px}
+.advo-inferred-pill{
+  padding:3px 10px;border-radius:12px;font-size:11px;font-weight:600;
+  background:var(--bg3);border:1px solid var(--border1);color:var(--text2);cursor:pointer;
+}
+.advo-inferred-pill:hover{border-color:var(--p1);color:var(--p1)}
+
+/* ── PDF PRE-FLIGHT ──────────────────────────────────────────────── */
+.advo-preflight-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:9999;
+  display:flex;align-items:center;justify-content:center;
+}
+.advo-preflight-box{
+  background:var(--bg1);border:1.5px solid var(--border1);border-radius:16px;
+  padding:32px 36px;max-width:400px;width:90%;
+}
+.advo-preflight-title{font-family:var(--ff-head);font-size:20px;font-weight:700;color:var(--text);margin-bottom:6px}
+.advo-preflight-sub{font-size:13px;color:var(--text3);margin-bottom:20px}
+.advo-preflight-input{
+  width:100%;padding:10px 14px;border:1.5px solid var(--border1);border-radius:8px;
+  background:var(--bg2);color:var(--text);font-family:var(--ff-body);font-size:13px;
+  outline:none;box-sizing:border-box;margin-bottom:16px;
+  transition:border-color .15s;
+}
+.advo-preflight-input:focus{border-color:var(--p1)}
+.advo-preflight-actions{display:flex;gap:10px}
+.advo-preflight-go{
+  flex:1;padding:10px;border-radius:8px;background:var(--p1);color:#fff;
+  font-size:13px;font-weight:600;border:none;cursor:pointer;font-family:var(--ff-body);
+  transition:background .15s;
+}
+.advo-preflight-go:hover{background:var(--p4)}
+.advo-preflight-cancel{
+  padding:10px 16px;border-radius:8px;border:1.5px solid var(--border1);
+  background:transparent;color:var(--text2);font-size:13px;cursor:pointer;font-family:var(--ff-body);
+}
+
+/* ── @media print ────────────────────────────────────────────────── */
+@media print{
+  body>*:not(#advisor-panel){display:none!important}
+  #advisor-panel{position:static!important;height:auto!important;overflow:visible!important;background:#fff!important}
+  .advo-panel-inner{overflow:visible!important;padding:0!important}
+  .advo-stage{overflow:visible!important;padding:0!important}
+  .advo-step4-wrap{padding:0!important;max-width:100%!important}
+  .advo-step4-actions,.advo-back-btn,.advo-pdf-btn{display:none!important}
+  .advo-trial-btn{display:none!important}
+  .advo-tool-row{border:1px solid #e5e7eb!important;break-inside:avoid}
+  .advo-week-block{break-inside:avoid}
+  .advo-print-header{display:block!important}
+  body{color:#111!important;background:#fff!important}
+}
+.advo-print-header{
+  display:none;
+  font-family:Georgia,serif;
+  margin-bottom:24px;
+}
+.advo-print-logo{font-size:18px;font-weight:700;letter-spacing:-.5px;color:#CC785C}
+.advo-print-meta{font-size:11px;color:#666;margin-top:4px}
+.advo-print-divider{border:none;border-top:1px solid #e5e7eb;margin:16px 0}
+
 /* ── STICKY SEARCH ────────────────────────────────────────────────── */
 .sticky-search{
   display:none;position:sticky;top:56px;z-index:90;
@@ -1800,6 +1911,49 @@ button,a,.cat-pill,.tab-btn{min-height:36px}
 .advo-option:active{transform:scale(0.99)}
 .advo-opt-icon{font-size:20px;flex-shrink:0}
 .advo-opt-label{font-size:13px;font-weight:500;color:var(--text);line-height:1.3}
+
+/* ── Free-text answer input ──────────────────────────────────────── */
+.advo-freetext-wrap{
+  max-width:680px;margin-top:4px;margin-bottom:24px;
+  border:1.5px solid var(--border1);border-radius:var(--radius-md);
+  background:var(--bg2);overflow:hidden;
+  transition:border-color .18s;
+}
+.advo-freetext-wrap:focus-within{border-color:var(--p1)}
+.advo-freetext-row{display:flex;align-items:stretch}
+.advo-freetext-input{
+  flex:1;padding:13px 16px;background:transparent;border:none;outline:none;
+  font-family:var(--ff-body);font-size:13px;color:var(--text);min-height:44px;
+  resize:none;line-height:1.5;
+}
+.advo-freetext-input::placeholder{color:var(--text3)}
+.advo-freetext-submit{
+  padding:0 16px;background:var(--p1);border:none;cursor:pointer;
+  color:#fff;font-size:16px;transition:background .15s;flex-shrink:0;
+  display:flex;align-items:center;justify-content:center;
+}
+.advo-freetext-submit:hover{background:var(--p4)}
+.advo-freetext-submit:disabled{background:var(--border1);cursor:default}
+.advo-freetext-divider{
+  display:flex;align-items:center;gap:10px;
+  max-width:680px;margin-bottom:14px;
+  font-size:11px;color:var(--text3);letter-spacing:.04em;text-transform:uppercase;
+}
+.advo-freetext-divider::before,.advo-freetext-divider::after{
+  content:'';flex:1;height:1px;background:var(--border1);
+}
+.advo-freetext-feedback{
+  max-width:680px;padding:10px 14px;border-radius:8px;
+  font-size:13px;margin-bottom:14px;
+  animation:fadeIn .2s ease;display:none;
+  border:1px solid;
+}
+.advo-freetext-feedback.ok{
+  background:rgba(34,197,94,.08);border-color:rgba(34,197,94,.25);color:#22c55e;
+}
+.advo-freetext-feedback.err{
+  background:rgba(239,68,68,.07);border-color:rgba(239,68,68,.2);color:#ef4444;
+}
 
 /* ── Shared back btn ─────────────────────────────────────────────── */
 .advo-back-btn{background:none;border:none;color:var(--text3);cursor:pointer;font-size:12px;font-family:var(--ff-body);padding:0;transition:color 0.15s}
@@ -5909,6 +6063,139 @@ const ENTERPRISE_MATRIX={
 };
 const EM_COLS=['SOC 2','HIPAA','GDPR','SSO','Audit Logs','Data Residency'];
 
+// ── Roadmap Templates — task + checkpoint per tool (and category fallbacks) ─
+const ROADMAP_TEMPLATES={
+  // ── Category fallbacks (used when no tool-specific entry exists) ──
+  _creation:     {task:'Set up your account, run your first prompt or test, and explore the settings most relevant to your goal',checkpoint:'You can produce your first useful output from this tool'},
+  _knowledge:    {task:'Connect this tool to your data source and run a test query to verify results are accurate',checkpoint:'Information from your own sources is flowing into your workflow'},
+  _orchestration:{task:'Wire this tool to your other components and run an end-to-end test of the full pipeline',checkpoint:'Your pipeline runs from input to output without manual steps'},
+  _governance:   {task:'Enable monitoring, set your first alert threshold, and run a sample trace',checkpoint:'You can see exactly what is happening in production and catch failures early'},
+  _capture:      {task:'Install the integration, record your first session or meeting, and check the output quality',checkpoint:'Notes or transcriptions are being captured automatically'},
+
+  // ── Core AI models ────────────────────────────────────────────────
+  'chatgpt':      {task:'Set up a Custom GPT or use the API — write your system prompt, test it against 5 real examples from your workflow',checkpoint:'ChatGPT produces output you would actually use without heavy editing'},
+  'claude':       {task:'Write a detailed system prompt in Claude\'s Projects feature — give it your context, tone, and constraints. Test with your hardest real example',checkpoint:'Claude handles your most complex prompts with minimal follow-up'},
+  'gemini':       {task:'Connect Gemini to Google Workspace — enable the integration in your Google admin settings and test a document summary',checkpoint:'Gemini is working inside your existing Google tools'},
+  'perplexity':   {task:'Set up Perplexity with your key research topics — bookmark search collections and test against a question you\'d normally spend 30 mins researching',checkpoint:'You get sourced answers in under 2 minutes for questions that used to take much longer'},
+  'grok':         {task:'Enable Grok on X Premium and test it against breaking news in your industry — compare its real-time knowledge to ChatGPT',checkpoint:'Grok surfaces current information your other AI tools miss'},
+  'copilot':      {task:'Enable Microsoft Copilot in your Microsoft 365 admin centre — start with Copilot in Word to summarise a long document',checkpoint:'Copilot is active in at least one Microsoft 365 app you use daily'},
+  'deepseek':     {task:'Access DeepSeek via API or chat — test it against your coding and reasoning tasks, compare cost-per-token to your current provider',checkpoint:'You have a working cost comparison and know where DeepSeek fits vs your current stack'},
+  'mistral':      {task:'Get your Mistral API key, run your first inference call, and benchmark latency and output quality against your primary use case',checkpoint:'Mistral API returning results with acceptable latency for your workload'},
+  'llama':        {task:'Download Llama 4 via Ollama or Hugging Face — run it locally with a test prompt, benchmark speed on your hardware',checkpoint:'Llama running locally with no API cost — you can iterate without rate limits'},
+  'gemma':        {task:'Pull Gemma 4 via Ollama — test on a single GPU, verify it fits in your VRAM budget, and run your first benchmark',checkpoint:'Gemma running on your hardware within your compute budget'},
+  'groq':         {task:'Get a Groq API key, run your first inference call, and measure token-per-second speed against your latency requirement',checkpoint:'Groq returning responses fast enough for your real-time use case'},
+
+  // ── Developer / Coding ────────────────────────────────────────────
+  'cursor':       {task:'Install Cursor, open your existing codebase, and use Composer to make your first multi-file edit — start with a refactor or a bug fix you\'ve been putting off',checkpoint:'Cursor has made at least one edit to your codebase that you accepted and shipped'},
+  'github-copilot':{task:'Install the GitHub Copilot extension in VS Code — complete your first autocomplete suggestion and use Copilot Chat to explain an unfamiliar piece of code',checkpoint:'Copilot is saving you keystrokes on every coding session'},
+  'claude-code':  {task:'Install Claude Code in your terminal, run it in your project root, and ask it to explain the codebase — then give it a small task like writing a test or fixing a bug',checkpoint:'Claude Code completed a task end-to-end in your codebase without you writing code manually'},
+  'windsurf':     {task:'Install Windsurf, open your project, and use the Cascade feature to make a multi-file change — compare the experience to your current IDE',checkpoint:'Windsurf has handled at least one complete feature addition with context across files'},
+  'github-copilot':{task:'Activate GitHub Copilot in your IDE, complete 10 suggestions, and use chat to generate a unit test for an existing function',checkpoint:'Copilot is integrated into your daily coding flow — you\'ve accepted at least 5 suggestions'},
+  'lovable':      {task:'Describe your app in plain English in Lovable — let it scaffold the first version, then iterate with 3 follow-up prompts to refine the UI',checkpoint:'You have a working frontend you can share via URL without writing any code'},
+  'devin':        {task:'Give Devin a well-scoped task with a clear acceptance criterion — a bug fix, a feature, or a test suite — and review its pull request',checkpoint:'Devin has submitted a PR you merged or iterated on — you understand what it can and can\'t own autonomously'},
+  'v0':           {task:'Describe your UI component in v0, export the generated React code, and drop it into your project — iterate with 2-3 follow-up prompts',checkpoint:'You have a working UI component in your codebase that came from a text description'},
+
+  // ── Frameworks & Engineering ──────────────────────────────────────
+  'langchain':    {task:'Install LangChain, build a simple chain: prompt → model → output. Then extend it with a retriever to pull from a document',checkpoint:'You have a working RAG pipeline returning answers from your own data'},
+  'llamaindex':   {task:'Install LlamaIndex, index a folder of your documents, and run your first query — verify the sources cited are accurate',checkpoint:'LlamaIndex is returning grounded answers from your document corpus'},
+  'langsmith':    {task:'Add LangSmith tracing to your existing LangChain app with 3 lines of code — open the dashboard and trace your first real run',checkpoint:'Every LLM call in your app is visible in LangSmith with inputs, outputs, and latency'},
+  'langgraph':    {task:'Build a simple 2-node graph: one node calls the LLM, one node processes the output — add a conditional edge and test state persistence',checkpoint:'You have a stateful agent loop that can branch based on output'},
+  'pinecone':     {task:'Create a Pinecone index, choose your embedding dimensions, and upsert your first batch of documents — run a similarity search to verify',checkpoint:'Semantic search returning the most relevant chunks from your data in under 200ms'},
+  'mem0':         {task:'Integrate Mem0 into your agent loop — add a memory write after each conversation turn and a memory read at the start of the next',checkpoint:'Your agent remembers facts from previous sessions without you passing history manually'},
+  'zep':          {task:'Connect Zep to your assistant, let it run a test conversation, and inspect the entity graph it builds — verify it extracted the right facts',checkpoint:'Zep is maintaining a structured memory of your users across sessions'},
+  'haystack':     {task:'Build a Haystack pipeline: file converter → document store → retriever → reader — run it against a test document set',checkpoint:'Haystack pipeline returning accurate answers from a corpus of your documents'},
+  'crewai':       {task:'Define 2 agents with distinct roles and a shared task — run them together and observe how they hand off work to each other',checkpoint:'A multi-agent crew has completed a task end-to-end that neither agent could do alone'},
+  'autogen':      {task:'Set up a 2-agent conversation in AutoGen: one user proxy, one assistant — give them a multi-step task and watch them collaborate',checkpoint:'AutoGen agents completing a multi-step task autonomously with minimal human intervention'},
+  'openai-agents':{task:'Build an agent with one tool using the OpenAI Agents SDK — run it against a real task and inspect the tool call trace',checkpoint:'Agent calling tools autonomously and completing a task that required tool use'},
+  'semantic-kernel':{task:'Install Semantic Kernel in your .NET or Python project, wire up your first AI function, and call it from your existing code',checkpoint:'Semantic Kernel AI function integrated into your production codebase'},
+  'claude-api':   {task:'Get your Anthropic API key, send your first API call, write a system prompt for your use case, and handle streaming responses',checkpoint:'Claude API returning streaming responses from your application code'},
+  'openai-api':   {task:'Get your OpenAI API key, send your first chat completion, and implement proper error handling and retry logic',checkpoint:'OpenAI API integrated with error handling — your app handles rate limits gracefully'},
+  'vertex-ai':    {task:'Enable Vertex AI in your Google Cloud project, deploy your first model endpoint, and make a prediction call from your code',checkpoint:'Vertex AI endpoint live and returning predictions from your application'},
+  'azure-openai': {task:'Provision Azure OpenAI in your Azure subscription, deploy a model, and make your first API call through the Azure endpoint',checkpoint:'Azure OpenAI serving requests through your private Azure endpoint with data residency confirmed'},
+  'cohere':       {task:'Get your Cohere API key, test the embed endpoint for your RAG use case, and benchmark retrieval quality against your requirements',checkpoint:'Cohere embeddings improving retrieval accuracy in your pipeline'},
+  'together-ai':  {task:'Get a Together AI API key, choose your open-source model, and make your first inference call — compare cost and speed to your current provider',checkpoint:'Together AI running open-source inference at lower cost than your previous setup'},
+  'ollama':       {task:'Install Ollama, pull your first model (start with llama3.2 or gemma3), and run a test prompt — confirm it runs at acceptable speed on your hardware',checkpoint:'Running open-source LLM locally with zero API cost and zero data leaving your machine'},
+
+  // ── Observability & Eval ──────────────────────────────────────────
+  'langsmith':    {task:'Wrap your chain or agent with LangSmith tracing — run 10 real queries and use the dashboard to find the slowest and least accurate steps',checkpoint:'You can identify and fix the weakest link in your AI pipeline using trace data'},
+  'helicone':     {task:'Change one URL in your OpenAI client to route through Helicone — all your existing calls are now logged with zero other changes',checkpoint:'Every LLM call is logged with cost, latency, and output — no code changes beyond one URL'},
+  'promptfoo':    {task:'Write your first promptfoo test: define 3 test cases with expected outputs — run the eval and see which prompts pass and which fail',checkpoint:'Automated prompt evaluation catching regressions before they reach production'},
+  'arize':        {task:'Add Arize Phoenix tracing to your app using the OpenTelemetry integration — run your first evaluation dataset through the dashboard',checkpoint:'LLM calls traced end-to-end with embedding drift and retrieval quality visible'},
+  'braintrust':   {task:'Create a Braintrust project, define your scoring function, and run your first eval dataset — log a baseline score to compare against future changes',checkpoint:'Baseline eval score established — you can measure the impact of every prompt change'},
+  'ragas':        {task:'Install Ragas, run faithfulness and answer relevancy metrics on 20 sample outputs from your RAG pipeline',checkpoint:'Your RAG pipeline has quantified faithfulness and relevancy scores you can improve against'},
+  'deepeval':     {task:'Install DeepEval, write your first test case with hallucination and answer relevancy metrics, and run it in your CI pipeline',checkpoint:'LLM eval tests running automatically on every code change'},
+
+  // ── Knowledge & Research ──────────────────────────────────────────
+  'notebooklm':   {task:'Upload your 3 most important documents — a report, a research paper, or a spec — and ask NotebookLM to create an Audio Overview',checkpoint:'NotebookLM answering questions that require synthesising across multiple documents you uploaded'},
+  'elicit':       {task:'Run a literature search on your research question in Elicit — extract the key claims and methodology from the top 5 papers',checkpoint:'You have a structured summary of the relevant literature saved and ready to cite'},
+  'wolfram':      {task:'Submit your hardest computation or data question to Wolfram Alpha — use it where GPT-4 would hallucinate a numerical answer',checkpoint:'Wolfram returning verified computational answers for questions that require precision'},
+  'glean':        {task:'Connect Glean to your top 3 company data sources (Slack, Drive, Confluence) and run 5 searches for information you\'ve struggled to find',checkpoint:'Glean surfacing answers from internal company data in under 10 seconds'},
+  'perplexity':   {task:'Save a Perplexity collection for your key research topic — set up daily search alerts and review the first batch of sourced results',checkpoint:'Perplexity is replacing 30+ minutes of manual research per day with sourced summaries'},
+
+  // ── Content & Writing ─────────────────────────────────────────────
+  'grammarly':    {task:'Install the Grammarly browser extension and desktop app — run your last 3 written outputs through it and review the tone and clarity suggestions',checkpoint:'Grammarly catching errors and improving clarity in your writing before it goes out'},
+  'jasper':       {task:'Set up your Jasper brand voice by uploading 3 samples of your best existing content — generate your first blog post draft and compare it to your manual process',checkpoint:'Jasper producing first drafts that match your brand voice with under 20 minutes of editing'},
+  'writer':       {task:'Configure your Writer brand guide: upload your style guide, forbidden phrases, and approved terms — test it against a piece of content that failed a past brand review',checkpoint:'Writer flagging brand and style violations automatically in all new content'},
+  'gamma':        {task:'Paste your outline or notes into Gamma and generate your first presentation — iterate with 2 follow-up prompts to refine the structure and design',checkpoint:'You have a polished presentation that would have taken 2+ hours in PowerPoint, done in under 20 minutes'},
+
+  // ── Voice & Video ─────────────────────────────────────────────────
+  'elevenlabs':   {task:'Clone your voice with 1 minute of audio — generate a test script and compare the output to the original recording',checkpoint:'AI voice indistinguishable from your own on a 30-second test clip'},
+  'heygen':       {task:'Create your avatar from a 2-minute video — generate a test talking head video from a script and review lip sync quality',checkpoint:'HeyGen producing avatar videos from scripts — you never need to be on camera for routine content again'},
+  'runway':       {task:'Upload your reference footage into Runway Gen-4 — generate 5 variations of a short clip and identify the one closest to your vision',checkpoint:'Runway producing usable video clips that fit your creative style'},
+  'luma':         {task:'Generate 5 short clips from text prompts in Luma Dream Machine — refine your prompting style based on what works',checkpoint:'Luma generating clips with the motion quality and style your project needs'},
+  'descript':     {task:'Upload a recording into Descript and remove filler words using the text editor — make one edit by deleting words from the transcript',checkpoint:'You\'ve edited a video entirely by editing text — your editing time is cut in half'},
+  'sora':         {task:'Generate your first Sora video from a detailed text prompt — iterate with 3 variations, adjusting style and motion descriptors',checkpoint:'Sora producing photorealistic video that matches your visual brief'},
+
+  // ── Automation ────────────────────────────────────────────────────
+  'n8n':          {task:'Build your first n8n workflow: a trigger (webhook or schedule) → an AI step (Claude or OpenAI node) → an output (email, Slack, or Google Sheet)',checkpoint:'n8n workflow running automatically on a schedule — zero manual intervention required'},
+  'manus':        {task:'Give Manus a complex multi-step task that normally takes you 30+ minutes — review each step it takes and the final deliverable quality',checkpoint:'Manus completed a research or analysis task autonomously that would have taken you significant manual effort'},
+
+  // ── Meetings & Capture ────────────────────────────────────────────
+  'otter-ai':     {task:'Record your next meeting with Otter.ai — review the transcript and action items immediately after to verify accuracy',checkpoint:'Otter.ai producing accurate meeting notes you can share with your team within 2 minutes of the meeting ending'},
+  'fathom':       {task:'Install the Fathom Zoom integration, record your next call, and review the AI summary — verify it captured the key decisions',checkpoint:'Fathom producing meeting summaries you can forward to stakeholders without editing'},
+  'fireflies':    {task:'Connect Fireflies to your calendar and record your next meeting — test the CRM integration by pushing meeting notes to a deal',checkpoint:'Meeting notes flowing automatically from Fireflies into your CRM with zero manual data entry'},
+  'gong':         {task:'Enable Gong for your sales calls — review the AI analysis of your last 3 recorded calls and identify one talk-time improvement',checkpoint:'Gong surfacing coaching insights from your team\'s calls without you manually reviewing recordings'},
+
+  // ── Enterprise & Compliance ───────────────────────────────────────
+  'harvey':       {task:'Upload a contract you\'ve reviewed manually before into Harvey — compare its analysis to your own and identify gaps or confirmations',checkpoint:'Harvey reviewing contracts at the level of a junior associate, flagging every clause you would have flagged'},
+  'salesforce-einstein':{task:'Enable Einstein Copilot in your Salesforce org — test it on a lead summary and a deal forecast, compare to your current manual process',checkpoint:'Einstein generating lead summaries and forecasts directly in Salesforce without switching tools'},
+  'copilot-studio':{task:'Build your first Copilot Studio agent: connect it to a SharePoint knowledge base and deploy it in Teams — test with 10 real employee questions',checkpoint:'Custom copilot answering employee questions from internal knowledge with SSO and audit trail active'},
+
+  // ── Infra & Models ────────────────────────────────────────────────
+  'nemotron':     {task:'Pull Nemotron-4 via the NVIDIA API, run synthetic data generation for your use case, and evaluate output quality against your gold standard',checkpoint:'Nemotron generating synthetic training data at the quality level your fine-tune requires'},
+  'promptfoo':    {task:'Define 3 prompt variants in promptfoo, add 10 test cases, and run a comparison — identify the best-performing variant with evidence',checkpoint:'Data-driven prompt selection replacing gut-feeling prompt engineering in your workflow'},
+
+  // ── MCP Servers (shared pattern) ─────────────────────────────────
+  'mcp-github':   {task:'Add the GitHub MCP to your Claude Desktop config, authorise with a personal access token, and ask Claude to list your open PRs',checkpoint:'Claude reading and writing your GitHub repos from natural language instructions'},
+  'mcp-notion':   {task:'Add the Notion MCP to Claude Desktop, connect your workspace, and ask Claude to summarise a Notion page by name',checkpoint:'Claude reading and writing your Notion workspace from natural language'},
+  'mcp-slack':    {task:'Add the Slack MCP, authorise with your workspace token, and ask Claude to summarise the last 24 hours of a key channel',checkpoint:'Claude reading your Slack channels and posting updates from natural language instructions'},
+  'mcp-postgres': {task:'Add the PostgreSQL MCP with your connection string, and ask Claude to describe your schema and run a sample analytical query',checkpoint:'Claude querying your database directly — no SQL writing required for routine data questions'},
+  'mcp-github':   {task:'Configure the GitHub MCP server in Claude Desktop — test by asking Claude to create an issue or review a PR from your terminal',checkpoint:'Claude managing your GitHub workflow from natural language in the terminal'},
+  'mcp-google-drive':{task:'Add the Google Drive MCP to Claude Desktop and ask Claude to find and summarise a document by topic',checkpoint:'Claude searching and reading your Google Drive from natural language'},
+  'mcp-supabase': {task:'Add the Supabase MCP with your project URL and service key — ask Claude to query a table and explain the schema',checkpoint:'Claude reading your Supabase database and helping you write queries without switching tools'},
+  'mcp-stripe':   {task:'Add the Stripe MCP with your restricted API key — ask Claude to summarise last month\'s revenue and list your top 5 customers',checkpoint:'Claude answering Stripe data questions in natural language — no dashboard navigation required'},
+  'mcp-linear':   {task:'Add the Linear MCP and ask Claude to list your current sprint issues and update a ticket status',checkpoint:'Claude managing your Linear board from natural language instructions'},
+  'mcp-aws':      {task:'Configure the AWS MCP with your credentials — ask Claude to list your S3 buckets, Lambda functions, and recent CloudWatch errors',checkpoint:'Claude querying your AWS infrastructure from natural language — faster than navigating the console'},
+  'mcp-jira':     {task:'Add the Jira MCP with your API token — ask Claude to create an issue, assign it, and move it to In Progress',checkpoint:'Claude managing your Jira backlog from natural language'},
+  'mcp-hubspot':  {task:'Add the HubSpot MCP with your private app token — ask Claude to find a contact, summarise their deal history, and draft a follow-up',checkpoint:'Claude reading your CRM and drafting outreach from natural language'},
+  'mcp-zapier':   {task:'Add the Zapier MCP to Claude Desktop — ask Claude to trigger one of your existing Zaps from natural language',checkpoint:'Claude triggering your entire Zapier automation library from a single conversation'},
+
+  // ── Other ─────────────────────────────────────────────────────────
+  'midjourney':   {task:'Write 5 prompts with increasing specificity — use --style, --ar, and --v 7 parameters to control output. Save the prompts that worked',checkpoint:'Midjourney producing images you\'d use without extensive iteration — your prompt style is calibrated'},
+  'canva-ai':     {task:'Use Canva\'s Magic Design to generate a first draft from your brand colours — use Magic Write to draft the copy for one piece of content',checkpoint:'Canva AI producing publishable content in under 15 minutes from a blank canvas'},
+  'adobe-firefly':{task:'Generate 10 image variations in Adobe Firefly using your brand terms as style references — download the ones that are commercially safe',checkpoint:'Firefly producing on-brand, commercially safe images for your project without stock photo licensing'},
+  'notion-ai':    {task:'Enable Notion AI in your workspace — use it to summarise a long doc, draft a meeting agenda, and generate action items from meeting notes',checkpoint:'Notion AI embedded in your daily note-taking and doc workflow — reducing writing time per document'},
+  'synthesia':    {task:'Create your avatar, write a 60-second script, and generate your first Synthesia video — review lip sync and tone quality',checkpoint:'Synthesia producing training or explainer videos without a camera or recording studio'},
+  'openclaw':     {task:'Install OpenClaw, give it a computer task you do daily, and observe how it navigates your desktop — verify it completes the task correctly',checkpoint:'OpenClaw completing at least one routine computer task fully autonomously'},
+  'khanmigo':     {task:'Assign Khanmigo to a topic you\'re learning — work through 3 Socratic dialogue sessions and review what concepts you actually retained',checkpoint:'Khanmigo guiding you to understand a concept you previously found difficult'},
+  'fitbod':       {task:'Log your equipment and fitness level in Fitbod — complete your first AI-generated workout and rate the difficulty after each exercise',checkpoint:'Fitbod generating workouts that hit the right difficulty level for your current fitness'},
+  'julius-ai':    {task:'Upload a CSV or spreadsheet into Julius AI — ask it to find trends, generate a chart, and explain an anomaly in plain English',checkpoint:'Julius answering data questions in plain English that previously required Excel or a data analyst'},
+  'datawrapper':  {task:'Import your dataset into Datawrapper, choose the right chart type, and publish your first embeddable chart with proper labels and source attribution',checkpoint:'Publication-quality chart embedded in your content without a designer'},
+  'elicit':       {task:'Run your research question through Elicit, extract structured data from the top 10 papers, and export a summary table',checkpoint:'Literature review that would have taken a day completed in under 2 hours with full citations'},
+  'consensus':    {task:'Ask Consensus a specific scientific question — review the consensus meter and read the 3 most-cited supporting papers',checkpoint:'Consensus replacing Google Scholar for your routine scientific literature checks'},
+};
+
+
 // ── MCP Server configs — tools with published MCP servers ─────────
 const MCP_CONFIGS={
   'github-copilot':{
@@ -6390,8 +6677,162 @@ function getQuestions(){
 // ── Advisor session state ─────────────────────────────────────────
 let session={
   goal:'', goalTags:[], answers:{}, derivedTags:[], step:0,
-  questionIndex:0, stack:[]
+  questionIndex:0, stack:[], _autoAnswered:[]
 };
+
+// ── Auto-answer from goal text ─────────────────────────────────────
+// Runs parseNaturalAnswer() against every question for the current mode.
+// Pre-fills session.answers and marks session._autoAnswered.
+// Returns array of {id, value, label, icon} that were auto-filled.
+function autoAnswerFromGoal(goalText){
+  var s=window._advisorSession||session;
+  var Qs=s.mode==='build'?BUILD_QUESTIONS:IDEA_QUESTIONS;
+  var filled=[];
+  Qs.forEach(function(q){
+    if(s.answers[q.id]) return; // already answered — don't overwrite
+    var result=parseNaturalAnswer(q.id,goalText);
+    if(result){
+      s.answers[q.id]=result.value;
+      if(!s._autoAnswered) s._autoAnswered=[];
+      if(s._autoAnswered.indexOf(q.id)<0) s._autoAnswered.push(q.id);
+      filled.push({id:q.id,value:result.value,label:result.label,icon:result.icon,qText:q.text});
+    }
+  });
+  window._advisorSession=s;
+  return filled;
+}
+
+// ── Natural language answer parser ────────────────────────────────
+// Maps free-text input per question ID → one of that question's option values.
+// Returns {value, label, confidence} or null if no confident match.
+function parseNaturalAnswer(qId, raw){
+  var t=raw.toLowerCase().replace(/[^\w\s]/g,' ').trim();
+  if(!t) return null;
+
+  var maps={
+    // IDEA mode
+    goal_type:{
+      creator:  [/\b(youtube|channel|tiktok|reels?|shorts|content creator|grow.*audience|audience|subscribers?|follower|social media|instagram|creator)\b/],
+      content:  [/\b(blog|newsletter|write|writing|content fast|copy|copywriting|posts?|articles?|social posts?|faster content)\b/],
+      researcher:[/\b(research|learn|study|read|knowledge|notes?|literature|academic|papers?|summarize)\b/],
+      automation:[/\b(automat|workflow|repetitive|schedule|pipeline|connect.*tools|no.?code|zapier|make\.com|n8n)\b/],
+      agency:   [/\b(agency|freelanc|clients?|client work|consulting|services?)\b/],
+      product:  [/\b(saas|app|product|startup|build.*sell|mvp|launch|sell)\b/],
+    },
+    output_format:{
+      text:   [/\b(blog|email|script|newsletter|text|writ|copy|article|caption|post)\b/],
+      visual: [/\b(image|graphic|design|visual|photo|artwork|illustration|banner|thumbnail)\b/],
+      video:  [/\b(video|youtube|reel|tiktok|course|film|clip|shorts)\b/],
+      audio:  [/\b(podcast|audio|voice.*over|voiceover|sound|music|narrat)\b/],
+      docs:   [/\b(report|proposal|document|doc|pdf|deck|presentation|slide)\b/],
+      data:   [/\b(data|dashboard|analysis|spreadsheet|chart|excel|csv|analytics)\b/],
+    },
+    domain:{
+      marketing:[/\b(marketing|social|seo|ads|brand|campaign|email.*market|growth)\b/],
+      legal:    [/\b(legal|law|contract|compliance|lawyer|attorney|litigation)\b/],
+      sales:    [/\b(sales|crm|deal|prospect|revenue|pipeline|lead|hubspot|salesforce)\b/],
+      research: [/\b(research|education|school|university|academic|teach|learn|student)\b/],
+      creative: [/\b(creative|media|art|film|design|photo|music|entertain)\b/],
+      general:  [/\b(general|business|office|operations?|admin|everything)\b/],
+    },
+    existing_tools:{
+      google:   [/\b(google|gmail|sheets|drive|docs|workspace|gsuite)\b/],
+      notion:   [/\b(notion|obsidian|roam|logseq|bear)\b/],
+      design:   [/\b(canva|figma|adobe|photoshop|illustrator|creative cloud)\b/],
+      comms:    [/\b(slack|teams|zoom|microsoft|discord|chat)\b/],
+      none:     [/\b(none|nothing|fresh|new|starting|no tools|don.?t use|clean slate)\b/],
+    },
+    skill:{
+      beginner:     [/\b(beginner|new|newbie|basic|simple|easy|not.*tech|non.?tech|novice|just email|just basic)\b/],
+      intermediate: [/\b(intermediate|some experience|decent|reasonable|moderate|pick.*up fast|comfortable|average)\b/],
+      power:        [/\b(power|advanced|expert|developer|technical|explore|curious|pro|experienced|engineer)\b/],
+    },
+    budget:{
+      none:   [/\b(free|zero|\$0|no.*budget|no money|nothing|can.?t pay|no cost)\b/],
+      low:    [/\b(low|cheap|affordable|small budget|under.?\$30|less than.*30|minimal|not much)\b/,/\b(\$[1-2]\d|10|15|20|25|30).*month\b/,/\bmonth.*\$[1-3]\d\b/],
+      medium: [/\b(medium|moderate|reasonable|\$50|\$60|\$70|\$80|\$100|under.*100|few hundred)\b/,/\b(30|40|50|60|70|80|100).*month\b/],
+      high:   [/\b(unlimited|whatever it takes|no limit|budget.?is fine|high budget|enterprise budget|\$100.*\+|\$200|\$500)\b/,/\b(100|150|200|300|500)\s*\+.*month\b/],
+    },
+    // BUILD mode
+    lang_stack:{
+      python:  [/\b(python|py\b|django|flask|fastapi|pytorch|tensorflow|numpy|pandas)\b/],
+      ts:      [/\b(typescript|javascript|node(\.?js)?|ts\b|js\b|react|next\.?js|express|bun|deno)\b/],
+      go:      [/\b(go\b|golang|go lang)\b/],
+      java:    [/\b(java\b|jvm|kotlin|spring|scala|android)\b/],
+      multi:   [/\b(multi|multiple|various|mixed|polyglot|don.?t know|tbd|undecided|several)\b/],
+    },
+    deployment:{
+      aws:      [/\b(aws|amazon|ec2|s3|lambda|eks|fargate|sagemaker)\b/],
+      gcp:      [/\b(gcp|google cloud|google.*cloud|vertex|cloud run|bigquery)\b/],
+      azure:    [/\b(azure|microsoft.*cloud|aks|azure.*function)\b/],
+      selfhost: [/\b(self.?host|on.?prem|on premise|own server|private|bare metal|local server|vps|hetzner|dedicated)\b/],
+      multi:    [/\b(multi.?cloud|hybrid|edge|multiple clouds?|don.?t know|any cloud|flexible)\b/],
+    },
+    latency:{
+      realtime: [/\b(real.?time|instant|under.*200|200ms|sub.?second|live|streaming|chat|voice)\b/],
+      fast:     [/\b(fast|quick|under.*2s?|2 sec|interactive|snappy|responsive)\b/],
+      medium:   [/\b(medium|10\s*sec|near real.?time|few seconds|acceptable)\b/],
+      batch:    [/\b(batch|minutes?|async|background|overnight|scheduled|nightly|slow.?is.*ok|latency.*not)\b/],
+    },
+    compliance:{
+      none:   [/\b(none|no.*compliance|public|internal|not regulated|no requirement|n\/a|na\b)\b/],
+      gdpr:   [/\b(gdpr|eu|europe|european|data protection|german|french|uk.*data)\b/],
+      hipaa:  [/\b(hipaa|health(care)?|medical|patient|phi|clinic|hospital|doctor)\b/],
+      soc2:   [/\b(soc\s*2|pci|financial|fintech|banking|enterprise|security.*certified)\b/],
+    },
+    build_vs_buy:{
+      api_consumer: [/\b(api|openai|anthropic|call.*api|consume|just.*use|no.*build|ship fast|quick)\b/],
+      rag:          [/\b(rag|retrieval|prompt.*engineer|document.*search|knowledge base|vector|embed|fine.*prompt)\b/],
+      finetune:     [/\b(fine.?tun|train|custom.*model|domain.*adapt|lora|qlora)\b/],
+      infra:        [/\b(self.?host|own.*stack|infra|infrastructure|build.*everything|full.*control|ollama|llama.*local)\b/],
+    },
+    model_need:{
+      text:    [/\b(text|chat|reasoning|llm|language model|summariz|write|generat.*text|qa\b|q&a)\b/],
+      code:    [/\b(code|coding|generate.*code|programming|copilot|autocomplete|debug)\b/],
+      vision:  [/\b(vision|image|visual|photo|screenshot|ocr|multimodal|see)\b/],
+      voice:   [/\b(voice|speech|tts|stt|audio|transcri|whisper|eleven)\b/],
+      embed:   [/\b(embed|semantic.*search|vector|rag|similarity|retrieval|search)\b/],
+      agents:  [/\b(agent|autonomous|multi.?step|tool.*use|agentic|automate|orchestrat)\b/],
+    },
+    timeline:{
+      asap:     [/\b(asap|this week|today|tomorrow|urgent|immediately|now|days?|prototype|poc)\b/],
+      soon:     [/\b(one month|1 month|next month|few weeks|mvp|quick|soon)\b/],
+      quarter:  [/\b(quarter|3 months?|three months?|few months?|production)\b/],
+      flexible: [/\b(flexible|6 months?|year|no rush|take.*time|whenever|later)\b/],
+    },
+  };
+
+  var qMap=maps[qId];
+  if(!qMap) return null;
+
+  // Test each pattern group
+  var best=null;
+  var entries=Object.keys(qMap);
+  for(var i=0;i<entries.length;i++){
+    var val=entries[i];
+    var pats=qMap[val];
+    for(var j=0;j<pats.length;j++){
+      if(pats[j].test(t)){
+        best=val;
+        break;
+      }
+    }
+    if(best) break;
+  }
+
+  if(!best) return null;
+
+  // Find the display label from the question options
+  var Qs=window._advisorSession&&window._advisorSession.mode==='build'?BUILD_QUESTIONS:IDEA_QUESTIONS;
+  var q=null;
+  for(var k=0;k<Qs.length;k++){if(Qs[k].id===qId){q=Qs[k];break;}}
+  if(!q) return null;
+  var opt=null;
+  for(var m=0;m<q.options.length;m++){if(q.options[m].value===best){opt=q.options[m];break;}}
+  if(!opt) return null;
+
+  return {value:best, label:opt.label, icon:opt.icon};
+}
 
 // ── Goal parser → tags ────────────────────────────────────────────
 function parseGoal(text){
@@ -6727,6 +7168,74 @@ function buildStack(){
   session._candidateCount=candidatePool.length;
 
   return recs.slice(0,5);
+}
+
+// ── Roadmap generator ─────────────────────────────────────────────
+function generateRoadmap(stack,sess){
+  var s=sess||window._advisorSession||{};
+  var timeline=s.answers&&s.answers.timeline||'month';
+  var goalText=s.goal||'your goal';
+
+  // Week count from timeline
+  var weekCount=3;
+  if(timeline==='asap'||timeline==='week') weekCount=1;
+  else if(timeline==='soon') weekCount=2;
+  else if(timeline==='quarter'||timeline==='flexible') weekCount=4;
+
+  // Layer priority order for week assignment
+  var layerOrder=['creation','capture','knowledge','orchestration','governance'];
+
+  // Sort stack tools by layer order
+  var sorted=stack.slice().sort(function(a,b){
+    var ai=layerOrder.indexOf(a.layer);
+    var bi=layerOrder.indexOf(b.layer);
+    if(ai<0) ai=99; if(bi<0) bi=99;
+    return ai-bi;
+  });
+
+  // Build weeks
+  var weeks=[];
+  var weekThemes=['Set up your foundation','Build your first workflow','Expand and integrate','Ship and monitor'];
+  var weekThemesFull=['Set up your core tools and run your first real test','Build the connections between your tools into a working pipeline','Expand your workflow and integrate with your existing systems','Add monitoring, refine quality, and prepare to share or deploy'];
+
+  if(weekCount===1){
+    // Single week — all tools in priority order
+    var tools=sorted.map(function(r){
+      var tpl=ROADMAP_TEMPLATES[r.tool.id]||ROADMAP_TEMPLATES['_'+r.layer]||ROADMAP_TEMPLATES._creation;
+      var trialUrl='';
+      try{trialUrl=(TOOL_URLS[r.tool.id]&&TOOL_URLS[r.tool.id].url)||'';}catch(e){}
+      return {id:r.tool.id,name:r.tool.name,icon:r.tool.icon,layer:r.layer,task:tpl.task,trialUrl:trialUrl,free:r.tool.free&&r.tool.free.available};
+    });
+    weeks.push({week:1,theme:weekThemes[0],fullTheme:weekThemesFull[0],tools:tools,checkpoint:'You have all your core tools running and have completed at least one real task with your new stack'});
+  } else {
+    // Distribute tools across weeks by layer
+    var perWeek=Math.ceil(sorted.length/weekCount);
+    for(var w=0;w<weekCount;w++){
+      var weekTools=sorted.slice(w*perWeek,(w+1)*perWeek);
+      if(!weekTools.length) continue;
+      var toolRows=weekTools.map(function(r){
+        var tpl=ROADMAP_TEMPLATES[r.tool.id]||ROADMAP_TEMPLATES['_'+r.layer]||ROADMAP_TEMPLATES._creation;
+        var trialUrl='';
+        try{trialUrl=(TOOL_URLS[r.tool.id]&&TOOL_URLS[r.tool.id].url)||'';}catch(e){}
+        return {id:r.tool.id,name:r.tool.name,icon:r.tool.icon,layer:r.layer,task:tpl.task,checkpoint:tpl.checkpoint,trialUrl:trialUrl,free:r.tool.free&&r.tool.free.available};
+      });
+      // Week checkpoint = last tool's checkpoint
+      var weekCheckpoint=toolRows[toolRows.length-1].checkpoint||weekThemesFull[w]||'This week\'s tools are set up and running';
+      weeks.push({week:w+1,theme:weekThemes[w]||'Advanced setup',fullTheme:weekThemesFull[w]||'',tools:toolRows,checkpoint:weekCheckpoint});
+    }
+  }
+
+  // Ready-when statement — goal-tag aware
+  var goalTags=s.goalTags||[];
+  var readyWhen='You can use your full AI stack to complete a real task from start to finish without switching to manual processes';
+  if(goalTags.indexOf('developer')>=0||goalTags.indexOf('coding')>=0) readyWhen='Your AI-assisted development workflow is live — you can build, test, and debug with your stack handling the repetitive work';
+  else if(goalTags.indexOf('content')>=0||goalTags.indexOf('creator')>=0) readyWhen='You can produce a piece of content from idea to finished output using your AI stack — faster than your previous workflow';
+  else if(goalTags.indexOf('researcher')>=0||goalTags.indexOf('knowledge')>=0) readyWhen='You can answer a complex research question from your own documents and the web in under 10 minutes';
+  else if(goalTags.indexOf('automation')>=0) readyWhen='At least one workflow that previously required manual steps is now running automatically on a schedule';
+  else if(goalTags.indexOf('sales')>=0) readyWhen='Your AI stack is capturing, summarising, and following up on sales conversations with minimal manual input';
+  else if(goalTags.indexOf('legal')>=0) readyWhen='Your AI stack is reviewing and summarising legal documents at the level that replaces a first-pass manual review';
+
+  return {goal:goalText,weeks:weeks,readyWhen:readyWhen,stack:stack};
 }
 
 // ── Outcome estimator ─────────────────────────────────────────────
@@ -7211,25 +7720,43 @@ function buildBuilderSection(){
     showInput(false);
     const q=Qs[qi];
 
-    // Previous answers as clickable pills — click to jump back to that question
-    // In edit mode, show ALL answered questions (not just those before current)
+    // Inferred answers strip — show what was auto-filled from goal text
+    const autoAnswered=session._autoAnswered||[];
+    const inferredPills=autoAnswered.map(function(qId){
+      var pq=Qs.find(function(x){return x.id===qId;});
+      if(!pq) return '';
+      var ans=session.answers[qId];
+      var opt=pq.options.find(function(o){return o.value===ans;});
+      if(!opt) return '';
+      return '<button class="advo-inferred-pill" onclick="advisorJumpTo('+Qs.indexOf(pq)+')" title="Inferred — click to change">'+opt.icon+' '+opt.label+' <span style="opacity:.5;font-size:10px">✎</span></button>';
+    }).filter(Boolean).join('');
+
+    // Previous explicit answers as clickable pills
     const prevPills=Qs.map((pq,pIdx)=>{
-      if(pIdx===qi) return ''; // skip current question
+      if(pIdx===qi) return '';
       const ans=session.answers[pq.id];
       if(!ans) return '';
+      const isInferred=(session._autoAnswered||[]).indexOf(pq.id)>=0;
+      if(isInferred) return ''; // shown in inferred strip instead
       const opt=pq.options.find(o=>o.value===ans);
       const dimmed=pIdx>qi?'style="opacity:0.5"':'';
       return `<button class="advo-prev-pill" onclick="advisorJumpTo(${pIdx})" title="Click to change this answer" ${dimmed}>${opt?.icon||''} ${opt?.label||ans}</button>`;
     }).filter(Boolean).join('');
 
+    // Count only unanswered questions for progress display
+    const unansweredQs=Qs.filter(function(qq){return !session.answers[qq.id]||session.answers[qq.id]===session.answers[q.id];});
     const total=Qs.length;
-    const pct=Math.round((qi/total)*100);
+    const answeredCount=Object.keys(session.answers).length;
+    const pct=Math.round((answeredCount/total)*100);
+    const displayIdx=Qs.slice(0,qi).filter(function(qq){return (session._autoAnswered||[]).indexOf(qq.id)<0;}).length+1;
+    const displayTotal=Qs.filter(function(qq){return (session._autoAnswered||[]).indexOf(qq.id)<0;}).length;
 
     setStage(`
       <div class="advo-q-wrap">
         <div class="advo-progress-rail"><div class="advo-progress-fill" style="width:${pct}%"></div></div>
+        ${inferredPills?`<div class="advo-inferred-strip"><div class="advo-inferred-label">Understood from your description</div><div class="advo-inferred-pills">${inferredPills}</div></div>`:''}
         ${prevPills?`<div class="advo-prev-pills">${prevPills}</div>`:''}
-        <div class="advo-q-counter">Question ${qi+1} of ${total}</div>
+        <div class="advo-q-counter">Question ${displayIdx} of ${displayTotal}</div>
         <h2 class="advo-q-headline">${q.text}</h2>
         <p class="advo-q-sub">${q.sub}</p>
         <div class="advo-options-grid">
@@ -7239,8 +7766,25 @@ function buildBuilderSection(){
               <span class="advo-opt-label">${o.label}</span>
             </button>`).join('')}
         </div>
+        <div class="advo-freetext-divider">or describe in your own words</div>
+        <div id="advo-ft-feedback" class="advo-freetext-feedback"></div>
+        <div class="advo-freetext-wrap">
+          <div class="advo-freetext-row">
+            <textarea id="advo-ft-input" class="advo-freetext-input" rows="1"
+              placeholder="Type anything — e.g. &quot;I write emails and reports&quot; or &quot;we need HIPAA compliance&quot;"
+              oninput="advisorFtResize(this)"
+              onkeydown="if(event.key==='Enter'&&!event.shiftKey){event.preventDefault();advisorFtSubmit('${q.id}')}"
+            ></textarea>
+            <button class="advo-freetext-submit" onclick="advisorFtSubmit('${q.id}')" title="Submit answer">→</button>
+          </div>
+        </div>
         <button class="advo-back-btn" onclick="advisorBack()">← Back</button>
       </div>`);
+    // Auto-focus the textarea after render
+    setTimeout(function(){
+      var ft=document.getElementById('advo-ft-input');
+      if(ft&&window.matchMedia('(pointer:fine)').matches) ft.focus();
+    },80);
   }
 
   // ── STEP 3: Results — two completely different outputs per mode ──
@@ -7269,6 +7813,128 @@ function buildBuilderSection(){
       renderIdeaResults(stack, goalText, out, totalMin, totalMax);
     }
   }
+
+  // ── STEP 4: Action Plan ───────────────────────────────────────────
+  function renderStep4(){
+    session.step=4;
+    window._advisorSession=session;
+    showInput(false);
+    var roadmap=generateRoadmap(session.stack,session);
+    var goalDisplay=session.goal.length>80?session.goal.substring(0,77)+'…':session.goal;
+
+    var weeksHtml=roadmap.weeks.map(function(w){
+      var toolsHtml=w.tools.map(function(t){
+        var trialBtn=t.trialUrl?('<a class="advo-trial-btn" href="'+t.trialUrl+'" target="_blank" rel="noopener">'+(t.free?'Start free →':'Try '+t.name+' →')+'</a>'):'';
+        return '<div class="advo-tool-row">'
+          +'<div class="advo-tool-row-icon">'+t.icon+'</div>'
+          +'<div class="advo-tool-row-body">'
+          +'<div class="advo-tool-row-name">'+t.name+'</div>'
+          +'<div class="advo-tool-row-task">'+t.task+'</div>'
+          +'</div>'
+          +trialBtn
+          +'</div>';
+      }).join('');
+      var checkHtml=w.checkpoint?('<div class="advo-checkpoint"><span class="advo-checkpoint-icon">✓</span><span>'+w.checkpoint+'</span></div>'):'';
+      return '<div class="advo-week-block">'
+        +'<div class="advo-week-label">Week '+w.week+'</div>'
+        +'<div class="advo-week-theme">'+w.theme+'</div>'
+        +toolsHtml
+        +checkHtml
+        +'</div>';
+    }).join('');
+
+    // Print header (hidden in normal view, shown in print)
+    var printUrls=session.stack.map(function(r){
+      var url='';
+      try{url=(TOOL_URLS[r.tool.id]&&TOOL_URLS[r.tool.id].url)||'';}catch(e){}
+      return url?url.replace(/^https?:\/\//,''):'';
+    }).filter(Boolean).join(' · ');
+
+    var printStackRows=session.stack.map(function(r){
+      return '<tr><td style="padding:4px 8px;font-size:12px">'+r.tool.icon+' <strong>'+r.tool.name+'</strong></td><td style="padding:4px 8px;font-size:11px;color:#666">'+r.layer+'</td><td style="padding:4px 8px;font-size:11px;color:#666">'+r.tool.maker+'</td></tr>';
+    }).join('');
+
+    setStage('<div class="advo-step4-wrap">'
+      +'<div id="advo-print-header" class="advo-print-header">'
+      +'<div style="display:flex;justify-content:space-between;align-items:flex-start">'
+      +'<div class="advo-print-logo">TOOLIPEDIA</div>'
+      +'<div style="font-size:11px;color:#999">toolipedia.com</div>'
+      +'</div>'
+      +'<hr class="advo-print-divider">'
+      +'<div id="advo-print-for" style="font-size:12px;color:#444;margin-bottom:4px"></div>'
+      +'<div style="font-size:13px;font-weight:600;color:#111;margin-bottom:2px">Goal: '+goalDisplay+'</div>'
+      +'<div style="font-size:11px;color:#888">Generated '+new Date().toLocaleDateString('en-US',{month:'long',year:'numeric'})+'</div>'
+      +'<hr class="advo-print-divider">'
+      +'<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#888;margin-bottom:8px">Your Stack</div>'
+      +'<table style="width:100%;border-collapse:collapse;margin-bottom:16px"><tbody>'+printStackRows+'</tbody></table>'
+      +'<hr class="advo-print-divider">'
+      +'<div style="font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.06em;color:#888;margin-bottom:12px">Implementation Roadmap</div>'
+      +'</div>'
+      +'<div class="advo-step4-eyebrow">Step 4 · Action Plan</div>'
+      +'<div class="advo-step4-title">Your implementation roadmap</div>'
+      +'<div class="advo-step4-goal">'+goalDisplay+'</div>'
+      +weeksHtml
+      +'<div class="advo-ready-when">'
+      +'<div class="advo-ready-label">You\'re ready when</div>'
+      +'<div class="advo-ready-text">'+roadmap.readyWhen+'</div>'
+      +'</div>'
+      +'<div class="advo-print-footer" style="display:none;font-size:10px;color:#aaa;margin-top:20px;text-align:center">Generated by Toolipedia · dishts04.github.io/Toolipedia</div>'
+      +'<div class="advo-step4-actions">'
+      +'<button class="advo-pdf-btn" onclick="exportStackPDF()">🖨 Share / Save as PDF</button>'
+      +'<button class="advo-back-btn" onclick="renderStep3()" style="margin-left:8px">← Back to stack</button>'
+      +'</div>'
+      +'</div>');
+  }
+  window.renderStep4=renderStep4;
+
+  // ── PDF Pre-flight + Export ───────────────────────────────────────
+  window.exportStackPDF=function(){
+    // Show pre-flight overlay
+    var overlay=document.createElement('div');
+    overlay.className='advo-preflight-overlay';
+    overlay.id='advo-preflight-overlay';
+    overlay.innerHTML='<div class="advo-preflight-box">'
+      +'<div class="advo-preflight-title">Who is this for?</div>'
+      +'<div class="advo-preflight-sub">Optionally add a name — it will appear on the report.</div>'
+      +'<input class="advo-preflight-input" id="advo-preflight-name" type="text" placeholder="e.g. Acme Corp, your team name, or leave blank" maxlength="60">'
+      +'<div class="advo-preflight-actions">'
+      +'<button class="advo-preflight-cancel" onclick="document.getElementById(\'advo-preflight-overlay\').remove()">Cancel</button>'
+      +'<button class="advo-preflight-go" onclick="window._doPrint()">Generate Report →</button>'
+      +'</div>'
+      +'</div>';
+    document.body.appendChild(overlay);
+    setTimeout(function(){
+      var inp=document.getElementById('advo-preflight-name');
+      if(inp) inp.focus();
+      // Allow Enter key to submit
+      if(inp) inp.onkeydown=function(e){if(e.key==='Enter') window._doPrint();};
+    },80);
+  };
+
+  window._doPrint=function(){
+    var nameVal='';
+    try{nameVal=(document.getElementById('advo-preflight-name').value||'').trim();}catch(e){}
+    // Inject "Prepared for" into print header
+    var pfEl=document.getElementById('advo-print-for');
+    if(pfEl) pfEl.textContent=nameVal?'Prepared for: '+nameVal:'AI Stack Report';
+    // Show print-only elements
+    var header=document.getElementById('advo-print-header');
+    var footer=document.querySelector('.advo-print-footer');
+    if(header) header.style.display='block';
+    if(footer) footer.style.display='block';
+    // Remove overlay
+    var ov=document.getElementById('advo-preflight-overlay');
+    if(ov) ov.remove();
+    // Print
+    setTimeout(function(){
+      window.print();
+      // Restore after print dialog closes
+      setTimeout(function(){
+        if(header) header.style.display='none';
+        if(footer) footer.style.display='none';
+      },1000);
+    },100);
+  };
 
   // ── Edit answers summary (shared by both modes) ─────────────────
   function renderEditAnswers(){
@@ -7431,6 +8097,10 @@ function renderIdeaResults(stack, goalText, out, totalMin, totalMax){
         <div class="advo-results-footer">
           <button class="advo-restart-full" onclick="advisorRestart()">↺ New analysis</button>
           <div class="advo-footer-note">Click any tool name to see the full breakdown${session.stack&&session.stack.some(r=>r.tool&&r.tool.id==='n8n')?' · <a href="https://github.com/dishts04/toolipedia-stacks" target="_blank" style="color:var(--p1);text-decoration:none;font-weight:600">↗ n8n workflow templates</a>':''}</div>
+        </div>
+        <div style="text-align:center;padding:20px 0 8px">
+          <button class="advo-pdf-btn" style="font-size:14px;padding:12px 28px" onclick="renderStep4()">Build your action plan →</button>
+          <div style="font-size:11px;color:var(--text3);margin-top:8px">Week-by-week roadmap · trial links · shareable PDF</div>
         </div>
       </div>`);
     // Insert edit-answers section after render
@@ -7747,6 +8417,10 @@ function renderIdeaResults(stack, goalText, out, totalMin, totalMax){
           <button class="advo-restart-full" onclick="advisorRestart()">↺ New analysis</button>
           <div class="advo-footer-note">Click any tool name to see docs, pricing, and agent capabilities${session.stack&&session.stack.some(r=>r.tool&&r.tool.id==='n8n')?' · <a href="https://github.com/dishts04/toolipedia-stacks" target="_blank" style="color:var(--p1);text-decoration:none;font-weight:600">↗ n8n workflow templates</a>':''}</div>
         </div>
+        <div style="text-align:center;padding:20px 0 8px">
+          <button class="advo-pdf-btn" style="font-size:14px;padding:12px 28px" onclick="renderStep4()">Build your action plan →</button>
+          <div style="font-size:11px;color:var(--text3);margin-top:8px">Week-by-week roadmap · trial links · shareable PDF</div>
+        </div>
       </div>`);
     // Insert edit-answers section after render
     setTimeout(()=>{
@@ -8025,6 +8699,7 @@ function renderIdeaResults(stack, goalText, out, totalMin, totalMax){
 
   // ── Expose for compatibility ──────────────────────────────────────
   window._renderStep3=renderStep3;
+  window.renderStep3=renderStep3;
   window._LAYERS=LAYERS;
   window._TOOL_META=TOOL_META;
 
@@ -8034,7 +8709,7 @@ function renderIdeaResults(stack, goalText, out, totalMin, totalMax){
   window.renderStep2=renderStep2;
 
   window.advisorRestart=function(){
-    session={goal:'',goalTags:[],answers:{},derivedTags:[],step:0,questionIndex:0,stack:[],mode:null,_editMode:false};
+    session={goal:'',goalTags:[],answers:{},derivedTags:[],step:0,questionIndex:0,stack:[],mode:null,_editMode:false,_autoAnswered:[]};
     window._advisorSession=session;
     renderModePicker();
   };
@@ -8090,7 +8765,13 @@ function renderIdeaResults(stack, goalText, out, totalMin, totalMax){
       }
       session.questionIndex=next;
     } else {
-      session.questionIndex=Math.min(session.questionIndex+1, Qs.length);
+      // Advance past auto-answered questions too
+      var next=session.questionIndex+1;
+      var autoAns=session._autoAnswered||[];
+      while(next<Qs.length && autoAns.indexOf(Qs[next].id)>=0){
+        next++;
+      }
+      session.questionIndex=Math.min(next, Qs.length);
     }
     window._advisorSession=session;
     saveSession();
@@ -8099,6 +8780,44 @@ function renderIdeaResults(stack, goalText, out, totalMin, totalMax){
 
   window.advisorSetGoal=function(text){
     if(getI()){ getI().value=text; getI().focus(); }
+  };
+
+  // ── Free-text answer handlers ─────────────────────────────────────
+  window.advisorFtResize=function(el){
+    el.style.height='auto';
+    el.style.height=Math.min(el.scrollHeight,120)+'px';
+  };
+
+  window.advisorFtSubmit=function(qId){
+    var el=document.getElementById('advo-ft-input');
+    var fb=document.getElementById('advo-ft-feedback');
+    if(!el||!fb) return;
+    var raw=(el.value||'').trim();
+    if(!raw) return;
+
+    var result=parseNaturalAnswer(qId,raw);
+
+    if(result){
+      // Show success feedback briefly, then advance
+      fb.className='advo-freetext-feedback ok';
+      fb.style.display='block';
+      fb.textContent='Got it — treating this as: '+result.icon+' '+result.label;
+      var btn=el.parentNode.querySelector('.advo-freetext-submit');
+      if(btn) btn.disabled=true;
+      el.disabled=true;
+      setTimeout(function(){
+        window.advisorAnswer(qId,result.value);
+      },700);
+    } else {
+      // Couldn't parse — show inline error, keep options visible
+      fb.className='advo-freetext-feedback err';
+      fb.style.display='block';
+      fb.textContent='Couldn\'t match that to an option — try rewording, or pick one above.';
+      el.select();
+      setTimeout(function(){
+        if(fb) fb.style.display='none';
+      },3500);
+    }
   };
 
   // ── Direct question detector ──────────────────────────────────────
@@ -8186,10 +8905,32 @@ function renderIdeaResults(stack, goalText, out, totalMin, totalMax){
     if(direct){ answerDirectly(direct); return; }
     session.goal=text.trim();
     session.goalTags=parseGoal(text);
+    session.answers={};
+    session._autoAnswered=[];
     session.step=2;
     session.questionIndex=0;
     window._advisorSession=session;
-    renderStep2();
+    // Auto-fill questions answerable from goal text
+    var autoFilled=autoAnswerFromGoal(text.trim());
+    var Qs=getQuestions();
+    var unanswered=Qs.filter(function(q){return !session.answers[q.id];});
+    if(unanswered.length===0){
+      // All questions answered — skip Step 2 entirely
+      session.derivedTags=buildDerivedTags();
+      session.stack=buildStack();
+      session.step=3;
+      window._advisorSession=session;
+      renderStep3();
+    } else {
+      // Advance questionIndex past any auto-answered leading questions
+      var firstUnanswered=0;
+      while(firstUnanswered<Qs.length && session.answers[Qs[firstUnanswered].id]){
+        firstUnanswered++;
+      }
+      session.questionIndex=firstUnanswered;
+      window._advisorSession=session;
+      renderStep2();
+    }
   }
 
   window._submitGoal=submitGoal;
